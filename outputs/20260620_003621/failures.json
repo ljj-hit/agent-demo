@@ -1,0 +1,93 @@
+[
+  {
+    "question": "A bookstore bought 84 novels for $6 each. It sold 5/7 of them for $11 each and sold the rest later for $8 each. It also paid $95 for a booth at the market. What was the bookstore's total profit?",
+    "prediction": "\\$757",
+    "gold_answer": "253",
+    "failure_type": "non_numeric_prediction",
+    "analysis": "multi predicted \\$757 but gold is 253. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "Liam packed 18 crates of apples with 24 apples in each crate. One-sixth of the apples were bruised. Of the good apples, 3/4 were shipped in boxes that each hold 18 apples. How many full boxes were shipped?",
+    "prediction": "20",
+    "gold_answer": "15",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi predicted 20 but gold is 15. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "Three machines each made 45 parts per hour for 4 hours. Then one machine broke, and the other two machines each made 40 parts per hour for 3 more hours. If 5% of all the parts made were rejected, how many parts were accepted?",
+    "prediction": "456",
+    "gold_answer": "741",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi predicted 456 but gold is 741. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "One printer printed 30 pages per minute for 16 minutes, and another printer printed 40 pages per minute for 12 minutes. Three-eighths of all printed pages were double-sided worksheets with 2 pages per sheet of paper. The rest were single-sided pages. How many sheets of paper were used?",
+    "prediction": "90 sheets of paper were used.",
+    "gold_answer": "780",
+    "failure_type": "non_numeric_prediction",
+    "analysis": "multi predicted 90 sheets of paper were used. but gold is 780. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A warehouse started with 640 boxes. On Monday it shipped 35% of them. On Tuesday it shipped 1/4 of the boxes that were left after Monday. Then it received 90 new boxes. How many boxes were in the warehouse after Tuesday's delivery?",
+    "prediction": "1/4",
+    "gold_answer": "402",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi predicted 1/4 but gold is 402. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A teacher ordered 9 packs of markers with 16 markers in each pack. She gave 5 markers to each of 23 students and kept 5 markers for herself. She split the remaining markers equally among 4 tables. How many markers did each table get?",
+    "prediction": "Each table got 7.25 markers.",
+    "gold_answer": "6",
+    "failure_type": "non_numeric_prediction",
+    "analysis": "multi predicted Each table got 7.25 markers. but gold is 6. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A baker had a 50-pound bag of flour. She used 3/5 of the bag to make bread. Then she used 2 pounds of flour for each cake she baked. If 6 pounds of flour were left after the cakes, how many cakes did she bake?",
+    "prediction": "9",
+    "gold_answer": "7",
+    "failure_type": "off_by_small_amount",
+    "analysis": "multi predicted 9 but gold is 7. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "At an orchard, 5 workers each picked 18 baskets per hour for 3 hours. Then 2 workers left, and the remaining workers each picked 15 baskets per hour for 2 more hours. If 1/10 of all baskets were too small to sell, how many baskets were sellable?",
+    "prediction": "333",
+    "gold_answer": "324",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi predicted 333 but gold is 324. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A shop sells notebooks for $5 each and has a buy-2-get-1-free deal. A teacher needs 37 notebooks. What is the least amount of money the teacher can pay?",
+    "prediction": "180",
+    "gold_answer": "125",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi predicted 180 but gold is 125. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A music subscription costs $18 per month. The annual plan charges for only 10 months but covers 12 months. Both plans have the same $25 setup fee. How much less does Carla pay by choosing the annual plan instead of paying monthly for 12 months?",
+    "prediction": "-214",
+    "gold_answer": "36",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi predicted -214 but gold is 36. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A contest has 40 questions. A student answered 30 questions and left the rest blank. Each correct answer is worth 8 points, each incorrect answer loses 3 points, and blanks are worth 0 points. If the student's score was 152, how many questions did the student answer correctly?",
+    "prediction": "24",
+    "gold_answer": "22",
+    "failure_type": "off_by_small_amount",
+    "analysis": "multi predicted 24 but gold is 22. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "At a zoo, adult tickets cost $19 and child tickets cost $11. A group bought 2 more child tickets than adult tickets. If the total ticket cost was $322, how many child tickets did the group buy?",
+    "prediction": "16 child tickets",
+    "gold_answer": "12",
+    "failure_type": "non_numeric_prediction",
+    "analysis": "multi predicted 16 child tickets but gold is 12. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A bakery had 5 trays of brownies with 24 brownies on each tray. It sold 3/5 of the brownies. Then it cut each remaining brownie in half to make sample pieces. How many sample pieces did it make?",
+    "prediction": "24",
+    "gold_answer": "96",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi predicted 24 but gold is 96. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  }
+]

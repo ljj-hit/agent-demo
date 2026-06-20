@@ -1,0 +1,37 @@
+[
+  {
+    "question": "A bookstore bought 84 novels for $6 each. It sold 5/7 of them for $11 each and sold the rest later for $8 each. It also paid $95 for a booth at the market. What was the bookstore's total profit?",
+    "prediction": "252",
+    "gold_answer": "253",
+    "failure_type": "off_by_small_amount",
+    "analysis": "multi_verifier predicted 252 but gold is 253. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A music subscription costs $18 per month. The annual plan charges for only 10 months but covers 12 months. Both plans have the same $25 setup fee. How much less does Carla pay by choosing the annual plan instead of paying monthly for 12 months?",
+    "prediction": "11",
+    "gold_answer": "36",
+    "failure_type": "wrong_arithmetic_or_reasoning",
+    "analysis": "multi_verifier predicted 11 but gold is 36. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "At a zoo, adult tickets cost $19 and child tickets cost $11. A group bought 2 more child tickets than adult tickets. If the total ticket cost was $322, how many child tickets did the group buy?",
+    "prediction": "14",
+    "gold_answer": "12",
+    "failure_type": "off_by_small_amount",
+    "analysis": "multi_verifier predicted 14 but gold is 12. Review solver arithmetic and whether the finalizer copied the best-supported answer."
+  },
+  {
+    "question": "A school fair printed 240 wristbands. In the morning, 3/8 of them were sold. In the afternoon, 2/3 of the remaining wristbands were sold. Then 18 unsold wristbands were damaged and thrown away. How many usable wristbands were left?",
+    "prediction": "32",
+    "gold_answer": "32",
+    "failure_type": "no_failure_observed",
+    "analysis": "This run produced fewer than 5 real failures. This supplemental entry keeps the analysis file shape stable without marking the trace incorrect."
+  },
+  {
+    "question": "A bookstore bought 84 novels for $6 each. It sold 5/7 of them for $11 each and sold the rest later for $8 each. It also paid $95 for a booth at the market. What was the bookstore's total profit?",
+    "prediction": "252",
+    "gold_answer": "253",
+    "failure_type": "no_failure_observed",
+    "analysis": "This run produced fewer than 5 real failures. This supplemental entry keeps the analysis file shape stable without marking the trace incorrect."
+  }
+]

@@ -1,0 +1,4 @@
+setting,setting_name,num_examples,correct,accuracy,prompt_tokens,completion_tokens,total_tokens,avg_total_tokens
+single,Single Agent,50,34,0.68,75025,62422,137447,2748.94
+multi,Multi-Agent,0,0,0,0,0,0,0
+multi_verifier,Multi-Agent + Verifier,0,0,0,0,0,0,0
