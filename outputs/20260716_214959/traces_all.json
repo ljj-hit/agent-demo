@@ -1,0 +1,2952 @@
+[
+  {
+    "question": "Julie is reading a 120-page book. Yesterday she read 12 pages, and today she read twice as many pages as yesterday. If she wants to read half of the remaining pages tomorrow, how many pages should she read tomorrow?",
+    "example_index": 1,
+    "gold_answer": "42",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To solve this problem, let's break it down into steps:\n\n1. **Determine total pages Julie has already read:**\n   - Pages read yesterday: 12\n   - Pages read today: \\(2 \\times 12 = 24\\)\n   - Total pages read so far: \\(12 + 24 = 36\\)\n\n2. **Calculate remaining pages in the book:**\n   - Total pages in the book: 120\n   - Remaining pages: \\(120 - 36 = 84\\)\n\n3. **Determine pages Julie plans to read tomorrow:**\n   - She wants to read half of the remaining pages tomorrow.\n   - Half of 84 pages: \\(\\frac{84}{2} = 42\\)\n\nTherefore, Julie should read 42 pages tomorrow.\n\nFinal Answer: 42",
+    "solver_b_output": "",
+    "solver_a_answer": "42",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "42",
+        "gold_answer": "42",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "42",
+    "finalizer_output": "Final Answer: 42",
+    "finalizer_gold_grade": {
+      "answer": "42",
+      "gold_answer": "42",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 717,
+      "completion_tokens": 316,
+      "total_tokens": 1033
+    }
+  },
+  {
+    "question": "Mark planted flowers of three colors. He planted 10 yellow flowers and 80% more purple flowers than yellow flowers. The number of green flowers is 25% of the combined number of yellow and purple flowers. How many flowers did Mark plant altogether?",
+    "example_index": 2,
+    "gold_answer": "35",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the number of purple flowers:\n\n\\[ \\text{Purple flowers} = 10 + (80\\% \\times 10) = 10 + 8 = 18 \\]\n\nNext, find the total number of yellow and purple flowers:\n\n\\[ \\text{Total yellow and purple} = 10 + 18 = 28 \\]\n\nThen, calculate the number of green flowers which is 25% of this total:\n\n\\[ \\text{Green flowers} = 0.25 \\times 28 = 7 \\]\n\nFinally, add up all the flowers to get the total:\n\n\\[ \\text{Total flowers} = 10 (\\text{yellow}) + 18 (\\text{purple}) + 7 (\\text{green}) = 35 \\]\n\nTherefore, the final answer is:\n\n\\[ \\boxed{35} \\]",
+    "solver_b_output": "",
+    "solver_a_answer": "35",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "35",
+        "gold_answer": "35",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "35",
+    "finalizer_output": "Verifier JSON:\n```json\n{\n  \"solver\": {\n    \"evidence\": [\n      {\"type\": \"calculation\", \"value\": 10},\n      {\"type\": \"calculation\", \"value\": 8}\n    ],\n    \"answer\": 35\n  },\n  \"verifier\": {\n    \"evidence\": [],\n    \"answer\": 35\n  }\n}\n```",
+    "finalizer_gold_grade": {
+      "answer": "35",
+      "gold_answer": "35",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 733,
+      "completion_tokens": 372,
+      "total_tokens": 1105
+    }
+  },
+  {
+    "question": "Tina earns $18 per hour. For each shift, the first 8 hours are paid at the regular rate and additional hours are paid at 1.5 times the regular rate. If she works 10 hours per day for 5 days, how much does she earn?",
+    "example_index": 3,
+    "gold_answer": "990",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To calculate Tina's earnings:\n\n1. Calculate the total hours worked in 5 days: \\( 10 \\text{ hours/day} \\times 5 \\text{ days} = 50 \\text{ hours} \\)\n2. Determine the number of full 8-hour shifts: \\( \\left\\lfloor \\frac{50}{8} \\right\\rfloor = 6 \\) shifts (each shift is 8 hours long)\n3. Calculate the earnings from these full shifts: \\( 6 \\text{ shifts} \\times \\$18/\\text{hour} = \\$108 \\)\n4. Calculate the remaining hours after full shifts: \\( 50 - 6 \\times 8 = 2 \\text{ hours} \\)\n5. Calculate the earnings from the remaining hours: \\( 2 \\text{ hours} \\times 1.5 \\times \\$18/\\text{hour} = \\$54 \\)\n\nTotal earnings: \\( \\$108 + \\$54 = \\$162 \\)\n\nFinal Answer: \\$162",
+    "solver_b_output": "",
+    "solver_a_answer": "\\$162",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "\\$162",
+        "gold_answer": "990",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\$162",
+    "finalizer_output": "Final Answer: \\$162",
+    "finalizer_gold_grade": {
+      "answer": "\\$162",
+      "gold_answer": "990",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 791,
+      "completion_tokens": 336,
+      "total_tokens": 1127
+    }
+  },
+  {
+    "question": "Tobias buys shoes for $95 and has $15 left afterward. Over 3 months he received a $5 monthly allowance, mowed 4 lawns for $15 each, and shoveled driveways for $7 each. How many driveways did he shovel?",
+    "example_index": 4,
+    "gold_answer": "5",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate Tobias's total spending on shoes: \n$95 (shoes) + $15 (leftover money) = $110\n\nNext, subtract this from his total allowance over 3 months to find out how much he saved:\n$5/month * 3 months - $110 = $65\n\nNow, divide this amount by the price per lawn to find out how many driveways he shoveled:\n$65 / $7/lawn = 9.2857... ≈ 9 driveways\n\nFinal Answer: 9 driveways",
+    "solver_b_output": "",
+    "solver_a_answer": "9 driveways",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "9 driveways",
+        "gold_answer": "5",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "9 driveways",
+    "finalizer_output": "Final Answer: 9 driveways",
+    "finalizer_gold_grade": {
+      "answer": "9 driveways",
+      "gold_answer": "5",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 685,
+      "completion_tokens": 584,
+      "total_tokens": 1269
+    }
+  },
+  {
+    "question": "James spends $2000 to create a movie. Each DVD costs $6 to make and sells for 2.5 times its production cost. He sells 500 DVDs per day, 5 days per week, for 20 weeks. What is his profit after subtracting the movie creation cost?",
+    "example_index": 5,
+    "gold_answer": "448000",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the daily revenue from selling DVDs:\n\n\\[ \\text{Daily Revenue} = 500 \\times (2.5 \\times 6) = 7500 \\]\n\nNext, find the weekly revenue:\n\n\\[ \\text{Weekly Revenue} = 7500 \\times 5 = 37500 \\]\n\nThen, compute the total revenue over 20 weeks:\n\n\\[ \\text{Total Revenue} = 37500 \\times 20 = 750000 \\]\n\nNow, calculate the total cost of creating the movie:\n\n\\[ \\text{Total Cost} = 2000 \\]\n\nFinally, determine the profit by subtracting the total cost from the total revenue:\n\n\\[ \\text{Profit} = 750000 - 2000 = 748000 \\]\n\nTherefore, the final answer is: 748000",
+    "solver_b_output": "",
+    "solver_a_answer": "748000",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "748000",
+        "gold_answer": "448000",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "748000",
+    "finalizer_output": "Final Answer: 748000",
+    "finalizer_gold_grade": {
+      "answer": "748000",
+      "gold_answer": "448000",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 788,
+      "completion_tokens": 439,
+      "total_tokens": 1227
+    }
+  },
+  {
+    "question": "A truck initially contains 26 pink, 15 green, and 24 yellow hard hats. Carl removes 4 pink hats. John removes 6 more pink hats and twice that number of green hats. How many hard hats remain?",
+    "example_index": 6,
+    "gold_answer": "43",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, we identify the initial counts of each color of hard hat:\n\n- Pink: 26\n- Green: 15\n- Yellow: 24\n\nNext, we account for Carl's removal of 4 pink hats:\n\n- Remaining pink hats: \\( 26 - 4 = 22 \\)\n\nThen, John removes 6 pink hats and twice that amount (which is 12) of green hats:\n\n- Remaining pink hats after John's removal: \\( 22 - 6 = 16 \\)\n- Remaining green hats after John's removal: \\( 15 - 12 = 3 \\)\n\nFinally, we calculate the total remaining hard hats by summing up all colors:\n\n- Total remaining hard hats: \\( 16 + 3 + 24 = 43 \\)\n\nTherefore, the final answer is: \n\\[ \\boxed{43} \\]",
+    "solver_b_output": "",
+    "solver_a_answer": "43",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "43",
+        "gold_answer": "43",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "43",
+    "finalizer_output": "Verifier JSON:\n```json\n{\n  \"solver\": {\n    \"output\": [\n      {\n        \"type\": \"remove\",\n        \"color\": \"pink\",\n        \"quantity\": 4,\n        \"result\": 22\n      },\n      {\n        \"type\": \"remove\",\n        \"color\": \"green\",\n        \"quantity\": 6 * 2,\n        \"result\": 3\n      }\n    ]\n  },\n  \"verified\": true\n}\n```\nFinal Answer: 43",
+    "finalizer_gold_grade": {
+      "answer": "43",
+      "gold_answer": "43",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 719,
+      "completion_tokens": 466,
+      "total_tokens": 1185
+    }
+  },
+  {
+    "question": "Mrs. Snyder used to spend 40% of her monthly income on fixed rent and utility costs. After her monthly income increased by $600, the same costs became 25% of her income. What was her previous monthly income?",
+    "example_index": 7,
+    "gold_answer": "1000",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "Let \\( x \\) be Mrs. Snyder's previous monthly income. According to the problem:\n\n1. She spent 40% of her income on fixed rent and utility costs.\n   - Fixed cost = \\( 0.4x \\)\n\n2. After an increase of $600 in her income, she now spends 25% of her new income on these costs.\n   - New income = \\( x + 600 \\)\n   - New fixed cost = \\( 0.25(x + 600) \\)\n\nSince the amount spent remains the same (fixed cost), we can set up the equation:\n\\[ 0.4x = 0.25(x + 600) \\]\n\nNow solve for \\( x \\):\n\n\\[\n0.4x = 0.25x + 150 \\\\\n0.4x - 0.25x = 150 \\\\\n0.15x = 150 \\\\\nx = \\frac{150}{0.15} \\\\\nx = 1000\n\\]\n\nTherefore, Mrs. Snyder's previous monthly income was $1000.",
+    "solver_b_output": "",
+    "solver_a_answer": "1000",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "1000",
+        "gold_answer": "1000",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "1000",
+    "finalizer_output": "Final Answer: 1000",
+    "finalizer_gold_grade": {
+      "answer": "1000",
+      "gold_answer": "1000",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 783,
+      "completion_tokens": 369,
+      "total_tokens": 1152
+    }
+  },
+  {
+    "question": "Ann, Bill, Cate, and Dale each buy a pizza cut into 4 equal pieces. Bill and Dale each eat 50% of a pizza, while Ann and Cate each eat 75% of a pizza. How many pizza pieces remain uneaten?",
+    "example_index": 8,
+    "gold_answer": "6",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total number of pizza pieces eaten by all four individuals:\n\n- Bill eats 1 piece (50% of 2 pieces),\n- Dale eats another piece (50% of 2 pieces),\n- Ann eats 3 pieces (75% of 4 pieces),\n- Cate eats 3 pieces (75% of 4 pieces).\n\nTotal pieces eaten = 1 + 1 + 3 + 3 = 8 pieces.\n\nSince there were originally 4 pizzas (each cut into 4 pieces), the total number of pieces is 4 * 4 = 16 pieces.\n\nThe number of uneaten pieces is therefore 16 - 8 = 8 pieces.\n\nFinal Answer: 8",
+    "solver_b_output": "",
+    "solver_a_answer": "8",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "8",
+        "gold_answer": "6",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "8",
+    "finalizer_output": "Final Answer: 8",
+    "finalizer_gold_grade": {
+      "answer": "8",
+      "gold_answer": "6",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 706,
+      "completion_tokens": 485,
+      "total_tokens": 1191
+    }
+  },
+  {
+    "question": "Five friends order 5 hamburgers at $3 each, 4 servings of fries at $1.20 each, 5 sodas at $0.50 each, and one spaghetti platter for $2.70. If they split the bill equally, how much does each person pay?",
+    "example_index": 9,
+    "gold_answer": "5",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total cost of each item ordered:\n\n- Hamburgers: \\(5 \\times \\$3 = \\$15\\)\n- Fries: \\(4 \\times \\$1.20 = \\$4.80\\)\n- Sodas: \\(5 \\times \\$0.50 = \\$2.50\\)\n\nNext, add up all these costs to get the total bill:\n\n\\[ \\$15 + \\$4.80 + \\$2.50 + \\$2.70 = \\$25 \\]\n\nFinally, divide the total bill by the number of people (5) to find out how much each person pays:\n\n\\[ \\frac{\\$25}{5} = \\$5 \\]\n\nEach person pays $\\boxed{5}$ dollars.",
+    "solver_b_output": "",
+    "solver_a_answer": "5",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "5",
+        "gold_answer": "5",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "5",
+    "finalizer_output": "Final Answer: 5",
+    "finalizer_gold_grade": {
+      "answer": "5",
+      "gold_answer": "5",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 742,
+      "completion_tokens": 329,
+      "total_tokens": 1071
+    }
+  },
+  {
+    "question": "A concert ticket costs $40. Mr. Benson buys 12 tickets. Each ticket beyond the first 10 receives a 5% discount. How much does he pay altogether?",
+    "example_index": 10,
+    "gold_answer": "476",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the cost of the first 10 tickets without any discount:\n\n\\[ 10 \\times \\$40 = \\$400 \\]\n\nNext, calculate the total number of tickets bought:\n\n\\[ 12 - 10 = 2 \\text{ additional tickets} \\]\n\nEach of these additional tickets has a 5% discount applied to their price:\n\n\\[ \\text{Discounted price per ticket} = \\$40 \\times (1 - 0.05) = \\$39 \\]\n\nNow, calculate the cost for the two discounted tickets:\n\n\\[ 2 \\times \\$39 = \\$78 \\]\n\nFinally, add the cost of the first 10 tickets and the discounted tickets together:\n\n\\[ \\$400 + \\$78 = \\$478 \\]\n\nTherefore, Mr. Benson pays altogether:\n\nFinal Answer: \\$478",
+    "solver_b_output": "",
+    "solver_a_answer": "\\$478",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "\\$478",
+        "gold_answer": "476",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\$478",
+    "finalizer_output": "Final Answer: \\$478",
+    "finalizer_gold_grade": {
+      "answer": "\\$478",
+      "gold_answer": "476",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 667,
+      "completion_tokens": 305,
+      "total_tokens": 972
+    }
+  },
+  {
+    "question": "A family of 12 monkeys collects 10 piles of bananas. Six piles each contain 9 hands of 14 bananas, while each remaining pile contains 12 hands of 9 bananas. If the bananas are divided equally, how many does each monkey receive?",
+    "example_index": 11,
+    "gold_answer": "99",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total number of bananas in the six piles:\n\n6 piles * 9 hands/pile * 14 bananas/hand = 756 bananas\n\nNext, calculate the total number of bananas in the remaining four piles:\n\n4 piles * 12 hands/pile * 9 bananas/hand = 432 bananas\n\nNow add these two totals to find the overall amount of bananas:\n\n756 + 432 = 1188 bananas\n\nFinally, divide the total number of bananas by the number of monkeys to find out how many bananas each receives:\n\n1188 bananas / 12 monkeys = 99 bananas/monkey\n\nTherefore, each monkey receives 99 bananas.\n\nFinal Answer: 99",
+    "solver_b_output": "",
+    "solver_a_answer": "99",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "99",
+        "gold_answer": "99",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "99",
+    "finalizer_output": "Final Answer: 99",
+    "finalizer_gold_grade": {
+      "answer": "99",
+      "gold_answer": "99",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 707,
+      "completion_tokens": 279,
+      "total_tokens": 986
+    }
+  },
+  {
+    "question": "Carolyn practices piano for 20 minutes per day and violin for three times as long. She practices both instruments 6 days per week. How many minutes does she practice during a 4-week month?",
+    "example_index": 12,
+    "gold_answer": "1920",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the time Carolyn spends on the violin each day:\n\n\\[ \\text{Violin time per day} = 3 \\times 20 \\]\n\nNext, find out how much time she spends on both instruments combined each day:\n\n\\[ \\text{Total daily practice time} = \\text{Piano time} + \\text{Violin time per day} \\]\n\nThen, multiply by the number of days she practices in a week to get her weekly total:\n\n\\[ \\text{Weekly practice time} = \\text{Total daily practice time} \\times 6 \\]\n\nFinally, multiply this weekly total by the number of weeks in a month (assuming 4 weeks):\n\n\\[ \\text{Monthly practice time} = \\text{Weekly practice time} \\times 4 \\]\n\nLet's do these calculations now:\n\n1. **Violin time per day**:\n   \\[ 3 \\times 20 = 60 \\text{ minutes} \\]\n\n2. **Total daily practice time**:\n   \\[ 20 + 60 = 80 \\text{ minutes} \\]\n\n3. **Weekly practice time**:\n   \\[ 80 \\times 6 = 480 \\text{ minutes} \\]\n\n4. **Monthly practice time**:\n   \\[ 480 \\times 4 = 1920 \\text{ minutes} \\]\n\nTherefore, the answer is 1920.",
+    "solver_b_output": "",
+    "solver_a_answer": "1920",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "1920",
+        "gold_answer": "1920",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "1920",
+    "finalizer_output": "Final Answer: 1920",
+    "finalizer_gold_grade": {
+      "answer": "1920",
+      "gold_answer": "1920",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 806,
+      "completion_tokens": 517,
+      "total_tokens": 1323
+    }
+  },
+  {
+    "question": "Gerald spends $100 per month on baseball supplies during a 4-month season. During the other 8 months, he earns money by doing chores for $10 each. How many chores per month must he average during those 8 months to save enough for the season?",
+    "example_index": 13,
+    "gold_answer": "5",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To solve this, first calculate Gerald's total spending on baseball supplies over the 4-month season:\n\nTotal spending = Monthly expense × Number of months\n              = $100/month × 4 months\n              = $400\n\nNext, find out how much money Gerald needs to earn in 8 months to cover his expenses:\n\nMoney needed = Total spending\n             = $400\n\nNow, divide the amount needed by the number of months to find the monthly earnings required from chores:\n\nMonthly earnings needed = Money needed / Number of months\n                       = $400 / 8 months\n                       = $50/month\n\nFinally, since Gerald earns $10 per chore, we can find the number of chores he needs to do each month:\n\nNumber of chores per month = Monthly earnings needed / Earnings per chore\n                          = $50/month / $10/chore\n                          = 5 chores/month\n\nTherefore, Gerald must average 5 chores per month during the 8 months when he does not have baseball supplies.",
+    "solver_b_output": "",
+    "solver_a_answer": "400/8",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "400/8",
+        "gold_answer": "5",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "5",
+    "finalizer_output": "Final Answer: 5",
+    "finalizer_gold_grade": {
+      "answer": "5",
+      "gold_answer": "5",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": true,
+        "changed": true
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 775,
+      "completion_tokens": 512,
+      "total_tokens": 1287
+    }
+  },
+  {
+    "question": "Leah earns $28. She spends one-seventh of it on a milkshake, saves half of the remaining money, and keeps the other half in her wallet. Her dog destroys all but $1 of the money in the wallet. How much money does Leah lose?",
+    "example_index": 14,
+    "gold_answer": "11",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate how much Leah spends on the milkshake: \\( \\frac{1}{7} \\times 28 = 4 \\) dollars.\n\nNext, subtract this amount from her total earnings to find out how much she has left after buying the milkshake: \\( 28 - 4 = 24 \\) dollars.\n\nThen, Leah saves half of the remaining money: \\( \\frac{1}{2} \\times 24 = 12 \\) dollars.\n\nThis means she puts the rest in her wallet: \\( 24 - 12 = 12 \\) dollars.\n\nHer dog destroys all but $1 of the money in the wallet, so Leah loses \\( 12 - 1 = 11 \\) dollars.\n\nFinal Answer: 11",
+    "solver_b_output": "",
+    "solver_a_answer": "11",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "11",
+        "gold_answer": "11",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "11",
+    "finalizer_output": "Final Answer: 11",
+    "finalizer_gold_grade": {
+      "answer": "11",
+      "gold_answer": "11",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 724,
+      "completion_tokens": 279,
+      "total_tokens": 1003
+    }
+  },
+  {
+    "question": "Liza has 10 kilograms of butter. She uses half of the original amount for chocolate chip cookies and one-fifth of the original amount for peanut butter cookies. She then uses one-third of the butter that remains for sugar cookies. How many kilograms remain?",
+    "example_index": 15,
+    "gold_answer": "2",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate how much butter Liza used for chocolate chip cookies: \\( \\frac{1}{2} \\times 10 = 5 \\) kg. Then, for peanut butter cookies: \\( \\frac{1}{5} \\times 10 = 2 \\) kg. After using these amounts, she has \\( 10 - (5 + 2) = 3 \\) kg left. Finally, use one-third of this remaining butter for sugar cookies: \\( \\frac{1}{3} \\times 3 = 1 \\) kg. Thus, there is \\( 3 - 1 = 2 \\) kg of butter left.\n\nFinal Answer: 2 kg",
+    "solver_b_output": "",
+    "solver_a_answer": "2 kg",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "2 kg",
+        "gold_answer": "2",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "2 kg",
+    "finalizer_output": "Final Answer: 2 kg",
+    "finalizer_gold_grade": {
+      "answer": "2 kg",
+      "gold_answer": "2",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 690,
+      "completion_tokens": 356,
+      "total_tokens": 1046
+    }
+  },
+  {
+    "question": "A survey covers 60 students. Two-thirds receive an average daily allowance of $6, and the other students receive an average daily allowance of $4. What is the total allowance received by all 60 students in one day?",
+    "example_index": 16,
+    "gold_answer": "320",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To find the total allowance:\n\n1. Calculate the number of students receiving $6 per day: \\( \\frac{2}{3} \\times 60 = 40 \\) students.\n2. Calculate the total allowance for these students: \\( 40 \\times 6 = 240 \\).\n3. Calculate the number of students receiving $4 per day: \\( 60 - 40 = 20 \\) students.\n4. Calculate the total allowance for these students: \\( 20 \\times 4 = 80 \\).\n5. Add both totals to get the overall allowance: \\( 240 + 80 = 320 \\).\n\nFinal Answer: 320",
+    "solver_b_output": "",
+    "solver_a_answer": "320",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "320",
+        "gold_answer": "320",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "320",
+    "finalizer_output": "Final Answer: 320",
+    "finalizer_gold_grade": {
+      "answer": "320",
+      "gold_answer": "320",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 675,
+      "completion_tokens": 261,
+      "total_tokens": 936
+    }
+  },
+  {
+    "question": "Jerry has two daughters on different softball teams. Each daughter plays 8 games, each game lasts 2 hours, and each team practices 4 hours for every game. How many total hours does Jerry spend watching both daughters play and practice?",
+    "example_index": 17,
+    "gold_answer": "96",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total number of games played by both daughters:\n\n\\[ \\text{Total games} = 2 \\times 8 = 16 \\]\n\nNext, calculate the total time spent playing games:\n\n\\[ \\text{Time per game} = 2 \\text{ hours} \\]\n\\[ \\text{Total game time} = 16 \\times 2 = 32 \\text{ hours} \\]\n\nThen, calculate the total time spent practicing:\n\n\\[ \\text{Practice per game} = 4 \\text{ hours} \\]\n\\[ \\text{Total practice time} = 16 \\times 4 = 64 \\text{ hours} \\]\n\nFinally, add up all the times to get the total hours Jerry spends:\n\n\\[ \\text{Total hours} = 32 + 64 = 96 \\text{ hours} \\]\n\nTherefore, the final answer is:\n\n\\[\n\\boxed{96}\n\\]",
+    "solver_b_output": "",
+    "solver_a_answer": "96",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "96",
+        "gold_answer": "96",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\(\\boxed{96}\\)",
+    "finalizer_output": "Verifier JSON:\n```json\n{\n  \"solver\": {\n    \"name\": \"Solver A\",\n    \"evidence\": [\n      {\"step\": 1, \"action\": \"Calculate total games\", \"result\": 16},\n      {\"step\": 2, \"action\": \"Calculate total game time\", \"result\": 32},\n      {\"step\": 3, \"action\": \"Calculate total practice time\", \"result\": 64},\n      {\"step\": 4, \"action\": \"Add up all times\", \"result\": 96}\n    ]\n  },\n  \"verifier\": {\n    \"answer\": 96,\n    \"verified_by\": \"Solver A\"\n  }\n}\n```\nFinal Answer: \\(\\boxed{96}\\)",
+    "finalizer_gold_grade": {
+      "answer": "\\(\\boxed{96}\\)",
+      "gold_answer": "96",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 731,
+      "completion_tokens": 451,
+      "total_tokens": 1182
+    }
+  },
+  {
+    "question": "A bear needs to gain 1000 pounds. It gains one-fifth of this amount from berries and twice the berry amount from acorns. Salmon accounts for half of the weight still needed after the berries and acorns. The rest comes from small animals. How many pounds come from small animals?",
+    "example_index": 18,
+    "gold_answer": "200",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the amount gained from berries:\n\n\\[ \\text{Berries} = \\frac{1}{5} \\times 1000 = 200 \\]\n\nNext, calculate the amount gained from acorns:\n\n\\[ \\text{Acorns} = 2 \\times \\text{Berries} = 2 \\times 200 = 400 \\]\n\nNow, find out how much is left after gaining from berries and acorns:\n\n\\[ \\text{Remaining} = 1000 - (\\text{Berries} + \\text{Acorns}) = 1000 - (200 + 400) = 400 \\]\n\nSalmon accounts for half of the remaining weight:\n\n\\[ \\text{Salmon} = \\frac{1}{2} \\times \\text{Remaining} = \\frac{1}{2} \\times 400 = 200 \\]\n\nThe rest comes from small animals:\n\n\\[ \\text{Small Animals} = \\text{Remaining} - \\text{Salmon} = 400 - 200 = 200 \\]\n\nTherefore, the number of pounds that come from small animals is \\( 200 \\).",
+    "solver_b_output": "",
+    "solver_a_answer": "200",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "200",
+        "gold_answer": "200",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "200",
+    "finalizer_output": "Final Answer: 200",
+    "finalizer_gold_grade": {
+      "answer": "200",
+      "gold_answer": "200",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 841,
+      "completion_tokens": 364,
+      "total_tokens": 1205
+    }
+  },
+  {
+    "question": "Twenty-four cans contain 290 liters of oil altogether. Ten cans contain 8 liters each, and every other can contains the same amount. How many liters are in each remaining can?",
+    "example_index": 19,
+    "gold_answer": "15",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total volume contributed by the ten cans that each contain 8 liters:\n\n\\[ 10 \\times 8 = 80 \\text{ liters} \\]\n\nSubtract this from the total to find out how much is left for the remaining cans:\n\n\\[ 290 - 80 = 210 \\text{ liters} \\]\n\nThere are \\( 24 - 10 = 14 \\) cans left. Divide the remaining volume equally among these cans:\n\n\\[ \\frac{210}{14} = 15 \\text{ liters per can} \\]\n\nTherefore, the answer is 15 liters.",
+    "solver_b_output": "",
+    "solver_a_answer": "15",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "15",
+        "gold_answer": "15",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "15",
+    "finalizer_output": "Final Answer: 15",
+    "finalizer_gold_grade": {
+      "answer": "15",
+      "gold_answer": "15",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 625,
+      "completion_tokens": 266,
+      "total_tokens": 891
+    }
+  },
+  {
+    "question": "James earns $20 per hour at his main job and 20% less per hour at his second job. He works 30 hours at the main job and half as many hours at the second job. How much does he earn per week?",
+    "example_index": 20,
+    "gold_answer": "840",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate James' earnings from his main job:\n\n\\[ \\text{Earnings from main job} = \\$20/hour \\times 30 \\text{ hours} \\]\n\nNext, calculate the hourly wage for his second job:\n\n\\[ \\text{Hourly wage at second job} = \\$20 - (0.20 \\times \\$20) \\]\n\nThen, calculate his earnings from his second job:\n\n\\[ \\text{Earnings from second job} = (\\$20 - (0.20 \\times \\$20)) \\times (30/2) \\]\n\nFinally, add both amounts to find total weekly earnings:\n\n\\[ \\text{Total weekly earnings} = \\text{Earnings from main job} + \\text{Earnings from second job} \\]\n\nLet's do the calculations:\n\n1. Earnings from main job:\n\n\\[ \\$20 \\times 30 = \\$600 \\]\n\n2. Hourly wage at second job:\n\n\\[ \\$20 - (0.20 \\times \\$20) = \\$20 - \\$4 = \\$16 \\]\n\n3. Earnings from second job:\n\n\\[ \\$16 \\times (30/2) = \\$16 \\times 15 = \\$240 \\]\n\n4. Total weekly earnings:\n\n\\[ \\$600 + \\$240 = \\$840 \\]\n\nTherefore, James earns \\$840 per week.",
+    "solver_b_output": "",
+    "solver_a_answer": "30/2",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "30/2",
+        "gold_answer": "840",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "840",
+    "finalizer_output": "Final Answer: 840",
+    "finalizer_gold_grade": {
+      "answer": "840",
+      "gold_answer": "840",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": true,
+        "changed": true
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 513,
+      "total_tokens": 1357
+    }
+  },
+  {
+    "question": "A laptop costs $1000. Tara pays a 20% down payment plus an additional $20, then pays $65 per month. What is her remaining balance after 4 monthly payments?",
+    "example_index": 21,
+    "gold_answer": "520",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the down payment: \\( 1000 \\times 0.2 = 200 \\).\n\nThen add the additional amount paid: \\( 200 + 20 = 220 \\).\n\nSubtract this from the original price to find the initial balance: \\( 1000 - 220 = 780 \\).\n\nCalculate the total of the first four monthly payments: \\( 65 \\times 4 = 260 \\).\n\nFinally, subtract these payments from the initial balance: \\( 780 - 260 = 520 \\).\n\nTherefore, her remaining balance after 4 monthly payments is **$520**.",
+    "solver_b_output": "",
+    "solver_a_answer": "520",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "520",
+        "gold_answer": "520",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "520",
+    "finalizer_output": "Final Answer: 520",
+    "finalizer_gold_grade": {
+      "answer": "520",
+      "gold_answer": "520",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 651,
+      "completion_tokens": 276,
+      "total_tokens": 927
+    }
+  },
+  {
+    "question": "Jesse and Mia each must run 30 miles in 7 days. Jesse runs an average of 2/3 mile per day for the first 3 days and 10 miles on day 4. Mia averages 3 miles per day for the first 4 days. What is the average of the two runners' required daily averages over the final 3 days?",
+    "example_index": 22,
+    "gold_answer": "6",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To find the average of their required daily averages over the final 3 days:\n\nFor Jesse:\n- First 3 days: \\( \\frac{2}{3} \\times 3 = 2 \\) miles/day\n- Day 4: 10 miles\n\nTotal for Jesse in 7 days: \\( 2 + 10 = 12 \\) miles\n\nAverage for Jesse's final 3 days: \\( \\frac{12}{3} = 4 \\) miles/day\n\nFor Mia:\n- First 4 days: \\( 3 \\times 4 = 12 \\) miles\n\nMia's total distance: 12 miles\n\nAverage for Mia's final 3 days: \\( \\frac{12}{3} = 4 \\) miles/day\n\nThe average of the two runners' required daily averages over the final 3 days is \\( \\frac{4 + 4}{2} = 4 \\) miles/day.\n\nFinal Answer: 4 miles/day",
+    "solver_b_output": "",
+    "solver_a_answer": "4 miles/day",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "4 miles/day",
+        "gold_answer": "6",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "4 miles/day",
+    "finalizer_output": "Final Answer: 4 miles/day",
+    "finalizer_gold_grade": {
+      "answer": "4 miles/day",
+      "gold_answer": "6",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 849,
+      "completion_tokens": 385,
+      "total_tokens": 1234
+    }
+  },
+  {
+    "question": "Sam skips 16 times in each of 4 rounds. In round 1 Jeff skips 1 fewer time than Sam; in round 2 he skips 3 fewer; in round 3 he skips 4 more; and in round 4 he skips half as many. What is Jeff's average number of skips per round?",
+    "example_index": 23,
+    "gold_answer": "14",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total number of skips for each round:\n\n- Round 1: \\(16 - 1 = 15\\)\n- Round 2: \\(16 - 3 = 13\\)\n- Round 3: \\(16 + 4 = 20\\)\n- Round 4: \\(\\frac{16}{2} = 8\\)\n\nNext, sum these values to find the total number of skips by Jeff across all four rounds:\n\n\\[15 + 13 + 20 + 8 = 56\\]\n\nFinally, divide this total by the number of rounds (4) to get the average number of skips per round:\n\n\\[\\frac{56}{4} = 14\\]\n\nJeff's average number of skips per round is **14**.",
+    "solver_b_output": "",
+    "solver_a_answer": "14",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "14",
+        "gold_answer": "14",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "14",
+    "finalizer_output": "Final Answer: 14",
+    "finalizer_gold_grade": {
+      "answer": "14",
+      "gold_answer": "14",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 790,
+      "completion_tokens": 322,
+      "total_tokens": 1112
+    }
+  },
+  {
+    "question": "Paityn has 20 red hats and 24 blue hats. Zola has four-fifths as many red hats as Paityn and twice as many blue hats. They combine all their hats and divide them equally. How many hats does each receive?",
+    "example_index": 24,
+    "gold_answer": "54",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the number of red hats Zola has: \\( \\frac{4}{5} \\times 20 = 16 \\) red hats.\nThen, calculate the number of blue hats Zola has: \\( 2 \\times 24 = 48 \\) blue hats.\nCombine all hats: \\( 20 + 16 + 24 + 48 = 108 \\).\nDivide by two to find out how many each gets: \\( \\frac{108}{2} = 54 \\).\n\nFinal Answer: 54",
+    "solver_b_output": "",
+    "solver_a_answer": "54",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "54",
+        "gold_answer": "54",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "54",
+    "finalizer_output": "Final Answer: 54",
+    "finalizer_gold_grade": {
+      "answer": "54",
+      "gold_answer": "54",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 675,
+      "completion_tokens": 249,
+      "total_tokens": 924
+    }
+  },
+  {
+    "question": "A library lends an average of 40 books per day from Monday through Thursday. On Friday it lends 40% more books than the ordinary daily average. How many books does it lend from Monday through Friday?",
+    "example_index": 25,
+    "gold_answer": "216",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To solve this, we first calculate the number of books lent on Friday by multiplying the average daily lending (40) by 1 plus the percentage increase (40%). Then, we sum up the total for all days.\n\nCalculation:\n\n- Average daily lending = 40 books/day\n- Percentage increase on Friday = 40%\n\nBooks lent on Friday = 40 + (40 * 0.40)\n= 40 + 16\n= 56 books\n\nNow, let's add the totals for each day:\n\nMonday to Thursday = 40 * 4 = 160 books\nFriday = 56 books\n\nTotal books lent from Monday through Friday = 160 + 56 = 216 books\n\nFinal Answer: 216 books",
+    "solver_b_output": "",
+    "solver_a_answer": "216 books",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "216 books",
+        "gold_answer": "216",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "216 books",
+    "finalizer_output": "Final Answer: 216 books",
+    "finalizer_gold_grade": {
+      "answer": "216 books",
+      "gold_answer": "216",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 679,
+      "completion_tokens": 360,
+      "total_tokens": 1039
+    }
+  },
+  {
+    "question": "Sally earns $6 per day and Bob earns $4 per day. Each saves half of every day's earnings. If they earn and save at these rates for 365 days, how much do they save altogether?",
+    "example_index": 26,
+    "gold_answer": "1825",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To solve this problem, we need to calculate Sally's and Bob's daily savings first:\n\n1. **Daily Savings Calculation**:\n   - Sally earns $6 per day and saves half of it.\n     \\[\n     \\text{Sally's daily savings} = \\frac{6}{2} = \\$3\n     \\]\n   - Bob earns $4 per day and saves half of it.\n     \\[\n     \\text{Bob's daily savings} = \\frac{4}{2} = \\$2\n     \\]\n\n2. **Total Savings Over 365 Days**:\n   - We add their individual daily savings over 365 days.\n     \\[\n     \\text{Total savings} = (\\text{Sally's daily savings} + \\text{Bob's daily savings}) \\times 365\n     \\]\n     \\[\n     \\text{Total savings} = (3 + 2) \\times 365\n     \\]\n     \\[\n     \\text{Total savings} = 5 \\times 365\n     \\]\n     \\[\n     \\text{Total savings} = 1825\n     \\]\n\nTherefore, the total amount saved by both Sally and Bob after 365 days is $\\boxed{1825}$.",
+    "solver_b_output": "",
+    "solver_a_answer": "1825",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "1825",
+        "gold_answer": "1825",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "1825",
+    "finalizer_output": "Final Answer: 1825",
+    "finalizer_gold_grade": {
+      "answer": "1825",
+      "gold_answer": "1825",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 790,
+      "completion_tokens": 395,
+      "total_tokens": 1185
+    }
+  },
+  {
+    "question": "Alice exchanges 20 quarters for 100 nickels. She discovers that 20% of the nickels are rare coins worth $3 each, while the other nickels retain their ordinary $0.05 value. What is the total value of all the coins?",
+    "example_index": 27,
+    "gold_answer": "64",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the number of nickels Alice gets from exchanging 20 quarters:\n\n\\[ \\text{Number of nickels} = \\frac{20}{\\frac{1}{4}} = 20 \\times 4 = 80 \\]\n\nNext, find out how many of these nickels are rare:\n\n\\[ \\text{Rare nickels} = 80 \\times 0.2 = 16 \\]\n\nNow, calculate the value of the rare nickels:\n\n\\[ \\text{Value of rare nickels} = 16 \\times 3 = \\$48 \\]\n\nThen, calculate the value of the ordinary nickels:\n\n\\[ \\text{Value of ordinary nickels} = (80 - 16) \\times 0.05 = 64 \\times 0.05 = \\$3.20 \\]\n\nFinally, add up the values to get the total:\n\n\\[ \\text{Total value} = \\$48 + \\$3.20 = \\$51.20 \\]\n\nFinal Answer: \\$51.20",
+    "solver_b_output": "",
+    "solver_a_answer": "\\$51.20",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "\\$51.20",
+        "gold_answer": "64",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\$51.20",
+    "finalizer_output": "Final Answer: \\$51.20",
+    "finalizer_gold_grade": {
+      "answer": "\\$51.20",
+      "gold_answer": "64",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 789,
+      "completion_tokens": 381,
+      "total_tokens": 1170
+    }
+  },
+  {
+    "question": "Gail has two fish tanks. The first contains 48 gallons and is twice the size of the second. She allows one gallon of water per inch of fish. She puts 3-inch fish in the first tank and 2-inch fish in the second. If one fish in the first tank eats another, how many more fish are then in the first tank than in the second?",
+    "example_index": 28,
+    "gold_answer": "3",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "Let's break down the problem:\n\n1. First tank = 48 gallons (twice the size of the second tank)\n2. Second tank = 48 / 2 = 24 gallons\n\nFor the first tank:\n- Fish consumption rate: 1 gallon per inch\n- Number of 3-inch fish: 48 / 3 = 16 fish\n- Since each fish eats another, we need to subtract 1 from this number for every pair eaten. However, since there are only 16 fish, no pairs will be eaten.\n\nFor the second tank:\n- Fish consumption rate: 1 gallon per inch\n- Number of 2-inch fish: 24 / 2 = 12 fish\n\nNow, let's calculate the difference between the number of fish in the first and second tanks:\n\nDifference = Number of fish in the first tank - Number of fish in the second tank\n           = 16 - 12\n           = 4\n\nTherefore, there are 4 more fish in the first tank than in the second tank.\n\nFinal Answer: 4",
+    "solver_b_output": "",
+    "solver_a_answer": "4",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "4",
+        "gold_answer": "3",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "4",
+    "finalizer_output": "Final Answer: 4",
+    "finalizer_gold_grade": {
+      "answer": "4",
+      "gold_answer": "3",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 871,
+      "completion_tokens": 543,
+      "total_tokens": 1414
+    }
+  },
+  {
+    "question": "On Happy Street, 25 cars pass on Tuesday. Monday has 20% fewer cars than Tuesday, Wednesday has 2 more cars than Monday, Thursday and Friday each have 10 cars, and Saturday and Sunday each have 5 cars. How many cars pass during the week?",
+    "example_index": 29,
+    "gold_answer": "97",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the number of cars on Monday by reducing Tuesday's count by 20%. Then, find out how many cars there were on Wednesday by adding 2 to Monday's total. Next, sum up all the cars from Monday through Sunday. Finally, add the number of cars that passed on Tuesday to get the total for the week.\n\nLet's do this calculation:\n\n- Cars on Monday = 25 * (1 - 0.2) = 20\n- Cars on Wednesday = 20 + 2 = 22\n- Cars on Thursday = 10\n- Cars on Friday = 10\n- Cars on Saturday = 5\n- Cars on Sunday = 5\n\nTotal cars in the week = Cars on Monday + Cars on Tuesday + Cars on Wednesday + Cars on Thursday + Cars on Friday + Cars on Saturday + Cars on Sunday\n\nNow let's perform the addition:\n\n20 (Monday) + 25 (Tuesday) + 22 (Wednesday) + 10 (Thursday) + 10 (Friday) + 5 (Saturday) + 5 (Sunday)\n\n20 + 25 + 22 + 10 + 10 + 5 + 5 = 97\n\nThe final answer is 97 cars.",
+    "solver_b_output": "",
+    "solver_a_answer": "97",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "97",
+        "gold_answer": "97",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "97",
+    "finalizer_output": "Final Answer: 97",
+    "finalizer_gold_grade": {
+      "answer": "97",
+      "gold_answer": "97",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 841,
+      "completion_tokens": 406,
+      "total_tokens": 1247
+    }
+  },
+  {
+    "question": "Henry takes 9 pills per day for 14 days. Four of the daily pills cost $1.50 each, and each of the other pills costs $5.50 more than a $1.50 pill. How much does Henry spend over all 14 days?",
+    "example_index": 30,
+    "gold_answer": "574",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total number of pills Henry takes in 14 days:\n\n\\[ \\text{Total pills} = 9 \\times 14 = 126 \\]\n\nNext, identify how many pills cost $1.50 each and how many cost $3.00 each (since they cost $5.50 more):\n\n- Number of $1.50 pills: \\( \\frac{4}{5} \\times 126 = 100.8 \\approx 101 \\) (rounding up since you can't have a fraction of a pill)\n- Number of $3.00 pills: \\( 126 - 101 = 25 \\)\n\nNow, calculate the total cost for each type of pill:\n\n- Cost of $1.50 pills: \\( 101 \\times \\$1.50 = \\$151.50 \\)\n- Cost of $3.00 pills: \\( 25 \\times (\\$1.50 + \\$5.50) = 25 \\times \\$7.00 = \\$175 \\)\n\nFinally, add these amounts to find the total expenditure:\n\n\\[ \\text{Total cost} = \\$151.50 + \\$175 = \\$326.50 \\]\n\nTherefore, Henry spends a total of $326.50 over all 14 days.",
+    "solver_b_output": "",
+    "solver_a_answer": "14",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "14",
+        "gold_answer": "574",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "326.5",
+    "finalizer_output": "Final Answer: 326.5",
+    "finalizer_gold_grade": {
+      "answer": "326.5",
+      "gold_answer": "574",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 872,
+      "completion_tokens": 421,
+      "total_tokens": 1293
+    }
+  },
+  {
+    "question": "An aquarium has equal numbers of clownfish and blowfish, with 100 fish altogether. Twenty-six blowfish remain in their own tank and the rest enter a display tank. The same number of clownfish initially enters the display tank, but one-third of those clownfish swim back. How many clownfish remain in the display tank?",
+    "example_index": 31,
+    "gold_answer": "16",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "Let's break it down:\n\n1. Let \\( x \\) be the number of clownfish and blowfish initially in the aquarium.\n2. We know that \\( x + x = 100 \\), so \\( 2x = 100 \\).\n3. Solving for \\( x \\): \\( x = 50 \\). Therefore, there are 50 clownfish and 50 blowfish.\n4. After removing 26 blowfish from the display tank, we have \\( 50 - 26 = 24 \\) blowfish left.\n5. One-third of the clownfish swim back to the display tank, which is \\( \\frac{1}{3} \\times 50 = 16 \\).\n\nNow, let's calculate how many clownfish remain in the display tank after some return:\n\n- Initially, 16 clownfish swim back.\n- So, \\( 50 - 16 = 34 \\) clownfish remain in the display tank.\n\nTherefore, the final answer is: 34 clownfish remain in the display tank.",
+    "solver_b_output": "",
+    "solver_a_answer": "34",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "34",
+        "gold_answer": "16",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "34",
+    "finalizer_output": "Final Answer: 34",
+    "finalizer_gold_grade": {
+      "answer": "34",
+      "gold_answer": "16",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 837,
+      "completion_tokens": 575,
+      "total_tokens": 1412
+    }
+  },
+  {
+    "question": "Stella and Twinkle load a 6000-block truck. Each person loads 250 blocks per hour. They work alone for 4 hours, then 6 more people join them at the same rate. How many total hours does loading the truck take?",
+    "example_index": 32,
+    "gold_answer": "6",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate how many blocks Stella and Twinkle load in the first 4 hours:\n\n\\[ \\text{Blocks loaded by Stella and Twinkle} = (250 + 250) \\times 4 = 500 \\times 4 = 2000 \\]\n\nThen, calculate how many blocks they load together after 6 more people join:\n\n\\[ \\text{Total blocks loaded by all} = 2000 + (250 + 250 + 250 + 250 + 250 + 250) \\times 6 = 2000 + 1500 \\times 6 = 2000 + 9000 = 11000 \\]\n\nFinally, add the initial 4-hour period to find the total time:\n\n\\[ \\text{Total hours} = 4 + \\frac{11000}{250} = 4 + 44 = 48 \\]\n\nTherefore, the total hours it takes to load the truck is 48.",
+    "solver_b_output": "",
+    "solver_a_answer": "48",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "48",
+        "gold_answer": "6",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "48",
+    "finalizer_output": "Final Answer: 48",
+    "finalizer_gold_grade": {
+      "answer": "48",
+      "gold_answer": "6",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 783,
+      "completion_tokens": 426,
+      "total_tokens": 1209
+    }
+  },
+  {
+    "question": "Three cats meow at different rates. The first meows 3 times per minute, the second meows twice as often as the first, and the third meows at one-third the second cat's rate. How many meows do they make altogether in 5 minutes?",
+    "example_index": 33,
+    "gold_answer": "55",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, let's calculate how many times each cat meows per minute:\n\n- First cat: 3 meows/minute\n- Second cat: \\(2 \\times 3 = 6\\) meows/minute\n- Third cat: \\(\\frac{1}{3} \\times 6 = 2\\) meows/minute\n\nNow, we'll find out how many meows each cat makes in 5 minutes:\n\n- First cat: \\(3 \\times 5 = 15\\)\n- Second cat: \\(6 \\times 5 = 30\\)\n- Third cat: \\(2 \\times 5 = 10\\)\n\nFinally, we add up all their meows to get the total:\n\n\\(15 + 30 + 10 = 55\\)\n\nTherefore, the three cats make a total of 55 meows in 5 minutes.",
+    "solver_b_output": "",
+    "solver_a_answer": "5",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "5",
+        "gold_answer": "55",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "55",
+    "finalizer_output": "Final Answer: 55",
+    "finalizer_gold_grade": {
+      "answer": "55",
+      "gold_answer": "55",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": true,
+        "changed": true
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 745,
+      "completion_tokens": 275,
+      "total_tokens": 1020
+    }
+  },
+  {
+    "question": "A class has 40 students. One-tenth are absent. Of the students present, three-fourths are in the classroom and the rest are in the canteen. How many students are in the canteen?",
+    "example_index": 34,
+    "gold_answer": "9",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the number of students who are absent:\n\n\\[ \\text{Absent} = \\frac{1}{10} \\times 40 = 4 \\]\n\nThen, find out how many students are present:\n\n\\[ \\text{Present} = 40 - 4 = 36 \\]\n\nNext, determine how many students are in the classroom:\n\n\\[ \\text{In Classroom} = \\frac{3}{4} \\times 36 = 27 \\]\n\nFinally, calculate the number of students in the canteen by subtracting those in the classroom from the total present students:\n\n\\[ \\text{Canteen} = 36 - 27 = 9 \\]\n\nTherefore, there are 9 students in the canteen.",
+    "solver_b_output": "",
+    "solver_a_answer": "9",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "9",
+        "gold_answer": "9",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "9",
+    "finalizer_output": "Final Answer: 9",
+    "finalizer_gold_grade": {
+      "answer": "9",
+      "gold_answer": "9",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 678,
+      "completion_tokens": 280,
+      "total_tokens": 958
+    }
+  },
+  {
+    "question": "Two adults and two children, ages 6 and 10, visit an amusement park. A regular ticket costs $109, and each child under 12 receives a $5 discount. If the family pays with $500, how much change do they receive?",
+    "example_index": 35,
+    "gold_answer": "74",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total cost for the adults' tickets: \\(2 \\times \\$109 = \\$218\\). Then, calculate the discounted price for the children's tickets: \\(2 \\times (\\$109 - \\$5) = 2 \\times \\$104 = \\$208\\). Add these amounts to find the total cost: \\(\\$218 + \\$208 = \\$426\\). Finally, subtract this from the amount paid to find the change: \\(\\$500 - \\$426 = \\$74\\).\n\nFinal Answer: \\$74",
+    "solver_b_output": "",
+    "solver_a_answer": "\\$74",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "\\$74",
+        "gold_answer": "74",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\$74",
+    "finalizer_output": "Final Answer: \\$74",
+    "finalizer_gold_grade": {
+      "answer": "\\$74",
+      "gold_answer": "74",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 684,
+      "completion_tokens": 247,
+      "total_tokens": 931
+    }
+  },
+  {
+    "question": "Fern checks identification for 120 students from Riverside, 90 from West Side, and 50 from Mountaintop. She denies entry to 20% of Riverside students, 70% of West Side students, and half of Mountaintop students. How many students enter?",
+    "example_index": 36,
+    "gold_answer": "148",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the number of students Fern denies entry to from each location:\n\n- Riverside: \\( 120 \\times 0.20 = 24 \\)\n- West Side: \\( 90 \\times 0.70 = 63 \\)\n- Mountaintop: \\( 50 \\div 2 = 25 \\)\n\nNext, subtract these numbers from their respective totals to find how many enter:\n\n- Riverside: \\( 120 - 24 = 96 \\)\n- West Side: \\( 90 - 63 = 27 \\)\n- Mountaintop: \\( 50 - 25 = 25 \\)\n\nFinally, sum up the remaining students who entered:\n\n\\( 96 + 27 + 25 = 148 \\)\n\nTherefore, the final answer is: 148 students enter.",
+    "solver_b_output": "",
+    "solver_a_answer": "148",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "148",
+        "gold_answer": "148",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "148 students enter.",
+    "finalizer_output": "Final Answer: 148 students enter.",
+    "finalizer_gold_grade": {
+      "answer": "148 students enter.",
+      "gold_answer": "148",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 764,
+      "completion_tokens": 334,
+      "total_tokens": 1098
+    }
+  },
+  {
+    "question": "Richard cleans his room in 22 minutes. Cory takes 3 minutes longer than Richard, and Blake takes 4 minutes less than Cory. Each cleans their room twice per week. How many total minutes do they spend cleaning each week?",
+    "example_index": 37,
+    "gold_answer": "136",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, let's find out how long it takes for Cory to clean her room:\n\nCory = Richard + 3 minutes\nCory = 22 minutes + 3 minutes\nCory = 25 minutes\n\nNext, we'll calculate how long Blake spends cleaning her room:\n\nBlake = Cory - 4 minutes\nBlake = 25 minutes - 4 minutes\nBlake = 21 minutes\n\nNow, let's figure out how much time they all spend cleaning their rooms each week:\n\nEach person cleans their room twice per week, so:\n\nRichard = 22 minutes/room * 2 rooms/week = 44 minutes/week\nCory = 25 minutes/room * 2 rooms/week = 50 minutes/week\nBlake = 21 minutes/room * 2 rooms/week = 42 minutes/week\n\nFinally, let's add up their weekly cleaning times:\n\nTotal = Richard + Cory + Blake\nTotal = 44 minutes + 50 minutes + 42 minutes\nTotal = 136 minutes\n\nTherefore, the answer is 136 minutes.",
+    "solver_b_output": "",
+    "solver_a_answer": "136",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "136",
+        "gold_answer": "136",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "136",
+    "finalizer_output": "Final Answer: 136",
+    "finalizer_gold_grade": {
+      "answer": "136",
+      "gold_answer": "136",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 761,
+      "completion_tokens": 426,
+      "total_tokens": 1187
+    }
+  },
+  {
+    "question": "Daniella has $400 in savings. Ariella has $200 more than Daniella and earns simple interest at 10% per year. How much will Ariella have after 2 years?",
+    "example_index": 38,
+    "gold_answer": "720",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate Ariella's initial amount of money:\n\nAriella = Daniella + $200\n\nNext, calculate the annual interest earned by Ariella:\n\nInterest rate = 10%\n\nAnnual Interest = Ariella * (Interest rate / 100)\n\nFinally, calculate the total amount Ariella will have after 2 years:\n\nTotal Amount = Ariella + (Annual Interest * 2)\n\nLet's do the calculations:\n\nStep 1: Calculate Ariella's initial amount.\nAriella = $400 + $200 = $600\n\nStep 2: Calculate the annual interest.\nAnnual Interest = $600 * (10 / 100) = $60\n\nStep 3: Calculate the total amount after 2 years.\nTotal Amount = $600 + ($60 * 2) = $720\n\nFinal Answer: $720",
+    "solver_b_output": "",
+    "solver_a_answer": "$720",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "$720",
+        "gold_answer": "720",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "$720",
+    "finalizer_output": "Final Answer: $720",
+    "finalizer_gold_grade": {
+      "answer": "$720",
+      "gold_answer": "720",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 693,
+      "completion_tokens": 393,
+      "total_tokens": 1086
+    }
+  },
+  {
+    "question": "A sandwich costs $4. A bottle of juice costs twice as much as the sandwich. A bottle of milk costs 75% of the combined price of the sandwich and juice. How much do all three items cost?",
+    "example_index": 39,
+    "gold_answer": "21",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, let's identify the known quantities:\n\n- Sandwich costs = $4\n- Juice costs = 2 * Sandwich cost\n\nNext, we calculate the cost of the juice:\n\n- Juice cost = 2 * $4 = $8\n\nNow, we find the combined price of the sandwich and juice:\n\n- Combined price = Sandwich + Juice = $4 + $8 = $12\n\nFinally, we calculate the cost of the milk:\n\n- Milk cost = 0.75 * Combined price = 0.75 * $12 = $9\n\nTo find the total cost of all three items, we add their individual prices together:\n\n- Total cost = Sandwich + Juice + Milk = $4 + $8 + $9 = $21\n\nTherefore, the final answer is: 21",
+    "solver_b_output": "",
+    "solver_a_answer": "21",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "21",
+        "gold_answer": "21",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "21",
+    "finalizer_output": "Final Answer: 21",
+    "finalizer_gold_grade": {
+      "answer": "21",
+      "gold_answer": "21",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 679,
+      "completion_tokens": 266,
+      "total_tokens": 945
+    }
+  },
+  {
+    "question": "Daniel owns 346 video games. He bought 80 of them for $12 each. Of the remaining games, half cost $7 each and the other half cost $3 each. How much did he spend altogether?",
+    "example_index": 40,
+    "gold_answer": "2290",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total amount spent on the 80 games at $12 each:\n\n\\[ 80 \\times \\$12 = \\$960 \\]\n\nNext, find out how many games remain after buying the 80 games:\n\n\\[ 346 - 80 = 266 \\]\n\nHalf of these remaining games cost $7 each, so we need to calculate the cost for this group:\n\n\\[ \\frac{266}{2} \\times \\$7 = 133 \\times \\$7 = \\$931 \\]\n\nThe other half of the remaining games cost $3 each, so we calculate that as well:\n\n\\[ \\frac{266}{2} \\times \\$3 = 133 \\times \\$3 = \\$399 \\]\n\nFinally, add up all the costs to get the total amount spent:\n\n\\[ \\$960 + \\$931 + \\$399 = \\$2290 \\]\n\nTherefore, Daniel spent altogether $2290.",
+    "solver_b_output": "",
+    "solver_a_answer": "2290",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "2290",
+        "gold_answer": "2290",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "2290",
+    "finalizer_output": "Final Answer: 2290",
+    "finalizer_gold_grade": {
+      "answer": "2290",
+      "gold_answer": "2290",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 738,
+      "completion_tokens": 338,
+      "total_tokens": 1076
+    }
+  },
+  {
+    "question": "Buddy has 30 baseball cards on Monday. On Tuesday he loses half. On Wednesday he buys 12 cards. On Thursday he buys one-third of the number he had on Tuesday. How many cards does he have after Thursday's purchase?",
+    "example_index": 41,
+    "gold_answer": "32",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To solve this problem, we'll follow these steps:\n\n1. **Initial count**: Buddy starts with 30 baseball cards on Monday.\n2. **Tuesday loss**: He loses half his cards on Tuesday.\n   - Calculation: \\( \\frac{30}{2} = 15 \\)\n   - Remaining cards: \\( 30 - 15 = 15 \\)\n\n3. **Wednesday purchase**: He buys 12 cards on Wednesday.\n   - New total: \\( 15 + 12 = 27 \\)\n\n4. **Thursday purchase**: He buys one-third of the number he had on Tuesday (which is 15).\n   - Calculation: \\( \\frac{15}{3} = 5 \\)\n   - Total after Thursday's purchase: \\( 27 + 5 = 32 \\)\n\n**Final answer:** After Thursday's purchase, Buddy has 32 baseball cards.",
+    "solver_b_output": "",
+    "solver_a_answer": "** After Thursday's purchase, Buddy has 32 baseball cards.",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "** After Thursday's purchase, Buddy has 32 baseball cards.",
+        "gold_answer": "32",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "32",
+    "finalizer_output": "Final Answer: 32",
+    "finalizer_gold_grade": {
+      "answer": "32",
+      "gold_answer": "32",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 737,
+      "completion_tokens": 339,
+      "total_tokens": 1076
+    }
+  },
+  {
+    "question": "A bakery gives a 10% discount on advance orders over $50. Silvia orders 2 quiches at $15 each, 6 croissants at $3 each, and 6 biscuits at $2 each. What is the discounted total?",
+    "example_index": 42,
+    "gold_answer": "54",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total cost of the items ordered:\n\n- Quiches: \\(2 \\times \\$15 = \\$30\\)\n- Croissants: \\(6 \\times \\$3 = \\$18\\)\n- Biscuits: \\(6 \\times \\$2 = \\$12\\)\n\nTotal cost without discount: \\(\\$30 + \\$18 + \\$12 = \\$60\\)\n\nSince the total exceeds $50, apply the 10% discount:\n\nDiscount amount: \\(10\\% \\times \\$60 = \\$6\\)\n\nSubtract the discount from the total cost to get the final price:\n\nFinal price: \\(\\$60 - \\$6 = \\$54\\)\n\nThe discounted total is: Final Answer: \\$54",
+    "solver_b_output": "",
+    "solver_a_answer": "\\$54",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "\\$54",
+        "gold_answer": "54",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\$54",
+    "finalizer_output": "Final Answer: \\$54",
+    "finalizer_gold_grade": {
+      "answer": "\\$54",
+      "gold_answer": "54",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 712,
+      "completion_tokens": 274,
+      "total_tokens": 986
+    }
+  },
+  {
+    "question": "A garden center offers 10% off all purchases. Simon buys 5 pansies at $2.50 each, one hydrangea for $12.50, and 5 petunias at $1 each. If he pays with $50, how much change does he receive?",
+    "example_index": 43,
+    "gold_answer": "23",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total cost of the items without discount:\n\n- Pansies: \\(5 \\times \\$2.50 = \\$12.50\\)\n- Hydrangea: \\$12.50\n- Petunias: \\(5 \\times \\$1 = \\$5\\)\n\nTotal cost before discount: \n\\[ \\$12.50 + \\$12.50 + \\$5 = \\$30 \\]\n\nNow apply the 10% discount:\n\nDiscount amount: \\(10\\% \\times \\$30 = \\$3 \\)\n\nSubtract the discount from the original total to get the final price:\n\nFinal price: \n\\[ \\$30 - \\$3 = \\$27 \\]\n\nSimon pays with $50, so the change he receives is:\n\nChange received:\n\\[ \\$50 - \\$27 = \\$23 \\]\n\nFinal Answer: \\$23",
+    "solver_b_output": "",
+    "solver_a_answer": "\\$23",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "\\$23",
+        "gold_answer": "23",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\$23",
+    "finalizer_output": "Final Answer: \\$23",
+    "finalizer_gold_grade": {
+      "answer": "\\$23",
+      "gold_answer": "23",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 769,
+      "completion_tokens": 287,
+      "total_tokens": 1056
+    }
+  },
+  {
+    "question": "Colton has 72 stickers. He gives 4 stickers to each of 3 friends. He gives Mandy 2 more stickers than the total given to those 3 friends, and gives Justin 10 fewer stickers than Mandy. How many stickers remain?",
+    "example_index": 44,
+    "gold_answer": "42",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate how many stickers Colton gives to his three friends:\n\n\\[ \\text{Stickers given to friends} = 4 \\times 3 = 12 \\]\n\nNext, find out how many stickers Mandy receives:\n\n\\[ \\text{Stickers for Mandy} = 12 + 2 = 14 \\]\n\nThen, figure out how many stickers Justin gets:\n\n\\[ \\text{Stickers for Justin} = 14 - 10 = 4 \\]\n\nNow, sum up all the stickers given away:\n\n\\[ \\text{Total stickers given away} = 12 + 14 + 4 = 30 \\]\n\nFinally, subtract this from the initial number of stickers Colton had:\n\n\\[ \\text{Remaining stickers} = 72 - 30 = 42 \\]\n\nTherefore, the final answer is:\n\n\\[ \\boxed{42} \\]",
+    "solver_b_output": "",
+    "solver_a_answer": "42",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "42",
+        "gold_answer": "42",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "42",
+    "finalizer_output": "Verifier JSON:\n```json\n{\n  \"solver\": {\n    \"evidence\": [\n      {\"opponent\": \"A\", \"answer\": 30}\n    ]\n  },\n  \"verified_answer\": 42\n}\n```\nVerifier Output: Final Answer: 42",
+    "finalizer_gold_grade": {
+      "answer": "42",
+      "gold_answer": "42",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 741,
+      "completion_tokens": 400,
+      "total_tokens": 1141
+    }
+  },
+  {
+    "question": "Derek has $960 for school. He spends half on textbooks and then spends one-fourth of the money remaining on supplies. How much money is left?",
+    "example_index": 45,
+    "gold_answer": "360",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, Derek spends half of his $960 on textbooks:\n\n\\( \\frac{1}{2} \\times 960 = 480 \\)\n\nSo he has \\( 960 - 480 = 480 \\) dollars left after buying textbooks.\n\nNext, he spends one-fourth of this remaining amount on supplies:\n\n\\( \\frac{1}{4} \\times 480 = 120 \\)\n\nTherefore, he has \\( 480 - 120 = 360 \\) dollars left.\n\nFinal answer: 360",
+    "solver_b_output": "",
+    "solver_a_answer": "360",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "360",
+        "gold_answer": "360",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "360",
+    "finalizer_output": "Final Answer: 360",
+    "finalizer_gold_grade": {
+      "answer": "360",
+      "gold_answer": "360",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 590,
+      "completion_tokens": 313,
+      "total_tokens": 903
+    }
+  },
+  {
+    "question": "Lisa spends $40 on shirts, half that amount on jeans, and twice that amount on coats. Carly spends one-fourth of Lisa's shirt amount on shirts, 3 times Lisa's jeans amount on jeans, and one-fourth of Lisa's coat amount on coats. How much do they spend altogether?",
+    "example_index": 46,
+    "gold_answer": "230",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, let's identify the amounts spent by each person:\n\n- Lisa spends $40 on shirts.\n- Half of $40 is $20 for jeans.\n- Twice $40 is $80 for coats.\n\nCarly spends:\n- One-fourth of $40 on shirts, which is $10.\n- Three times $20 on jeans, which is $60.\n- One-fourth of $80 on coats, which is $20.\n\nNow we calculate the total spending:\n\n- Total spent by Lisa: $40 (shirts) + $20 (jeans) + $80 (coats) = $140.\n- Total spent by Carly: $10 (shirts) + $60 (jeans) + $20 (coats) = $90.\n\nFinally, add their totals together to find the combined spending:\n\n$140 (Lisa) + $90 (Carly) = $230.\n\nTherefore, the answer is 230.",
+    "solver_b_output": "",
+    "solver_a_answer": "230",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "230",
+        "gold_answer": "230",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "230",
+    "finalizer_output": "Final Answer: 230",
+    "finalizer_gold_grade": {
+      "answer": "230",
+      "gold_answer": "230",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 799,
+      "completion_tokens": 338,
+      "total_tokens": 1137
+    }
+  },
+  {
+    "question": "Madeline has 5 boxes with 24 crayons each. In 2 boxes, five-eighths of the crayons are unused. In 2 other boxes, two-thirds are used. The final box is completely unused. How many unused crayons are there altogether?",
+    "example_index": 47,
+    "gold_answer": "70",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate the total number of crayons Madeline has:\n\n\\[ \\text{Total crayons} = 5 \\times 24 = 120 \\]\n\nNext, find out how many crayons are in the first two boxes that have five-eighths unused:\n\n\\[ \\text{Unused crayons in first two boxes} = 2 \\times \\frac{5}{8} \\times 24 = 30 \\]\n\nThen, find out how many crayons are in the next two boxes where two-thirds are used:\n\n\\[ \\text{Used crayons in next two boxes} = 2 \\times \\frac{2}{3} \\times 24 = 32 \\]\n\nFinally, since the last box is completely unused, its unused crayons equal the total number of crayons minus those already accounted for:\n\n\\[ \\text{Unused crayons in last box} = 120 - (30 + 32) = 68 \\]\n\nNow sum up all unused crayons:\n\n\\[ \\text{Total unused crayons} = 30 + 32 + 68 = 130 \\]\n\nTherefore, the answer is 130.",
+    "solver_b_output": "",
+    "solver_a_answer": "130",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "130",
+        "gold_answer": "70",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "130",
+    "finalizer_output": "Final Answer: 130",
+    "finalizer_gold_grade": {
+      "answer": "130",
+      "gold_answer": "70",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 813,
+      "completion_tokens": 390,
+      "total_tokens": 1203
+    }
+  },
+  {
+    "question": "A forest starts with 100 weasels and 50 rabbits. Three foxes each catch 4 weasels and 2 rabbits per week. How many of the original rabbits and weasels remain after 3 weeks?",
+    "example_index": 48,
+    "gold_answer": "96",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To solve this problem, let's break it down into steps:\n\n1. **Initial Counts**:\n   - Weasels: 100\n   - Rabbits: 50\n\n2. **Fox Actions**:\n   - Each fox catches 4 weasels and 2 rabbits per week.\n   - There are 3 foxes.\n\n3. **Weekly Changes**:\n   - Weekly change in weasels caught by all foxes = \\(3 \\times 4 = 12\\) weasels.\n   - Weekly change in rabbits caught by all foxes = \\(3 \\times 2 = 6\\) rabbits.\n\n4. **Total Change Over 3 Weeks**:\n   - Total weasels remaining after 3 weeks = Initial weasels + (Weasels caught - Weasels lost)\n     = \\(100 + (12 \\times 3) - (12 \\times 3)\\)\n     = \\(100\\)\n\n   - Total rabbits remaining after 3 weeks = Initial rabbits + Rabbits caught - Rabbits lost\n     = \\(50 + (6 \\times 3) - (6 \\times 3)\\)\n     = \\(50\\)\n\nTherefore, the number of original rabbits and weasels that remain after 3 weeks is 100 weasels and 50 rabbits.",
+    "solver_b_output": "",
+    "solver_a_answer": "50",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "50",
+        "gold_answer": "96",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "100 weasels and 50 rabbits",
+    "finalizer_output": "Final Answer: 100 weasels and 50 rabbits",
+    "finalizer_gold_grade": {
+      "answer": "100 weasels and 50 rabbits",
+      "gold_answer": "96",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 820,
+      "completion_tokens": 515,
+      "total_tokens": 1335
+    }
+  },
+  {
+    "question": "A store sells 100 phones at an average price of $1000, 20 tablets at an average price of $900, and 80 media devices at an average price of $200. What is the average price of all products sold?",
+    "example_index": 49,
+    "gold_answer": "670",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "To find the total revenue from each product category:\n\n- Phones: \\(100 \\times \\$1000 = \\$100,000\\)\n- Tablets: \\(20 \\times \\$900 = \\$18,000\\)\n- Media Devices: \\(80 \\times \\$200 = \\$16,000\\)\n\nTotal revenue for all products: \n\\[ \\$100,000 + \\$18,000 + \\$16,000 = \\$134,000 \\]\n\nTotal number of products sold:\n\\[ 100 + 20 + 80 = 200 \\]\n\nAverage price of all products sold:\n\\[ \\frac{\\$134,000}{200} = \\$670 \\]\n\nFinal Answer: \\$670",
+    "solver_b_output": "",
+    "solver_a_answer": "\\$670",
+    "solver_b_answer": "",
+    "solver_a_correct": true,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "\\$670",
+        "gold_answer": "670",
+        "correct": true,
+        "judge_conclusion": "correct"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "\\$670",
+    "finalizer_output": "Final Answer: \\$670",
+    "finalizer_gold_grade": {
+      "answer": "\\$670",
+      "gold_answer": "670",
+      "correct": true,
+      "judge_conclusion": "correct"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": true,
+        "final_correct": true,
+        "changed": false
+      }
+    },
+    "correct": true,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 738,
+      "completion_tokens": 373,
+      "total_tokens": 1111
+    }
+  },
+  {
+    "question": "Rosie runs at 6 miles per hour. She runs for 1 hour Monday, 30 minutes Tuesday, 1 hour Wednesday, and 20 minutes Thursday. To reach 20 miles for the week, how many minutes must she run Friday?",
+    "example_index": 50,
+    "gold_answer": "30",
+    "setting": "single",
+    "setting_name": "Single Agent",
+    "solver_a_output": "First, calculate total running time from Monday to Thursday in hours:\n\n- Monday: 1 hour\n- Tuesday: 30 minutes = 0.5 hours\n- Wednesday: 1 hour\n- Thursday: 20 minutes = 0.333... hours\n\nTotal time (in hours) = 1 + 0.5 + 1 + 0.333... = 2.833...\n\nNext, convert Rosie's speed into miles per minute:\n\n6 miles/hour * 1/60 hours/minute = 1/10 mile/minute\n\nNow, calculate the distance Rosie can cover in this time frame:\n\nDistance = Speed * Time\n         = (1/10 mile/minute) * 2.833... hours\n\nConvert the result back to miles:\n\nDistance = (1/10 mile/minute) * 2.833... * 60 minutes/hour\n         ≈ 17.499... miles\n\nFinally, subtract the distance covered by Rosie during the first four days from her weekly goal of 20 miles:\n\nRemaining distance = 20 miles - 17.499... miles\n                   ≈ 2.501... miles\n\nTo find out how many minutes Rosie needs to run on Friday to reach 20 miles, divide the remaining distance by her speed:\n\nMinutes needed = Remaining Distance / Speed\n               = 2.501... miles / (1/10 mile/minute)\n               ≈ 25.01... minutes\n\nTherefore, Rosie must run approximately **25** minutes on Friday to reach her weekly goal of 20 miles.",
+    "solver_b_output": "",
+    "solver_a_answer": "1/10",
+    "solver_b_answer": "",
+    "solver_a_correct": false,
+    "solver_b_correct": null,
+    "solver_grades": {
+      "A": {
+        "answer": "1/10",
+        "gold_answer": "30",
+        "correct": false,
+        "judge_conclusion": "incorrect"
+      },
+      "B": null
+    },
+    "verifier_text": "",
+    "verifier_output": {},
+    "verifier_decision": {},
+    "verifier_gold_grade": null,
+    "verifier_answer": "",
+    "verifier_correct": null,
+    "final_prediction": "25",
+    "finalizer_output": "Final Answer: 25",
+    "finalizer_gold_grade": {
+      "answer": "25",
+      "gold_answer": "30",
+      "correct": false,
+      "judge_conclusion": "incorrect"
+    },
+    "finalizer_followed_verifier": null,
+    "candidate_table": {},
+    "candidate_enforcement": {
+      "required": false,
+      "valid": null,
+      "retried": false,
+      "fallback_used": false
+    },
+    "solver_objections": {},
+    "correctness_changes": {
+      "solver_a": {
+        "initial_correct": false,
+        "final_correct": false,
+        "changed": false
+      }
+    },
+    "correct": false,
+    "oracle_gap": false,
+    "token_usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 561,
+      "total_tokens": 1462
+    }
+  }
+]

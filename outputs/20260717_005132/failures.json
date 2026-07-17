@@ -1,0 +1,271 @@
+[
+  {
+    "question_id": 3,
+    "question": "Tina earns $18 per hour. For each shift, the first 8 hours are paid at the regular rate and additional hours are paid at 1.5 times the regular rate. If she works 10 hours per day for 5 days, how much does she earn?",
+    "setting": "multi_candidate_memory",
+    "gold": "990",
+    "solver_a_answer": "198",
+    "solver_a_correct": false,
+    "solver_b_answer": "1278",
+    "solver_b_correct": false,
+    "verifier_answer": "$1278",
+    "verifier_correct": false,
+    "final_answer": "$1278",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 4,
+    "question": "Tobias buys shoes for $95 and has $15 left afterward. Over 3 months he received a $5 monthly allowance, mowed 4 lawns for $15 each, and shoveled driveways for $7 each. How many driveways did he shovel?",
+    "setting": "multi_candidate_memory",
+    "gold": "5",
+    "solver_a_answer": "8 driveways",
+    "solver_a_correct": false,
+    "solver_b_answer": "Tobias shoveled 14 driveways.",
+    "solver_b_correct": false,
+    "verifier_answer": "8 driveways",
+    "verifier_correct": false,
+    "final_answer": "8 driveways",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 5,
+    "question": "James spends $2000 to create a movie. Each DVD costs $6 to make and sells for 2.5 times its production cost. He sells 500 DVDs per day, 5 days per week, for 20 weeks. What is his profit after subtracting the movie creation cost?",
+    "setting": "multi_candidate_memory",
+    "gold": "448000",
+    "solver_a_answer": "748000",
+    "solver_a_correct": false,
+    "solver_b_answer": "\\$748,000",
+    "solver_b_correct": false,
+    "verifier_answer": "$748000",
+    "verifier_correct": false,
+    "final_answer": "$748000",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 8,
+    "question": "Ann, Bill, Cate, and Dale each buy a pizza cut into 4 equal pieces. Bill and Dale each eat 50% of a pizza, while Ann and Cate each eat 75% of a pizza. How many pizza pieces remain uneaten?",
+    "setting": "multi_candidate_memory",
+    "gold": "6",
+    "solver_a_answer": "8",
+    "solver_a_correct": false,
+    "solver_b_answer": "2.25",
+    "solver_b_correct": false,
+    "verifier_answer": "8",
+    "verifier_correct": false,
+    "final_answer": "8",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 10,
+    "question": "A concert ticket costs $40. Mr. Benson buys 12 tickets. Each ticket beyond the first 10 receives a 5% discount. How much does he pay altogether?",
+    "setting": "multi_candidate_memory",
+    "gold": "476",
+    "solver_a_answer": "478",
+    "solver_a_correct": false,
+    "solver_b_answer": "\\$476",
+    "solver_b_correct": true,
+    "verifier_answer": "$476",
+    "verifier_correct": true,
+    "final_answer": "$478",
+    "final_correct": false,
+    "failure_type": "finalizer 不听 verifier",
+    "failure_types": [
+      "finalizer 丢答案",
+      "finalizer 不听 verifier"
+    ],
+    "short_reason": "Verifier 已给出正确答案，但 finalizer 最终没有采用该答案。"
+  },
+  {
+    "question_id": 13,
+    "question": "Gerald spends $100 per month on baseball supplies during a 4-month season. During the other 8 months, he earns money by doing chores for $10 each. How many chores per month must he average during those 8 months to save enough for the season?",
+    "setting": "multi_candidate_memory",
+    "gold": "5",
+    "solver_a_answer": "40",
+    "solver_a_correct": false,
+    "solver_b_answer": "400/8",
+    "solver_b_correct": false,
+    "verifier_answer": "40",
+    "verifier_correct": false,
+    "final_answer": "40",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 14,
+    "question": "Leah earns $28. She spends one-seventh of it on a milkshake, saves half of the remaining money, and keeps the other half in her wallet. Her dog destroys all but $1 of the money in the wallet. How much money does Leah lose?",
+    "setting": "multi_candidate_memory",
+    "gold": "11",
+    "solver_a_answer": "11",
+    "solver_a_correct": true,
+    "solver_b_answer": "$6",
+    "solver_b_correct": false,
+    "verifier_answer": "11",
+    "verifier_correct": true,
+    "final_answer": "$6",
+    "final_correct": false,
+    "failure_type": "finalizer 不听 verifier",
+    "failure_types": [
+      "finalizer 丢答案",
+      "finalizer 不听 verifier"
+    ],
+    "short_reason": "Verifier 已给出正确答案，但 finalizer 最终没有采用该答案。"
+  },
+  {
+    "question_id": 17,
+    "question": "Jerry has two daughters on different softball teams. Each daughter plays 8 games, each game lasts 2 hours, and each team practices 4 hours for every game. How many total hours does Jerry spend watching both daughters play and practice?",
+    "setting": "multi_candidate_memory",
+    "gold": "96",
+    "solver_a_answer": "64",
+    "solver_a_correct": false,
+    "solver_b_answer": "80",
+    "solver_b_correct": false,
+    "verifier_answer": "80",
+    "verifier_correct": false,
+    "final_answer": "80",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 19,
+    "question": "Twenty-four cans contain 290 liters of oil altogether. Ten cans contain 8 liters each, and every other can contains the same amount. How many liters are in each remaining can?",
+    "setting": "multi_candidate_memory",
+    "gold": "15",
+    "solver_a_answer": "17.5",
+    "solver_a_correct": false,
+    "solver_b_answer": "17.5",
+    "solver_b_correct": false,
+    "verifier_answer": "17.5",
+    "verifier_correct": false,
+    "final_answer": "17.5",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 28,
+    "question": "Gail has two fish tanks. The first contains 48 gallons and is twice the size of the second. She allows one gallon of water per inch of fish. She puts 3-inch fish in the first tank and 2-inch fish in the second. If one fish in the first tank eats another, how many more fish are then in the first tank than in the second?",
+    "setting": "multi_candidate_memory",
+    "gold": "3",
+    "solver_a_answer": "15",
+    "solver_a_correct": false,
+    "solver_b_answer": "95",
+    "solver_b_correct": false,
+    "verifier_answer": "95",
+    "verifier_correct": false,
+    "final_answer": "15",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 29,
+    "question": "On Happy Street, 25 cars pass on Tuesday. Monday has 20% fewer cars than Tuesday, Wednesday has 2 more cars than Monday, Thursday and Friday each have 10 cars, and Saturday and Sunday each have 5 cars. How many cars pass during the week?",
+    "setting": "multi_candidate_memory",
+    "gold": "97",
+    "solver_a_answer": "103",
+    "solver_a_correct": false,
+    "solver_b_answer": "97",
+    "solver_b_correct": true,
+    "verifier_answer": "103",
+    "verifier_correct": false,
+    "final_answer": "103",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 30,
+    "question": "Henry takes 9 pills per day for 14 days. Four of the daily pills cost $1.50 each, and each of the other pills costs $5.50 more than a $1.50 pill. How much does Henry spend over all 14 days?",
+    "setting": "multi_candidate_memory",
+    "gold": "574",
+    "solver_a_answer": "14",
+    "solver_a_correct": false,
+    "solver_b_answer": "315",
+    "solver_b_correct": false,
+    "verifier_answer": "315",
+    "verifier_correct": false,
+    "final_answer": "315",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 32,
+    "question": "Stella and Twinkle load a 6000-block truck. Each person loads 250 blocks per hour. They work alone for 4 hours, then 6 more people join them at the same rate. How many total hours does loading the truck take?",
+    "setting": "multi_candidate_memory",
+    "gold": "6",
+    "solver_a_answer": "4.5",
+    "solver_a_correct": false,
+    "solver_b_answer": "4000/2000",
+    "solver_b_correct": false,
+    "verifier_answer": "4000/2000",
+    "verifier_correct": false,
+    "final_answer": "4.5",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 38,
+    "question": "Daniella has $400 in savings. Ariella has $200 more than Daniella and earns simple interest at 10% per year. How much will Ariella have after 2 years?",
+    "setting": "multi_candidate_memory",
+    "gold": "720",
+    "solver_a_answer": "$640",
+    "solver_a_correct": false,
+    "solver_b_answer": "2",
+    "solver_b_correct": false,
+    "verifier_answer": "$640",
+    "verifier_correct": false,
+    "final_answer": "$640",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  }
+]

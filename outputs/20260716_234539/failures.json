@@ -1,0 +1,313 @@
+[
+  {
+    "question_id": 3,
+    "question": "Tina earns $18 per hour. For each shift, the first 8 hours are paid at the regular rate and additional hours are paid at 1.5 times the regular rate. If she works 10 hours per day for 5 days, how much does she earn?",
+    "setting": "multi_verifier_forced",
+    "gold": "990",
+    "solver_a_answer": "198",
+    "solver_a_correct": false,
+    "solver_b_answer": "\\$198",
+    "solver_b_correct": false,
+    "verifier_answer": "$198",
+    "verifier_correct": false,
+    "final_answer": "$198",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 4,
+    "question": "Tobias buys shoes for $95 and has $15 left afterward. Over 3 months he received a $5 monthly allowance, mowed 4 lawns for $15 each, and shoveled driveways for $7 each. How many driveways did he shovel?",
+    "setting": "multi_verifier_forced",
+    "gold": "5",
+    "solver_a_answer": "125",
+    "solver_a_correct": false,
+    "solver_b_answer": "7",
+    "solver_b_correct": false,
+    "verifier_answer": "7",
+    "verifier_correct": false,
+    "final_answer": "7",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 5,
+    "question": "James spends $2000 to create a movie. Each DVD costs $6 to make and sells for 2.5 times its production cost. He sells 500 DVDs per day, 5 days per week, for 20 weeks. What is his profit after subtracting the movie creation cost?",
+    "setting": "multi_verifier_forced",
+    "gold": "448000",
+    "solver_a_answer": "748000",
+    "solver_a_correct": false,
+    "solver_b_answer": "438000",
+    "solver_b_correct": false,
+    "verifier_answer": "438000",
+    "verifier_correct": false,
+    "final_answer": "438000",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 6,
+    "question": "A truck initially contains 26 pink, 15 green, and 24 yellow hard hats. Carl removes 4 pink hats. John removes 6 more pink hats and twice that number of green hats. How many hard hats remain?",
+    "setting": "multi_verifier_forced",
+    "gold": "43",
+    "solver_a_answer": "49",
+    "solver_a_correct": false,
+    "solver_b_answer": "43",
+    "solver_b_correct": true,
+    "verifier_answer": "49",
+    "verifier_correct": false,
+    "final_answer": "49",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 8,
+    "question": "Ann, Bill, Cate, and Dale each buy a pizza cut into 4 equal pieces. Bill and Dale each eat 50% of a pizza, while Ann and Cate each eat 75% of a pizza. How many pizza pieces remain uneaten?",
+    "setting": "multi_verifier_forced",
+    "gold": "6",
+    "solver_a_answer": "8",
+    "solver_a_correct": false,
+    "solver_b_answer": "6 pizza pieces remain uneaten.",
+    "solver_b_correct": true,
+    "verifier_answer": "8",
+    "verifier_correct": false,
+    "final_answer": "8",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 12,
+    "question": "Carolyn practices piano for 20 minutes per day and violin for three times as long. She practices both instruments 6 days per week. How many minutes does she practice during a 4-week month?",
+    "setting": "multi_verifier_forced",
+    "gold": "1920",
+    "solver_a_answer": "1920",
+    "solver_a_correct": true,
+    "solver_b_answer": "4",
+    "solver_b_correct": false,
+    "verifier_answer": "4",
+    "verifier_correct": false,
+    "final_answer": "4",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver A 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 13,
+    "question": "Gerald spends $100 per month on baseball supplies during a 4-month season. During the other 8 months, he earns money by doing chores for $10 each. How many chores per month must he average during those 8 months to save enough for the season?",
+    "setting": "multi_verifier_forced",
+    "gold": "5",
+    "solver_a_answer": "8",
+    "solver_a_correct": false,
+    "solver_b_answer": "320/8",
+    "solver_b_correct": false,
+    "verifier_answer": "320/8",
+    "verifier_correct": false,
+    "final_answer": "320/8",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 19,
+    "question": "Twenty-four cans contain 290 liters of oil altogether. Ten cans contain 8 liters each, and every other can contains the same amount. How many liters are in each remaining can?",
+    "setting": "multi_verifier_forced",
+    "gold": "15",
+    "solver_a_answer": "15",
+    "solver_a_correct": true,
+    "solver_b_answer": "8.75",
+    "solver_b_correct": false,
+    "verifier_answer": "24",
+    "verifier_correct": false,
+    "final_answer": "24",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver A 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 22,
+    "question": "Jesse and Mia each must run 30 miles in 7 days. Jesse runs an average of 2/3 mile per day for the first 3 days and 10 miles on day 4. Mia averages 3 miles per day for the first 4 days. What is the average of the two runners' required daily averages over the final 3 days?",
+    "setting": "multi_verifier_forced",
+    "gold": "6",
+    "solver_a_answer": "\\( \\frac{12}{7} \\) miles per day",
+    "solver_a_correct": false,
+    "solver_b_answer": "\\( \\frac{4}{3} \\) miles/day",
+    "solver_b_correct": false,
+    "verifier_answer": "\\( \\frac{12}{7} \\) miles per day",
+    "verifier_correct": false,
+    "final_answer": "\\( \\frac{12}{7} \\) miles per day",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 30,
+    "question": "Henry takes 9 pills per day for 14 days. Four of the daily pills cost $1.50 each, and each of the other pills costs $5.50 more than a $1.50 pill. How much does Henry spend over all 14 days?",
+    "setting": "multi_verifier_forced",
+    "gold": "574",
+    "solver_a_answer": "14",
+    "solver_a_correct": false,
+    "solver_b_answer": "14",
+    "solver_b_correct": false,
+    "verifier_answer": "14",
+    "verifier_correct": false,
+    "final_answer": "14",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 31,
+    "question": "An aquarium has equal numbers of clownfish and blowfish, with 100 fish altogether. Twenty-six blowfish remain in their own tank and the rest enter a display tank. The same number of clownfish initially enters the display tank, but one-third of those clownfish swim back. How many clownfish remain in the display tank?",
+    "setting": "multi_verifier_forced",
+    "gold": "16",
+    "solver_a_answer": "34 clownfish remain in the display tank.",
+    "solver_a_correct": false,
+    "solver_b_answer": "33",
+    "solver_b_correct": false,
+    "verifier_answer": "34",
+    "verifier_correct": false,
+    "final_answer": "34",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 32,
+    "question": "Stella and Twinkle load a 6000-block truck. Each person loads 250 blocks per hour. They work alone for 4 hours, then 6 more people join them at the same rate. How many total hours does loading the truck take?",
+    "setting": "multi_verifier_forced",
+    "gold": "6",
+    "solver_a_answer": "6 hours",
+    "solver_a_correct": true,
+    "solver_b_answer": "6.67",
+    "solver_b_correct": false,
+    "verifier_answer": "6.67",
+    "verifier_correct": false,
+    "final_answer": "6.67",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver A 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 33,
+    "question": "Three cats meow at different rates. The first meows 3 times per minute, the second meows twice as often as the first, and the third meows at one-third the second cat's rate. How many meows do they make altogether in 5 minutes?",
+    "setting": "multi_verifier_forced",
+    "gold": "55",
+    "solver_a_answer": "6/3",
+    "solver_a_correct": false,
+    "solver_b_answer": "6/3",
+    "solver_b_correct": false,
+    "verifier_answer": "6/3",
+    "verifier_correct": false,
+    "final_answer": "6/3",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 45,
+    "question": "Derek has $960 for school. He spends half on textbooks and then spends one-fourth of the money remaining on supplies. How much money is left?",
+    "setting": "multi_verifier_forced",
+    "gold": "360",
+    "solver_a_answer": "480/4",
+    "solver_a_correct": false,
+    "solver_b_answer": "$120",
+    "solver_b_correct": false,
+    "verifier_answer": "120",
+    "verifier_correct": false,
+    "final_answer": "120",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 46,
+    "question": "Lisa spends $40 on shirts, half that amount on jeans, and twice that amount on coats. Carly spends one-fourth of Lisa's shirt amount on shirts, 3 times Lisa's jeans amount on jeans, and one-fourth of Lisa's coat amount on coats. How much do they spend altogether?",
+    "setting": "multi_verifier_forced",
+    "gold": "230",
+    "solver_a_answer": "$180",
+    "solver_a_correct": false,
+    "solver_b_answer": "230",
+    "solver_b_correct": true,
+    "verifier_answer": "$180",
+    "verifier_correct": false,
+    "final_answer": "$180",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 47,
+    "question": "Madeline has 5 boxes with 24 crayons each. In 2 boxes, five-eighths of the crayons are unused. In 2 other boxes, two-thirds are used. The final box is completely unused. How many unused crayons are there altogether?",
+    "setting": "multi_verifier_forced",
+    "gold": "70",
+    "solver_a_answer": "86",
+    "solver_a_correct": false,
+    "solver_b_answer": "70",
+    "solver_b_correct": true,
+    "verifier_answer": "86",
+    "verifier_correct": false,
+    "final_answer": "86",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  }
+]

@@ -1,0 +1,291 @@
+[
+  {
+    "question_id": 3,
+    "question": "Tina earns $18 per hour. For each shift, the first 8 hours are paid at the regular rate and additional hours are paid at 1.5 times the regular rate. If she works 10 hours per day for 5 days, how much does she earn?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "990",
+    "solver_a_answer": "$198",
+    "solver_a_correct": false,
+    "solver_b_answer": "\\$1278",
+    "solver_b_correct": false,
+    "verifier_answer": "$198",
+    "verifier_correct": false,
+    "final_answer": "$1278",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 4,
+    "question": "Tobias buys shoes for $95 and has $15 left afterward. Over 3 months he received a $5 monthly allowance, mowed 4 lawns for $15 each, and shoveled driveways for $7 each. How many driveways did he shovel?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "5",
+    "solver_a_answer": "10",
+    "solver_a_correct": false,
+    "solver_b_answer": "16 driveways.",
+    "solver_b_correct": false,
+    "verifier_answer": "16",
+    "verifier_correct": false,
+    "final_answer": "16 driveways.",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 5,
+    "question": "James spends $2000 to create a movie. Each DVD costs $6 to make and sells for 2.5 times its production cost. He sells 500 DVDs per day, 5 days per week, for 20 weeks. What is his profit after subtracting the movie creation cost?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "448000",
+    "solver_a_answer": "748000",
+    "solver_a_correct": false,
+    "solver_b_answer": "\\$748,000",
+    "solver_b_correct": false,
+    "verifier_answer": "748000",
+    "verifier_correct": false,
+    "final_answer": "\\$748,000",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 8,
+    "question": "Ann, Bill, Cate, and Dale each buy a pizza cut into 4 equal pieces. Bill and Dale each eat 50% of a pizza, while Ann and Cate each eat 75% of a pizza. How many pizza pieces remain uneaten?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "6",
+    "solver_a_answer": "6",
+    "solver_a_correct": true,
+    "solver_b_answer": "6",
+    "solver_b_correct": true,
+    "verifier_answer": "6",
+    "verifier_correct": true,
+    "final_answer": "10",
+    "final_correct": false,
+    "failure_type": "finalizer 不听 verifier",
+    "failure_types": [
+      "finalizer 丢答案",
+      "finalizer 不听 verifier"
+    ],
+    "short_reason": "Verifier 已给出正确答案，但 finalizer 最终没有采用该答案。"
+  },
+  {
+    "question_id": 14,
+    "question": "Leah earns $28. She spends one-seventh of it on a milkshake, saves half of the remaining money, and keeps the other half in her wallet. Her dog destroys all but $1 of the money in the wallet. How much money does Leah lose?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "11",
+    "solver_a_answer": "12",
+    "solver_a_correct": false,
+    "solver_b_answer": "11",
+    "solver_b_correct": true,
+    "verifier_answer": "12",
+    "verifier_correct": false,
+    "final_answer": "12",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 22,
+    "question": "Jesse and Mia each must run 30 miles in 7 days. Jesse runs an average of 2/3 mile per day for the first 3 days and 10 miles on day 4. Mia averages 3 miles per day for the first 4 days. What is the average of the two runners' required daily averages over the final 3 days?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "6",
+    "solver_a_answer": "35",
+    "solver_a_correct": false,
+    "solver_b_answer": "2 miles/day",
+    "solver_b_correct": false,
+    "verifier_answer": "2",
+    "verifier_correct": false,
+    "final_answer": "2 miles/day",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 27,
+    "question": "Alice exchanges 20 quarters for 100 nickels. She discovers that 20% of the nickels are rare coins worth $3 each, while the other nickels retain their ordinary $0.05 value. What is the total value of all the coins?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "64",
+    "solver_a_answer": "51.20",
+    "solver_a_correct": false,
+    "solver_b_answer": "51.20",
+    "solver_b_correct": false,
+    "verifier_answer": "51.2",
+    "verifier_correct": false,
+    "final_answer": "51.20",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 28,
+    "question": "Gail has two fish tanks. The first contains 48 gallons and is twice the size of the second. She allows one gallon of water per inch of fish. She puts 3-inch fish in the first tank and 2-inch fish in the second. If one fish in the first tank eats another, how many more fish are then in the first tank than in the second?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "3",
+    "solver_a_answer": "10",
+    "solver_a_correct": false,
+    "solver_b_answer": "23",
+    "solver_b_correct": false,
+    "verifier_answer": "23",
+    "verifier_correct": false,
+    "final_answer": "95",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 29,
+    "question": "On Happy Street, 25 cars pass on Tuesday. Monday has 20% fewer cars than Tuesday, Wednesday has 2 more cars than Monday, Thursday and Friday each have 10 cars, and Saturday and Sunday each have 5 cars. How many cars pass during the week?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "97",
+    "solver_a_answer": "97 cars pass during the week.",
+    "solver_a_correct": true,
+    "solver_b_answer": "107",
+    "solver_b_correct": false,
+    "verifier_answer": "107",
+    "verifier_correct": false,
+    "final_answer": "107 cars pass during the week.",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver A 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 30,
+    "question": "Henry takes 9 pills per day for 14 days. Four of the daily pills cost $1.50 each, and each of the other pills costs $5.50 more than a $1.50 pill. How much does Henry spend over all 14 days?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "574",
+    "solver_a_answer": "14",
+    "solver_a_correct": false,
+    "solver_b_answer": "14",
+    "solver_b_correct": false,
+    "verifier_answer": "4",
+    "verifier_correct": false,
+    "final_answer": "1610",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 32,
+    "question": "Stella and Twinkle load a 6000-block truck. Each person loads 250 blocks per hour. They work alone for 4 hours, then 6 more people join them at the same rate. How many total hours does loading the truck take?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "6",
+    "solver_a_answer": "12",
+    "solver_a_correct": false,
+    "solver_b_answer": "6.3",
+    "solver_b_correct": false,
+    "verifier_answer": "12",
+    "verifier_correct": false,
+    "final_answer": "12",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 43,
+    "question": "A garden center offers 10% off all purchases. Simon buys 5 pansies at $2.50 each, one hydrangea for $12.50, and 5 petunias at $1 each. If he pays with $50, how much change does he receive?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "23",
+    "solver_a_answer": "34.25",
+    "solver_a_correct": false,
+    "solver_b_answer": "\\$23",
+    "solver_b_correct": true,
+    "verifier_answer": "$34.25",
+    "verifier_correct": false,
+    "final_answer": "\\$34.25",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 47,
+    "question": "Madeline has 5 boxes with 24 crayons each. In 2 boxes, five-eighths of the crayons are unused. In 2 other boxes, two-thirds are used. The final box is completely unused. How many unused crayons are there altogether?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "70",
+    "solver_a_answer": "62",
+    "solver_a_correct": false,
+    "solver_b_answer": "115",
+    "solver_b_correct": false,
+    "verifier_answer": "115",
+    "verifier_correct": false,
+    "final_answer": "115",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 48,
+    "question": "A forest starts with 100 weasels and 50 rabbits. Three foxes each catch 4 weasels and 2 rabbits per week. How many of the original rabbits and weasels remain after 3 weeks?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "96",
+    "solver_a_answer": "0",
+    "solver_a_correct": false,
+    "solver_b_answer": "32",
+    "solver_b_correct": false,
+    "verifier_answer": "32",
+    "verifier_correct": false,
+    "final_answer": "0",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 50,
+    "question": "Rosie runs at 6 miles per hour. She runs for 1 hour Monday, 30 minutes Tuesday, 1 hour Wednesday, and 20 minutes Thursday. To reach 20 miles for the week, how many minutes must she run Friday?",
+    "setting": "multi_ask_before_finalize",
+    "gold": "30",
+    "solver_a_answer": "20",
+    "solver_a_correct": false,
+    "solver_b_answer": "20",
+    "solver_b_correct": false,
+    "verifier_answer": "20",
+    "verifier_correct": false,
+    "final_answer": "20",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  }
+]

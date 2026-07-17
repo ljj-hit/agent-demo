@@ -1,0 +1,7 @@
+setting,setting_name,num_examples,correct,accuracy,oracle_gap_count,oracle_gap_rate,oracle_gap_question_ids,prompt_tokens,completion_tokens,total_tokens,avg_total_tokens
+single,Single Agent,0,0,0,0,0,[],0,0,0,0
+multi,Multi-Agent,0,0,0,0,0,[],0,0,0,0
+multi_verifier,Multi-Agent + Verifier,0,0,0,0,0,[],0,0,0,0
+multi_verifier_forced,Multi-Agent + Forced Verifier,0,0,0,0,0,[],0,0,0,0
+multi_candidate_memory,Multi-Agent + Candidate Memory,50,36,0.72,3,0.06,"[10, 14, 29]",138689,45640,184329,3686.58
+multi_ask_before_finalize,Multi-Agent + Ask Before Finalize,0,0,0,0,0,[],0,0,0,0

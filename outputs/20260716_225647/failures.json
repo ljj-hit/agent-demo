@@ -1,0 +1,216 @@
+[
+  {
+    "question_id": 3,
+    "question": "Tina earns $18 per hour. For each shift, the first 8 hours are paid at the regular rate and additional hours are paid at 1.5 times the regular rate. If she works 10 hours per day for 5 days, how much does she earn?",
+    "setting": "multi_verifier",
+    "gold": "990",
+    "solver_a_answer": "$198",
+    "solver_a_correct": false,
+    "solver_b_answer": "198",
+    "solver_b_correct": false,
+    "verifier_answer": "$198",
+    "verifier_correct": false,
+    "final_answer": "$198",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 4,
+    "question": "Tobias buys shoes for $95 and has $15 left afterward. Over 3 months he received a $5 monthly allowance, mowed 4 lawns for $15 each, and shoveled driveways for $7 each. How many driveways did he shovel?",
+    "setting": "multi_verifier",
+    "gold": "5",
+    "solver_a_answer": "Tobias shoveled approximately 27 driveways.",
+    "solver_a_correct": false,
+    "solver_b_answer": "-75",
+    "solver_b_correct": false,
+    "verifier_answer": "27",
+    "verifier_correct": false,
+    "final_answer": "27",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 5,
+    "question": "James spends $2000 to create a movie. Each DVD costs $6 to make and sells for 2.5 times its production cost. He sells 500 DVDs per day, 5 days per week, for 20 weeks. What is his profit after subtracting the movie creation cost?",
+    "setting": "multi_verifier",
+    "gold": "448000",
+    "solver_a_answer": "\\$745000",
+    "solver_a_correct": false,
+    "solver_b_answer": "748000",
+    "solver_b_correct": false,
+    "verifier_answer": "$745000",
+    "verifier_correct": false,
+    "final_answer": "745000",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 6,
+    "question": "A truck initially contains 26 pink, 15 green, and 24 yellow hard hats. Carl removes 4 pink hats. John removes 6 more pink hats and twice that number of green hats. How many hard hats remain?",
+    "setting": "multi_verifier",
+    "gold": "43",
+    "solver_a_answer": "40",
+    "solver_a_correct": false,
+    "solver_b_answer": "49",
+    "solver_b_correct": false,
+    "verifier_answer": "49",
+    "verifier_correct": false,
+    "final_answer": "49",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 15,
+    "question": "Liza has 10 kilograms of butter. She uses half of the original amount for chocolate chip cookies and one-fifth of the original amount for peanut butter cookies. She then uses one-third of the butter that remains for sugar cookies. How many kilograms remain?",
+    "setting": "multi_verifier",
+    "gold": "2",
+    "solver_a_answer": "2 kg",
+    "solver_a_correct": true,
+    "solver_b_answer": "2.1",
+    "solver_b_correct": false,
+    "verifier_answer": "2.1",
+    "verifier_correct": false,
+    "final_answer": "2.1 kg",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver A 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 22,
+    "question": "Jesse and Mia each must run 30 miles in 7 days. Jesse runs an average of 2/3 mile per day for the first 3 days and 10 miles on day 4. Mia averages 3 miles per day for the first 4 days. What is the average of the two runners' required daily averages over the final 3 days?",
+    "setting": "multi_verifier",
+    "gold": "6",
+    "solver_a_answer": "4",
+    "solver_a_correct": false,
+    "solver_b_answer": "7",
+    "solver_b_correct": false,
+    "verifier_answer": "4",
+    "verifier_correct": false,
+    "final_answer": "4",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 27,
+    "question": "Alice exchanges 20 quarters for 100 nickels. She discovers that 20% of the nickels are rare coins worth $3 each, while the other nickels retain their ordinary $0.05 value. What is the total value of all the coins?",
+    "setting": "multi_verifier",
+    "gold": "64",
+    "solver_a_answer": "51.20",
+    "solver_a_correct": false,
+    "solver_b_answer": "64",
+    "solver_b_correct": true,
+    "verifier_answer": "51.2",
+    "verifier_correct": false,
+    "final_answer": "51.20",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 28,
+    "question": "Gail has two fish tanks. The first contains 48 gallons and is twice the size of the second. She allows one gallon of water per inch of fish. She puts 3-inch fish in the first tank and 2-inch fish in the second. If one fish in the first tank eats another, how many more fish are then in the first tank than in the second?",
+    "setting": "multi_verifier",
+    "gold": "3",
+    "solver_a_answer": "96 more fish are in the first tank than in the second.",
+    "solver_a_correct": false,
+    "solver_b_answer": "3",
+    "solver_b_correct": true,
+    "verifier_answer": "96",
+    "verifier_correct": false,
+    "final_answer": "96 more fish are in the first tank than in the second.",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 29,
+    "question": "On Happy Street, 25 cars pass on Tuesday. Monday has 20% fewer cars than Tuesday, Wednesday has 2 more cars than Monday, Thursday and Friday each have 10 cars, and Saturday and Sunday each have 5 cars. How many cars pass during the week?",
+    "setting": "multi_verifier",
+    "gold": "97",
+    "solver_a_answer": "127",
+    "solver_a_correct": false,
+    "solver_b_answer": "97",
+    "solver_b_correct": true,
+    "verifier_answer": "127",
+    "verifier_correct": false,
+    "final_answer": "127",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  },
+  {
+    "question_id": 30,
+    "question": "Henry takes 9 pills per day for 14 days. Four of the daily pills cost $1.50 each, and each of the other pills costs $5.50 more than a $1.50 pill. How much does Henry spend over all 14 days?",
+    "setting": "multi_verifier",
+    "gold": "574",
+    "solver_a_answer": "$326.50",
+    "solver_a_correct": false,
+    "solver_b_answer": "14",
+    "solver_b_correct": false,
+    "verifier_answer": "$326.50",
+    "verifier_correct": false,
+    "final_answer": "$326.50",
+    "final_correct": false,
+    "failure_type": "没人会",
+    "failure_types": [
+      "没人会"
+    ],
+    "short_reason": "Solver A、Solver B 和 verifier 均未产生正确答案。"
+  },
+  {
+    "question_id": 48,
+    "question": "A forest starts with 100 weasels and 50 rabbits. Three foxes each catch 4 weasels and 2 rabbits per week. How many of the original rabbits and weasels remain after 3 weeks?",
+    "setting": "multi_verifier",
+    "gold": "96",
+    "solver_a_answer": "136",
+    "solver_a_correct": false,
+    "solver_b_answer": "64 weasels and 32 rabbits.",
+    "solver_b_correct": true,
+    "verifier_answer": "136",
+    "verifier_correct": false,
+    "final_answer": "136",
+    "final_correct": false,
+    "failure_type": "verifier 判断错",
+    "failure_types": [
+      "finalizer 丢答案",
+      "verifier 判断错"
+    ],
+    "short_reason": "Solver B 已答对，但 verifier 给出了错误判断，finalizer 也未保留正确答案。"
+  }
+]
