@@ -1,0 +1,15 @@
+{
+  "script": "run_hidden_gsm8k.py",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\20.json",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "settings": [
+    "single_full"
+  ],
+  "device": "cuda",
+  "temperature": 0.2,
+  "max_new_tokens": 384,
+  "discussion_rounds": 2,
+  "seed": 42,
+  "deepseek_enabled": true,
+  "started_at": "2026-07-18T15:27:04"
+}

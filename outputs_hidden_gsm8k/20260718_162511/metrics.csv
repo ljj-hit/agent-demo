@@ -1,0 +1,2 @@
+﻿setting,agent_variant,n,correct,accuracy,solver_a_correct,solver_b_correct,verifier_correct,finalizer_correct,information_complete,fail_information_acquisition,fail_information_integration,fail_answer_selection,lucky_guess,format_issue_corrected,oracle_accuracy,oracle_gap_accuracy,oracle_pairwise_rescues,prompt_tokens,completion_tokens,total_tokens,judge_total_tokens,inference_runtime_seconds,judge_runtime_seconds,end_to_end_runtime_seconds
+multi_partial_verifier,,20,5,0.25,6,7,5,5,15,5,8,2,0,0,,,,325470,45773,371243,10063,2481.709,45.582,2527.291
