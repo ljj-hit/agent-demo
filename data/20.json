@@ -1,0 +1,335 @@
+[
+{
+"condition_A": "Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.",
+"condition_B": "The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.",
+"shared_question": "How many pages should Julie read tomorrow?",
+"full_question": "Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday. The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today. How many pages should Julie read tomorrow?",
+"required_private_facts": {
+"agent_A": [
+"Julie read 12 pages yesterday.",
+"Today she read twice as many pages as yesterday."
+],
+"agent_B": [
+"The book has 120 pages.",
+"Tomorrow she reads half of the remaining pages."
+]
+},
+"answer": "Julie read 12 * 2 = <<12*2=24>>24 pages today.\nShe read 12 + 24 = <<12+24=36>>36 pages altogether.\nThere are 120 - 36 = <<120-36=84>>84 pages remaining.\nHalf of the remaining pages is 84 / 2 = <<84/2=42>>42.\n#### 42"
+},
+{
+"condition_A": "Betty wants to buy a wallet that costs $100. She already has half of the money needed.",
+"condition_B": "Her parents give her $15, and her grandparents give her twice as much as her parents.",
+"shared_question": "How much more money does Betty still need?",
+"full_question": "Betty wants to buy a wallet that costs $100. She already has half of the money needed. Her parents give her $15, and her grandparents give her twice as much as her parents. How much more money does Betty still need?",
+"required_private_facts": {
+"agent_A": [
+"The wallet costs $100.",
+"Betty already has half of the required amount."
+],
+"agent_B": [
+"Her parents give her $15.",
+"Her grandparents give her twice the amount her parents give."
+]
+},
+"answer": "Betty already has 100 / 2 = $<<100/2=50>>50.\nHer grandparents give her 15 * 2 = $<<15*2=30>>30.\nShe then has 50 + 15 + 30 = $<<50+15+30=95>>95.\nShe still needs 100 - 95 = $<<100-95=5>>5.\n#### 5"
+},
+{
+"condition_A": "Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.",
+"condition_B": "After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.",
+"shared_question": "What is the final weight of the box?",
+"full_question": "Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples. After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles. What is the final weight of the box?",
+"required_private_facts": {
+"agent_A": [
+"The box initially weighs 2 pounds.",
+"The brownies triple that weight."
+],
+"agent_B": [
+"Two more pounds are added afterward.",
+"The resulting weight is then doubled."
+]
+},
+"answer": "After the brownies, the box weighs 2 * 3 = <<2*3=6>>6 pounds.\nAfter adding 2 more pounds, it weighs 6 + 2 = <<6+2=8>>8 pounds.\nAfter doubling, the final weight is 8 * 2 = <<8*2=16>>16 pounds.\n#### 16"
+},
+{
+"condition_A": "Alexis has a $200 clothing budget. She spends $30 on a shirt, $46 on pants, and $38 on a coat.",
+"condition_B": "She also spends $11 on socks and $18 on a belt. After buying a pair of shoes, she has $16 left.",
+"shared_question": "How much did Alexis pay for the shoes?",
+"full_question": "Alexis has a $200 clothing budget. She spends $30 on a shirt, $46 on pants, and $38 on a coat. She also spends $11 on socks and $18 on a belt. After buying a pair of shoes, she has $16 left. How much did Alexis pay for the shoes?",
+"required_private_facts": {
+"agent_A": [
+"Alexis has a $200 budget.",
+"She spends $30, $46, and $38 on three items."
+],
+"agent_B": [
+"She spends another $11 and $18.",
+"She has $16 left after buying the shoes."
+]
+},
+"answer": "The listed clothes cost 30 + 46 + 38 + 11 + 18 = $<<30+46+38+11+18=143>>143.\nAlexis spends 200 - 16 = $<<200-16=184>>184 altogether.\nThe shoes cost 184 - 143 = $<<184-143=41>>41.\n#### 41"
+},
+{
+"condition_A": "Bella buys 11 snowflake stamps. She buys 9 more truck stamps than snowflake stamps.",
+"condition_B": "She buys 13 fewer rose stamps than truck stamps.",
+"shared_question": "How many stamps does Bella buy altogether?",
+"full_question": "Bella buys 11 snowflake stamps. She buys 9 more truck stamps than snowflake stamps. She buys 13 fewer rose stamps than truck stamps. How many stamps does Bella buy altogether?",
+"required_private_facts": {
+"agent_A": [
+"Bella buys 11 snowflake stamps.",
+"She buys 9 more truck stamps than snowflake stamps."
+],
+"agent_B": [
+"She buys 13 fewer rose stamps than truck stamps."
+]
+},
+"answer": "Bella buys 11 + 9 = <<11+9=20>>20 truck stamps.\nShe buys 20 - 13 = <<20-13=7>>7 rose stamps.\nAltogether, she buys 11 + 20 + 7 = <<11+20+7=38>>38 stamps.\n#### 38"
+},
+{
+"condition_A": "Ann spends $75 at a store. She buys 5 pairs of shorts for $7 each.",
+"condition_B": "She also buys 2 pairs of shoes for $10 each and 4 tops at the same price.",
+"shared_question": "How much does each top cost?",
+"full_question": "Ann spends $75 at a store. She buys 5 pairs of shorts for $7 each. She also buys 2 pairs of shoes for $10 each and 4 tops at the same price. How much does each top cost?",
+"required_private_facts": {
+"agent_A": [
+"Ann spends $75 in total.",
+"She buys 5 pairs of shorts for $7 each."
+],
+"agent_B": [
+"She buys 2 pairs of shoes for $10 each.",
+"She buys 4 equally priced tops."
+]
+},
+"answer": "The shorts cost 5 * 7 = $<<5*7=35>>35.\nThe shoes cost 2 * 10 = $<<2*10=20>>20.\nThe tops cost 75 - 35 - 20 = $<<75-35-20=20>>20 altogether.\nEach top costs 20 / 4 = $<<20/4=5>>5.\n#### 5"
+},
+{
+"condition_A": "Noah sells large paintings for $60 each and small paintings for $30 each. Last month he sold 8 large paintings.",
+"condition_B": "Last month he also sold 4 small paintings. This month his total sales revenue is twice last month's revenue.",
+"shared_question": "How much sales revenue does Noah make this month?",
+"full_question": "Noah sells large paintings for $60 each and small paintings for $30 each. Last month he sold 8 large paintings. Last month he also sold 4 small paintings. This month his total sales revenue is twice last month's revenue. How much sales revenue does Noah make this month?",
+"required_private_facts": {
+"agent_A": [
+"Large paintings sell for $60 each.",
+"Small paintings sell for $30 each.",
+"Noah sold 8 large paintings last month."
+],
+"agent_B": [
+"Noah sold 4 small paintings last month.",
+"This month's revenue is twice last month's revenue."
+]
+},
+"answer": "Large paintings brought in 8 * 60 = $<<8*60=480>>480.\nSmall paintings brought in 4 * 30 = $<<4*30=120>>120.\nLast month's revenue was 480 + 120 = $<<480+120=600>>600.\nThis month's revenue is 600 * 2 = $<<600*2=1200>>1200.\n#### 1200"
+},
+{
+"condition_A": "Carolyn practices piano for 20 minutes per day. She practices violin for 3 times as long as piano.",
+"condition_B": "She practices both instruments 6 days per week for 4 weeks.",
+"shared_question": "How many minutes does Carolyn practice in 4 weeks?",
+"full_question": "Carolyn practices piano for 20 minutes per day. She practices violin for 3 times as long as piano. She practices both instruments 6 days per week for 4 weeks. How many minutes does Carolyn practice in 4 weeks?",
+"required_private_facts": {
+"agent_A": [
+"Piano practice is 20 minutes per day.",
+"Violin practice is 3 times the piano practice time."
+],
+"agent_B": [
+"She practices 6 days per week.",
+"The period lasts 4 weeks."
+]
+},
+"answer": "Violin practice is 20 * 3 = <<20*3=60>>60 minutes per day.\nDaily practice is 20 + 60 = <<20+60=80>>80 minutes.\nWeekly practice is 80 * 6 = <<80*6=480>>480 minutes.\nIn 4 weeks, she practices 480 * 4 = <<480*4=1920>>1920 minutes.\n#### 1920"
+},
+{
+"condition_A": "Leo finishes the first part of an assignment in 25 minutes. The second part takes twice as long as the first.",
+"condition_B": "The entire assignment takes 2 hours.",
+"shared_question": "How many minutes does the third part take?",
+"full_question": "Leo finishes the first part of an assignment in 25 minutes. The second part takes twice as long as the first. The entire assignment takes 2 hours. How many minutes does the third part take?",
+"required_private_facts": {
+"agent_A": [
+"The first part takes 25 minutes.",
+"The second part takes twice as long as the first."
+],
+"agent_B": [
+"The full assignment takes 2 hours."
+]
+},
+"answer": "The second part takes 25 * 2 = <<25*2=50>>50 minutes.\nThe first two parts take 25 + 50 = <<25+50=75>>75 minutes.\nTwo hours is 2 * 60 = <<2*60=120>>120 minutes.\nThe third part takes 120 - 75 = <<120-75=45>>45 minutes.\n#### 45"
+},
+{
+"condition_A": "James earns $20 per hour at his main job and works 30 hours there each week.",
+"condition_B": "At his second job, he earns 20% less per hour and works half as many hours as at his main job.",
+"shared_question": "How much does James earn each week from both jobs?",
+"full_question": "James earns $20 per hour at his main job and works 30 hours there each week. At his second job, he earns 20% less per hour and works half as many hours as at his main job. How much does James earn each week from both jobs?",
+"required_private_facts": {
+"agent_A": [
+"The main-job rate is $20 per hour.",
+"James works 30 hours at the main job."
+],
+"agent_B": [
+"The second-job rate is 20% lower.",
+"He works half as many hours at the second job."
+]
+},
+"answer": "James earns 20 * 30 = $<<20*30=600>>600 at his main job.\nHis second-job rate is 20 * 0.8 = $<<20*0.8=16>>16 per hour.\nHe works 30 / 2 = <<30/2=15>>15 hours there.\nHe earns 16 * 15 = $<<16*15=240>>240 at his second job.\nHis total earnings are 600 + 240 = $<<600+240=840>>840.\n#### 840"
+},
+{
+"condition_A": "Tara wants to buy a $1000 laptop. She makes a 20% down payment and pays an extra $20 with the down payment.",
+"condition_B": "She then pays $65 per month for 4 months.",
+"shared_question": "What balance remains after the 4 monthly payments?",
+"full_question": "Tara wants to buy a $1000 laptop. She makes a 20% down payment and pays an extra $20 with the down payment. She then pays $65 per month for 4 months. What balance remains after the 4 monthly payments?",
+"required_private_facts": {
+"agent_A": [
+"The laptop costs $1000.",
+"The down payment is 20% plus an additional $20."
+],
+"agent_B": [
+"The monthly payment is $65.",
+"Tara makes 4 monthly payments."
+]
+},
+"answer": "The 20% down payment is 1000 * 20 / 100 = $<<1000*20/100=200>>200.\nThe total down payment is 200 + 20 = $<<200+20=220>>220.\nThe balance after the down payment is 1000 - 220 = $<<1000-220=780>>780.\nFour payments total 65 * 4 = $<<65*4=260>>260.\nThe remaining balance is 780 - 260 = $<<780-260=520>>520.\n#### 520"
+},
+{
+"condition_A": "Roger needs one trail-mix pouch for each of 13 players on a baseball team.",
+"condition_B": "He also needs pouches for 3 coaches and 2 helpers. Each pack contains 6 pouches.",
+"shared_question": "How many packs must Roger buy?",
+"full_question": "Roger needs one trail-mix pouch for each of 13 players on a baseball team. He also needs pouches for 3 coaches and 2 helpers. Each pack contains 6 pouches. How many packs must Roger buy?",
+"required_private_facts": {
+"agent_A": [
+"There are 13 players.",
+"Each person needs one pouch."
+],
+"agent_B": [
+"There are 3 coaches and 2 helpers.",
+"Each pack contains 6 pouches."
+]
+},
+"answer": "Roger needs 13 + 3 + 2 = <<13+3+2=18>>18 pouches.\nHe needs 18 / 6 = <<18/6=3>>3 packs.\n#### 3"
+},
+{
+"condition_A": "Four people lose 103 kilograms altogether. The first person loses 27 kilograms.",
+"condition_B": "The second person loses 7 kilograms less than the first. The last two people lose equal amounts.",
+"shared_question": "How many kilograms does each of the last two people lose?",
+"full_question": "Four people lose 103 kilograms altogether. The first person loses 27 kilograms. The second person loses 7 kilograms less than the first. The last two people lose equal amounts. How many kilograms does each of the last two people lose?",
+"required_private_facts": {
+"agent_A": [
+"The four people lose 103 kilograms in total.",
+"The first person loses 27 kilograms."
+],
+"agent_B": [
+"The second person loses 7 kilograms less than the first.",
+"The final two people lose equal amounts."
+]
+},
+"answer": "The second person loses 27 - 7 = <<27-7=20>>20 kilograms.\nThe last two people lose 103 - 27 - 20 = <<103-27-20=56>>56 kilograms altogether.\nEach loses 56 / 2 = <<56/2=28>>28 kilograms.\n#### 28"
+},
+{
+"condition_A": "A garden produces 237 potatoes. It produces 60 fewer cucumbers than potatoes.",
+"condition_B": "It produces twice as many peppers as cucumbers.",
+"shared_question": "How many vegetables does the garden produce altogether?",
+"full_question": "A garden produces 237 potatoes. It produces 60 fewer cucumbers than potatoes. It produces twice as many peppers as cucumbers. How many vegetables does the garden produce altogether?",
+"required_private_facts": {
+"agent_A": [
+"The garden produces 237 potatoes.",
+"It produces 60 fewer cucumbers than potatoes."
+],
+"agent_B": [
+"It produces twice as many peppers as cucumbers."
+]
+},
+"answer": "The garden produces 237 - 60 = <<237-60=177>>177 cucumbers.\nIt produces 177 * 2 = <<177*2=354>>354 peppers.\nAltogether, it produces 237 + 177 + 354 = <<237+177+354=768>>768 vegetables.\n#### 768"
+},
+{
+"condition_A": "Jennifer initially buys 40 cans of milk.",
+"condition_B": "For every 5 cans Mark buys, Jennifer buys 6 additional cans. Mark buys 50 cans.",
+"shared_question": "How many cans does Jennifer take home?",
+"full_question": "Jennifer initially buys 40 cans of milk. For every 5 cans Mark buys, Jennifer buys 6 additional cans. Mark buys 50 cans. How many cans does Jennifer take home?",
+"required_private_facts": {
+"agent_A": [
+"Jennifer initially buys 40 cans."
+],
+"agent_B": [
+"Jennifer buys 6 additional cans for every 5 cans Mark buys.",
+"Mark buys 50 cans."
+]
+},
+"answer": "Mark's purchase contains 50 / 5 = <<50/5=10>>10 groups of 5 cans.\nJennifer buys 10 * 6 = <<10*6=60>>60 additional cans.\nShe takes home 40 + 60 = <<40+60=100>>100 cans.\n#### 100"
+},
+{
+"condition_A": "Irene earns $500 for a regular 40-hour workweek.",
+"condition_B": "She earns an extra $20 for every overtime hour. Last week she worked 50 hours.",
+"shared_question": "What was Irene's total income last week?",
+"full_question": "Irene earns $500 for a regular 40-hour workweek. She earns an extra $20 for every overtime hour. Last week she worked 50 hours. What was Irene's total income last week?",
+"required_private_facts": {
+"agent_A": [
+"Irene earns $500 for 40 regular hours."
+],
+"agent_B": [
+"She earns $20 per overtime hour.",
+"She worked 50 hours."
+]
+},
+"answer": "Irene worked 50 - 40 = <<50-40=10>>10 overtime hours.\nHer overtime pay was 10 * 20 = $<<10*20=200>>200.\nHer total income was 500 + 200 = $<<500+200=700>>700.\n#### 700"
+},
+{
+"condition_A": "Winwin wins $50 in a lottery. She pays 20% of the winnings as tax.",
+"condition_B": "She also pays a $5 processing fee.",
+"shared_question": "How much money does Winwin take home?",
+"full_question": "Winwin wins $50 in a lottery. She pays 20% of the winnings as tax. She also pays a $5 processing fee. How much money does Winwin take home?",
+"required_private_facts": {
+"agent_A": [
+"Winwin wins $50.",
+"She pays 20% in tax."
+],
+"agent_B": [
+"She pays an additional $5 processing fee."
+]
+},
+"answer": "The tax is 50 * 20 / 100 = $<<50*20/100=10>>10.\nAfter tax, she has 50 - 10 = $<<50-10=40>>40.\nAfter the fee, she takes home 40 - 5 = $<<40-5=35>>35.\n#### 35"
+},
+{
+"condition_A": "John puts $25 into his piggy bank every month for 2 years.",
+"condition_B": "He then spends $400 from the piggy bank on a car repair.",
+"shared_question": "How much money remains in John's piggy bank?",
+"full_question": "John puts $25 into his piggy bank every month for 2 years. He then spends $400 from the piggy bank on a car repair. How much money remains in John's piggy bank?",
+"required_private_facts": {
+"agent_A": [
+"John saves $25 per month.",
+"He saves for 2 years."
+],
+"agent_B": [
+"He spends $400 on a car repair."
+]
+},
+"answer": "Two years is 2 * 12 = <<2*12=24>>24 months.\nJohn saves 25 * 24 = $<<25*24=600>>600.\nAfter the repair, he has 600 - 400 = $<<600-400=200>>200 left.\n#### 200"
+},
+{
+"condition_A": "Wickham invites 30 people to a party. Half of the invited guests each bring one additional person.",
+"condition_B": "The party has a 3-course meal, and each person uses a new plate for every course.",
+"shared_question": "How many plates are needed?",
+"full_question": "Wickham invites 30 people to a party. Half of the invited guests each bring one additional person. The party has a 3-course meal, and each person uses a new plate for every course. How many plates are needed?",
+"required_private_facts": {
+"agent_A": [
+"Wickham invites 30 people.",
+"Half of them each bring one additional person."
+],
+"agent_B": [
+"There are 3 courses.",
+"Each person uses one new plate per course."
+]
+},
+"answer": "Half of 30 is 30 / 2 = <<30/2=15>>15 additional guests.\nThe total number of people is 30 + 15 = <<30+15=45>>45.\nThe number of plates is 45 * 3 = <<45*3=135>>135.\n#### 135"
+},
+{
+"condition_A": "A church has 120 members. Forty percent of the members are adults.",
+"condition_B": "Every member who is not an adult is a child.",
+"shared_question": "How many more children than adults are there?",
+"full_question": "A church has 120 members. Forty percent of the members are adults. Every member who is not an adult is a child. How many more children than adults are there?",
+"required_private_facts": {
+"agent_A": [
+"The church has 120 members.",
+"40% of the members are adults."
+],
+"agent_B": [
+"All non-adult members are children."
+]
+},
+"answer": "The number of adults is 120 * 40 / 100 = <<120*40/100=48>>48.\nThe number of children is 120 - 48 = <<120-48=72>>72.\nThere are 72 - 48 = <<72-48=24>>24 more children than adults.\n#### 24"
+}
+]
