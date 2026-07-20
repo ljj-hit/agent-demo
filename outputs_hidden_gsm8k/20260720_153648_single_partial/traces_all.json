@@ -1,0 +1,4295 @@
+[
+  {
+    "question_id": 1,
+    "setting": "single_partial",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many pages should Julie read tomorrow?\nYour private fact: Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nReasoning:\n- We know Julie read 12 pages yesterday.\n- Today she read twice as many pages as yesterday.\n\nTo determine how many pages Julie should read tomorrow, we need to calculate today's reading amount first:\n\nToday's reading = Yesterday's reading * 2\nToday's reading = 12 pages * 2\nToday's reading = 24 pages\n\nHowever, without knowing how many pages Julie plans to read tomorrow, we cannot determine the number of pages she should read tomorrow. Therefore, the information provided is insufficient to conclude how many pages Julie should read tomorrow.",
+      "raw_output": "Current answer: Undetermined\n\nReasoning:\n- We know Julie read 12 pages yesterday.\n- Today she read twice as many pages as yesterday.\n\nTo determine how many pages Julie should read tomorrow, we need to calculate today's reading amount first:\n\nToday's reading = Yesterday's reading * 2\nToday's reading = 12 pages * 2\nToday's reading = 24 pages\n\nHowever, without knowing how many pages Julie plans to read tomorrow, we cannot determine the number of pages she should read tomorrow. Therefore, the information provided is insufficient to conclude how many pages Julie should read tomorrow.",
+      "token_usage": {
+        "prompt_tokens": 348,
+        "completion_tokens": 126,
+        "total_tokens": 474
+      },
+      "runtime_seconds": 13.557166899961885,
+      "answer": "",
+      "answer_extraction": "concluding_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 348,
+      "completion_tokens": 126,
+      "total_tokens": 474
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 348,
+        "completion_tokens": 126,
+        "total_tokens": 474
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 13.557166899961885
+    },
+    "total_runtime_seconds": 13.557919099985156,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 94,
+      "completion_tokens": 170,
+      "total_tokens": 263
+    },
+    "judge_runtime_seconds": 1.4018304500010952,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 1,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 1,
+    "setting": "single_partial",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many pages should Julie read tomorrow?\nYour private fact: The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nAnalysis:\n- We know the total number of pages in the book is 120.\n- Julie plans to read half of the remaining pages after reading some pages today and the rest on tomorrow.\n- To determine how many pages Julie should read tomorrow, we need to know how many pages she reads today.\n\nMissing Information:\n- The number of pages Julie reads today is unknown.\n  \nConclusion:\nIt cannot yet be determined how many pages Julie should read tomorrow because the number of pages she reads today is not specified. More information about her daily reading plan is required.",
+      "raw_output": "Current answer: Undetermined\n\nAnalysis:\n- We know the total number of pages in the book is 120.\n- Julie plans to read half of the remaining pages after reading some pages today and the rest on tomorrow.\n- To determine how many pages Julie should read tomorrow, we need to know how many pages she reads today.\n\nMissing Information:\n- The number of pages Julie reads today is unknown.\n  \nConclusion:\nIt cannot yet be determined how many pages Julie should read tomorrow because the number of pages she reads today is not specified. More information about her daily reading plan is required.",
+      "token_usage": {
+        "prompt_tokens": 354,
+        "completion_tokens": 120,
+        "total_tokens": 474
+      },
+      "runtime_seconds": 7.625787099997979,
+      "answer": "120",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "120",
+    "candidate_answers": {
+      "solver_b": "120"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "120",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 120, but gold is 42.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 354,
+      "completion_tokens": 120,
+      "total_tokens": 474
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 354,
+        "completion_tokens": 120,
+        "total_tokens": 474
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 7.625787099997979
+    },
+    "total_runtime_seconds": 7.627346499997657,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Predicted 120, but gold is 42.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 120, but gold is 42.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 93,
+      "completion_tokens": 170,
+      "total_tokens": 263
+    },
+    "judge_runtime_seconds": 1.4018304500010952,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 1,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 2,
+    "setting": "single_partial",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How much more money does Betty still need?\nYour private fact: Betty wants to buy a wallet that costs $100. She already has half of the money needed.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The amount of money Betty currently has.\n- Whether she has any additional funds beyond her initial half of the cost.\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The amount of money Betty currently has.\n- Whether she has any additional funds beyond her initial half of the cost.\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 350,
+        "completion_tokens": 42,
+        "total_tokens": 392
+      },
+      "runtime_seconds": 5.344342799973674,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_a": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not match gold; correct answer is 5.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 350,
+      "completion_tokens": 42,
+      "total_tokens": 392
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 350,
+        "completion_tokens": 42,
+        "total_tokens": 392
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 5.344342799973674
+    },
+    "total_runtime_seconds": 5.345088300004136,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction does not match gold; correct answer is 5.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not match gold; correct answer is 5.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 301,
+      "completion_tokens": 179,
+      "total_tokens": 480
+    },
+    "judge_runtime_seconds": 1.335683416662505,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 2,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 2,
+    "setting": "single_partial",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How much more money does Betty still need?\nYour private fact: Her parents give her $15, and her grandparents give her twice as much as her parents.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The amount of money Betty's grandparents give her.\n- The total amount of money Betty has received so far (from both parents and grandparents combined).\n\nFinal answer: Undetermined",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The amount of money Betty's grandparents give her.\n- The total amount of money Betty has received so far (from both parents and grandparents combined).\n\nFinal answer: Undetermined",
+      "token_usage": {
+        "prompt_tokens": 348,
+        "completion_tokens": 45,
+        "total_tokens": 393
+      },
+      "runtime_seconds": 2.975034000002779,
+      "answer": "",
+      "answer_extraction": "explicit_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 348,
+      "completion_tokens": 45,
+      "total_tokens": 393
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 348,
+        "completion_tokens": 45,
+        "total_tokens": 393
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.975034000002779
+    },
+    "total_runtime_seconds": 2.9755460000014864,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty; correct answer is 5.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 301,
+      "completion_tokens": 179,
+      "total_tokens": 480
+    },
+    "judge_runtime_seconds": 1.335683416662505,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 2,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 3,
+    "setting": "single_partial",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: What is the final weight of the box?\nYour private fact: Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The initial number of jelly beans placed in the box.\n2. The amount of brownies added after tripling the weight.\n\nTo determine the final weight of the box, we would need to know how many brownies were added once the weight had tripled. Without this information, we cannot calculate the final weight accurately.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The initial number of jelly beans placed in the box.\n2. The amount of brownies added after tripling the weight.\n\nTo determine the final weight of the box, we would need to know how many brownies were added once the weight had tripled. Without this information, we cannot calculate the final weight accurately.",
+      "token_usage": {
+        "prompt_tokens": 355,
+        "completion_tokens": 76,
+        "total_tokens": 431
+      },
+      "runtime_seconds": 5.61784030002309,
+      "answer": "2",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "2",
+    "candidate_answers": {
+      "solver_a": "2"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "2",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 355,
+      "completion_tokens": 76,
+      "total_tokens": 431
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 355,
+        "completion_tokens": 76,
+        "total_tokens": 431
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 5.61784030002309
+    },
+    "total_runtime_seconds": 5.6184597999672405,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 316,
+      "completion_tokens": 188,
+      "total_tokens": 504
+    },
+    "judge_runtime_seconds": 1.372669950001485,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 3,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 3,
+    "setting": "single_partial",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: What is the final weight of the box?\nYour private fact: After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The initial weight of the box before any additions.\n2. The number of gummy worms added (which would determine how many times the weight doubled).\n\nWith this information, we cannot calculate the final weight of the box. Therefore, the answer remains undetermined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The initial weight of the box before any additions.\n2. The number of gummy worms added (which would determine how many times the weight doubled).\n\nWith this information, we cannot calculate the final weight of the box. Therefore, the answer remains undetermined.",
+      "token_usage": {
+        "prompt_tokens": 352,
+        "completion_tokens": 64,
+        "total_tokens": 416
+      },
+      "runtime_seconds": 4.079207599977963,
+      "answer": "2",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "2",
+    "candidate_answers": {
+      "solver_b": "2"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "2",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 352,
+      "completion_tokens": 64,
+      "total_tokens": 416
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 352,
+        "completion_tokens": 64,
+        "total_tokens": 416
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 4.079207599977963
+    },
+    "total_runtime_seconds": 4.07981700001983,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 316,
+      "completion_tokens": 187,
+      "total_tokens": 503
+    },
+    "judge_runtime_seconds": 1.372669950001485,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 3,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 4,
+    "setting": "single_partial",
+    "shared_question": "How much did Alexis pay for the shoes?",
+    "gold_answer": "41",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How much did Alexis pay for the shoes?\nYour private fact: Alexis has a $200 clothing budget. She spends $30 on a shirt, $46 on pants, and $38 on a coat.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: The total amount spent on shirts, pants, and coats is calculated as follows:\n- Shirts: $30\n- Pants: $46\n- Coat: $38\n\nTotal = $30 + $46 + $38 = $114\n\nAlexis's clothing budget is $200. To find out how much she paid for the shoes, we subtract the total spent on other items from her budget:\n\n$200 - $114 = $86\n\nFinal answer: Alexis paid $86 for the shoes.",
+      "raw_output": "Current answer: The total amount spent on shirts, pants, and coats is calculated as follows:\n- Shirts: $30\n- Pants: $46\n- Coat: $38\n\nTotal = $30 + $46 + $38 = $114\n\nAlexis's clothing budget is $200. To find out how much she paid for the shoes, we subtract the total spent on other items from her budget:\n\n$200 - $114 = $86\n\nFinal answer: Alexis paid $86 for the shoes.",
+      "token_usage": {
+        "prompt_tokens": 361,
+        "completion_tokens": 121,
+        "total_tokens": 482
+      },
+      "runtime_seconds": 7.791560999990907,
+      "answer": "86",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "86",
+    "candidate_answers": {
+      "solver_a": "86"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "86",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 361,
+      "completion_tokens": 121,
+      "total_tokens": 482
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 361,
+        "completion_tokens": 121,
+        "total_tokens": 482
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 7.791560999990907
+    },
+    "total_runtime_seconds": 7.792162999976426,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 579,
+      "completion_tokens": 232,
+      "total_tokens": 811
+    },
+    "judge_runtime_seconds": 1.596059183337881,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 4,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 4,
+    "setting": "single_partial",
+    "shared_question": "How much did Alexis pay for the shoes?",
+    "gold_answer": "41",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How much did Alexis pay for the shoes?\nYour private fact: She also spends $11 on socks and $18 on a belt. After buying a pair of shoes, she has $16 left.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The cost of the shoes Alexis bought.\n- Her initial amount of money before shopping.\n\nFinal answer: Undetermined",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The cost of the shoes Alexis bought.\n- Her initial amount of money before shopping.\n\nFinal answer: Undetermined",
+      "token_usage": {
+        "prompt_tokens": 358,
+        "completion_tokens": 33,
+        "total_tokens": 391
+      },
+      "runtime_seconds": 2.2701750000123866,
+      "answer": "",
+      "answer_extraction": "explicit_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 358,
+      "completion_tokens": 33,
+      "total_tokens": 391
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 358,
+        "completion_tokens": 33,
+        "total_tokens": 391
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.2701750000123866
+    },
+    "total_runtime_seconds": 2.2706748000346124,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 579,
+      "completion_tokens": 232,
+      "total_tokens": 811
+    },
+    "judge_runtime_seconds": 1.596059183337881,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 4,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 5,
+    "setting": "single_partial",
+    "shared_question": "How many stamps does Bella buy altogether?",
+    "gold_answer": "38",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many stamps does Bella buy altogether?\nYour private fact: Bella buys 11 snowflake stamps. She buys 9 more truck stamps than snowflake stamps.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: We know Bella buys 11 snowflake stamps and 9 more truck stamps than snowflake stamps. To find out how many truck stamps she buys, we add 9 to the number of snowflake stamps:\n\\[ \\text{Number of truck stamps} = 11 + 9 = 20 \\]\n\nNext, we calculate the total number of stamps Bella buys by adding the number of snowflake stamps and truck stamps together:\n\\[ \\text{Total number of stamps} = 11 (\\text{snowflake}) + 20 (\\text{truck}) = 31 \\]\n\nFinal answer: Bella buys 31 stamps altogether.",
+      "raw_output": "Current answer: We know Bella buys 11 snowflake stamps and 9 more truck stamps than snowflake stamps. To find out how many truck stamps she buys, we add 9 to the number of snowflake stamps:\n\\[ \\text{Number of truck stamps} = 11 + 9 = 20 \\]\n\nNext, we calculate the total number of stamps Bella buys by adding the number of snowflake stamps and truck stamps together:\n\\[ \\text{Total number of stamps} = 11 (\\text{snowflake}) + 20 (\\text{truck}) = 31 \\]\n\nFinal answer: Bella buys 31 stamps altogether.",
+      "token_usage": {
+        "prompt_tokens": 348,
+        "completion_tokens": 138,
+        "total_tokens": 486
+      },
+      "runtime_seconds": 9.154012300015893,
+      "answer": "31",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "31",
+    "candidate_answers": {
+      "solver_a": "31"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "31",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 31, not 38.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 348,
+      "completion_tokens": 138,
+      "total_tokens": 486
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 348,
+        "completion_tokens": 138,
+        "total_tokens": 486
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 9.154012300015893
+    },
+    "total_runtime_seconds": 9.154623500013258,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 31, not 38.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 31, not 38.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 100,
+      "completion_tokens": 176,
+      "total_tokens": 276
+    },
+    "judge_runtime_seconds": 1.404729499995786,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 5,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 5,
+    "setting": "single_partial",
+    "shared_question": "How many stamps does Bella buy altogether?",
+    "gold_answer": "38",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many stamps does Bella buy altogether?\nYour private fact: She buys 13 fewer rose stamps than truck stamps.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The number of rose stamps Bella buys.\n- The total number of stamps Bella buys altogether (rose and truck stamps combined).\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The number of rose stamps Bella buys.\n- The total number of stamps Bella buys altogether (rose and truck stamps combined).\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 339,
+        "completion_tokens": 43,
+        "total_tokens": 382
+      },
+      "runtime_seconds": 2.871593900024891,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_b": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction states insufficient information instead of numeric answer.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 339,
+      "completion_tokens": 43,
+      "total_tokens": 382
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 339,
+        "completion_tokens": 43,
+        "total_tokens": 382
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.871593900024891
+    },
+    "total_runtime_seconds": 2.872291599982418,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction states insufficient information instead of numeric answer.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction states insufficient information instead of numeric answer.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 99,
+      "completion_tokens": 176,
+      "total_tokens": 276
+    },
+    "judge_runtime_seconds": 1.404729499995786,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 5,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 6,
+    "setting": "single_partial",
+    "shared_question": "How much does each top cost?",
+    "gold_answer": "5",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How much does each top cost?\nYour private fact: Ann spends $75 at a store. She buys 5 pairs of shorts for $7 each.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The total amount spent on tops.\n- The number of tops purchased.\n- The price per top.\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The total amount spent on tops.\n- The number of tops purchased.\n- The price per top.\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 39,
+        "total_tokens": 386
+      },
+      "runtime_seconds": 2.6818632000358775,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_a": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not provide a numeric value; states uncertainty.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 347,
+      "completion_tokens": 39,
+      "total_tokens": 386
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 347,
+        "completion_tokens": 39,
+        "total_tokens": 386
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.6818632000358775
+    },
+    "total_runtime_seconds": 2.6824380999896675,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction does not provide a numeric value; states uncertainty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not provide a numeric value; states uncertainty.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 148,
+      "completion_tokens": 170,
+      "total_tokens": 318
+    },
+    "judge_runtime_seconds": 1.1622299166726104,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 6,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 6,
+    "setting": "single_partial",
+    "shared_question": "How much does each top cost?",
+    "gold_answer": "5",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How much does each top cost?\nYour private fact: She also buys 2 pairs of shoes for $10 each and 4 tops at the same price.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The prices of both shoes and tops.\n- The total amount spent on all items (shoes and tops).\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The prices of both shoes and tops.\n- The total amount spent on all items (shoes and tops).\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 348,
+        "completion_tokens": 41,
+        "total_tokens": 389
+      },
+      "runtime_seconds": 2.656185399973765,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_b": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not provide a numeric value; states uncertainty.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 348,
+      "completion_tokens": 41,
+      "total_tokens": 389
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 348,
+        "completion_tokens": 41,
+        "total_tokens": 389
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.656185399973765
+    },
+    "total_runtime_seconds": 2.6567921999958344,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction does not provide a numeric value; states uncertainty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not provide a numeric value; states uncertainty.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 148,
+      "completion_tokens": 170,
+      "total_tokens": 318
+    },
+    "judge_runtime_seconds": 1.1622299166726104,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 6,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 7,
+    "setting": "single_partial",
+    "shared_question": "How much sales revenue does Noah make this month?",
+    "gold_answer": "1200",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How much sales revenue does Noah make this month?\nYour private fact: Noah sells large paintings for $60 each and small paintings for $30 each. Last month he sold 8 large paintings.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The number of small paintings sold last month.\n2. The total number of paintings sold last month (both large and small).\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The number of small paintings sold last month.\n2. The total number of paintings sold last month (both large and small).\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 356,
+        "completion_tokens": 45,
+        "total_tokens": 401
+      },
+      "runtime_seconds": 2.8896421999670565,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_a": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not provide a numerical answer.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 356,
+      "completion_tokens": 45,
+      "total_tokens": 401
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 356,
+        "completion_tokens": 45,
+        "total_tokens": 401
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.8896421999670565
+    },
+    "total_runtime_seconds": 2.8902847000281326,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction does not provide a numerical answer.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction does not provide a numerical answer.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 142,
+      "completion_tokens": 208,
+      "total_tokens": 349
+    },
+    "judge_runtime_seconds": 1.366721083332474,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 7,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 7,
+    "setting": "single_partial",
+    "shared_question": "How much sales revenue does Noah make this month?",
+    "gold_answer": "1200",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How much sales revenue does Noah make this month?\nYour private fact: Last month he also sold 4 small paintings. This month his total sales revenue is twice last month's revenue.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The specific amount of sales revenue from last month.\n2. The price per small painting sold last month.\n3. The number of large paintings sold this month (if any).\n4. The price per large painting sold this month (if any).\n\nWithout these details, it is impossible to determine Noah's total sales revenue for this month. Therefore, the answer remains undetermined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The specific amount of sales revenue from last month.\n2. The price per small painting sold last month.\n3. The number of large paintings sold this month (if any).\n4. The price per large painting sold this month (if any).\n\nWithout these details, it is impossible to determine Noah's total sales revenue for this month. Therefore, the answer remains undetermined.",
+      "token_usage": {
+        "prompt_tokens": 352,
+        "completion_tokens": 87,
+        "total_tokens": 439
+      },
+      "runtime_seconds": 6.949993899965193,
+      "answer": "4",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "4",
+    "candidate_answers": {
+      "solver_b": "4"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "4",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4 is not equal to 1200.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 352,
+      "completion_tokens": 87,
+      "total_tokens": 439
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 352,
+        "completion_tokens": 87,
+        "total_tokens": 439
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 6.949993899965193
+    },
+    "total_runtime_seconds": 6.950673500017729,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 4 is not equal to 1200.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4 is not equal to 1200.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 142,
+      "completion_tokens": 208,
+      "total_tokens": 349
+    },
+    "judge_runtime_seconds": 1.366721083332474,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 7,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 8,
+    "setting": "single_partial",
+    "shared_question": "How many minutes does Carolyn practice in 4 weeks?",
+    "gold_answer": "1920",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many minutes does Carolyn practice in 4 weeks?\nYour private fact: Carolyn practices piano for 20 minutes per day. She practices violin for 3 times as long as piano.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nAnalysis:\n1. Carolyn practices piano for 20 minutes per day.\n2. She practices violin for 3 times as long as she practices piano.\n\nFrom this, we know:\n- Piano practice time per day = 20 minutes\n- Violin practice time per day = 3 * 20 minutes = 60 minutes\n\nHowever, there is no information about how often Carolyn practices each instrument or over how many days within a week. Therefore, it's impossible to determine her total practice time in 4 weeks without additional details.\n\nFinal answer: It cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nAnalysis:\n1. Carolyn practices piano for 20 minutes per day.\n2. She practices violin for 3 times as long as she practices piano.\n\nFrom this, we know:\n- Piano practice time per day = 20 minutes\n- Violin practice time per day = 3 * 20 minutes = 60 minutes\n\nHowever, there is no information about how often Carolyn practices each instrument or over how many days within a week. Therefore, it's impossible to determine her total practice time in 4 weeks without additional details.\n\nFinal answer: It cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 353,
+        "completion_tokens": 127,
+        "total_tokens": 480
+      },
+      "runtime_seconds": 8.392652000009548,
+      "answer": "It cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "It cannot yet be determined.",
+    "candidate_answers": {
+      "solver_a": "It cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "It cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 'It cannot yet be determined.' is not a numeric answer equivalent to gold 1920.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 353,
+      "completion_tokens": 127,
+      "total_tokens": 480
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 353,
+        "completion_tokens": 127,
+        "total_tokens": 480
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 8.392652000009548
+    },
+    "total_runtime_seconds": 8.393373099970631,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 'It cannot yet be determined.' is not a numeric answer equivalent to gold 1920.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 'It cannot yet be determined.' is not a numeric answer equivalent to gold 1920.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 190,
+      "completion_tokens": 311,
+      "total_tokens": 500
+    },
+    "judge_runtime_seconds": 1.8815982999997989,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 8,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 8,
+    "setting": "single_partial",
+    "shared_question": "How many minutes does Carolyn practice in 4 weeks?",
+    "gold_answer": "1920",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many minutes does Carolyn practice in 4 weeks?\nYour private fact: She practices both instruments 6 days per week for 4 weeks.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nAnalysis:\n- We know she practices both instruments 6 days per week.\n- We also know she practices for 4 weeks.\n\nConclusion:\n- To find out how many minutes she practices in total over these 4 weeks, we need to calculate her weekly practice time first and then multiply by the number of weeks.\n\nMissing Information:\n- The duration of each practice session (in minutes).\n- The frequency of practice sessions per day (e.g., once daily vs. multiple times).\n\nFinal answer: Undetermined",
+      "raw_output": "Current answer: Undetermined\n\nAnalysis:\n- We know she practices both instruments 6 days per week.\n- We also know she practices for 4 weeks.\n\nConclusion:\n- To find out how many minutes she practices in total over these 4 weeks, we need to calculate her weekly practice time first and then multiply by the number of weeks.\n\nMissing Information:\n- The duration of each practice session (in minutes).\n- The frequency of practice sessions per day (e.g., once daily vs. multiple times).\n\nFinal answer: Undetermined",
+      "token_usage": {
+        "prompt_tokens": 344,
+        "completion_tokens": 108,
+        "total_tokens": 452
+      },
+      "runtime_seconds": 6.997825699974783,
+      "answer": "",
+      "answer_extraction": "explicit_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 344,
+      "completion_tokens": 108,
+      "total_tokens": 452
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 344,
+        "completion_tokens": 108,
+        "total_tokens": 452
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 6.997825699974783
+    },
+    "total_runtime_seconds": 6.998446600046009,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, not equivalent to gold 1920.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 190,
+      "completion_tokens": 310,
+      "total_tokens": 500
+    },
+    "judge_runtime_seconds": 1.8815982999997989,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 8,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 9,
+    "setting": "single_partial",
+    "shared_question": "How many minutes does the third part take?",
+    "gold_answer": "45",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many minutes does the third part take?\nYour private fact: Leo finishes the first part of an assignment in 25 minutes. The second part takes twice as long as the first.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. Duration of the second part (second_part_duration).\n2. Relationship between the durations of the parts (e.g., if the third part is half the duration of the second part).\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. Duration of the second part (second_part_duration).\n2. Relationship between the durations of the parts (e.g., if the third part is half the duration of the second part).\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 353,
+        "completion_tokens": 56,
+        "total_tokens": 409
+      },
+      "runtime_seconds": 3.623815700004343,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_a": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 'Cannot yet be determined.', not equivalent to gold 45.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 353,
+      "completion_tokens": 56,
+      "total_tokens": 409
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 353,
+        "completion_tokens": 56,
+        "total_tokens": 409
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 3.623815700004343
+    },
+    "total_runtime_seconds": 3.6244314999785274,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 'Cannot yet be determined.', not equivalent to gold 45.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 'Cannot yet be determined.', not equivalent to gold 45.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 93,
+      "completion_tokens": 129,
+      "total_tokens": 222
+    },
+    "judge_runtime_seconds": 1.0709959166609526,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 9,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 9,
+    "setting": "single_partial",
+    "shared_question": "How many minutes does the third part take?",
+    "gold_answer": "45",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many minutes does the third part take?\nYour private fact: The entire assignment takes 2 hours.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The duration of each part of the assignment.\n2. Whether the parts are equal or if there's any variation in their durations.\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The duration of each part of the assignment.\n2. Whether the parts are equal or if there's any variation in their durations.\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 336,
+        "completion_tokens": 46,
+        "total_tokens": 382
+      },
+      "runtime_seconds": 2.975873200048227,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_b": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 'Cannot yet be determined.', not equivalent to gold 45.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 336,
+      "completion_tokens": 46,
+      "total_tokens": 382
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 336,
+        "completion_tokens": 46,
+        "total_tokens": 382
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.975873200048227
+    },
+    "total_runtime_seconds": 2.9764868000056595,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 'Cannot yet be determined.', not equivalent to gold 45.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 'Cannot yet be determined.', not equivalent to gold 45.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 93,
+      "completion_tokens": 129,
+      "total_tokens": 222
+    },
+    "judge_runtime_seconds": 1.0709959166609526,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 9,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 10,
+    "setting": "single_partial",
+    "shared_question": "How much does James earn each week from both jobs?",
+    "gold_answer": "840",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How much does James earn each week from both jobs?\nYour private fact: James earns $20 per hour at his main job and works 30 hours there each week.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: The amount James earns each week from his main job can be calculated as follows:\n\n1. Hourly wage = $20\n2. Hours worked per week = 30\n\nEarnings from main job = Hourly wage × Hours worked per week\n= $20 × 30\n= $600\n\nHowever, we don't have any information about James' second job or how many hours he works there. Therefore, it cannot yet be determined how much James earns each week from both jobs combined. \n\nFinal answer: It cannot yet be determined.",
+      "raw_output": "Current answer: The amount James earns each week from his main job can be calculated as follows:\n\n1. Hourly wage = $20\n2. Hours worked per week = 30\n\nEarnings from main job = Hourly wage × Hours worked per week\n= $20 × 30\n= $600\n\nHowever, we don't have any information about James' second job or how many hours he works there. Therefore, it cannot yet be determined how much James earns each week from both jobs combined. \n\nFinal answer: It cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 351,
+        "completion_tokens": 120,
+        "total_tokens": 471
+      },
+      "runtime_seconds": 10.790842899994459,
+      "answer": "It cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "It cannot yet be determined.",
+    "candidate_answers": {
+      "solver_a": "It cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "It cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is not mathematically equivalent to gold.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 351,
+      "completion_tokens": 120,
+      "total_tokens": 471
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 351,
+        "completion_tokens": 120,
+        "total_tokens": 471
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 10.790842899994459
+    },
+    "total_runtime_seconds": 10.791499199985992,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is not mathematically equivalent to gold.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is not mathematically equivalent to gold.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 185,
+      "completion_tokens": 222,
+      "total_tokens": 407
+    },
+    "judge_runtime_seconds": 1.5441175000062988,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 10,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 10,
+    "setting": "single_partial",
+    "shared_question": "How much does James earn each week from both jobs?",
+    "gold_answer": "840",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How much does James earn each week from both jobs?\nYour private fact: At his second job, he earns 20% less per hour and works half as many hours as at his main job.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The hourly wage at James's first (main) job.\n2. The number of hours James works per week at his first job.\n3. The number of hours James works per week at his second job.\n\nTo determine how much James earns each week from both jobs, we would need these details. Without this information, it is not possible to calculate his total weekly earnings accurately.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The hourly wage at James's first (main) job.\n2. The number of hours James works per week at his first job.\n3. The number of hours James works per week at his second job.\n\nTo determine how much James earns each week from both jobs, we would need these details. Without this information, it is not possible to calculate his total weekly earnings accurately.",
+      "token_usage": {
+        "prompt_tokens": 356,
+        "completion_tokens": 88,
+        "total_tokens": 444
+      },
+      "runtime_seconds": 10.020761599997059,
+      "answer": "3",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "3",
+    "candidate_answers": {
+      "solver_b": "3"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "3",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is not mathematically equivalent to gold.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 356,
+      "completion_tokens": 88,
+      "total_tokens": 444
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 356,
+        "completion_tokens": 88,
+        "total_tokens": 444
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 10.020761599997059
+    },
+    "total_runtime_seconds": 10.02155419997871,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is not mathematically equivalent to gold.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is not mathematically equivalent to gold.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 185,
+      "completion_tokens": 222,
+      "total_tokens": 406
+    },
+    "judge_runtime_seconds": 1.5441175000062988,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 10,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 11,
+    "setting": "single_partial",
+    "shared_question": "What balance remains after the 4 monthly payments?",
+    "gold_answer": "520",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: What balance remains after the 4 monthly payments?\nYour private fact: Tara wants to buy a $1000 laptop. She makes a 20% down payment and pays an extra $20 with the down payment.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing Information:\n- The amount paid per month (monthly payment).\n- The total number of months over which the payments will be made.\n- Any additional fees or interest applied during the loan period.\n\nTo determine the remaining balance after 4 monthly payments, we would need these details. Without this information, it's impossible to calculate the precise balance. Therefore, the answer cannot yet be determined based on the provided data.",
+      "raw_output": "Current answer: Undetermined\n\nMissing Information:\n- The amount paid per month (monthly payment).\n- The total number of months over which the payments will be made.\n- Any additional fees or interest applied during the loan period.\n\nTo determine the remaining balance after 4 monthly payments, we would need these details. Without this information, it's impossible to calculate the precise balance. Therefore, the answer cannot yet be determined based on the provided data.",
+      "token_usage": {
+        "prompt_tokens": 362,
+        "completion_tokens": 90,
+        "total_tokens": 452
+      },
+      "runtime_seconds": 6.112674500036519,
+      "answer": "4",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "4",
+    "candidate_answers": {
+      "solver_a": "4"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "4",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4 is not mathematically equal to gold 520.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 362,
+      "completion_tokens": 90,
+      "total_tokens": 452
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 362,
+        "completion_tokens": 90,
+        "total_tokens": 452
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 6.112674500036519
+    },
+    "total_runtime_seconds": 6.113408399978653,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 4 is not mathematically equal to gold 520.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4 is not mathematically equal to gold 520.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 84,
+      "completion_tokens": 143,
+      "total_tokens": 227
+    },
+    "judge_runtime_seconds": 1.0734360000060406,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 11,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 11,
+    "setting": "single_partial",
+    "shared_question": "What balance remains after the 4 monthly payments?",
+    "gold_answer": "520",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: What balance remains after the 4 monthly payments?\nYour private fact: She then pays $65 per month for 4 months.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing Information:\n1. The initial balance before any payments.\n2. The amount paid towards interest during each payment period (if applicable).\n\nWith the given information alone, we cannot determine the remaining balance after the 4 monthly payments. Therefore, the answer cannot yet be determined based on the shared fact and the provided details.",
+      "raw_output": "Current answer: Undetermined\n\nMissing Information:\n1. The initial balance before any payments.\n2. The amount paid towards interest during each payment period (if applicable).\n\nWith the given information alone, we cannot determine the remaining balance after the 4 monthly payments. Therefore, the answer cannot yet be determined based on the shared fact and the provided details.",
+      "token_usage": {
+        "prompt_tokens": 342,
+        "completion_tokens": 71,
+        "total_tokens": 413
+      },
+      "runtime_seconds": 5.554704700014554,
+      "answer": "",
+      "answer_extraction": "concluding_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 342,
+      "completion_tokens": 71,
+      "total_tokens": 413
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 342,
+        "completion_tokens": 71,
+        "total_tokens": 413
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 5.554704700014554
+    },
+    "total_runtime_seconds": 5.555472099978942,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Empty prediction is not equal to gold 520.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 84,
+      "completion_tokens": 143,
+      "total_tokens": 227
+    },
+    "judge_runtime_seconds": 1.0734360000060406,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 11,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 12,
+    "setting": "single_partial",
+    "shared_question": "How many packs must Roger buy?",
+    "gold_answer": "3",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many packs must Roger buy?\nYour private fact: Roger needs one trail-mix pouch for each of 13 players on a baseball team.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The number of players per pack (e.g., how many players fit into one pack).\n- The size of each trail-mix pouch (e.g., how much trail mix fits into one pouch).\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The number of players per pack (e.g., how many players fit into one pack).\n- The size of each trail-mix pouch (e.g., how much trail mix fits into one pouch).\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 345,
+        "completion_tokens": 59,
+        "total_tokens": 404
+      },
+      "runtime_seconds": 3.7726899000117555,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_a": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 345,
+      "completion_tokens": 59,
+      "total_tokens": 404
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 345,
+        "completion_tokens": 59,
+        "total_tokens": 404
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 3.7726899000117555
+    },
+    "total_runtime_seconds": 3.7732704000081867,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 85,
+      "completion_tokens": 56,
+      "total_tokens": 141
+    },
+    "judge_runtime_seconds": 0.5226685833379937,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 12,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 12,
+    "setting": "single_partial",
+    "shared_question": "How many packs must Roger buy?",
+    "gold_answer": "3",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many packs must Roger buy?\nYour private fact: He also needs pouches for 3 coaches and 2 helpers. Each pack contains 6 pouches.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The number of coaches Roger has.\n2. The number of helpers Roger has.\n3. Whether each coach requires pouches as well (if so, how many).\n\nIf these details were provided, we could calculate the total number of pouches needed and determine how many packs Roger should buy. Without this information, it's impossible to conclude how many packs he must buy.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The number of coaches Roger has.\n2. The number of helpers Roger has.\n3. Whether each coach requires pouches as well (if so, how many).\n\nIf these details were provided, we could calculate the total number of pouches needed and determine how many packs Roger should buy. Without this information, it's impossible to conclude how many packs he must buy.",
+      "token_usage": {
+        "prompt_tokens": 348,
+        "completion_tokens": 86,
+        "total_tokens": 434
+      },
+      "runtime_seconds": 5.818523800000548,
+      "answer": "",
+      "answer_extraction": "explicit_current_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "manual correction: explicit Current answer: Undetermined; trailing list number was not an answer",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 348,
+      "completion_tokens": 86,
+      "total_tokens": 434
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 348,
+        "completion_tokens": 86,
+        "total_tokens": 434
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 5.818523800000548
+    },
+    "total_runtime_seconds": 5.8192048000055365,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "manual correction: explicit Current answer: Undetermined; trailing list number was not an answer",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "manual correction: explicit Current answer: Undetermined; trailing list number was not an answer",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 85,
+      "completion_tokens": 56,
+      "total_tokens": 141
+    },
+    "judge_runtime_seconds": 0.5226685833379937,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 12,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 13,
+    "setting": "single_partial",
+    "shared_question": "How many kilograms does each of the last two people lose?",
+    "gold_answer": "28",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many kilograms does each of the last two people lose?\nYour private fact: Four people lose 103 kilograms altogether. The first person loses 27 kilograms.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The total weight loss of all four people combined (which should be 103 kg).\n- The weights of the remaining three people before they lost any weight.\n\nIf we had this additional information, we could calculate how much each of the last two people lost. Without it, we cannot determine the number of kilograms each of the last two people lost.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The total weight loss of all four people combined (which should be 103 kg).\n- The weights of the remaining three people before they lost any weight.\n\nIf we had this additional information, we could calculate how much each of the last two people lost. Without it, we cannot determine the number of kilograms each of the last two people lost.",
+      "token_usage": {
+        "prompt_tokens": 350,
+        "completion_tokens": 82,
+        "total_tokens": 432
+      },
+      "runtime_seconds": 5.783237399999052,
+      "answer": "",
+      "answer_extraction": "concluding_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 350,
+      "completion_tokens": 82,
+      "total_tokens": 432
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 350,
+        "completion_tokens": 82,
+        "total_tokens": 432
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 5.783237399999052
+    },
+    "total_runtime_seconds": 5.783903800009284,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 100,
+      "completion_tokens": 137,
+      "total_tokens": 237
+    },
+    "judge_runtime_seconds": 0.9642722333373968,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 13,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 13,
+    "setting": "single_partial",
+    "shared_question": "How many kilograms does each of the last two people lose?",
+    "gold_answer": "28",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many kilograms does each of the last two people lose?\nYour private fact: The second person loses 7 kilograms less than the first. The last two people lose equal amounts.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The number of kilograms lost by the first person.\n2. The total weight loss of all three individuals combined.\n\nFinal answer: Undetermined",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The number of kilograms lost by the first person.\n2. The total weight loss of all three individuals combined.\n\nFinal answer: Undetermined",
+      "token_usage": {
+        "prompt_tokens": 351,
+        "completion_tokens": 39,
+        "total_tokens": 390
+      },
+      "runtime_seconds": 3.3455377999925986,
+      "answer": "",
+      "answer_extraction": "explicit_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 351,
+      "completion_tokens": 39,
+      "total_tokens": 390
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 351,
+        "completion_tokens": 39,
+        "total_tokens": 390
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 3.3455377999925986
+    },
+    "total_runtime_seconds": 3.346243600011803,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 100,
+      "completion_tokens": 137,
+      "total_tokens": 237
+    },
+    "judge_runtime_seconds": 0.9642722333373968,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 13,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 14,
+    "setting": "single_partial",
+    "shared_question": "How many vegetables does the garden produce altogether?",
+    "gold_answer": "768",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many vegetables does the garden produce altogether?\nYour private fact: A garden produces 237 potatoes. It produces 60 fewer cucumbers than potatoes.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The number of cucumbers produced.\n2. Whether there are any other types of vegetables besides potatoes and cucumbers.\n\nFinal answer: Undetermined",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The number of cucumbers produced.\n2. Whether there are any other types of vegetables besides potatoes and cucumbers.\n\nFinal answer: Undetermined",
+      "token_usage": {
+        "prompt_tokens": 349,
+        "completion_tokens": 42,
+        "total_tokens": 391
+      },
+      "runtime_seconds": 2.707401499967091,
+      "answer": "",
+      "answer_extraction": "explicit_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 349,
+      "completion_tokens": 42,
+      "total_tokens": 391
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 349,
+        "completion_tokens": 42,
+        "total_tokens": 391
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 2.707401499967091
+    },
+    "total_runtime_seconds": 2.7079629999934696,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Empty prediction.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 71,
+      "completion_tokens": 139,
+      "total_tokens": 210
+    },
+    "judge_runtime_seconds": 1.1131515999926098,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 14,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 14,
+    "setting": "single_partial",
+    "shared_question": "How many vegetables does the garden produce altogether?",
+    "gold_answer": "768",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many vegetables does the garden produce altogether?\nYour private fact: It produces twice as many peppers as cucumbers.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nAnalysis:\n- We know the garden produces twice as many peppers as cucumbers.\n- However, we don't have specific quantities for either peppers or cucumbers.\n- Without knowing how many cucumbers are produced, we cannot determine the total number of vegetables produced.\n\nFinal answer: It cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nAnalysis:\n- We know the garden produces twice as many peppers as cucumbers.\n- However, we don't have specific quantities for either peppers or cucumbers.\n- Without knowing how many cucumbers are produced, we cannot determine the total number of vegetables produced.\n\nFinal answer: It cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 339,
+        "completion_tokens": 71,
+        "total_tokens": 410
+      },
+      "runtime_seconds": 4.574032000033185,
+      "answer": "It cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "It cannot yet be determined.",
+    "candidate_answers": {
+      "solver_b": "It cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "It cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is not a number and does not equal 768.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 339,
+      "completion_tokens": 71,
+      "total_tokens": 410
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 339,
+        "completion_tokens": 71,
+        "total_tokens": 410
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 4.574032000033185
+    },
+    "total_runtime_seconds": 4.5746855000033975,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is not a number and does not equal 768.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is not a number and does not equal 768.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 71,
+      "completion_tokens": 139,
+      "total_tokens": 210
+    },
+    "judge_runtime_seconds": 1.1131515999926098,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 14,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 15,
+    "setting": "single_partial",
+    "shared_question": "How many cans does Jennifer take home?",
+    "gold_answer": "100",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many cans does Jennifer take home?\nYour private fact: Jennifer initially buys 40 cans of milk.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The number of cans Jennifer eats herself.\n2. The number of cans Jennifer gives away as gifts.\n3. The number of cans Jennifer exchanges for coupons or discounts.\n\nWithout this information, it's impossible to determine how many cans Jennifer takes home.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The number of cans Jennifer eats herself.\n2. The number of cans Jennifer gives away as gifts.\n3. The number of cans Jennifer exchanges for coupons or discounts.\n\nWithout this information, it's impossible to determine how many cans Jennifer takes home.",
+      "token_usage": {
+        "prompt_tokens": 337,
+        "completion_tokens": 61,
+        "total_tokens": 398
+      },
+      "runtime_seconds": 4.627282099972945,
+      "answer": "3",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "3",
+    "candidate_answers": {
+      "solver_a": "3"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "3",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Not equivalent.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 337,
+      "completion_tokens": 61,
+      "total_tokens": 398
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 337,
+        "completion_tokens": 61,
+        "total_tokens": 398
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 4.627282099972945
+    },
+    "total_runtime_seconds": 4.627887599985115,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Not equivalent.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Not equivalent.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 128,
+      "completion_tokens": 259,
+      "total_tokens": 387
+    },
+    "judge_runtime_seconds": 1.786351633326073,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 15,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 15,
+    "setting": "single_partial",
+    "shared_question": "How many cans does Jennifer take home?",
+    "gold_answer": "100",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many cans does Jennifer take home?\nYour private fact: For every 5 cans Mark buys, Jennifer buys 6 additional cans. Mark buys 50 cans.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The number of cans Jennifer buys per set (5 cans for Mark's purchase).\n- Whether Jennifer also buys additional cans based on her purchases or if she always buys the same amount regardless of Mark's purchase.\n\nTo determine how many cans Jennifer takes home, we would need this specific information about her purchasing pattern relative to Mark's purchase. Without knowing whether Jennifer buys more than 6 cans for each set of 5 bought by Mark or if she sticks to the ratio consistently, we cannot calculate the total number of cans Jennifer takes home. Therefore, the answer remains undetermined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The number of cans Jennifer buys per set (5 cans for Mark's purchase).\n- Whether Jennifer also buys additional cans based on her purchases or if she always buys the same amount regardless of Mark's purchase.\n\nTo determine how many cans Jennifer takes home, we would need this specific information about her purchasing pattern relative to Mark's purchase. Without knowing whether Jennifer buys more than 6 cans for each set of 5 bought by Mark or if she sticks to the ratio consistently, we cannot calculate the total number of cans Jennifer takes home. Therefore, the answer remains undetermined.",
+      "token_usage": {
+        "prompt_tokens": 349,
+        "completion_tokens": 125,
+        "total_tokens": 474
+      },
+      "runtime_seconds": 8.078750599990599,
+      "answer": "5",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "5",
+    "candidate_answers": {
+      "solver_b": "5"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "5",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Not equivalent.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 349,
+      "completion_tokens": 125,
+      "total_tokens": 474
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 349,
+        "completion_tokens": 125,
+        "total_tokens": 474
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 8.078750599990599
+    },
+    "total_runtime_seconds": 8.07954179996159,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Not equivalent.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Not equivalent.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 127,
+      "completion_tokens": 259,
+      "total_tokens": 387
+    },
+    "judge_runtime_seconds": 1.786351633326073,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 15,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 16,
+    "setting": "single_partial",
+    "shared_question": "What was Irene's total income last week?",
+    "gold_answer": "700",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: What was Irene's total income last week?\nYour private fact: Irene earns $500 for a regular 40-hour workweek.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The number of hours worked last week.\n2. Whether there were any deductions or additional earnings (e.g., bonuses).\n\nWithout this information, it's impossible to calculate Irene's total income for the past week.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The number of hours worked last week.\n2. Whether there were any deductions or additional earnings (e.g., bonuses).\n\nWithout this information, it's impossible to calculate Irene's total income for the past week.",
+      "token_usage": {
+        "prompt_tokens": 344,
+        "completion_tokens": 54,
+        "total_tokens": 398
+      },
+      "runtime_seconds": 3.468831099977251,
+      "answer": "2",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "2",
+    "candidate_answers": {
+      "solver_a": "2"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "2",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 344,
+      "completion_tokens": 54,
+      "total_tokens": 398
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 344,
+        "completion_tokens": 54,
+        "total_tokens": 398
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 3.468831099977251
+    },
+    "total_runtime_seconds": 3.469431400008034,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 285,
+      "completion_tokens": 171,
+      "total_tokens": 455
+    },
+    "judge_runtime_seconds": 1.2337205833367382,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 16,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 16,
+    "setting": "single_partial",
+    "shared_question": "What was Irene's total income last week?",
+    "gold_answer": "700",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: What was Irene's total income last week?\nYour private fact: She earns an extra $20 for every overtime hour. Last week she worked 50 hours.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The base hourly wage rate (not specified)\n- Whether Irene worked any regular hours or if all her work was overtime (also not specified)\n\nFinal answer: Cannot yet be determined",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The base hourly wage rate (not specified)\n- Whether Irene worked any regular hours or if all her work was overtime (also not specified)\n\nFinal answer: Cannot yet be determined",
+      "token_usage": {
+        "prompt_tokens": 349,
+        "completion_tokens": 46,
+        "total_tokens": 395
+      },
+      "runtime_seconds": 3.993838800000958,
+      "answer": "Cannot yet be determined",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined",
+    "candidate_answers": {
+      "solver_b": "Cannot yet be determined"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 349,
+      "completion_tokens": 46,
+      "total_tokens": 395
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 349,
+        "completion_tokens": 46,
+        "total_tokens": 395
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 3.993838800000958
+    },
+    "total_runtime_seconds": 3.994432399980724,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 284,
+      "completion_tokens": 171,
+      "total_tokens": 455
+    },
+    "judge_runtime_seconds": 1.2337205833367382,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 16,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 17,
+    "setting": "single_partial",
+    "shared_question": "How much money does Winwin take home?",
+    "gold_answer": "35",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How much money does Winwin take home?\nYour private fact: Winwin wins $50 in a lottery. She pays 20% of the winnings as tax.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The amount of tax Winwin has to pay (which is 20% of her winnings).\n2. Whether any deductions or additional taxes apply beyond just the state tax on the lottery winnings.\n\nWith this information, we cannot determine how much money Winwin takes home after paying taxes. Therefore, the answer remains undetermined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The amount of tax Winwin has to pay (which is 20% of her winnings).\n2. Whether any deductions or additional taxes apply beyond just the state tax on the lottery winnings.\n\nWith this information, we cannot determine how much money Winwin takes home after paying taxes. Therefore, the answer remains undetermined.",
+      "token_usage": {
+        "prompt_tokens": 350,
+        "completion_tokens": 77,
+        "total_tokens": 427
+      },
+      "runtime_seconds": 4.991252500039991,
+      "answer": "",
+      "answer_extraction": "concluding_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 350,
+      "completion_tokens": 77,
+      "total_tokens": 427
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 350,
+        "completion_tokens": 77,
+        "total_tokens": 427
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 4.991252500039991
+    },
+    "total_runtime_seconds": 4.991862499970011,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No answer provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 215,
+      "completion_tokens": 108,
+      "total_tokens": 323
+    },
+    "judge_runtime_seconds": 0.926858583339102,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 17,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 17,
+    "setting": "single_partial",
+    "shared_question": "How much money does Winwin take home?",
+    "gold_answer": "35",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How much money does Winwin take home?\nYour private fact: She also pays a $5 processing fee.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The amount of money Winwin earns before taxes and fees.\n2. The tax rate applied to her earnings.\n\nWith this information, we cannot determine how much money Winwin takes home after paying the processing fee. Therefore, the answer remains undetermined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The amount of money Winwin earns before taxes and fees.\n2. The tax rate applied to her earnings.\n\nWith this information, we cannot determine how much money Winwin takes home after paying the processing fee. Therefore, the answer remains undetermined.",
+      "token_usage": {
+        "prompt_tokens": 337,
+        "completion_tokens": 62,
+        "total_tokens": 399
+      },
+      "runtime_seconds": 4.171247499994934,
+      "answer": "",
+      "answer_extraction": "concluding_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 337,
+      "completion_tokens": 62,
+      "total_tokens": 399
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 337,
+        "completion_tokens": 62,
+        "total_tokens": 399
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 4.171247499994934
+    },
+    "total_runtime_seconds": 4.171822299947962,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No answer provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 215,
+      "completion_tokens": 108,
+      "total_tokens": 323
+    },
+    "judge_runtime_seconds": 0.926858583339102,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 17,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 18,
+    "setting": "single_partial",
+    "shared_question": "How much money remains in John's piggy bank?",
+    "gold_answer": "200",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How much money remains in John's piggy bank?\nYour private fact: John puts $25 into his piggy bank every month for 2 years.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The amount of money John had before starting to save in his piggy bank.\n- Whether any money was added to the piggy bank after he started saving each month over the two-year period.\n\nFinal answer: It cannot yet be determined without additional information about John's initial savings and any subsequent deposits.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The amount of money John had before starting to save in his piggy bank.\n- Whether any money was added to the piggy bank after he started saving each month over the two-year period.\n\nFinal answer: It cannot yet be determined without additional information about John's initial savings and any subsequent deposits.",
+      "token_usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 71,
+        "total_tokens": 418
+      },
+      "runtime_seconds": 4.602745499985758,
+      "answer": "It cannot yet be determined without additional information about John's initial savings and any subsequent deposits.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "It cannot yet be determined without additional information about John's initial savings and any subsequent deposits.",
+    "candidate_answers": {
+      "solver_a": "It cannot yet be determined without additional information about John's initial savings and any subsequent deposits."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "It cannot yet be determined without additional information about John's initial savings and any subsequent deposits.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction states cannot be determined, not equivalent to 200.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 347,
+      "completion_tokens": 71,
+      "total_tokens": 418
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 347,
+        "completion_tokens": 71,
+        "total_tokens": 418
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 4.602745499985758
+    },
+    "total_runtime_seconds": 4.60348079999676,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction states cannot be determined, not equivalent to 200.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction states cannot be determined, not equivalent to 200.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 309,
+      "completion_tokens": 213,
+      "total_tokens": 522
+    },
+    "judge_runtime_seconds": 1.2044782166582688,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 18,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 18,
+    "setting": "single_partial",
+    "shared_question": "How much money remains in John's piggy bank?",
+    "gold_answer": "200",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How much money remains in John's piggy bank?\nYour private fact: He then spends $400 from the piggy bank on a car repair.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The initial amount of money in John's piggy bank before spending.\n2. Whether there was any additional income or expenses after he spent $400 on the car repair.\n\nWithout this information, it is impossible to determine how much money remains in John's piggy bank.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The initial amount of money in John's piggy bank before spending.\n2. Whether there was any additional income or expenses after he spent $400 on the car repair.\n\nWithout this information, it is impossible to determine how much money remains in John's piggy bank.",
+      "token_usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 68,
+        "total_tokens": 415
+      },
+      "runtime_seconds": 5.164115699997637,
+      "answer": "400",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "400",
+    "candidate_answers": {
+      "solver_b": "400"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "400",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 400, not 200.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 347,
+      "completion_tokens": 68,
+      "total_tokens": 415
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 347,
+        "completion_tokens": 68,
+        "total_tokens": 415
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 5.164115699997637
+    },
+    "total_runtime_seconds": 5.164720399945509,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 400, not 200.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 400, not 200.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 309,
+      "completion_tokens": 213,
+      "total_tokens": 521
+    },
+    "judge_runtime_seconds": 1.2044782166582688,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 18,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 19,
+    "setting": "single_partial",
+    "shared_question": "How many plates are needed?",
+    "gold_answer": "135",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many plates are needed?\nYour private fact: Wickham invites 30 people to a party. Half of the invited guests each bring one additional person.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The number of plates required per guest.\n2. Whether there will be any leftover plates after the event.\n3. Any specific requirements regarding the type or quantity of plates (e.g., color, size).\n\nWithout this information, we cannot determine how many plates are needed.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The number of plates required per guest.\n2. Whether there will be any leftover plates after the event.\n3. Any specific requirements regarding the type or quantity of plates (e.g., color, size).\n\nWithout this information, we cannot determine how many plates are needed.",
+      "token_usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 66,
+        "total_tokens": 413
+      },
+      "runtime_seconds": 7.193250100011937,
+      "answer": "",
+      "answer_extraction": "concluding_undetermined"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 347,
+      "completion_tokens": 66,
+      "total_tokens": 413
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 347,
+        "completion_tokens": 66,
+        "total_tokens": 413
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 7.193250100011937
+    },
+    "total_runtime_seconds": 7.194044400006533,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 357,
+      "completion_tokens": 345,
+      "total_tokens": 702
+    },
+    "judge_runtime_seconds": 2.28874548333503,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 19,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 19,
+    "setting": "single_partial",
+    "shared_question": "How many plates are needed?",
+    "gold_answer": "135",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many plates are needed?\nYour private fact: The party has a 3-course meal, and each person uses a new plate for every course.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. Number of people attending the party.\n2. Duration of the 3-course meal (number of courses).\n3. Size of each plate used per course.\n\nFinal answer: Cannot yet be determined.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. Number of people attending the party.\n2. Duration of the 3-course meal (number of courses).\n3. Size of each plate used per course.\n\nFinal answer: Cannot yet be determined.",
+      "token_usage": {
+        "prompt_tokens": 345,
+        "completion_tokens": 51,
+        "total_tokens": 396
+      },
+      "runtime_seconds": 3.364688700006809,
+      "answer": "Cannot yet be determined.",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "Cannot yet be determined.",
+    "candidate_answers": {
+      "solver_b": "Cannot yet be determined."
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "Cannot yet be determined.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 345,
+      "completion_tokens": 51,
+      "total_tokens": 396
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 345,
+        "completion_tokens": 51,
+        "total_tokens": 396
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 3.364688700006809
+    },
+    "total_runtime_seconds": 3.365334400034044,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 357,
+      "completion_tokens": 345,
+      "total_tokens": 702
+    },
+    "judge_runtime_seconds": 2.28874548333503,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 19,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 20,
+    "setting": "single_partial",
+    "shared_question": "How many hard hats remain in the truck?",
+    "gold_answer": "43",
+    "agent_variant": "A",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nShared question: How many hard hats remain in the truck?\nYour private fact: A truck initially contains 26 pink hard hats, 15 green hard hats, and 24 yellow hard hats.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n- The number of hard hats remaining in the truck after some have been removed or used.\n- Whether any specific hard hats (e.g., those of certain colors) were taken out or left behind.\n\nTo determine how many hard hats remain in the truck, we would need more details about which ones were removed or if there's a specific count of remaining items. Without this information, it's impossible to calculate accurately.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n- The number of hard hats remaining in the truck after some have been removed or used.\n- Whether any specific hard hats (e.g., those of certain colors) were taken out or left behind.\n\nTo determine how many hard hats remain in the truck, we would need more details about which ones were removed or if there's a specific count of remaining items. Without this information, it's impossible to calculate accurately.",
+      "token_usage": {
+        "prompt_tokens": 354,
+        "completion_tokens": 93,
+        "total_tokens": 447
+      },
+      "runtime_seconds": 6.714422999997623,
+      "answer": "",
+      "answer_extraction": "no_supported_answer"
+    },
+    "final_prediction": "",
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 354,
+      "completion_tokens": 93,
+      "total_tokens": 447
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 354,
+        "completion_tokens": 93,
+        "total_tokens": 447
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 6.714422999997623
+    },
+    "total_runtime_seconds": 6.715157600003295,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 77,
+      "completion_tokens": 146,
+      "total_tokens": 223
+    },
+    "judge_runtime_seconds": 1.0178697999993649,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 20,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 20,
+    "setting": "single_partial",
+    "shared_question": "How many hard hats remain in the truck?",
+    "gold_answer": "43",
+    "agent_variant": "B",
+    "single_event": {
+      "agent": "solver_b",
+      "phase": "single_final",
+      "actual_input": "Role: solver_b\nShared question: How many hard hats remain in the truck?\nYour private fact: Carl removes 4 pink hard hats. John then removes 6 additional pink hard hats and twice that number of green hard hats.\nAnalyze what can be concluded and clearly identify missing information. If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. Use natural text; do not output JSON.",
+      "output": "Current answer: Undetermined\n\nMissing information:\n1. The initial number of pink hard hats.\n2. The total number of hard hats removed (Carl's removal plus John's).\n3. Whether any hard hats remained after Carl's and John's actions.\n\nTo determine how many hard hats remain in the truck, we would need more specific details about these quantities. Without this information, it's impossible to calculate the remaining number of hard hats accurately.",
+      "raw_output": "Current answer: Undetermined\n\nMissing information:\n1. The initial number of pink hard hats.\n2. The total number of hard hats removed (Carl's removal plus John's).\n3. Whether any hard hats remained after Carl's and John's actions.\n\nTo determine how many hard hats remain in the truck, we would need more specific details about these quantities. Without this information, it's impossible to calculate the remaining number of hard hats accurately.",
+      "token_usage": {
+        "prompt_tokens": 354,
+        "completion_tokens": 90,
+        "total_tokens": 444
+      },
+      "runtime_seconds": 5.84511829999974,
+      "answer": "3",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "3",
+    "candidate_answers": {
+      "solver_b": "3"
+    },
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "3",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 3, expected 43.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 354,
+      "completion_tokens": 90,
+      "total_tokens": 444
+    },
+    "per_agent_token_usage": {
+      "solver_b": {
+        "prompt_tokens": 354,
+        "completion_tokens": 90,
+        "total_tokens": 444
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 5.84511829999974
+    },
+    "total_runtime_seconds": 5.845832100021653,
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Predicted 3, expected 43.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 3, expected 43.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 76,
+      "completion_tokens": 146,
+      "total_tokens": 222
+    },
+    "judge_runtime_seconds": 1.0178697999993649,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 20,
+    "oracle_gap": false
+  }
+]

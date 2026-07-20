@@ -1,0 +1,2071 @@
+[
+  {
+    "question_id": 1,
+    "setting": "multi_partial",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "final_prediction": "",
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Julie read 12 pages yesterday.",
+          "Today she read twice as many pages as yesterday."
+        ],
+        "B": [
+          "The book has 120 pages.",
+          "Tomorrow she reads half of the remaining pages."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": false
+      },
+      "unit_coverage_scores": {
+        "A": [
+          1.0,
+          1.0
+        ],
+        "B": [
+          0.6,
+          0.5
+        ]
+      },
+      "information_complete": false,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": true,
+      "deepseek_semantic_review": {
+        "id": "0:information",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Missing fact: Tomorrow she reads half of the remaining pages."
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "multi_partial",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "final_prediction": "50",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 1,
+    "finalizer_recovered": true,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The wallet costs $100.",
+          "Betty already has half of the required amount."
+        ],
+        "B": [
+          "Her parents give her $15.",
+          "Her grandparents give her twice the amount her parents give."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.25,
+          0.75
+        ],
+        "B": [
+          0.75,
+          0.875
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "DeepSeek semantic fact-disclosure review",
+      "needs_semantic_review": true,
+      "deepseek_semantic_review": {
+        "id": "0:information",
+        "correct": true,
+        "format_issue": false,
+        "reason": ""
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "prediction 50 is not equivalent to gold 5",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "multi_partial",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "final_prediction": "6",
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The box initially weighs 2 pounds.",
+          "The brownies triple that weight."
+        ],
+        "B": [
+          "Two more pounds are added afterward.",
+          "The resulting weight is then doubled."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": false
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.8333,
+          0.6
+        ],
+        "B": [
+          0.5,
+          0.6667
+        ]
+      },
+      "information_complete": false,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": true,
+      "deepseek_semantic_review": {
+        "id": "0:information",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Missing facts from B: 'Two more pounds are added afterward' and 'The resulting weight is then doubled' are not present."
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "multi_partial",
+    "shared_question": "How much did Alexis pay for the shoes?",
+    "gold_answer": "41",
+    "final_prediction": "13",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Alexis has a $200 budget.",
+          "She spends $30, $46, and $38 on three items."
+        ],
+        "B": [
+          "She spends another $11 and $18.",
+          "She has $16 left after buying the shoes."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.8,
+          0.6667
+        ],
+        "B": [
+          0.5,
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "DeepSeek semantic fact-disclosure review",
+      "needs_semantic_review": true,
+      "deepseek_semantic_review": {
+        "id": "0:information",
+        "correct": true,
+        "format_issue": false,
+        "reason": ""
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "171",
+      "solver_b": "16"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "171",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 171 does not equal gold 41.",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "16",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 16 does not equal gold 41.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 13 does not equal gold 41.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 171 does not equal gold 41.",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 16 does not equal gold 41.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 6,
+    "setting": "multi_partial",
+    "shared_question": "How much does each top cost?",
+    "gold_answer": "5",
+    "final_prediction": "",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Ann spends $75 in total.",
+          "She buys 5 pairs of shorts for $7 each."
+        ],
+        "B": [
+          "She buys 2 pairs of shoes for $10 each.",
+          "She buys 4 equally priced tops."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.8,
+          1.0
+        ],
+        "B": [
+          1.0,
+          0.6667
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "10",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "discussion_round_1_send",
+        "round": 1,
+        "answer": "Uncertain about individual top costs without more details.",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Does not provide a numeric answer.",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "10",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted cost is 10, not 5.",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No answer provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Does not provide a numeric answer.",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted cost is 10, not 5.",
+          "deepseek_reviewed": true
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 7,
+    "setting": "multi_partial",
+    "shared_question": "How much sales revenue does Noah make this month?",
+    "gold_answer": "1200",
+    "final_prediction": "0",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": true,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Large paintings sell for $60 each.",
+          "Small paintings sell for $30 each.",
+          "Noah sold 8 large paintings last month."
+        ],
+        "B": [
+          "Noah sold 4 small paintings last month.",
+          "This month's revenue is twice last month's revenue."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.8333,
+          0.8333,
+          1.0
+        ],
+        "B": [
+          1.0,
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": "240"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "240",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 240 is not equivalent to gold 1200.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 0 is not equivalent to gold 1200.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 240 is not equivalent to gold 1200.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 8,
+    "setting": "multi_partial",
+    "shared_question": "How many minutes does Carolyn practice in 4 weeks?",
+    "gold_answer": "1920",
+    "final_prediction": "9600",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Piano practice is 20 minutes per day.",
+          "Violin practice is 3 times the piano practice time."
+        ],
+        "B": [
+          "She practices 6 days per week.",
+          "The period lasts 4 weeks."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          1.0,
+          0.875
+        ],
+        "B": [
+          0.8333,
+          0.6
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "4",
+      "solver_b": "4"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "4",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4, gold 1920. Not equivalent.",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "4",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4, gold 1920. Not equivalent.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 9600, gold 1920. Not equivalent.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4, gold 1920. Not equivalent.",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 4, gold 1920. Not equivalent.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 9,
+    "setting": "multi_partial",
+    "shared_question": "How many minutes does the third part take?",
+    "gold_answer": "45",
+    "final_prediction": "40",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The first part takes 25 minutes.",
+          "The second part takes twice as long as the first."
+        ],
+        "B": [
+          "The full assignment takes 2 hours."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          1.0,
+          1.0
+        ],
+        "B": [
+          0.8333
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "The duration of the third part is not specified and requires additional information to determine.",
+      "solver_b": "40"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "The duration of the third part is not specified and requires additional information to determine.",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction states insufficient information, not a numerical answer.",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "40",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 40, gold is 45.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 40, gold is 45.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction states insufficient information, not a numerical answer.",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 40, gold is 45.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 10,
+    "setting": "multi_partial",
+    "shared_question": "How much does James earn each week from both jobs?",
+    "gold_answer": "840",
+    "final_prediction": "",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The main-job rate is $20 per hour.",
+          "James works 30 hours at the main job."
+        ],
+        "B": [
+          "The second-job rate is 20% lower.",
+          "He works half as many hours at the second job."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.75,
+          1.0
+        ],
+        "B": [
+          0.7143,
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 11,
+    "setting": "multi_partial",
+    "shared_question": "What balance remains after the 4 monthly payments?",
+    "gold_answer": "520",
+    "final_prediction": "",
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": true,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The laptop costs $1000.",
+          "The down payment is 20% plus an additional $20."
+        ],
+        "B": [
+          "The monthly payment is $65.",
+          "Tara makes 4 monthly payments."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          1.0,
+          0.7778
+        ],
+        "B": [
+          0.8,
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "520",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "520",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 12,
+    "setting": "multi_partial",
+    "shared_question": "How many packs must Roger buy?",
+    "gold_answer": "3",
+    "final_prediction": "",
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "There are 13 players.",
+          "Each person needs one pouch."
+        ],
+        "B": [
+          "There are 3 coaches and 2 helpers.",
+          "Each pack contains 6 pouches."
+        ]
+      },
+      "side_revealed": {
+        "A": false,
+        "B": false
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.5,
+          0.4
+        ],
+        "B": [
+          1.0,
+          0.4
+        ]
+      },
+      "information_complete": false,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": true,
+      "deepseek_semantic_review": {
+        "id": "0:information",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Missing required facts: 'There are 13 players', 'Each person needs one pouch', 'Each pack contains 6 pouches'."
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 13,
+    "setting": "multi_partial",
+    "shared_question": "How many kilograms does each of the last two people lose?",
+    "gold_answer": "28",
+    "final_prediction": "38",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The four people lose 103 kilograms in total.",
+          "The first person loses 27 kilograms."
+        ],
+        "B": [
+          "The second person loses 7 kilograms less than the first.",
+          "The final two people lose equal amounts."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.75,
+          1.0
+        ],
+        "B": [
+          1.0,
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "25",
+      "solver_b": "38"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "25",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 25, gold 28.",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "38",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 38, gold 28.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Predicted 38, gold 28.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 25, gold 28.",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "0:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 38, gold 28.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 14,
+    "setting": "multi_partial",
+    "shared_question": "How many vegetables does the garden produce altogether?",
+    "gold_answer": "768",
+    "final_prediction": "414",
+    "failure_type": "answer_selection_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 1,
+    "finalizer_recovered": true,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": true,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The garden produces 237 potatoes.",
+          "It produces 60 fewer cucumbers than potatoes."
+        ],
+        "B": [
+          "It produces twice as many peppers as cucumbers."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          1.0,
+          1.0
+        ],
+        "B": [
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "768",
+      "solver_b": "768"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "768",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "768",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true,
+      "solver_b": true,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 414 is not mathematically equal to gold 768.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 15,
+    "setting": "multi_partial",
+    "shared_question": "How many cans does Jennifer take home?",
+    "gold_answer": "100",
+    "final_prediction": "",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": true,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Jennifer initially buys 40 cans."
+        ],
+        "B": [
+          "Jennifer buys 6 additional cans for every 5 cans Mark buys.",
+          "Mark buys 50 cans."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          1.0
+        ],
+        "B": [
+          1.0,
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "60",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "60",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 60 is not equal to gold 100.",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No answer provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 60 is not equal to gold 100.",
+          "deepseek_reviewed": true
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 16,
+    "setting": "multi_partial",
+    "shared_question": "What was Irene's total income last week?",
+    "gold_answer": "700",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 1,
+    "finalizer_recovered": true,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Irene earns $500 for 40 regular hours."
+        ],
+        "B": [
+          "She earns $20 per overtime hour.",
+          "She worked 50 hours."
+        ]
+      },
+      "side_revealed": {
+        "A": false,
+        "B": false
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.4286
+        ],
+        "B": [
+          0.6667,
+          0.5
+        ]
+      },
+      "information_complete": false,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": true,
+      "deepseek_semantic_review": {
+        "id": "0:information",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Required facts not disclosed: specific regular earnings ($500 for 40 hours), overtime rate ($20/hour), and hours worked (50) are missing."
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 17,
+    "setting": "multi_partial",
+    "shared_question": "How much money does Winwin take home?",
+    "gold_answer": "35",
+    "final_prediction": "40",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Winwin wins $50.",
+          "She pays 20% in tax."
+        ],
+        "B": [
+          "She pays an additional $5 processing fee."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.6667,
+          1.0
+        ],
+        "B": [
+          0.8571
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "missing judge row",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 18,
+    "setting": "multi_partial",
+    "shared_question": "How much money remains in John's piggy bank?",
+    "gold_answer": "200",
+    "final_prediction": "600",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "John saves $25 per month.",
+          "He saves for 2 years."
+        ],
+        "B": [
+          "He spends $400 on a car repair."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.8,
+          1.0
+        ],
+        "B": [
+          0.8571
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 600 does not equal gold 200.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 19,
+    "setting": "multi_partial",
+    "shared_question": "How many plates are needed?",
+    "gold_answer": "135",
+    "final_prediction": "",
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "Wickham invites 30 people.",
+          "Half of them each bring one additional person."
+        ],
+        "B": [
+          "There are 3 courses.",
+          "Each person uses one new plate per course."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": false
+      },
+      "unit_coverage_scores": {
+        "A": [
+          0.75,
+          0.875
+        ],
+        "B": [
+          0.5,
+          0.375
+        ]
+      },
+      "information_complete": false,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": true,
+      "deepseek_semantic_review": {
+        "id": "0:information",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Missing required facts: 'There are 3 courses.' and 'Each person uses one new plate per course.'"
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 20,
+    "setting": "multi_partial",
+    "shared_question": "How many hard hats remain in the truck?",
+    "gold_answer": "43",
+    "final_prediction": "",
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 2,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "required_fact_units": {
+        "A": [
+          "The truck initially contains 26 pink hard hats.",
+          "The truck initially contains 15 green hard hats.",
+          "The truck initially contains 24 yellow hard hats."
+        ],
+        "B": [
+          "Carl removes 4 pink hard hats.",
+          "John removes 6 additional pink hard hats.",
+          "John removes twice 6, or 12, green hard hats."
+        ]
+      },
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "unit_coverage_scores": {
+        "A": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "B": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "information_complete": true,
+      "assessment_method": "atomic lexical+numeric coverage",
+      "needs_semantic_review": false
+    },
+    "candidate_answers": {
+      "solver_a": "",
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false,
+      "solver_b": false,
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  }
+]

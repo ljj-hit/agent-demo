@@ -1,0 +1,22 @@
+{
+  "script": "run_hidden_gsm8k.py",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\20.json",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "settings": [
+    "single_full",
+    "single_partial",
+    "multi_partial",
+    "multi_partial_verifier",
+    "oracle_broadcast"
+  ],
+  "device": "cuda",
+  "temperature": 0.2,
+  "max_new_tokens": 384,
+  "discussion_rounds": 2,
+  "seed": 42,
+  "deepseek_enabled": true,
+  "discussion_reused_across_selected_settings": true,
+  "started_at": "2026-07-20T15:36:48",
+  "setting": "single_partial",
+  "output_dir": "D:\\agentdemo\\multi_agent_gsm8k\\outputs_hidden_gsm8k\\20260720_153648_single_partial"
+}

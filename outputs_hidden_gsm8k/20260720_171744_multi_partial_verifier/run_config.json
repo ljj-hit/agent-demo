@@ -1,0 +1,20 @@
+{
+  "script": "run_hidden_gsm8k.py",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\20.json",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "settings": [
+    "multi_partial",
+    "multi_partial_verifier"
+  ],
+  "device": "cuda",
+  "temperature": 0.2,
+  "max_new_tokens": 384,
+  "discussion_rounds": 2,
+  "seed": 42,
+  "finalizer_max_attempts": 3,
+  "deepseek_enabled": true,
+  "discussion_reused_across_selected_settings": true,
+  "started_at": "2026-07-20T17:17:44",
+  "setting": "multi_partial_verifier",
+  "output_dir": "D:\\agentdemo\\multi_agent_gsm8k\\outputs_hidden_gsm8k\\20260720_171744_multi_partial_verifier"
+}

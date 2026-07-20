@@ -1,0 +1,2 @@
+﻿setting,agent_variant,n,correct,accuracy,solver_a_correct,solver_b_correct,verifier_correct,finalizer_correct,information_complete,fail_information_acquisition,fail_information_integration,fail_answer_selection,invalid_output,oracle_gap,oracle_gap_ids,lucky_guess,format_issue_corrected,prompt_tokens,completion_tokens,total_tokens,judge_total_tokens,inference_runtime_seconds,judge_runtime_seconds,end_to_end_runtime_seconds
+oracle_broadcast,,20,11,0.55,12,13,11,11,20,0,3,2,4,4,"3,5,13,16",0,0,136799,24426,161225,7545,1297.018,26.268,1323.286
