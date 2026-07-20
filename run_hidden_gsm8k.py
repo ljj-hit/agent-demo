@@ -48,6 +48,7 @@ DEFAULT_LIMIT = 0                    # 0 means all records in DATA_PATH.
 DEFAULT_ALLOW_DOWNLOAD = False       # Keep local model loading offline by default.
 DEFAULT_SKIP_DEEPSEEK = False        # False means DeepSeek judging is enabled.
 DEFAULT_JUDGE_MAX_ATTEMPTS = 4
+DEFAULT_FINALIZER_MAX_ATTEMPTS = 3
 
 # Leave empty to show the interactive setting menu. Example:
 # DEFAULT_SELECTED_SETTINGS = ("multi_partial", "multi_partial_verifier")
@@ -135,6 +136,92 @@ def equivalent(left: Any, right: Any) -> bool:
     return bool(norm(left)) and norm(left) == norm(right)
 
 
+def _legacy_explicitly_undetermined(value: Any) -> bool:
+    text = re.sub(r"\s+", " ", str(value or "").strip().lower())
+    return (text in UNDETERMINED_ANSWERS or
+            any(phrase in text for phrase in ("cannot determine", "cannot be determined", "can't determine",
+                                               "not enough information", "insufficient information", "无法确定", "不能确定")))
+
+
+def _legacy_concludingly_undetermined(value: Any) -> bool:
+    """Conservatively reject unlabeled prose that says the answer is unknown."""
+    text = re.sub(r"\s+", " ", str(value or "").strip().lower())
+    if not text:
+        return True
+    phrases = ("cannot determine", "cannot be determined", "can't determine", "not enough information",
+               "insufficient information", "unable to determine", "answer is undetermined", "无法确定", "不能确定")
+    # With no explicit answer label, any unresolved-insufficiency statement is
+    # treated as authoritative. This guarantees that a coincidental gold
+    # number elsewhere in the prose cannot be scored as an answer.
+    return any(phrase in text for phrase in phrases)
+
+
+def _legacy_extract_labeled_answer(text: Any, label: str) -> str:
+    """Extract only the declared answer, never an incidental number in reasoning."""
+    raw = re.sub(r"[*`]", "", str(text or ""))
+    matches = re.findall(rf"(?im){re.escape(label)}\s*[:：=]\s*(.+?)\s*$", raw)
+    if not matches:
+        return ""
+    declared = re.sub(r"[*`]+", "", matches[-1]).strip()
+    return "" if explicitly_undetermined(declared) else extract_answer(declared)
+
+
+def extract_current_answer(text: Any) -> str:
+    return extract_labeled_answer(text, "Current answer")
+
+
+def explicitly_undetermined(value: Any) -> bool:
+    text = re.sub(r"\s+", " ", str(value or "").strip().lower())
+    phrases = ("cannot determine", "cannot be determined", "can't determine", "not enough information",
+               "insufficient information", "\u65e0\u6cd5\u786e\u5b9a", "\u4e0d\u80fd\u786e\u5b9a")
+    return (text in UNDETERMINED_ANSWERS or any(phrase in text for phrase in phrases) or
+            bool(re.search(r"\b(?:undetermined|unknown|insufficient)\b", text)))
+
+
+def concludingly_undetermined(value: Any) -> bool:
+    text = re.sub(r"\s+", " ", str(value or "").strip().lower())
+    if not text:
+        return True
+    phrases = ("cannot determine", "cannot be determined", "can't determine", "not enough information",
+               "insufficient information", "unable to determine", "answer is undetermined",
+               "impossible to determine", "impossible to calculate", "impossible to conclude",
+               "cannot conclude", "cannot calculate", "cannot answer",
+               "\u65e0\u6cd5\u786e\u5b9a", "\u4e0d\u80fd\u786e\u5b9a")
+    return (any(phrase in text for phrase in phrases) or
+            bool(re.search(r"\b(?:undetermined|unknown|insufficient)\b", text)))
+
+
+def extract_labeled_answer(text: Any, label: str) -> str:
+    """Extract a declared answer using encoding-safe punctuation patterns."""
+    raw = re.sub(r"[*`]", "", str(text or ""))
+    matches = re.findall(rf"(?im){re.escape(label)}\s*[:\uFF1A=]\s*(.+?)\s*$", raw)
+    if not matches:
+        return ""
+    declared = matches[-1].strip()
+    return "" if explicitly_undetermined(declared) else extract_answer(declared)
+
+
+def extract_free_text_answer(text: Any, label: str) -> tuple[str, str]:
+    """Return a safe answer plus an auditable extraction method."""
+    raw = str(text or "").strip()
+    labeled = extract_labeled_answer(raw, label)
+    label_present = bool(re.search(rf"(?i){re.escape(label)}\s*[:：=]", re.sub(r"[*`]", "", raw)))
+    if label_present:
+        return labeled, "explicit_label" if labeled else "explicit_undetermined"
+    # Some small models emit the discussion-format declaration even when a
+    # final answer was requested. An explicit undetermined current answer is
+    # authoritative and must never fall through to a numbered-list digit.
+    if label.lower() == "final answer":
+        normalized = re.sub(r"[*`]", "", raw)
+        current_present = bool(re.search(r"(?i)Current answer\s*[:\uFF1A=]", normalized))
+        if current_present and not extract_labeled_answer(raw, "Current answer"):
+            return "", "explicit_current_undetermined"
+    if concludingly_undetermined(raw):
+        return "", "concluding_undetermined"
+    fallback = extract_answer(raw)
+    return (fallback, "safe_natural_language_fallback") if decimal(fallback) is not None else ("", "no_supported_answer")
+
+
 def as_bool(value: Any, default: bool = False) -> bool:
     if isinstance(value, bool):
         return value
@@ -160,6 +247,24 @@ def parse_object(text: str, defaults: dict) -> dict:
     if isinstance(value, dict):
         result.update(value)
     return result
+
+
+def raw_json_object(text: str) -> dict | None:
+    """Parse the model's actual JSON object without filling default fields."""
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", cleaned, flags=re.I)
+    try:
+        value = json.loads(cleaned)
+    except json.JSONDecodeError:
+        match = re.search(r"\{.*\}", cleaned, re.S)
+        if not match:
+            return None
+        try:
+            value = json.loads(match.group(0))
+        except json.JSONDecodeError:
+            return None
+    return value if isinstance(value, dict) else None
 
 
 def blank_usage() -> dict:
@@ -239,10 +344,10 @@ class LocalQwen:
         print(f"model dtype: {dtype}")
         self.model = AutoModelForCausalLM.from_pretrained(path, dtype=dtype, local_files_only=not allow_download, trust_remote_code=True).to(device).eval()
 
-    def call(self, system: str, user: str) -> tuple[str, dict, float]:
-        return self.call_batch([(system, user)])[0]
+    def call(self, system: str, user: str, temperature: float | None = None) -> tuple[str, dict, float]:
+        return self.call_batch([(system, user)], temperature=temperature)[0]
 
-    def call_batch(self, requests: list[tuple[str, str]]) -> list[tuple[str, dict, float]]:
+    def call_batch(self, requests: list[tuple[str, str]], temperature: float | None = None) -> list[tuple[str, dict, float]]:
         """Generate a logically simultaneous batch for symmetric solver turns."""
         started = time.perf_counter()
         rendered = [self.tokenizer.apply_chat_template([{"role": "system", "content": system}, {"role": "user", "content": user}], tokenize=False, add_generation_prompt=True)
@@ -253,8 +358,9 @@ class LocalQwen:
         model_device = next(self.model.parameters()).device
         inputs = {k: v.to(model_device) for k, v in inputs.items()}
         kwargs = {"max_new_tokens": self.max_new_tokens, "pad_token_id": self.tokenizer.pad_token_id, "eos_token_id": self.tokenizer.eos_token_id}
-        if self.temperature > 0:
-            kwargs.update(do_sample=True, temperature=self.temperature, top_p=.9)
+        generation_temperature = self.temperature if temperature is None else temperature
+        if generation_temperature > 0:
+            kwargs.update(do_sample=True, temperature=generation_temperature, top_p=.9)
         else:
             kwargs["do_sample"] = False
         with self.torch.inference_mode():
@@ -279,9 +385,16 @@ class LocalQwen:
 VERIFIER_DEFAULT = {"information_sufficient": False, "revealed_facts": [], "candidate_checks": [], "verified_answer": "", "selected_source": "none", "missing_information": []}
 FINALIZER_DEFAULT = {"final_answer": "", "selected_source": "recomputed", "used_public_facts": [], "followed_verifier": False, "reason": ""}
 
+UNDETERMINED_ANSWERS = {"", "unknown", "undetermined", "cannot determine", "cannot be determined", "insufficient information", "none", "n/a"}
 
-def model_event(model: LocalQwen, agent: str, system: str, user: str, phase: str, parser_defaults: dict | None) -> dict:
-    raw, usage, elapsed = model.call(system, user)
+
+def model_event(model: LocalQwen, agent: str, system: str, user: str, phase: str, parser_defaults: dict | None,
+                temperature: float | None = None) -> dict:
+    try:
+        raw, usage, elapsed = model.call(system, user, temperature=temperature)
+    except TypeError:
+        # Compatibility with simple test doubles and older imported model wrappers.
+        raw, usage, elapsed = model.call(system, user)
     if parser_defaults is None:
         return {"agent": agent, "phase": phase, "actual_input": user, "output": raw,
                 "raw_output": raw, "token_usage": usage, "runtime_seconds": elapsed}
@@ -336,7 +449,7 @@ def run_discussion(model: LocalQwen, solver_prompt: str, item: dict, oracle: boo
         oracle_text = f'ORACLE PUBLIC FACT A (verbatim): {item["condition_A"]}\nORACLE PUBLIC FACT B (verbatim): {item["condition_B"]}'
 
     for round_no in range(1, rounds_count + 1):
-        # A and B send in one GPU batch from the exact same pre-round public
+        # A and B speak once in one GPU batch from the exact same pre-round public
         # snapshot; neither input contains the peer's same-round output.
         pre_round_transcript = "\n".join(x for x in (oracle_text, public_transcript(events)) if x)
         outbound_specs = {}
@@ -347,7 +460,8 @@ def run_discussion(model: LocalQwen, solver_prompt: str, item: dict, oracle: boo
                     f'Shared question: {item["shared_question"]}\nYour private fact: {item[f"condition_{side}"]}\n'
                     f'Public transcript through the previous completed round:\n{pre_round_transcript}\n'
                     "Think about the complete problem, not only your fragment. Explain what your facts imply, disclose exact useful facts, "
-                    "state what information is missing, and respond to earlier claims when present. Write directly to the other solver in natural text; "
+                    "state what information is missing, and respond to earlier claims when present. Begin with exactly one separate line "
+                    "`Current answer: <answer>` or `Current answer: undetermined`, then give your reasoning. Write directly to the other solver in natural text; "
                     "do not output JSON. You cannot see the peer's same-round message.")
             outbound_specs[side] = (f"solver_{side.lower()}", user, None)
         outbound = paired_model_events(model, solver_prompt, outbound_specs)
@@ -356,37 +470,12 @@ def run_discussion(model: LocalQwen, solver_prompt: str, item: dict, oracle: boo
             event["phase"] = f"discussion_round_{round_no}_send"
             event["round"] = round_no
             event["stage"] = "send"
+            event["current_answer"], event["current_answer_extraction"] = extract_free_text_answer(event["raw_output"], "Current answer")
+            event["current_answer_explicit"] = event["current_answer_extraction"].startswith("explicit_")
         events.extend([outbound["A"], outbound["B"]])
-
-        # Message delivery is the only cross-agent channel. Each solver keeps
-        # its own sent message locally and receives exactly the peer's public
-        # output; no private memory or hidden state is synchronized.
-        review_specs = {}
-        for side in ("A", "B"):
-            peer = "B" if side == "A" else "A"
-            user = (f'Role: solver_{side.lower()}\nReview round: {round_no} of {rounds_count}\n'
-                    f'Shared question: {item["shared_question"]}\nYour private fact: {item[f"condition_{side}"]}\n'
-                    f'Public transcript through the previous completed round:\n{pre_round_transcript}\n'
-                    f'Your sent message this round:\n{outbound[side]["raw_output"]}\n'
-                    f'Peer message received from solver_{peer.lower()}:\n{outbound[peer]["raw_output"]}\n'
-                    f'Review solver_{peer.lower()}\'s message against your own facts. Check calculations, resolve contradictions, identify remaining gaps, '
-                    "and give the best updated reasoning or answer. Address the peer directly in natural text; do not output JSON.")
-            review_specs[side] = (f"solver_{side.lower()}", user, None)
-        reviews = paired_model_events(model, solver_prompt, review_specs)
-        for side in ("A", "B"):
-            event = reviews[side]
-            event["phase"] = f"discussion_round_{round_no}_review"
-            event["round"] = round_no
-            event["stage"] = "review"
-        events.extend([reviews["A"], reviews["B"]])
         round_records.append({"round": round_no, "purpose": purpose,
                               "pre_round_public_transcript": pre_round_transcript,
-                              "simultaneous_send": {side.lower(): outbound[side] for side in ("A", "B")},
-                              "message_delivery": {
-                                  "solver_a_received_from_solver_b": outbound["B"]["raw_output"],
-                                  "solver_b_received_from_solver_a": outbound["A"]["raw_output"],
-                              },
-                              "simultaneous_review": {side.lower(): reviews[side] for side in ("A", "B")}})
+                              "simultaneous_turn": {side.lower(): outbound[side] for side in ("A", "B")}})
 
     final_specs = {}
     transcript = "\n".join(x for x in (oracle_text, public_transcript(events)) if x)
@@ -401,10 +490,11 @@ def run_discussion(model: LocalQwen, solver_prompt: str, item: dict, oracle: boo
     finals = {}
     for side in ("A", "B"):
         final_batch[side]["phase"] = "solver_final"
+        final_batch[side]["answer"], final_batch[side]["answer_extraction"] = extract_free_text_answer(
+            final_batch[side].get("raw_output", ""), "Final answer")
         finals[side.lower()] = final_batch[side]
-    result = {"protocol": "symmetric_free_text_send_then_review", "round_records": round_records,
+    result = {"protocol": "symmetric_one_turn_per_round", "round_records": round_records,
               "symmetry_guarantees": {"same_round_send_uses_identical_public_snapshot": True,
-                                       "same_round_reviews_do_not_see_each_other": True,
                                        "paired_solver_generation_uses_one_gpu_batch": True,
                                        "cross_agent_channel_is_raw_public_text_only": True},
               "discussion_events": events, "public_transcript": transcript,
@@ -435,6 +525,10 @@ def fact_is_public(fact: str, public: str) -> tuple[bool, float]:
 
 
 def objective_information(item: dict, discussion: dict) -> dict:
+    if discussion.get("oracle_public_information"):
+        return {"required_fact_units": item["fact"], "side_revealed": {"A": True, "B": True},
+                "unit_coverage_scores": {"A": [1.0] * len(item["fact"]["A"]), "B": [1.0] * len(item["fact"]["B"])},
+                "information_complete": True, "assessment_method": "oracle verbatim disclosure"}
     public = discussion["public_transcript"]
     units, revealed, scores = {}, {}, {}
     for side in ("A", "B"):
@@ -445,7 +539,8 @@ def objective_information(item: dict, discussion: dict) -> dict:
         revealed[side] = all(ok for ok, _ in checks)
         scores[side] = [round(score, 4) for _, score in checks]
     return {"required_fact_units": units, "side_revealed": revealed, "unit_coverage_scores": scores,
-            "information_complete": all(revealed.values()), "assessment_method": "atomic lexical+numeric coverage"}
+            "information_complete": all(revealed.values()), "assessment_method": "atomic lexical+numeric coverage",
+            "needs_semantic_review": not all(revealed.values())}
 
 
 def add_information_timeline(item: dict, discussion: dict) -> None:
@@ -455,7 +550,10 @@ def add_information_timeline(item: dict, discussion: dict) -> None:
 
     def checkpoint(label: str, round_no: int | None) -> dict:
         public = "\n".join(x for x in (oracle, public_transcript(accumulated)) if x)
-        snapshot = objective_information(item, {"public_transcript": public})
+        snapshot_input = {"public_transcript": public}
+        if oracle:
+            snapshot_input["oracle_public_information"] = oracle
+        snapshot = objective_information(item, snapshot_input)
         row = {"checkpoint": label, "round": round_no, "public_event_count": len(accumulated),
                "information_complete": snapshot["information_complete"], "side_revealed": snapshot["side_revealed"]}
         timeline.append(row)
@@ -463,16 +561,11 @@ def add_information_timeline(item: dict, discussion: dict) -> None:
 
     state = checkpoint("discussion_start", None)
     for round_no in sorted({event["round"] for event in events}):
-        sends = [event for event in events if event["round"] == round_no and event.get("stage") == "send"]
-        reviews = [event for event in events if event["round"] == round_no and event.get("stage") == "review"]
+        sends = [event for event in events if event["round"] == round_no]
         for event in sends:
             event["information_complete_at_generation"] = state["information_complete"]
         accumulated.extend(sends)
-        state = checkpoint("after_simultaneous_send", round_no)
-        for event in reviews:
-            event["information_complete_at_generation"] = state["information_complete"]
-        accumulated.extend(reviews)
-        state = checkpoint("after_simultaneous_review", round_no)
+        state = checkpoint("after_simultaneous_turn", round_no)
     discussion["information_timeline"] = timeline
     first = next((x for x in timeline if x["information_complete"]), None)
     discussion["first_complete_checkpoint"] = first
@@ -496,8 +589,14 @@ def event_answer(event: dict | None, key: str = "final_answer") -> str:
     event = event or {}
     parsed = event.get("parsed_output", {})
     if key in parsed:
-        return str(parsed.get(key, "")).strip()
-    return extract_answer(event.get("raw_output", ""))
+        value = str(parsed.get(key, "")).strip()
+        return "" if explicitly_undetermined(value) else extract_answer(value)
+    # Free-text solver outputs must explicitly declare a final answer. This
+    # prevents "cannot determine" prose that merely mentions the gold number
+    # from being scored as correct.
+    if key == "final_answer" and "answer" in event:
+        return str(event.get("answer", ""))
+    return extract_free_text_answer(event.get("raw_output", ""), "Final answer")[0]
 
 
 def candidate_appearances(trace: dict) -> list[dict]:
@@ -508,9 +607,14 @@ def candidate_appearances(trace: dict) -> list[dict]:
                  "information_complete_at_appearance": trace["information"]["information_complete"]}]
     discussion = trace.get("discussion") or {}
     appearances = []
-    # Free-form discussion messages are preserved verbatim but are not treated
-    # as formal candidates. Only each solver's explicit final response enters
-    # answer-selection metrics.
+    timeline = {row.get("round"): row for row in discussion.get("information_timeline", [])
+                if row.get("checkpoint") == "after_simultaneous_turn"}
+    for event in discussion.get("discussion_events", []):
+        answer = event.get("current_answer", "")
+        if answer:
+            state = timeline.get(event.get("round"), {})
+            appearances.append({"source": event["agent"], "phase": event["phase"], "round": event.get("round"),
+                                "answer": answer, "information_complete_at_appearance": bool(state.get("information_complete"))})
     complete_after_discussion = bool(trace.get("information", {}).get("information_complete"))
     for side in ("a", "b"):
         event = discussion.get("solver_finals", {}).get(side)
@@ -524,6 +628,60 @@ def candidate_appearances(trace: dict) -> list[dict]:
     return appearances
 
 
+def finalizer_validation_error(event: dict) -> str:
+    raw_object = raw_json_object(event.get("raw_output", ""))
+    if raw_object is None:
+        return "response is not a valid JSON object"
+    if not raw_object:
+        return "response is an empty JSON object"
+    missing = [key for key in ("final_answer", "selected_source") if key not in raw_object]
+    if missing:
+        return "missing required field(s): " + ", ".join(missing)
+    if raw_object.get("selected_source") not in {"solver_a", "solver_b", "verifier", "recomputed"}:
+        return "selected_source is not an allowed value"
+    return ""
+
+
+def call_finalizer_with_retry(model: LocalQwen, system: str, user: str) -> dict:
+    attempts = []
+    retry_user = user
+    final_event = None
+    for attempt_no in range(1, DEFAULT_FINALIZER_MAX_ATTEMPTS + 1):
+        event = model_event(model, "finalizer", system, retry_user, "finalization", FINALIZER_DEFAULT,
+                            temperature=None if attempt_no == 1 else 0.0)
+        error = finalizer_validation_error(event)
+        attempts.append({"attempt": attempt_no, "temperature": "configured" if attempt_no == 1 else 0.0,
+                         "raw_output": event.get("raw_output", ""), "parsed_output": event.get("parsed_output", {}),
+                         "parse_error": event.get("parse_error", ""), "validation_error": error,
+                         "token_usage": event.get("token_usage", blank_usage()),
+                         "runtime_seconds": event.get("runtime_seconds", 0.0)})
+        final_event = event
+        if not error:
+            break
+        retry_user = (user + f"\n\nFORMAT CORRECTION AFTER ATTEMPT {attempt_no}: Your previous response was invalid because " + error + ".\n"
+                      "Previous invalid output: " + json.dumps(event.get("raw_output", ""), ensure_ascii=False) + "\n"
+                      "Return exactly one complete JSON object with this schema:\n"
+                      '{"final_answer":"","selected_source":"recomputed","used_public_facts":[],"followed_verifier":false,"reason":""}\n'
+                      "Never return {}. Include final_answer and selected_source. If the answer cannot be determined, use an empty "
+                      "final_answer. The empty value in the schema is only a placeholder: still solve the original task and populate it when "
+                      "the public evidence supports an answer. Output JSON only, without Markdown fences.")
+    assert final_event is not None
+    total_usage, total_runtime = blank_usage(), 0.0
+    for attempt in attempts:
+        add_usage(total_usage, attempt["token_usage"])
+        total_runtime += float(attempt["runtime_seconds"])
+    final_error = attempts[-1]["validation_error"]
+    final_event["token_usage"] = total_usage
+    final_event["runtime_seconds"] = total_runtime
+    final_event["attempts"] = attempts
+    final_event["retry_count"] = len(attempts) - 1
+    final_event["recovered_after_retry"] = len(attempts) > 1 and not final_error
+    final_event["retry_exhausted"] = bool(final_error)
+    final_event["invalid_output"] = bool(final_error)
+    final_event["validation_error"] = final_error
+    return final_event
+
+
 def finish_multi(model: LocalQwen, prompts: dict, item: dict, discussion: dict, with_verifier: bool) -> tuple[dict | None, dict]:
     candidates = {"solver_a": event_answer(discussion["solver_finals"]["a"]), "solver_b": event_answer(discussion["solver_finals"]["b"])}
     verifier = None
@@ -533,7 +691,7 @@ def finish_multi(model: LocalQwen, prompts: dict, item: dict, discussion: dict, 
     report = verifier["parsed_output"] if verifier else "(no verifier in this setting)"
     user = (f'Shared question: {item["shared_question"]}\nPublic transcript:\n{discussion["public_transcript"]}\n'
             f'Candidates: {json.dumps(candidates, ensure_ascii=False)}\nVerifier report: {json.dumps(report, ensure_ascii=False)}')
-    finalizer = model_event(model, "finalizer", prompts["finalizer"], user, "finalization", FINALIZER_DEFAULT)
+    finalizer = call_finalizer_with_retry(model, prompts["finalizer"], user)
     return verifier, finalizer
 
 
@@ -560,6 +718,8 @@ def classify(trace: dict, gold: str) -> tuple[str | None, bool]:
                 for x in appearances if x.get("answer"))
     if trace["correct"]:
         return None, lucky
+    if trace.get("invalid_output"):
+        return "invalid_output", lucky
     if not complete:
         return "information_acquisition_failure", lucky
     if not supported_correct_appeared:
@@ -577,7 +737,8 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
     if setting.startswith("single"):
         side = variant if setting == "single_partial" else None
         event = single_call(model, prompts["solver"], item, side)
-        prediction = event_answer(event)
+        prediction, extraction = extract_free_text_answer(event.get("raw_output", ""), "Final answer")
+        event["answer"], event["answer_extraction"] = prediction, extraction
         trace.update(single_event=event, final_prediction=prediction, candidate_answers={event["agent"]: prediction}, information={"information_complete": side is None, "side_revealed": {"A": side is None or side == "A", "B": side is None or side == "B"}})
     else:
         cache_key = "oracle" if setting == "oracle_broadcast" else "partial"
@@ -592,6 +753,10 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
             candidates["verifier"] = event_answer(verifier, "verified_answer")
         trace.update(discussion=discussion, discussion_cache_key=cache_key, finalizer_event=finalizer,
                      final_prediction=event_answer(finalizer), candidate_answers=candidates, information=objective_information(item, discussion))
+        trace["invalid_output"] = bool(finalizer.get("invalid_output"))
+        trace["finalizer_retry_count"] = int(finalizer.get("retry_count", 0))
+        trace["finalizer_recovered"] = bool(finalizer.get("recovered_after_retry"))
+        trace["finalizer_exhausted"] = bool(finalizer.get("retry_exhausted"))
         if verifier is not None:
             trace["verifier_event"] = verifier
     trace["correct_before_judge"] = equivalent(trace["final_prediction"], gold)
@@ -615,7 +780,7 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
 def deepseek_review(traces: list[dict]) -> tuple[dict, dict, float]:
     entries = []
     for trace_index, trace in enumerate(traces):
-        if not trace["correct_before_judge"]:
+        if not trace["correct_before_judge"] and not trace.get("invalid_output"):
             entries.append({"id": f"{trace_index}:final", "setting": trace["setting"], "target": "final", "question": trace["shared_question"],
                             "gold": trace["gold_answer"], "prediction": trace["final_prediction"], "local_correct": False})
         for appearance_index, appearance in enumerate(trace.get("candidate_appearances", [])):
@@ -623,6 +788,13 @@ def deepseek_review(traces: list[dict]) -> tuple[dict, dict, float]:
                 entries.append({"id": f"{trace_index}:candidate:{appearance_index}", "setting": trace["setting"], "question": trace["shared_question"],
                                 "target": f'{appearance["source"]}/{appearance["phase"]}', "gold": trace["gold_answer"],
                                 "prediction": appearance["answer"], "local_correct": False})
+        information = trace.get("information", {})
+        discussion = trace.get("discussion") or {}
+        if information.get("needs_semantic_review") and discussion:
+            entries.append({"id": f"{trace_index}:information", "setting": trace["setting"], "target": "information_completeness",
+                            "required_facts": information.get("required_fact_units", {}),
+                            "public_transcript": discussion.get("public_transcript", ""),
+                            "instruction": "Decide whether every required fact is explicitly disclosed or unambiguously paraphrased in the public transcript."})
     if not entries:
         return {}, blank_usage(), 0.0
     load_dotenv, OpenAI = load_api_dependencies()
@@ -632,9 +804,10 @@ def deepseek_review(traces: list[dict]) -> tuple[dict, dict, float]:
         raise SystemExit("Missing DEEPSEEK_API_KEY or API_KEY in .env.")
     client = OpenAI(api_key=key, base_url=os.getenv("DEEPSEEK_BASE_URL", os.getenv("BASE_URL", DEEPSEEK_BASE_URL)))
     model = os.getenv("DEEPSEEK_MODEL", os.getenv("MODEL_NAME", DEEPSEEK_MODEL))
-    user = ("Return a valid JSON object. Review only the locally incorrect GSM8K predictions below. Judge only mathematical equivalence "
-            "to gold, not reasoning quality. format_issue=true only when the prediction is actually equivalent "
-            "because of formatting, units, wording, fractions, or another equivalent representation. Return one JSON result for every id.\n" + json.dumps(entries, ensure_ascii=False))
+    user = ("Return a valid JSON object with one result for every id. For answer targets, judge only mathematical equivalence to gold; "
+            "format_issue=true only for an actually equivalent representation. For information_completeness targets, set correct=true only "
+            "when every required fact is explicitly present or unambiguously paraphrased in the public transcript; do not require matching wording. "
+            "Explain missing facts briefly in reason.\n" + json.dumps(entries, ensure_ascii=False))
     started = time.perf_counter()
     last_error = None
     for attempt in range(1, DEFAULT_JUDGE_MAX_ATTEMPTS + 1):
@@ -671,7 +844,8 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
         (output_dir / "run_config.json").write_text(json.dumps(run_config, ensure_ascii=False, indent=2), encoding="utf-8")
     (output_dir / "traces_all.json").write_text(json.dumps(traces, ensure_ascii=False, indent=2), encoding="utf-8")
     failure_fields = ("question_id", "setting", "agent_variant", "shared_question", "gold_answer", "final_prediction",
-                      "failure_type", "lucky_guess", "oracle_gap", "information", "candidate_answers",
+                      "failure_type", "invalid_output", "finalizer_retry_count", "finalizer_recovered", "finalizer_exhausted",
+                      "lucky_guess", "oracle_gap", "information", "candidate_answers",
                       "candidate_appearances", "per_agent_correctness", "deepseek_judge")
     failures = [{key: trace[key] for key in failure_fields if key in trace}
                 for trace in traces if not trace.get("correct")]
@@ -680,16 +854,14 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
     for t in traces:
         grouped[(t["setting"], t.get("agent_variant") or "")].append(t)
     fields = ["setting", "agent_variant", "n", "correct", "accuracy", "solver_a_correct", "solver_b_correct", "verifier_correct", "finalizer_correct", "information_complete",
-              "fail_information_acquisition", "fail_information_integration", "fail_answer_selection", "lucky_guess", "format_issue_corrected",
-              "oracle_accuracy", "oracle_gap_accuracy", "oracle_pairwise_rescues", "prompt_tokens", "completion_tokens", "total_tokens", "judge_total_tokens",
+              "fail_information_acquisition", "fail_information_integration", "fail_answer_selection", "invalid_output",
+              "finalizer_retry_count", "finalizer_recovered", "finalizer_exhausted",
+              "oracle_gap", "oracle_gap_ids", "lucky_guess", "format_issue_corrected",
+              "prompt_tokens", "completion_tokens", "total_tokens", "judge_total_tokens",
               "inference_runtime_seconds", "judge_runtime_seconds", "end_to_end_runtime_seconds"]
     buf = io.StringIO(); writer = csv.DictWriter(buf, fieldnames=fields); writer.writeheader()
-    oracle = {t["question_id"]: t["correct"] for t in traces if t["setting"] == "oracle_broadcast"}
     for (setting, variant), rows in grouped.items():
         correct = sum(bool(x["correct"]) for x in rows)
-        oracle_rows = [oracle[x["question_id"]] for x in rows if x["question_id"] in oracle]
-        oracle_accuracy = sum(oracle_rows) / len(oracle_rows) if oracle_rows else None
-        accuracy = correct / len(rows)
         writer.writerow({"setting": setting, "agent_variant": variant, "n": len(rows), "correct": correct, "accuracy": round(correct / len(rows), 4),
             "solver_a_correct": sum(bool(x.get("per_agent_correctness", {}).get("solver_a")) for x in rows),
             "solver_b_correct": sum(bool(x.get("per_agent_correctness", {}).get("solver_b")) for x in rows),
@@ -698,11 +870,15 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
             "information_complete": sum(bool(x.get("information", {}).get("information_complete")) for x in rows),
             "fail_information_acquisition": sum(x["failure_type"] == "information_acquisition_failure" for x in rows),
             "fail_information_integration": sum(x["failure_type"] == "information_integration_failure" for x in rows),
-            "fail_answer_selection": sum(x["failure_type"] == "answer_selection_failure" for x in rows), "lucky_guess": sum(x["lucky_guess"] for x in rows),
+            "fail_answer_selection": sum(x["failure_type"] == "answer_selection_failure" for x in rows),
+            "invalid_output": sum(bool(x.get("invalid_output")) for x in rows),
+            "finalizer_retry_count": sum(int(x.get("finalizer_retry_count", 0)) for x in rows),
+            "finalizer_recovered": sum(bool(x.get("finalizer_recovered")) for x in rows),
+            "finalizer_exhausted": sum(bool(x.get("finalizer_exhausted")) for x in rows),
+            "oracle_gap": sum(bool(x.get("oracle_gap")) for x in rows),
+            "oracle_gap_ids": ",".join(str(x["question_id"]) for x in rows if x.get("oracle_gap")),
+            "lucky_guess": sum(x["lucky_guess"] for x in rows),
             "format_issue_corrected": sum(bool(x.get("deepseek_judge", {}).get("final", {}).get("format_issue")) for x in rows),
-            "oracle_accuracy": "" if oracle_accuracy is None else round(oracle_accuracy, 4),
-            "oracle_gap_accuracy": "" if oracle_accuracy is None else round(oracle_accuracy - accuracy, 4),
-            "oracle_pairwise_rescues": "" if not oracle_rows else sum(bool(oracle.get(x["question_id"])) and not x["correct"] for x in rows),
             "prompt_tokens": sum(x["inference_token_usage"]["prompt_tokens"] for x in rows), "completion_tokens": sum(x["inference_token_usage"]["completion_tokens"] for x in rows),
             "total_tokens": sum(x["inference_token_usage"]["total_tokens"] for x in rows), "judge_total_tokens": sum(x.get("judge_token_usage", {}).get("total_tokens", 0) for x in rows),
             "inference_runtime_seconds": round(sum(x["total_runtime_seconds"] for x in rows), 3),
@@ -779,16 +955,22 @@ def main() -> None:
                           "prompt_paths": {name: str(path) for name, path in PROMPT_PATHS.items()},
                           "settings": selected_settings, "device": args.device, "temperature": args.temperature,
                           "max_new_tokens": args.max_new_tokens, "discussion_rounds": args.discussion_rounds,
+                          "finalizer_max_attempts": DEFAULT_FINALIZER_MAX_ATTEMPTS,
                           "seed": args.seed, "limit": args.limit, "deepseek_enabled": not args.skip_deepseek,
                           "deepseek_base_url": DEEPSEEK_BASE_URL, "deepseek_model": DEEPSEEK_MODEL}, ensure_ascii=False, indent=2)); return
     model = LocalQwen(model_path, args.device, args.max_new_tokens, args.temperature, args.allow_download)
     random.seed(args.seed); model.torch.manual_seed(args.seed)
     if model.torch.cuda.is_available(): model.torch.cuda.manual_seed_all(args.seed)
-    output_dir = Path(args.output_dir).resolve() / datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_base = Path(args.output_dir).resolve()
+    run_stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_dirs = {setting: output_base / (run_stamp if len(selected_settings) == 1 else f"{run_stamp}_{setting}")
+                   for setting in selected_settings}
     run_config = {"script": "run_hidden_gsm8k.py", "data_path": str(data_path), "model_path": str(model_path),
                   "settings": selected_settings, "device": args.device, "temperature": args.temperature,
                   "max_new_tokens": args.max_new_tokens, "discussion_rounds": args.discussion_rounds, "seed": args.seed,
-                  "deepseek_enabled": not args.skip_deepseek, "started_at": datetime.now().isoformat(timespec="seconds")}
+                  "finalizer_max_attempts": DEFAULT_FINALIZER_MAX_ATTEMPTS,
+                  "deepseek_enabled": not args.skip_deepseek, "discussion_reused_across_selected_settings": len(selected_settings) > 1,
+                  "started_at": datetime.now().isoformat(timespec="seconds")}
     traces = []
     for qid, item in enumerate(items, 1):
         cache = {}; question_traces = []
@@ -803,7 +985,8 @@ def main() -> None:
             reviews, judge_usage, judge_time = deepseek_review(question_traces)
             judge_error = reviews.pop("__judge_error__", None)
             for i, trace in enumerate(question_traces):
-                fallback_reason = "skipped: locally correct" if trace["correct_before_judge"] else "missing judge row"
+                fallback_reason = ("invalid finalizer output" if trace.get("invalid_output") else
+                                   "skipped: locally correct" if trace["correct_before_judge"] else "missing judge row")
                 fallback = {"correct": trace["correct_before_judge"], "format_issue": False, "reason": fallback_reason,
                             "deepseek_reviewed": False}
                 final_review = reviews.get(f"{i}:final", fallback)
@@ -824,7 +1007,17 @@ def main() -> None:
                 trace["deepseek_judge"] = {"final": final_review, "candidate_appearances": candidate_reviews}
                 if judge_error:
                     trace["deepseek_judge_error"] = judge_error
-                trace["correct"] = as_bool(final_review.get("correct"), trace["correct_before_judge"])
+                trace["correct"] = False if trace.get("invalid_output") else as_bool(final_review.get("correct"), trace["correct_before_judge"])
+                info_review = reviews.get(f"{i}:information")
+                if info_review is not None:
+                    trace["information"]["deepseek_semantic_review"] = info_review
+                    if as_bool(info_review.get("correct")):
+                        trace["information"]["information_complete"] = True
+                        trace["information"]["side_revealed"] = {"A": True, "B": True}
+                        trace["information"]["assessment_method"] = "DeepSeek semantic fact-disclosure review"
+                        for appearance in trace.get("candidate_appearances", []):
+                            if appearance.get("phase") in {"solver_final", "verification"}:
+                                appearance["information_complete_at_appearance"] = True
                 for source in trace["per_agent_correctness"]:
                     matching = [x for x in trace["candidate_appearances"] if x["source"] == source and x["phase"] in {"single_final", "solver_final", "verification"}]
                     if matching:
@@ -839,12 +1032,21 @@ def main() -> None:
                 trace["judge_batch_shared"] = True
                 trace["judge_batch_question_id"] = qid
                 trace["failure_type"], trace["lucky_guess"] = classify(trace, trace["gold_answer"])
-        oracle_row = next((x for x in question_traces if x["setting"] == "oracle_broadcast"), None)
-        if oracle_row is not None:
-            for trace in question_traces:
-                trace["oracle_gap"] = bool(oracle_row["correct"] and not trace["correct"])
-        traces.extend(question_traces); write_outputs(traces, output_dir, run_config)
-    write_outputs(traces, output_dir, run_config); print(f"Wrote {len(traces)} traces to {output_dir}")
+        for trace in question_traces:
+            # Historical/original oracle-gap definition: a correct answer was
+            # available from a solver turn/final or verifier, but the finalizer lost it.
+            trace["oracle_gap"] = bool(not trace["correct"] and any(
+                x.get("source") in {"solver_a", "solver_b", "verifier"} and bool(x.get("correct"))
+                for x in trace.get("candidate_appearances", [])))
+            trace["failure_type"], trace["lucky_guess"] = classify(trace, trace["gold_answer"])
+        traces.extend(question_traces)
+        for setting, directory in output_dirs.items():
+            setting_config = dict(run_config, setting=setting, output_dir=str(directory))
+            write_outputs([x for x in traces if x["setting"] == setting], directory, setting_config)
+    for setting, directory in output_dirs.items():
+        setting_config = dict(run_config, setting=setting, output_dir=str(directory))
+        write_outputs([x for x in traces if x["setting"] == setting], directory, setting_config)
+        print(f"Wrote {sum(x['setting'] == setting for x in traces)} {setting} traces to {directory}")
 
 
 if __name__ == "__main__":
