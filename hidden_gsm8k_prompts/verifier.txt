@@ -4,3 +4,4 @@ Return only valid JSON:
 {"information_sufficient":true,"revealed_facts":[],"candidate_checks":[{"source":"solver_a","answer":"","status":"supported","reason":""}],"verified_answer":"","selected_source":"solver_a","missing_information":[]}
 
 status must be supported, unsupported, or uncertain. selected_source must be solver_a, solver_b, recomputed, or none. If information is insufficient, say what is missing and use none unless a candidate is nevertheless fully supported by the public facts.
+If selected_source is solver_a or solver_b, verified_answer must agree mathematically with that candidate. Never name a source while returning a different answer. If both solver candidates agree, do not replace their answer with a different recomputation unless candidate_checks explicitly explains the contradiction in the public facts.

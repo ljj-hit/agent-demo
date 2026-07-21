@@ -1,0 +1,3 @@
+﻿setting,agent_variant,n,correct,accuracy,solver_a_correct,solver_b_correct,verifier_correct,finalizer_correct,information_complete,fail_information_acquisition,fail_information_integration,fail_answer_selection,invalid_output,finalizer_retry_count,finalizer_recovered,finalizer_exhausted,oracle_gap,oracle_gap_ids,lucky_guess,format_issue_corrected,prompt_tokens,completion_tokens,total_tokens,judge_total_tokens,inference_runtime_seconds,judge_runtime_seconds,end_to_end_runtime_seconds
+single_partial,A,20,0,0.0,0,0,0,0,0,20,0,0,0,0,0,0,0,,0,0,7467,1965,9432,6020,168.328,21.882,190.21
+single_partial,B,20,0,0.0,0,0,0,0,0,20,0,0,0,0,0,0,0,,0,0,7408,1842,9250,6017,156.912,21.882,178.794

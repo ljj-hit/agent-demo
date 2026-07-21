@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import importlib.util
 import io
 import json
@@ -48,7 +49,7 @@ DEFAULT_LIMIT = 0                    # 0 means all records in DATA_PATH.
 DEFAULT_ALLOW_DOWNLOAD = False       # Keep local model loading offline by default.
 DEFAULT_SKIP_DEEPSEEK = False        # False means DeepSeek judging is enabled.
 DEFAULT_JUDGE_MAX_ATTEMPTS = 4
-DEFAULT_FINALIZER_MAX_ATTEMPTS = 3
+DEFAULT_FINALIZER_MAX_ATTEMPTS = 1  # Finalizer is never retried: a malformed selection is invalid.
 
 # Leave empty to show the interactive setting menu. Example:
 # DEFAULT_SELECTED_SETTINGS = ("multi_partial", "multi_partial_verifier")
@@ -198,7 +199,7 @@ def extract_labeled_answer(text: Any, label: str) -> str:
     if not matches:
         return ""
     declared = matches[-1].strip()
-    return "" if explicitly_undetermined(declared) else extract_answer(declared)
+    return "" if concludingly_undetermined(declared) else extract_answer(declared)
 
 
 def extract_free_text_answer(text: Any, label: str) -> tuple[str, str]:
@@ -220,6 +221,31 @@ def extract_free_text_answer(text: Any, label: str) -> tuple[str, str]:
         return "", "concluding_undetermined"
     fallback = extract_answer(raw)
     return (fallback, "safe_natural_language_fallback") if decimal(fallback) is not None else ("", "no_supported_answer")
+
+
+def parse_solver_final(text: Any) -> tuple[str, str]:
+    """Validate the solver contract instead of recovering from malformed prose."""
+    # Preserve leading whitespace/newlines so an answer on the second physical
+    # line cannot be silently promoted to the required first line. A terminal
+    # newline emitted by the tokenizer is harmless.
+    raw = str(text or "").rstrip("\r\n")
+    lines = raw.splitlines()
+    if not lines or not re.fullmatch(r"Final answer\s*[:\uFF1A]\s*.+", lines[0], re.I):
+        return "", "first line must be `Final answer: ...`"
+    answer = extract_labeled_answer(lines[0], "Final answer")
+    if not answer and not explicitly_undetermined(lines[0]):
+        return "", "Final answer is empty or unsupported"
+    sentence_count = 0
+    for line in (line.strip() for line in lines[1:] if line.strip()):
+        # Protect decimal points before splitting. Each non-empty physical line
+        # counts as at least one sentence, so unpunctuated bullet-style reasons
+        # cannot bypass the three-sentence limit.
+        protected = re.sub(r"(?<=\d)\.(?=\d)", "\uE000", line)
+        sentence_count += len([part for part in re.split(r"[.!?\u3002\uFF01\uFF1F]+", protected)
+                               if part.strip()])
+    if sentence_count > 3:
+        return "", "solver reasoning exceeds three sentences"
+    return answer, ""
 
 
 def as_bool(value: Any, default: bool = False) -> bool:
@@ -274,6 +300,19 @@ def blank_usage() -> dict:
 def add_usage(target: dict, usage: dict) -> None:
     for key in USAGE_KEYS:
         target[key] = target.get(key, 0) + int(usage.get(key, 0) or 0)
+
+
+def derived_seed(base_seed: int, *scope: Any) -> int:
+    """Derive a stable seed that does not depend on Python's randomized hash."""
+    material = "|".join([str(base_seed), *(str(value) for value in scope)]).encode("utf-8")
+    return int.from_bytes(hashlib.sha256(material).digest()[:8], "big") % (2 ** 31)
+
+
+def reseed_model(model: Any, seed: int) -> None:
+    random.seed(seed)
+    model.torch.manual_seed(seed)
+    if model.torch.cuda.is_available():
+        model.torch.cuda.manual_seed_all(seed)
 
 
 def dependency_status() -> dict[str, bool]:
@@ -383,7 +422,7 @@ class LocalQwen:
 
 
 VERIFIER_DEFAULT = {"information_sufficient": False, "revealed_facts": [], "candidate_checks": [], "verified_answer": "", "selected_source": "none", "missing_information": []}
-FINALIZER_DEFAULT = {"final_answer": "", "selected_source": "recomputed", "used_public_facts": [], "followed_verifier": False, "reason": ""}
+FINALIZER_DEFAULT = {"final_answer": "", "selected_source": "none", "reason": ""}
 
 UNDETERMINED_ANSWERS = {"", "unknown", "undetermined", "cannot determine", "cannot be determined", "insufficient information", "none", "n/a"}
 
@@ -483,15 +522,20 @@ def run_discussion(model: LocalQwen, solver_prompt: str, item: dict, oracle: boo
         user = (f'Role: solver_{side.lower()}\nShared question: {item["shared_question"]}\n'
                 f'Your private fact: {item[f"condition_{side}"]}\n'
                 f'Public transcript after {rounds_count} symmetric rounds:\n{transcript}\n'
-                "Solve the complete problem using all available information. Show a concise calculation and end with `Final answer: ...`. "
-                "Use natural text; do not output JSON.")
+                "The public transcript may contain the facts missing from your private input. Before answering undetermined, extract the "
+                "other solver's disclosed numbers and relationships, combine them with your private fact, and check whether the complete "
+                "calculation is now possible. Solve using all available information. Put `Final answer: ...` on the FIRST line, "
+                "then give at most three sentences of reasoning. Use natural text; do not output JSON.")
         final_specs[side] = (f"solver_{side.lower()}", user, None)
     final_batch = paired_model_events(model, solver_prompt, final_specs)
     finals = {}
     for side in ("A", "B"):
         final_batch[side]["phase"] = "solver_final"
-        final_batch[side]["answer"], final_batch[side]["answer_extraction"] = extract_free_text_answer(
-            final_batch[side].get("raw_output", ""), "Final answer")
+        answer, format_error = parse_solver_final(final_batch[side].get("raw_output", ""))
+        final_batch[side]["answer"] = answer
+        final_batch[side]["answer_extraction"] = "strict_solver_final" if not format_error else "invalid_format"
+        final_batch[side]["validation_error"] = format_error
+        final_batch[side]["invalid_output"] = bool(format_error)
         finals[side.lower()] = final_batch[side]
     result = {"protocol": "symmetric_one_turn_per_round", "round_records": round_records,
               "symmetry_guarantees": {"same_round_send_uses_identical_public_snapshot": True,
@@ -576,13 +620,20 @@ def single_call(model: LocalQwen, prompt: str, item: dict, side: str | None) -> 
     if side is None:
         # Only the full-information setting receives the complete problem.
         user = (f'Role: solver_a\nFull question: {item["full"]}\n'
-                'Solve the complete problem carefully. Show a concise calculation and end with `Final answer: ...`. Use natural text; do not output JSON.')
+                'Solve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. '
+                'Use natural text; do not output JSON.')
     else:
         user = (f'Role: solver_{side.lower()}\nShared question: {item["shared_question"]}\n'
                 f'Your private fact: {item[f"condition_{side}"]}\nAnalyze what can be concluded and clearly identify missing information. '
-                'If the answer is determined, show a concise calculation and end with `Final answer: ...`; otherwise say that it cannot yet be determined. '
+                'If the answer is determined, put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning; '
+                'otherwise put `Final answer: undetermined` on the first line and explain why in at most three sentences. '
                 'Use natural text; do not output JSON.')
-    return model_event(model, f'solver_{(side or "a").lower()}', prompt, user, "single_final", None)
+    event = model_event(model, f'solver_{(side or "a").lower()}', prompt, user, "single_final", None)
+    answer, format_error = parse_solver_final(event.get("raw_output", ""))
+    event.update(answer=answer,
+                 answer_extraction="strict_solver_final" if not format_error else "invalid_format",
+                 validation_error=format_error, invalid_output=bool(format_error))
+    return event
 
 
 def event_answer(event: dict | None, key: str = "final_answer") -> str:
@@ -622,76 +673,162 @@ def candidate_appearances(trace: dict) -> list[dict]:
             appearances.append({"source": event["agent"], "phase": "solver_final", "answer": event_answer(event),
                                 "information_complete_at_appearance": complete_after_discussion})
     verifier = trace.get("verifier_event")
-    if verifier:
+    if verifier and not verifier.get("invalid_output"):
         appearances.append({"source": "verifier", "phase": "verification", "answer": event_answer(verifier, "verified_answer"),
                             "information_complete_at_appearance": complete_after_discussion})
     return appearances
 
 
-def finalizer_validation_error(event: dict) -> str:
-    raw_object = raw_json_object(event.get("raw_output", ""))
-    if raw_object is None:
-        return "response is not a valid JSON object"
-    if not raw_object:
-        return "response is an empty JSON object"
-    missing = [key for key in ("final_answer", "selected_source") if key not in raw_object]
-    if missing:
-        return "missing required field(s): " + ", ".join(missing)
-    if raw_object.get("selected_source") not in {"solver_a", "solver_b", "verifier", "recomputed"}:
+def parse_fixed_finalizer(text: str) -> tuple[dict, str]:
+    """Parse exactly three labeled lines; never recover by asking the model again."""
+    # A terminal newline emitted by the tokenizer is harmless. Any leading or
+    # internal blank line is still a fourth-format line and must be rejected.
+    raw = str(text or "").rstrip("\r\n")
+    lines = raw.splitlines()
+    labels = ("Selected source", "Final answer", "Reason")
+    if len(lines) != 3:
+        return dict(FINALIZER_DEFAULT), "expected exactly three lines"
+    values = {}
+    for line, label in zip(lines, labels):
+        match = re.fullmatch(rf"{re.escape(label)}\s*[:\uFF1A]\s*(.*)", line, re.I)
+        if not match:
+            return dict(FINALIZER_DEFAULT), f"expected line `{label}: ...`"
+        values[label] = match.group(1).strip()
+    source = values["Selected source"].lower()
+    if source not in {"solver_a", "solver_b", "verifier", "recomputed", "none"}:
+        return dict(FINALIZER_DEFAULT), "selected_source is not an allowed value"
+    if not values["Reason"]:
+        return dict(FINALIZER_DEFAULT), "Reason must not be empty"
+    answer = "" if explicitly_undetermined(values["Final answer"]) else extract_answer(values["Final answer"])
+    return {"selected_source": source, "final_answer": answer, "reason": values["Reason"]}, ""
+
+
+def source_consistency_error(parsed: dict, candidates: dict, *, allow_none: bool) -> str:
+    source, answer = parsed.get("selected_source", "none"), parsed.get("final_answer", "")
+    allowed = {"solver_a", "solver_b", "verifier", "recomputed"} | ({"none"} if allow_none else set())
+    if source not in allowed:
         return "selected_source is not an allowed value"
+    if source in {"solver_a", "solver_b", "verifier"} and source not in candidates:
+        return f"selected source {source} is unavailable or invalid"
+    if source in candidates and not equivalent(answer, candidates[source]):
+        return f"answer does not match selected source {source}"
+    if source == "none" and answer:
+        return "selected_source none must have an empty answer"
+    if source == "recomputed" and decimal(answer) is None:
+        return "selected_source recomputed requires a supported numeric answer"
     return ""
 
 
-def call_finalizer_with_retry(model: LocalQwen, system: str, user: str) -> dict:
-    attempts = []
-    retry_user = user
-    final_event = None
-    for attempt_no in range(1, DEFAULT_FINALIZER_MAX_ATTEMPTS + 1):
-        event = model_event(model, "finalizer", system, retry_user, "finalization", FINALIZER_DEFAULT,
-                            temperature=None if attempt_no == 1 else 0.0)
-        error = finalizer_validation_error(event)
-        attempts.append({"attempt": attempt_no, "temperature": "configured" if attempt_no == 1 else 0.0,
-                         "raw_output": event.get("raw_output", ""), "parsed_output": event.get("parsed_output", {}),
-                         "parse_error": event.get("parse_error", ""), "validation_error": error,
-                         "token_usage": event.get("token_usage", blank_usage()),
-                         "runtime_seconds": event.get("runtime_seconds", 0.0)})
-        final_event = event
-        if not error:
-            break
-        retry_user = (user + f"\n\nFORMAT CORRECTION AFTER ATTEMPT {attempt_no}: Your previous response was invalid because " + error + ".\n"
-                      "Previous invalid output: " + json.dumps(event.get("raw_output", ""), ensure_ascii=False) + "\n"
-                      "Return exactly one complete JSON object with this schema:\n"
-                      '{"final_answer":"","selected_source":"recomputed","used_public_facts":[],"followed_verifier":false,"reason":""}\n'
-                      "Never return {}. Include final_answer and selected_source. If the answer cannot be determined, use an empty "
-                      "final_answer. The empty value in the schema is only a placeholder: still solve the original task and populate it when "
-                      "the public evidence supports an answer. Output JSON only, without Markdown fences.")
-    assert final_event is not None
-    total_usage, total_runtime = blank_usage(), 0.0
-    for attempt in attempts:
-        add_usage(total_usage, attempt["token_usage"])
-        total_runtime += float(attempt["runtime_seconds"])
-    final_error = attempts[-1]["validation_error"]
-    final_event["token_usage"] = total_usage
-    final_event["runtime_seconds"] = total_runtime
-    final_event["attempts"] = attempts
-    final_event["retry_count"] = len(attempts) - 1
-    final_event["recovered_after_retry"] = len(attempts) > 1 and not final_error
-    final_event["retry_exhausted"] = bool(final_error)
-    final_event["invalid_output"] = bool(final_error)
-    final_event["validation_error"] = final_error
-    return final_event
+def has_explicit_identical_candidate_rejection(reason: Any) -> bool:
+    """Require an auditable rejection declaration without guessing semantics."""
+    text = re.sub(r"\s+", " ", str(reason or "").strip())
+    chinese_prefix = "\u62d2\u7edd\u76f8\u540c\u5019\u9009\uff0c\u56e0\u4e3a"
+    if text.startswith(chinese_prefix) and text[len(chinese_prefix):].strip(" :\uFF1A\uFF0C,"):
+        return True
+    prefixes = ("Reject identical candidates because", "拒绝相同候选，因为")
+    for prefix in prefixes:
+        if text.lower().startswith(prefix.lower()) and text[len(prefix):].strip(" :：，,"):
+            return True
+    return False
+
+
+def verifier_explains_identical_candidate_rejection(parsed: dict) -> bool:
+    """Require a concrete contradiction when the verifier rejects agreed answers."""
+    checks = parsed.get("candidate_checks", [])
+    return any(check.get("source") in {"solver_a", "solver_b"} and
+               str(check.get("status", "")).strip().lower() == "unsupported" and
+               bool(str(check.get("reason", "")).strip())
+               for check in checks if isinstance(check, dict))
+
+
+def verifier_consistency_error(event: dict, candidates: dict) -> str:
+    raw = raw_json_object(event.get("raw_output", ""))
+    if raw is None:
+        return "verifier response is not a valid JSON object"
+    missing = [key for key in ("verified_answer", "selected_source") if key not in raw]
+    if missing:
+        return "verifier missing required field(s): " + ", ".join(missing)
+    parsed = event.get("parsed_output", {})
+    parsed["verified_answer"] = ("" if explicitly_undetermined(raw.get("verified_answer"))
+                                 else extract_answer(raw.get("verified_answer")))
+    parsed["selected_source"] = str(raw.get("selected_source", "none")).strip().lower()
+    # Reuse the common source-consistency validator, whose canonical answer
+    # field is named final_answer.
+    parsed["final_answer"] = parsed["verified_answer"]
+    error = source_consistency_error(parsed, candidates, allow_none=True)
+    if error:
+        return error
+    a_answer, b_answer = candidates.get("solver_a", ""), candidates.get("solver_b", "")
+    if (parsed["selected_source"] == "recomputed" and a_answer and b_answer and
+            equivalent(a_answer, b_answer) and not equivalent(parsed["verified_answer"], a_answer) and
+            not verifier_explains_identical_candidate_rejection(parsed)):
+        return ("different recomputation of identical solver candidates requires an unsupported "
+                "candidate_check with a non-empty contradiction reason")
+    if parsed["selected_source"] in candidates:
+        parsed["verified_answer"] = candidates[parsed["selected_source"]]
+    return ""
+
+
+def call_finalizer_once(model: LocalQwen, system: str, user: str, candidates: dict) -> dict:
+    # Selection should be deterministic. Solver creativity must not leak into
+    # the final source choice or cause answer drift.
+    event = model_event(model, "finalizer", system, user, "finalization", None, temperature=0.0)
+    parsed, error = parse_fixed_finalizer(event.get("raw_output", ""))
+    if not error:
+        error = source_consistency_error(parsed, candidates, allow_none=True)
+    a_answer, b_answer = candidates.get("solver_a", ""), candidates.get("solver_b", "")
+    if (not error and parsed["selected_source"] == "recomputed" and a_answer and b_answer and
+            equivalent(a_answer, b_answer) and not equivalent(parsed["final_answer"], a_answer)):
+        if not has_explicit_identical_candidate_rejection(parsed.get("reason")):
+            error = ("different recomputation requires Reason to start with "
+                     "`Reject identical candidates because` or `拒绝相同候选，因为`, followed by an explanation")
+    # Preserve the selected candidate's exact representation after proving
+    # mathematical equivalence (for example, normalize 42.0 back to 42).
+    if not error and parsed["selected_source"] in candidates:
+        parsed["final_answer"] = candidates[parsed["selected_source"]]
+    event.update(parsed_output=parsed, parse_error="", validation_error=error,
+                 attempts=[{"attempt": 1, "raw_output": event.get("raw_output", ""),
+                            "parsed_output": parsed, "validation_error": error,
+                            "token_usage": event.get("token_usage", blank_usage()),
+                            "runtime_seconds": event.get("runtime_seconds", 0.0)}],
+                 retry_count=0, recovered_after_retry=False, retry_exhausted=False,
+                 invalid_output=bool(error))
+    return event
 
 
 def finish_multi(model: LocalQwen, prompts: dict, item: dict, discussion: dict, with_verifier: bool) -> tuple[dict | None, dict]:
-    candidates = {"solver_a": event_answer(discussion["solver_finals"]["a"]), "solver_b": event_answer(discussion["solver_finals"]["b"])}
+    raw_candidates = {"solver_a": event_answer(discussion["solver_finals"]["a"]),
+                      "solver_b": event_answer(discussion["solver_finals"]["b"])}
+    candidates = {source: answer for source, answer in raw_candidates.items() if decimal(answer) is not None}
     verifier = None
     if with_verifier:
         user = f'Shared question: {item["shared_question"]}\nPublic transcript:\n{discussion["public_transcript"]}\nCandidates: {json.dumps(candidates, ensure_ascii=False)}'
         verifier = model_event(model, "verifier", prompts["verifier"], user, "verification", VERIFIER_DEFAULT)
-    report = verifier["parsed_output"] if verifier else "(no verifier in this setting)"
+        verifier_error = verifier_consistency_error(verifier, candidates)
+        verifier["validation_error"] = verifier_error
+        verifier["invalid_output"] = bool(verifier_error)
+    if verifier and verifier.get("invalid_output"):
+        report = {"usable": False, "validation_error": verifier.get("validation_error", "invalid verifier output")}
+    else:
+        report = verifier["parsed_output"] if verifier else "(no verifier in this setting)"
+    # Empty/undetermined outputs are deliberately not offered as selectable
+    # sources. This prevents a small model from blindly choosing solver_a just
+    # because it appears first in the candidate object.
+    # GSM8K targets are numeric. Prose such as "the answer cannot be
+    # calculated" must not become a selectable candidate merely because it is
+    # non-empty or happens to mention an incidental number.
+    finalizer_candidates = dict(candidates)
+    if verifier and not verifier.get("invalid_output"):
+        verified_answer = event_answer(verifier, "verified_answer")
+        if decimal(verified_answer) is not None:
+            finalizer_candidates["verifier"] = verified_answer
+    available_sources = list(finalizer_candidates) + ["recomputed", "none"]
     user = (f'Shared question: {item["shared_question"]}\nPublic transcript:\n{discussion["public_transcript"]}\n'
-            f'Candidates: {json.dumps(candidates, ensure_ascii=False)}\nVerifier report: {json.dumps(report, ensure_ascii=False)}')
-    finalizer = call_finalizer_with_retry(model, prompts["finalizer"], user)
+            f'Valid non-empty candidates: {json.dumps(finalizer_candidates, ensure_ascii=False)}\n'
+            f'Available selected_source values for this question: {json.dumps(available_sources, ensure_ascii=False)}\n'
+            f'Verifier report: {json.dumps(report, ensure_ascii=False)}\n'
+            "For solver_a, solver_b, or verifier, copy that source's candidate answer exactly; never calculate a replacement value.")
+    finalizer = call_finalizer_once(model, prompts["finalizer"], user, finalizer_candidates)
     return verifier, finalizer
 
 
@@ -737,9 +874,9 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
     if setting.startswith("single"):
         side = variant if setting == "single_partial" else None
         event = single_call(model, prompts["solver"], item, side)
-        prediction, extraction = extract_free_text_answer(event.get("raw_output", ""), "Final answer")
-        event["answer"], event["answer_extraction"] = prediction, extraction
+        prediction = event["answer"]
         trace.update(single_event=event, final_prediction=prediction, candidate_answers={event["agent"]: prediction}, information={"information_complete": side is None, "side_revealed": {"A": side is None or side == "A", "B": side is None or side == "B"}})
+        trace["invalid_output"] = bool(event.get("invalid_output"))
     else:
         cache_key = "oracle" if setting == "oracle_broadcast" else "partial"
         if cache_key not in discussion_cache:
@@ -749,7 +886,7 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
         with_verifier = setting in {"multi_partial_verifier", "oracle_broadcast"}
         verifier, finalizer = finish_multi(model, prompts, item, discussion, with_verifier)
         candidates = {"solver_a": event_answer(discussion["solver_finals"]["a"]), "solver_b": event_answer(discussion["solver_finals"]["b"])}
-        if verifier:
+        if verifier and not verifier.get("invalid_output"):
             candidates["verifier"] = event_answer(verifier, "verified_answer")
         trace.update(discussion=discussion, discussion_cache_key=cache_key, finalizer_event=finalizer,
                      final_prediction=event_answer(finalizer), candidate_answers=candidates, information=objective_information(item, discussion))
@@ -760,14 +897,16 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
         if verifier is not None:
             trace["verifier_event"] = verifier
     trace["correct_before_judge"] = equivalent(trace["final_prediction"], gold)
-    trace["correct"] = trace["correct_before_judge"]
+    # Keep semantic correctness for auditing, but malformed output is never a
+    # correct experiment result, regardless of whether DeepSeek is enabled.
+    trace["correct"] = not trace.get("invalid_output", False) and trace["correct_before_judge"]
     trace["candidate_appearances"] = candidate_appearances(trace)
     for appearance in trace["candidate_appearances"]:
         appearance["correct_before_judge"] = equivalent(appearance["answer"], gold)
         appearance["correct"] = appearance["correct_before_judge"]
     trace["per_agent_correctness"] = {source: equivalent(answer, gold) for source, answer in trace["candidate_answers"].items()}
     if trace.get("finalizer_event"):
-        trace["per_agent_correctness"]["finalizer"] = trace["correct_before_judge"]
+        trace["per_agent_correctness"]["finalizer"] = trace["correct"]
     usage, agent_usage, timing = blank_usage(), defaultdict(blank_usage), defaultdict(float)
     for event in collect_events(trace):
         add_usage(usage, event["token_usage"]); add_usage(agent_usage[event["agent"]], event["token_usage"])
@@ -959,8 +1098,7 @@ def main() -> None:
                           "seed": args.seed, "limit": args.limit, "deepseek_enabled": not args.skip_deepseek,
                           "deepseek_base_url": DEEPSEEK_BASE_URL, "deepseek_model": DEEPSEEK_MODEL}, ensure_ascii=False, indent=2)); return
     model = LocalQwen(model_path, args.device, args.max_new_tokens, args.temperature, args.allow_download)
-    random.seed(args.seed); model.torch.manual_seed(args.seed)
-    if model.torch.cuda.is_available(): model.torch.cuda.manual_seed_all(args.seed)
+    reseed_model(model, args.seed)
     output_base = Path(args.output_dir).resolve()
     run_stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_dirs = {setting: output_base / (run_stamp if len(selected_settings) == 1 else f"{run_stamp}_{setting}")
@@ -969,15 +1107,27 @@ def main() -> None:
                   "settings": selected_settings, "device": args.device, "temperature": args.temperature,
                   "max_new_tokens": args.max_new_tokens, "discussion_rounds": args.discussion_rounds, "seed": args.seed,
                   "finalizer_max_attempts": DEFAULT_FINALIZER_MAX_ATTEMPTS,
-                  "deepseek_enabled": not args.skip_deepseek, "discussion_reused_across_selected_settings": len(selected_settings) > 1,
+                  "deepseek_enabled": not args.skip_deepseek,
+                  "shared_discussion_settings": sorted({"multi_partial", "multi_partial_verifier"} & set(selected_settings)),
+                  "discussion_reuse_scope": "same partial-information condition only; oracle and single-agent settings are distinct",
+                  "discussion_reused_across_selected_settings": len({"multi_partial", "multi_partial_verifier"} & set(selected_settings)) > 1,
+                  "seed_scope": "stable SHA-256 derivation by question and generation scope",
                   "started_at": datetime.now().isoformat(timespec="seconds")}
     traces = []
     for qid, item in enumerate(items, 1):
         cache = {}; question_traces = []
+        # Generate one partial-information A/B discussion per question before
+        # evaluating any setting, then reuse that exact object for every
+        # selected setting that differs only in verifier/finalizer policy.
+        if {"multi_partial", "multi_partial_verifier"} & set(selected_settings):
+            reseed_model(model, derived_seed(args.seed, qid, "shared_partial_discussion"))
+            cache["partial"] = run_discussion(model, prompts["solver"], item, False, args.discussion_rounds)
+            add_information_timeline(item, cache["partial"])
         for setting in selected_settings:
             variants = ("A", "B") if setting == "single_partial" else ("",)
             for variant in variants:
                 print(f"[{qid}/{len(items)}] {setting}{'_' + variant if variant else ''}")
+                reseed_model(model, derived_seed(args.seed, qid, setting, variant or "default"))
                 trace = build_trace(model, prompts, item, qid, setting, cache, variant, args.discussion_rounds)
                 trace["run_config"] = {key: run_config[key] for key in ("model_path", "device", "temperature", "max_new_tokens", "discussion_rounds", "seed")}
                 question_traces.append(trace)

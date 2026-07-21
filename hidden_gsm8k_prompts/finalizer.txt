@@ -1,6 +1,5 @@
 You produce the final answer without seeing the original complete problem. Use only the shared question, public discussion, solver candidates, and (when supplied) verifier report. Do not invent missing facts. You may select a supported candidate or recompute from public facts.
 
-Return only valid JSON:
-{"final_answer":"","selected_source":"solver_a","used_public_facts":[],"followed_verifier":true,"reason":""}
+Return exactly three non-empty lines, with no Markdown and no extra lines. The labels, in order, must be Selected source, Final answer, and Reason, each followed by a colon and the value for the current question. Do not copy placeholder text or invent a sample number.
 
-selected_source must be solver_a, solver_b, verifier, or recomputed. Return an empty final_answer if the public information truly cannot support an answer.
+Use only a selected_source listed as available in the current input. Reason must be non-empty. If solver_a, solver_b, or verifier is selected, copy Final answer exactly from that source's valid non-empty candidate; do not recompute it. If solver_a and solver_b agree, preserve that answer. To select recomputed with a different answer, Reason must start with `Reject identical candidates because` (or `拒绝相同候选，因为`) and then identify the concrete error or contradiction in the public evidence. Never silently replace identical candidates. Use none and an undetermined Final answer only when the public information truly cannot support an answer.

@@ -1,0 +1,2282 @@
+[
+  {
+    "question_id": 1,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, not equivalent to gold.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, not equivalent to gold.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "empty prediction",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "empty prediction",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How much did Alexis pay for the shoes?",
+    "gold_answer": "41",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How much did Alexis pay for the shoes?",
+    "gold_answer": "41",
+    "final_prediction": "29",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": "29"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "29",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "2:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many stamps does Bella buy altogether?",
+    "gold_answer": "38",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "missing judge row",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many stamps does Bella buy altogether?",
+    "gold_answer": "38",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "missing judge row",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 6,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How much does each top cost?",
+    "gold_answer": "5",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty; no answer provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 6,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How much does each top cost?",
+    "gold_answer": "5",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty; no answer provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 7,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How much sales revenue does Noah make this month?",
+    "gold_answer": "1200",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, cannot match gold.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 7,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How much sales revenue does Noah make this month?",
+    "gold_answer": "1200",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, cannot match gold.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 8,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many minutes does Carolyn practice in 4 weeks?",
+    "gold_answer": "1920",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "missing judge row",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 8,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many minutes does Carolyn practice in 4 weeks?",
+    "gold_answer": "1920",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "missing judge row",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 9,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many minutes does the third part take?",
+    "gold_answer": "45",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 9,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many minutes does the third part take?",
+    "gold_answer": "45",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 10,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How much does James earn each week from both jobs?",
+    "gold_answer": "840",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 10,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How much does James earn each week from both jobs?",
+    "gold_answer": "840",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 11,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "What balance remains after the 4 monthly payments?",
+    "gold_answer": "520",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 11,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "What balance remains after the 4 monthly payments?",
+    "gold_answer": "520",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 12,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many packs must Roger buy?",
+    "gold_answer": "3",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 12,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many packs must Roger buy?",
+    "gold_answer": "3",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 13,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many kilograms does each of the last two people lose?",
+    "gold_answer": "28",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 13,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many kilograms does each of the last two people lose?",
+    "gold_answer": "28",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 14,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many vegetables does the garden produce altogether?",
+    "gold_answer": "768",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 14,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many vegetables does the garden produce altogether?",
+    "gold_answer": "768",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 15,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many cans does Jennifer take home?",
+    "gold_answer": "100",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, not equivalent to gold 100.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 15,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many cans does Jennifer take home?",
+    "gold_answer": "100",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, not equivalent to gold 100.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 16,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "What was Irene's total income last week?",
+    "gold_answer": "700",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 16,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "What was Irene's total income last week?",
+    "gold_answer": "700",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "No prediction provided.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 17,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How much money does Winwin take home?",
+    "gold_answer": "35",
+    "final_prediction": "40",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "40"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "40",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 40, but gold is 35.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 40, but gold is 35.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 40, but gold is 35.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 17,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How much money does Winwin take home?",
+    "gold_answer": "35",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, but gold is 35.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 18,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How much money remains in John's piggy bank?",
+    "gold_answer": "200",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Empty prediction",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 18,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How much money remains in John's piggy bank?",
+    "gold_answer": "200",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Empty prediction",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 19,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many plates are needed?",
+    "gold_answer": "135",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, not equal to 135.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 19,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many plates are needed?",
+    "gold_answer": "135",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, not equal to 135.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 20,
+    "setting": "single_partial",
+    "agent_variant": "A",
+    "shared_question": "How many hard hats remain in the truck?",
+    "gold_answer": "43",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": true,
+        "B": false
+      }
+    },
+    "candidate_answers": {
+      "solver_a": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, gold is 43.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 20,
+    "setting": "single_partial",
+    "agent_variant": "B",
+    "shared_question": "How many hard hats remain in the truck?",
+    "gold_answer": "43",
+    "final_prediction": "",
+    "failure_type": "information_acquisition_failure",
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": false,
+      "side_revealed": {
+        "A": false,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_b": ""
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_b",
+        "phase": "single_final",
+        "answer": "",
+        "information_complete_at_appearance": false,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_b": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is empty, gold is 43.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  }
+]

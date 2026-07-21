@@ -1,0 +1,2097 @@
+[
+  {
+    "question_id": 1,
+    "setting": "single_full",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday. The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today. How many pages should Julie read tomorrow?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we need to determine how many pages Julie will read tomorrow based on her reading habits over the past two days.\n\nFirst, let's calculate the number of pages Julie read today:\n- Yesterday, Julie read 12 pages.\n- Today, she read twice as many pages as yesterday, which means \\(2 \\times 12 = 24\\) pages.\n\nNext, we add up the pages read so far:\n- Pages read yesterday: 12\n- Pages read today: 24\n- Total pages read so far: \\(12 + 24 = 36\\)\n\nThe book has a total of 120 pages. To find out how many pages remain unread, we subtract the pages already read from the total number of pages:\n- Remaining pages: \\(120 - 36 = 84\\)\n\nTomorrow, Julie plans to read half of the remaining pages:\n- Pages to be read tomorrow: \\(\\frac{84}{2} = 42\\)\n\nTherefore, Julie should read 42 pages tomorrow.\n\nFinal answer: Julie should read 42 pages tomorrow.",
+      "raw_output": "To solve this problem, we need to determine how many pages Julie will read tomorrow based on her reading habits over the past two days.\n\nFirst, let's calculate the number of pages Julie read today:\n- Yesterday, Julie read 12 pages.\n- Today, she read twice as many pages as yesterday, which means \\(2 \\times 12 = 24\\) pages.\n\nNext, we add up the pages read so far:\n- Pages read yesterday: 12\n- Pages read today: 24\n- Total pages read so far: \\(12 + 24 = 36\\)\n\nThe book has a total of 120 pages. To find out how many pages remain unread, we subtract the pages already read from the total number of pages:\n- Remaining pages: \\(120 - 36 = 84\\)\n\nTomorrow, Julie plans to read half of the remaining pages:\n- Pages to be read tomorrow: \\(\\frac{84}{2} = 42\\)\n\nTherefore, Julie should read 42 pages tomorrow.\n\nFinal answer: Julie should read 42 pages tomorrow.",
+      "token_usage": {
+        "prompt_tokens": 361,
+        "completion_tokens": 237,
+        "total_tokens": 598
+      },
+      "runtime_seconds": 20.120888600009494,
+      "answer": "42",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "42",
+    "candidate_answers": {
+      "solver_a": "42"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "42",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 361,
+      "completion_tokens": 237,
+      "total_tokens": 598
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 361,
+        "completion_tokens": 237,
+        "total_tokens": 598
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 20.120888600009494
+    },
+    "total_runtime_seconds": 20.13068000000203,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 231,
+      "completion_tokens": 93,
+      "total_tokens": 324
+    },
+    "judge_runtime_seconds": 1.1125144833349623,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 1,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 2,
+    "setting": "single_full",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Betty wants to buy a wallet that costs $100. She already has half of the money needed. Her parents give her $15, and her grandparents give her twice as much as her parents. How much more money does Betty still need?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Determine how much money Betty currently has:**\n   - The total cost of the wallet is $100.\n   - Betty already has half of the money needed.\n   - Therefore, she has \\( \\frac{1}{2} \\times 100 = \\$50 \\).\n\n2. **Calculate how much money Betty receives from her parents:**\n   - Her parents give her $15.\n\n3. **Calculate how much money Betty receives from her grandparents:**\n   - Her grandparents give her twice as much as her parents.\n   - So, her grandparents give \\( 2 \\times 15 = \\$30 \\).\n\n4. **Sum up all the money Betty now has:**\n   - Money from parents: $15\n   - Money from grandparents: $30\n   - Total received so far: \\( 15 + 30 = \\$45 \\)\n\n5. **Find out how much more money Betty needs:**\n   - Total cost of the wallet: $100\n   - Money Betty currently has: $50\n   - Money Betty has after receiving gifts: $45\n   - Additional amount needed: \\( 100 - (50 + 45) = 100 - 95 = \\$5 \\)\n\n**Final answer:** Betty still needs $5 more to buy the wallet.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Determine how much money Betty currently has:**\n   - The total cost of the wallet is $100.\n   - Betty already has half of the money needed.\n   - Therefore, she has \\( \\frac{1}{2} \\times 100 = \\$50 \\).\n\n2. **Calculate how much money Betty receives from her parents:**\n   - Her parents give her $15.\n\n3. **Calculate how much money Betty receives from her grandparents:**\n   - Her grandparents give her twice as much as her parents.\n   - So, her grandparents give \\( 2 \\times 15 = \\$30 \\).\n\n4. **Sum up all the money Betty now has:**\n   - Money from parents: $15\n   - Money from grandparents: $30\n   - Total received so far: \\( 15 + 30 = \\$45 \\)\n\n5. **Find out how much more money Betty needs:**\n   - Total cost of the wallet: $100\n   - Money Betty currently has: $50\n   - Money Betty has after receiving gifts: $45\n   - Additional amount needed: \\( 100 - (50 + 45) = 100 - 95 = \\$5 \\)\n\n**Final answer:** Betty still needs $5 more to buy the wallet.",
+      "token_usage": {
+        "prompt_tokens": 356,
+        "completion_tokens": 304,
+        "total_tokens": 660
+      },
+      "runtime_seconds": 25.693517899955623,
+      "answer": "5",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "5",
+    "candidate_answers": {
+      "solver_a": "5"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "5",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 356,
+      "completion_tokens": 304,
+      "total_tokens": 660
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 356,
+        "completion_tokens": 304,
+        "total_tokens": 660
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 25.693517899955623
+    },
+    "total_runtime_seconds": 25.694440999999642,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 203,
+      "completion_tokens": 76,
+      "total_tokens": 279
+    },
+    "judge_runtime_seconds": 0.7200529666733928,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 2,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 3,
+    "setting": "single_full",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples. After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles. What is the final weight of the box?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Initial Weight**: Ken starts with enough jelly beans to fill the box to 2 pounds.\n   - Let \\( W_0 \\) be the initial weight of the box filled with jelly beans.\n   - Given: \\( W_0 = 2 \\) pounds.\n\n2. **Adding Brownies**: He adds brownies to triple the weight.\n   - The new weight after adding brownies will be \\( 3W_0 \\).\n   - Since \\( W_0 = 2 \\):\n     \\[\n     3W_0 = 3 \\times 2 = 6 \\text{ pounds}\n     \\]\n\n3. **Adding Jelly Beans Again**: He adds 2 more pounds of jelly beans.\n   - The new weight after adding jelly beans:\n     \\[\n     6 + 2 = 8 \\text{ pounds}\n     \\]\n\n4. **Adding Gummy Worms**: He adds gummy worms to double the weight.\n   - The final weight after adding gummy worms:\n     \\[\n     8 \\times 2 = 16 \\text{ pounds}\n     \\]\n\nTherefore, the final weight of the box is 16 pounds.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial Weight**: Ken starts with enough jelly beans to fill the box to 2 pounds.\n   - Let \\( W_0 \\) be the initial weight of the box filled with jelly beans.\n   - Given: \\( W_0 = 2 \\) pounds.\n\n2. **Adding Brownies**: He adds brownies to triple the weight.\n   - The new weight after adding brownies will be \\( 3W_0 \\).\n   - Since \\( W_0 = 2 \\):\n     \\[\n     3W_0 = 3 \\times 2 = 6 \\text{ pounds}\n     \\]\n\n3. **Adding Jelly Beans Again**: He adds 2 more pounds of jelly beans.\n   - The new weight after adding jelly beans:\n     \\[\n     6 + 2 = 8 \\text{ pounds}\n     \\]\n\n4. **Adding Gummy Worms**: He adds gummy worms to double the weight.\n   - The final weight after adding gummy worms:\n     \\[\n     8 \\times 2 = 16 \\text{ pounds}\n     \\]\n\nTherefore, the final weight of the box is 16 pounds.",
+      "token_usage": {
+        "prompt_tokens": 365,
+        "completion_tokens": 260,
+        "total_tokens": 625
+      },
+      "runtime_seconds": 21.220963199972175,
+      "answer": "16",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "16",
+    "candidate_answers": {
+      "solver_a": "16"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "16",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 365,
+      "completion_tokens": 260,
+      "total_tokens": 625
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 365,
+        "completion_tokens": 260,
+        "total_tokens": 625
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 21.220963199972175
+    },
+    "total_runtime_seconds": 21.22192590002669,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 241,
+      "completion_tokens": 151,
+      "total_tokens": 391
+    },
+    "judge_runtime_seconds": 1.3440414333308581,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 3,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 4,
+    "setting": "single_full",
+    "shared_question": "How much did Alexis pay for the shoes?",
+    "gold_answer": "41",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Alexis has a $200 clothing budget. She spends $30 on a shirt, $46 on pants, and $38 on a coat. She also spends $11 on socks and $18 on a belt. After buying a pair of shoes, she has $16 left. How much did Alexis pay for the shoes?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Total Budget**: Alexis has a $200 clothing budget.\n2. **Spending Details**:\n   - Shirt: $30\n   - Pants: $46\n   - Coat: $38\n   - Socks: $11\n   - Belt: $18\n\nFirst, we calculate the total amount spent so far:\n\\[ 30 + 46 + 38 + 11 + 18 = 153 \\]\n\nNext, we know after buying the shoes, Alexis has $16 left. Therefore, the cost of the shoes can be found by subtracting the remaining money from her initial budget:\n\\[ 200 - 16 = 184 \\]\n\nSo, Alexis paid $184 for the shoes.\n\nFinal answer: Alexis paid $184 for the shoes.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Total Budget**: Alexis has a $200 clothing budget.\n2. **Spending Details**:\n   - Shirt: $30\n   - Pants: $46\n   - Coat: $38\n   - Socks: $11\n   - Belt: $18\n\nFirst, we calculate the total amount spent so far:\n\\[ 30 + 46 + 38 + 11 + 18 = 153 \\]\n\nNext, we know after buying the shoes, Alexis has $16 left. Therefore, the cost of the shoes can be found by subtracting the remaining money from her initial budget:\n\\[ 200 - 16 = 184 \\]\n\nSo, Alexis paid $184 for the shoes.\n\nFinal answer: Alexis paid $184 for the shoes.",
+      "token_usage": {
+        "prompt_tokens": 377,
+        "completion_tokens": 196,
+        "total_tokens": 573
+      },
+      "runtime_seconds": 15.749544999969658,
+      "answer": "184",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "184",
+    "candidate_answers": {
+      "solver_a": "184"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "184",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 377,
+      "completion_tokens": 196,
+      "total_tokens": 573
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 377,
+        "completion_tokens": 196,
+        "total_tokens": 573
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 15.749544999969658
+    },
+    "total_runtime_seconds": 15.750231600017287,
+    "failure_type": "information_integration_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 321,
+      "completion_tokens": 253,
+      "total_tokens": 574
+    },
+    "judge_runtime_seconds": 1.9328815833335586,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 4,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 5,
+    "setting": "single_full",
+    "shared_question": "How many stamps does Bella buy altogether?",
+    "gold_answer": "38",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Bella buys 11 snowflake stamps. She buys 9 more truck stamps than snowflake stamps. She buys 13 fewer rose stamps than truck stamps. How many stamps does Bella buy altogether?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Snowflake Stamps**: Bella buys 11 snowflake stamps.\n2. **Truck Stamps**: She buys 9 more truck stamps than snowflake stamps. Therefore, she buys \\(11 + 9 = 20\\) truck stamps.\n3. **Rose Stamps**: She buys 13 fewer rose stamps than truck stamps. Therefore, she buys \\(20 - 13 = 7\\) rose stamps.\n\nNow, we sum up all the stamps:\n- Snowflake stamps: 11\n- Truck stamps: 20\n- Rose stamps: 7\n\nTotal number of stamps = \\(11 + 20 + 7\\)\n\nLet's calculate the total:\n\\[ 11 + 20 + 7 = 38 \\]\n\nTherefore, Bella buys a total of 38 stamps altogether.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Snowflake Stamps**: Bella buys 11 snowflake stamps.\n2. **Truck Stamps**: She buys 9 more truck stamps than snowflake stamps. Therefore, she buys \\(11 + 9 = 20\\) truck stamps.\n3. **Rose Stamps**: She buys 13 fewer rose stamps than truck stamps. Therefore, she buys \\(20 - 13 = 7\\) rose stamps.\n\nNow, we sum up all the stamps:\n- Snowflake stamps: 11\n- Truck stamps: 20\n- Rose stamps: 7\n\nTotal number of stamps = \\(11 + 20 + 7\\)\n\nLet's calculate the total:\n\\[ 11 + 20 + 7 = 38 \\]\n\nTherefore, Bella buys a total of 38 stamps altogether.",
+      "token_usage": {
+        "prompt_tokens": 346,
+        "completion_tokens": 193,
+        "total_tokens": 539
+      },
+      "runtime_seconds": 15.476840500021353,
+      "answer": "38",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "38",
+    "candidate_answers": {
+      "solver_a": "38"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "38",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 346,
+      "completion_tokens": 193,
+      "total_tokens": 539
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 346,
+        "completion_tokens": 193,
+        "total_tokens": 539
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 15.476840500021353
+    },
+    "total_runtime_seconds": 15.477899999998044,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 41,
+      "completion_tokens": 37,
+      "total_tokens": 78
+    },
+    "judge_runtime_seconds": 0.40928628333495,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 5,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 6,
+    "setting": "single_full",
+    "shared_question": "How much does each top cost?",
+    "gold_answer": "5",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Ann spends $75 at a store. She buys 5 pairs of shorts for $7 each. She also buys 2 pairs of shoes for $10 each and 4 tops at the same price. How much does each top cost?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Total spent**: Ann spends $75.\n2. **Cost of shorts**: She buys 5 pairs of shorts for $7 each.\n   \\[\n   5 \\times 7 = 35 \\text{ dollars}\n   \\]\n3. **Cost of shoes**: She buys 2 pairs of shoes for $10 each.\n   \\[\n   2 \\times 10 = 20 \\text{ dollars}\n   \\]\n\nNow we know:\n- Total spent: $75\n- Shorts cost: $35\n- Shoes cost: $20\n\nSubtracting these costs from the total amount spent gives us the remaining amount spent on tops:\n\\[\n75 - (35 + 20) = 75 - 55 = 20 \\text{ dollars}\n\\]\n\nShe bought 4 tops, so to find the cost per top, divide the remaining amount by the number of tops:\n\\[\n\\frac{20}{4} = 5 \\text{ dollars}\n\\]\n\nTherefore, each top costs $5.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Total spent**: Ann spends $75.\n2. **Cost of shorts**: She buys 5 pairs of shorts for $7 each.\n   \\[\n   5 \\times 7 = 35 \\text{ dollars}\n   \\]\n3. **Cost of shoes**: She buys 2 pairs of shoes for $10 each.\n   \\[\n   2 \\times 10 = 20 \\text{ dollars}\n   \\]\n\nNow we know:\n- Total spent: $75\n- Shorts cost: $35\n- Shoes cost: $20\n\nSubtracting these costs from the total amount spent gives us the remaining amount spent on tops:\n\\[\n75 - (35 + 20) = 75 - 55 = 20 \\text{ dollars}\n\\]\n\nShe bought 4 tops, so to find the cost per top, divide the remaining amount by the number of tops:\n\\[\n\\frac{20}{4} = 5 \\text{ dollars}\n\\]\n\nTherefore, each top costs $5.",
+      "token_usage": {
+        "prompt_tokens": 355,
+        "completion_tokens": 242,
+        "total_tokens": 597
+      },
+      "runtime_seconds": 17.38543889997527,
+      "answer": "5",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "5",
+    "candidate_answers": {
+      "solver_a": "5"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "5",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 355,
+      "completion_tokens": 242,
+      "total_tokens": 597
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 355,
+        "completion_tokens": 242,
+        "total_tokens": 597
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 17.38543889997527
+    },
+    "total_runtime_seconds": 17.386344800004736,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 123,
+      "completion_tokens": 132,
+      "total_tokens": 254
+    },
+    "judge_runtime_seconds": 1.0866270999928627,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 6,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 7,
+    "setting": "single_full",
+    "shared_question": "How much sales revenue does Noah make this month?",
+    "gold_answer": "1200",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Noah sells large paintings for $60 each and small paintings for $30 each. Last month he sold 8 large paintings. Last month he also sold 4 small paintings. This month his total sales revenue is twice last month's revenue. How much sales revenue does Noah make this month?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we need to determine Noah's total sales revenue for this month based on the information given about his sales last month and the relationship between his revenues this month and last month.\n\n1. **Last Month's Sales Revenue Calculation**:\n   - Noah sold 8 large paintings.\n   - Each large painting was sold for $60.\n   - Therefore, the revenue from large paintings last month = \\( 8 \\times 60 = \\$480 \\).\n\n2. **Small Paintings Sold Last Month**:\n   - Noah sold 4 small paintings.\n   - Each small painting was sold for $30.\n   - Therefore, the revenue from small paintings last month = \\( 4 \\times 30 = \\$120 \\).\n\n3. **Total Last Month's Revenue**:\n   - Total revenue last month = Revenue from large paintings + Revenue from small paintings\n   - Total revenue last month = \\( 480 + 120 = \\$600 \\).\n\n4. **This Month's Total Sales Revenue Relationship**:\n   - The problem states that this month's total sales revenue is twice last month's revenue.\n   - Therefore, this month's total sales revenue = \\( 2 \\times 600 = \\$1200 \\).\n\n5. **Conclusion**:\n   - Noah made $1200 in sales revenue this month.\n\nFinal answer: Noah makes $1200 in sales revenue this month.",
+      "raw_output": "To solve this problem, we need to determine Noah's total sales revenue for this month based on the information given about his sales last month and the relationship between his revenues this month and last month.\n\n1. **Last Month's Sales Revenue Calculation**:\n   - Noah sold 8 large paintings.\n   - Each large painting was sold for $60.\n   - Therefore, the revenue from large paintings last month = \\( 8 \\times 60 = \\$480 \\).\n\n2. **Small Paintings Sold Last Month**:\n   - Noah sold 4 small paintings.\n   - Each small painting was sold for $30.\n   - Therefore, the revenue from small paintings last month = \\( 4 \\times 30 = \\$120 \\).\n\n3. **Total Last Month's Revenue**:\n   - Total revenue last month = Revenue from large paintings + Revenue from small paintings\n   - Total revenue last month = \\( 480 + 120 = \\$600 \\).\n\n4. **This Month's Total Sales Revenue Relationship**:\n   - The problem states that this month's total sales revenue is twice last month's revenue.\n   - Therefore, this month's total sales revenue = \\( 2 \\times 600 = \\$1200 \\).\n\n5. **Conclusion**:\n   - Noah made $1200 in sales revenue this month.\n\nFinal answer: Noah makes $1200 in sales revenue this month.",
+      "token_usage": {
+        "prompt_tokens": 365,
+        "completion_tokens": 305,
+        "total_tokens": 670
+      },
+      "runtime_seconds": 25.690795700007584,
+      "answer": "1200",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "1200",
+    "candidate_answers": {
+      "solver_a": "1200"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "1200",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 365,
+      "completion_tokens": 305,
+      "total_tokens": 670
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 365,
+        "completion_tokens": 305,
+        "total_tokens": 670
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 25.690795700007584
+    },
+    "total_runtime_seconds": 25.6919756999705,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 191,
+      "completion_tokens": 106,
+      "total_tokens": 296
+    },
+    "judge_runtime_seconds": 0.8581135499989614,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 7,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 8,
+    "setting": "single_full",
+    "shared_question": "How many minutes does Carolyn practice in 4 weeks?",
+    "gold_answer": "1920",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Carolyn practices piano for 20 minutes per day. She practices violin for 3 times as long as piano. She practices both instruments 6 days per week for 4 weeks. How many minutes does Carolyn practice in 4 weeks?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we'll break it down into smaller steps:\n\n1. **Calculate daily practice time for each instrument**:\n   - Piano: 20 minutes/day\n   - Violin: 3 * 20 = 60 minutes/day\n\n2. **Calculate weekly practice time for each instrument**:\n   - Piano: 20 minutes/day * 6 days/week = 120 minutes/week\n   - Violin: 60 minutes/day * 6 days/week = 360 minutes/week\n\n3. **Calculate total weekly practice time for both instruments**:\n   - Total weekly practice time = 120 + 360 = 480 minutes/week\n\n4. **Calculate total practice time over 4 weeks**:\n   - Total practice time in 4 weeks = 480 minutes/week * 4 weeks = 1920 minutes\n\nTherefore, Carolyn practices a total of 1920 minutes in 4 weeks.\n\nFinal answer: Carolyn practices a total of 1920 minutes in 4 weeks.",
+      "raw_output": "To solve this problem, we'll break it down into smaller steps:\n\n1. **Calculate daily practice time for each instrument**:\n   - Piano: 20 minutes/day\n   - Violin: 3 * 20 = 60 minutes/day\n\n2. **Calculate weekly practice time for each instrument**:\n   - Piano: 20 minutes/day * 6 days/week = 120 minutes/week\n   - Violin: 60 minutes/day * 6 days/week = 360 minutes/week\n\n3. **Calculate total weekly practice time for both instruments**:\n   - Total weekly practice time = 120 + 360 = 480 minutes/week\n\n4. **Calculate total practice time over 4 weeks**:\n   - Total practice time in 4 weeks = 480 minutes/week * 4 weeks = 1920 minutes\n\nTherefore, Carolyn practices a total of 1920 minutes in 4 weeks.\n\nFinal answer: Carolyn practices a total of 1920 minutes in 4 weeks.",
+      "token_usage": {
+        "prompt_tokens": 353,
+        "completion_tokens": 233,
+        "total_tokens": 586
+      },
+      "runtime_seconds": 20.668209000024945,
+      "answer": "4",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "4",
+    "candidate_answers": {
+      "solver_a": "4"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "4",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 353,
+      "completion_tokens": 233,
+      "total_tokens": 586
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 353,
+        "completion_tokens": 233,
+        "total_tokens": 586
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 20.668209000024945
+    },
+    "total_runtime_seconds": 20.668969799997285,
+    "failure_type": "information_integration_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "missing judge row",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 95,
+      "completion_tokens": 118,
+      "total_tokens": 213
+    },
+    "judge_runtime_seconds": 0.9664715666731354,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 8,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 9,
+    "setting": "single_full",
+    "shared_question": "How many minutes does the third part take?",
+    "gold_answer": "45",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Leo finishes the first part of an assignment in 25 minutes. The second part takes twice as long as the first. The entire assignment takes 2 hours. How many minutes does the third part take?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **First Part Time**: Leo finishes the first part in 25 minutes.\n2. **Second Part Time**: The second part takes twice as long as the first part.\n   - Second part time = \\( 2 \\times 25 \\) minutes = 50 minutes\n\n3. **Total Assignment Time**: The entire assignment takes 2 hours.\n   - Convert total time into minutes: \\( 2 \\text{ hours} \\times 60 \\text{ minutes/hour} = 120 \\text{ minutes} \\)\n\n4. **Third Part Time Calculation**:\n   - Let \\( x \\) be the time taken for the third part.\n   - Total time for all parts should equal the total assignment time:\n     \\[\n     25 + 50 + x = 120\n     \\]\n   - Solve for \\( x \\):\n     \\[\n     75 + x = 120 \\\\\n     x = 120 - 75 \\\\\n     x = 45 \\text{ minutes}\n     \\]\n\nTherefore, the third part takes 45 minutes.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **First Part Time**: Leo finishes the first part in 25 minutes.\n2. **Second Part Time**: The second part takes twice as long as the first part.\n   - Second part time = \\( 2 \\times 25 \\) minutes = 50 minutes\n\n3. **Total Assignment Time**: The entire assignment takes 2 hours.\n   - Convert total time into minutes: \\( 2 \\text{ hours} \\times 60 \\text{ minutes/hour} = 120 \\text{ minutes} \\)\n\n4. **Third Part Time Calculation**:\n   - Let \\( x \\) be the time taken for the third part.\n   - Total time for all parts should equal the total assignment time:\n     \\[\n     25 + 50 + x = 120\n     \\]\n   - Solve for \\( x \\):\n     \\[\n     75 + x = 120 \\\\\n     x = 120 - 75 \\\\\n     x = 45 \\text{ minutes}\n     \\]\n\nTherefore, the third part takes 45 minutes.",
+      "token_usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 251,
+        "total_tokens": 598
+      },
+      "runtime_seconds": 23.00708210002631,
+      "answer": "45",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "45",
+    "candidate_answers": {
+      "solver_a": "45"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "45",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 347,
+      "completion_tokens": 251,
+      "total_tokens": 598
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 347,
+        "completion_tokens": 251,
+        "total_tokens": 598
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 23.00708210002631
+    },
+    "total_runtime_seconds": 23.0084468999994,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 78,
+      "completion_tokens": 85,
+      "total_tokens": 162
+    },
+    "judge_runtime_seconds": 0.6485460500019448,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 9,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 10,
+    "setting": "single_full",
+    "shared_question": "How much does James earn each week from both jobs?",
+    "gold_answer": "840",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: James earns $20 per hour at his main job and works 30 hours there each week. At his second job, he earns 20% less per hour and works half as many hours as at his main job. How much does James earn each week from both jobs?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Earnings from Main Job**:\n   - Hourly wage: $20\n   - Hours worked per week: 30\n\n   Earnings from main job = Hourly wage × Hours worked\n   \\[\n   \\text{Earnings from main job} = 20 \\times 30 = \\$600\n   \\]\n\n2. **Hourly Wage at Second Job**:\n   - The hourly wage at the second job is 20% less than at the main job.\n   \n   First, calculate 20% of $20:\n   \\[\n   20\\% \\text{ of } 20 = 0.20 \\times 20 = \\$4\n   \\]\n   \n   Then subtract this amount from the hourly wage at the main job:\n   \\[\n   \\text{Hourly wage at second job} = 20 - 4 = \\$16\n   \\]\n\n3. **Hours Worked at Second Job**:\n   - He works half as many hours at the second job compared to the main job.\n   \n   Half of 30 hours:\n   \\[\n   \\frac{30}{2} = 15 \\text{ hours}\n   \\]\n\n4. **Earnings from Second Job**:\n   - Hourly wage at second job: $16\n   - Hours worked at second job: 15\n   \n   Earnings from second job = Hourly wage × Hours worked\n   \\[\n   \\text{Earnings from second job} = 16 \\times 15 = \\$240\n   \\]\n\n5. **Total Weekly Earnings**:\n   - Add earnings from both jobs:\n   \\[\n   \\text{Total weekly earnings",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Earnings from Main Job**:\n   - Hourly wage: $20\n   - Hours worked per week: 30\n\n   Earnings from main job = Hourly wage × Hours worked\n   \\[\n   \\text{Earnings from main job} = 20 \\times 30 = \\$600\n   \\]\n\n2. **Hourly Wage at Second Job**:\n   - The hourly wage at the second job is 20% less than at the main job.\n   \n   First, calculate 20% of $20:\n   \\[\n   20\\% \\text{ of } 20 = 0.20 \\times 20 = \\$4\n   \\]\n   \n   Then subtract this amount from the hourly wage at the main job:\n   \\[\n   \\text{Hourly wage at second job} = 20 - 4 = \\$16\n   \\]\n\n3. **Hours Worked at Second Job**:\n   - He works half as many hours at the second job compared to the main job.\n   \n   Half of 30 hours:\n   \\[\n   \\frac{30}{2} = 15 \\text{ hours}\n   \\]\n\n4. **Earnings from Second Job**:\n   - Hourly wage at second job: $16\n   - Hours worked at second job: 15\n   \n   Earnings from second job = Hourly wage × Hours worked\n   \\[\n   \\text{Earnings from second job} = 16 \\times 15 = \\$240\n   \\]\n\n5. **Total Weekly Earnings**:\n   - Add earnings from both jobs:\n   \\[\n   \\text{Total weekly earnings",
+      "token_usage": {
+        "prompt_tokens": 363,
+        "completion_tokens": 384,
+        "total_tokens": 747
+      },
+      "runtime_seconds": 30.749187499983236,
+      "answer": "5",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "5",
+    "candidate_answers": {
+      "solver_a": "5"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "5",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 5, gold is 840; not equivalent.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 363,
+      "completion_tokens": 384,
+      "total_tokens": 747
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 363,
+        "completion_tokens": 384,
+        "total_tokens": 747
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 30.749187499983236
+    },
+    "total_runtime_seconds": 30.75034450000385,
+    "failure_type": "information_integration_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 5, gold is 840; not equivalent.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 5, gold is 840; not equivalent.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 130,
+      "completion_tokens": 158,
+      "total_tokens": 288
+    },
+    "judge_runtime_seconds": 1.1309664166668274,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 10,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 11,
+    "setting": "single_full",
+    "shared_question": "What balance remains after the 4 monthly payments?",
+    "gold_answer": "520",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Tara wants to buy a $1000 laptop. She makes a 20% down payment and pays an extra $20 with the down payment. She then pays $65 per month for 4 months. What balance remains after the 4 monthly payments?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Down Payment Calculation**:\n   - The total cost of the laptop is $1000.\n   - Tara makes a 20% down payment.\n   - Down payment amount = \\( 1000 \\times 0.20 = 200 \\) dollars.\n   \n2. **Total Amount Paid for Down Payment Including Extra Fee**:\n   - Tara also pays an additional $20 as part of her down payment.\n   - Total down payment including extra fee = \\( 200 + 20 = 220 \\) dollars.\n\n3. **Remaining Balance After Down Payment**:\n   - Initial balance before any payments = $1000.\n   - Remaining balance after down payment = \\( 1000 - 220 = 780 \\) dollars.\n\n4. **Monthly Payments**:\n   - Tara pays $65 per month for 4 months.\n   - Total amount paid over 4 months = \\( 65 \\times 4 = 260 \\) dollars.\n\n5. **Balance Remaining After Monthly Payments**:\n   - Final remaining balance = \\( 780 - 260 = 520 \\) dollars.\n\nTherefore, the balance remaining after the 4 monthly payments is $520.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Down Payment Calculation**:\n   - The total cost of the laptop is $1000.\n   - Tara makes a 20% down payment.\n   - Down payment amount = \\( 1000 \\times 0.20 = 200 \\) dollars.\n   \n2. **Total Amount Paid for Down Payment Including Extra Fee**:\n   - Tara also pays an additional $20 as part of her down payment.\n   - Total down payment including extra fee = \\( 200 + 20 = 220 \\) dollars.\n\n3. **Remaining Balance After Down Payment**:\n   - Initial balance before any payments = $1000.\n   - Remaining balance after down payment = \\( 1000 - 220 = 780 \\) dollars.\n\n4. **Monthly Payments**:\n   - Tara pays $65 per month for 4 months.\n   - Total amount paid over 4 months = \\( 65 \\times 4 = 260 \\) dollars.\n\n5. **Balance Remaining After Monthly Payments**:\n   - Final remaining balance = \\( 780 - 260 = 520 \\) dollars.\n\nTherefore, the balance remaining after the 4 monthly payments is $520.",
+      "token_usage": {
+        "prompt_tokens": 361,
+        "completion_tokens": 289,
+        "total_tokens": 650
+      },
+      "runtime_seconds": 18.645900299947243,
+      "answer": "520",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "520",
+    "candidate_answers": {
+      "solver_a": "520"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "520",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 361,
+      "completion_tokens": 289,
+      "total_tokens": 650
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 361,
+        "completion_tokens": 289,
+        "total_tokens": 650
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 18.645900299947243
+    },
+    "total_runtime_seconds": 18.646912099968176,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 89,
+      "completion_tokens": 264,
+      "total_tokens": 353
+    },
+    "judge_runtime_seconds": 1.9970993000024464,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 11,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 12,
+    "setting": "single_full",
+    "shared_question": "How many packs must Roger buy?",
+    "gold_answer": "3",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Roger needs one trail-mix pouch for each of 13 players on a baseball team. He also needs pouches for 3 coaches and 2 helpers. Each pack contains 6 pouches. How many packs must Roger buy?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Calculate the total number of pouches needed**:\n   - Players: 13\n   - Coaches: 3\n   - Helpers: 2\n\n   Total pouches = Players + Coaches + Helpers\n                  = 13 + 3 + 2\n                  = 18\n\n2. **Determine how many packs are required**:\n   - Each pack contains 6 pouches.\n   \n   Number of packs needed = Total pouches / Pouches per pack\n                         = 18 / 6\n                         = 3\n\nTherefore, Roger must buy 3 packs of trail-mix pouches.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Calculate the total number of pouches needed**:\n   - Players: 13\n   - Coaches: 3\n   - Helpers: 2\n\n   Total pouches = Players + Coaches + Helpers\n                  = 13 + 3 + 2\n                  = 18\n\n2. **Determine how many packs are required**:\n   - Each pack contains 6 pouches.\n   \n   Number of packs needed = Total pouches / Pouches per pack\n                         = 18 / 6\n                         = 3\n\nTherefore, Roger must buy 3 packs of trail-mix pouches.",
+      "token_usage": {
+        "prompt_tokens": 353,
+        "completion_tokens": 149,
+        "total_tokens": 502
+      },
+      "runtime_seconds": 13.064569899986964,
+      "answer": "3",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "3",
+    "candidate_answers": {
+      "solver_a": "3"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "3",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 353,
+      "completion_tokens": 149,
+      "total_tokens": 502
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 353,
+        "completion_tokens": 149,
+        "total_tokens": 502
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 13.064569899986964
+    },
+    "total_runtime_seconds": 13.06532299995888,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 275,
+      "completion_tokens": 240,
+      "total_tokens": 514
+    },
+    "judge_runtime_seconds": 1.627711450002001,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 12,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 13,
+    "setting": "single_full",
+    "shared_question": "How many kilograms does each of the last two people lose?",
+    "gold_answer": "28",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Four people lose 103 kilograms altogether. The first person loses 27 kilograms. The second person loses 7 kilograms less than the first. The last two people lose equal amounts. How many kilograms does each of the last two people lose?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Total loss**: Four people together lose 103 kilograms.\n   - Let \\( x \\) be the amount lost by the last two people (who lose equal amounts).\n\n2. **First person's loss**: The first person loses 27 kilograms.\n\n3. **Second person's loss**: The second person loses 7 kilograms less than the first person.\n   - Therefore, the second person loses \\( 27 - 7 = 20 \\) kilograms.\n\n4. **Equation setup**:\n   - Total loss: \\( 27 + 20 + x + x = 103 \\)\n   - Simplify: \\( 47 + 2x = 103 \\)\n\n5. **Solving for \\( x \\)**:\n   - Subtract 47 from both sides: \\( 2x = 56 \\)\n   - Divide by 2: \\( x = 28 \\)\n\nSo, each of the last two people loses 28 kilograms.\n\nFinal answer: Each of the last two people loses 28 kilograms.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Total loss**: Four people together lose 103 kilograms.\n   - Let \\( x \\) be the amount lost by the last two people (who lose equal amounts).\n\n2. **First person's loss**: The first person loses 27 kilograms.\n\n3. **Second person's loss**: The second person loses 7 kilograms less than the first person.\n   - Therefore, the second person loses \\( 27 - 7 = 20 \\) kilograms.\n\n4. **Equation setup**:\n   - Total loss: \\( 27 + 20 + x + x = 103 \\)\n   - Simplify: \\( 47 + 2x = 103 \\)\n\n5. **Solving for \\( x \\)**:\n   - Subtract 47 from both sides: \\( 2x = 56 \\)\n   - Divide by 2: \\( x = 28 \\)\n\nSo, each of the last two people loses 28 kilograms.\n\nFinal answer: Each of the last two people loses 28 kilograms.",
+      "token_usage": {
+        "prompt_tokens": 356,
+        "completion_tokens": 241,
+        "total_tokens": 597
+      },
+      "runtime_seconds": 18.99059479997959,
+      "answer": "28",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "28",
+    "candidate_answers": {
+      "solver_a": "28"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "28",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 356,
+      "completion_tokens": 241,
+      "total_tokens": 597
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 356,
+        "completion_tokens": 241,
+        "total_tokens": 597
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 18.99059479997959
+    },
+    "total_runtime_seconds": 18.991373000026215,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 42,
+      "completion_tokens": 26,
+      "total_tokens": 68
+    },
+    "judge_runtime_seconds": 0.29036558333124657,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 13,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 14,
+    "setting": "single_full",
+    "shared_question": "How many vegetables does the garden produce altogether?",
+    "gold_answer": "768",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: A garden produces 237 potatoes. It produces 60 fewer cucumbers than potatoes. It produces twice as many peppers as cucumbers. How many vegetables does the garden produce altogether?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Potatoes**: The garden produces 237 potatoes.\n   - This is given directly.\n\n2. **Cucumbers**: The garden produces 60 fewer cucumbers than potatoes.\n   - To find the number of cucumbers:\n     \\[\n     \\text{Number of cucumbers} = \\text{Number of potatoes} - 60\n     \\]\n     Substituting the given value:\n     \\[\n     \\text{Number of cucumbers} = 237 - 60 = 177\n     \\]\n\n3. **Peppers**: The garden produces twice as many peppers as cucumbers.\n   - To find the number of peppers:\n     \\[\n     \\text{Number of peppers} = 2 \\times \\text{Number of cucumbers}\n     \\]\n     Substituting the calculated value:\n     \\[\n     \\text{Number of peppers} = 2 \\times 177 = 354\n     \\]\n\n4. **Total Vegetables**: Now we add up all the vegetables produced:\n   - Potatoes + Cucumbers + Peppers\n   - Total vegetables:\n     \\[\n     \\text{Total vegetables} = 237 + 177 + 354\n     \\]\n\nLet's calculate the total:\n\n\\[\n237 + 177 = 414\n\\]\n\\[\n414 + 354 = 768\n\\]\n\nTherefore, the garden produces a total of 768 vegetables.\n\n**Final answer:** The garden produces 768 vegetables altogether.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Potatoes**: The garden produces 237 potatoes.\n   - This is given directly.\n\n2. **Cucumbers**: The garden produces 60 fewer cucumbers than potatoes.\n   - To find the number of cucumbers:\n     \\[\n     \\text{Number of cucumbers} = \\text{Number of potatoes} - 60\n     \\]\n     Substituting the given value:\n     \\[\n     \\text{Number of cucumbers} = 237 - 60 = 177\n     \\]\n\n3. **Peppers**: The garden produces twice as many peppers as cucumbers.\n   - To find the number of peppers:\n     \\[\n     \\text{Number of peppers} = 2 \\times \\text{Number of cucumbers}\n     \\]\n     Substituting the calculated value:\n     \\[\n     \\text{Number of peppers} = 2 \\times 177 = 354\n     \\]\n\n4. **Total Vegetables**: Now we add up all the vegetables produced:\n   - Potatoes + Cucumbers + Peppers\n   - Total vegetables:\n     \\[\n     \\text{Total vegetables} = 237 + 177 + 354\n     \\]\n\nLet's calculate the total:\n\n\\[\n237 + 177 = 414\n\\]\n\\[\n414 + 354 = 768\n\\]\n\nTherefore, the garden produces a total of 768 vegetables.\n\n**Final answer:** The garden produces 768 vegetables altogether.",
+      "token_usage": {
+        "prompt_tokens": 346,
+        "completion_tokens": 362,
+        "total_tokens": 708
+      },
+      "runtime_seconds": 28.83145290001994,
+      "answer": "768",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "768",
+    "candidate_answers": {
+      "solver_a": "768"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "768",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 346,
+      "completion_tokens": 362,
+      "total_tokens": 708
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 346,
+        "completion_tokens": 362,
+        "total_tokens": 708
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 28.83145290001994
+    },
+    "total_runtime_seconds": 28.832342000037897,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 41,
+      "completion_tokens": 40,
+      "total_tokens": 81
+    },
+    "judge_runtime_seconds": 0.4222408833350831,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 14,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 15,
+    "setting": "single_full",
+    "shared_question": "How many cans does Jennifer take home?",
+    "gold_answer": "100",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Jennifer initially buys 40 cans of milk. For every 5 cans Mark buys, Jennifer buys 6 additional cans. Mark buys 50 cans. How many cans does Jennifer take home?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we need to determine how many cans Jennifer takes home after buying more based on the relationship between her purchases and Mark's.\n\n1. **Initial Purchase**: Jennifer starts with 40 cans.\n2. **Mark's Purchase**: Mark buys 50 cans.\n3. **Jennifer's Additional Cans**: For every 5 cans Mark buys, Jennifer buys 6 additional cans. Since Mark buys 50 cans, we calculate:\n   \\[\n   \\frac{50}{5} = 10\n   \\]\n   So, Jennifer buys \\(10 \\times 6 = 60\\) additional cans.\n4. **Total Cans Jennifer Buys**: Adding the initial 40 cans to the 60 additional cans:\n   \\[\n   40 + 60 = 100\n   \\]\n\nTherefore, Jennifer takes home a total of 100 cans.",
+      "raw_output": "To solve this problem, we need to determine how many cans Jennifer takes home after buying more based on the relationship between her purchases and Mark's.\n\n1. **Initial Purchase**: Jennifer starts with 40 cans.\n2. **Mark's Purchase**: Mark buys 50 cans.\n3. **Jennifer's Additional Cans**: For every 5 cans Mark buys, Jennifer buys 6 additional cans. Since Mark buys 50 cans, we calculate:\n   \\[\n   \\frac{50}{5} = 10\n   \\]\n   So, Jennifer buys \\(10 \\times 6 = 60\\) additional cans.\n4. **Total Cans Jennifer Buys**: Adding the initial 40 cans to the 60 additional cans:\n   \\[\n   40 + 60 = 100\n   \\]\n\nTherefore, Jennifer takes home a total of 100 cans.",
+      "token_usage": {
+        "prompt_tokens": 345,
+        "completion_tokens": 192,
+        "total_tokens": 537
+      },
+      "runtime_seconds": 15.19126310001593,
+      "answer": "100",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "100",
+    "candidate_answers": {
+      "solver_a": "100"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "100",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 345,
+      "completion_tokens": 192,
+      "total_tokens": 537
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 345,
+        "completion_tokens": 192,
+        "total_tokens": 537
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 15.19126310001593
+    },
+    "total_runtime_seconds": 15.192114800040144,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 74,
+      "completion_tokens": 95,
+      "total_tokens": 169
+    },
+    "judge_runtime_seconds": 0.737286850004845,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 15,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 16,
+    "setting": "single_full",
+    "shared_question": "What was Irene's total income last week?",
+    "gold_answer": "700",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Irene earns $500 for a regular 40-hour workweek. She earns an extra $20 for every overtime hour. Last week she worked 50 hours. What was Irene's total income last week?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we need to calculate Irene's total income based on her hourly wage and the number of hours she worked.\n\n1. **Regular Hours**: Irene works 40 hours per week.\n   - Regular pay = \\( 40 \\text{ hours} \\times \\$500/\\text{hour} \\)\n\n2. **Overtime Hours**: The total hours worked last week (50) minus the regular hours (40).\n   - Overtime hours = \\( 50 \\text{ hours} - 40 \\text{ hours} \\)\n   \n3. **Overtime Pay**: Each overtime hour pays an additional $20.\n   - Overtime pay = \\( 20 \\text{ dollars/hour} \\times \\text{overtime hours} \\)\n\n4. **Total Income**: Sum up the regular pay and the overtime pay.\n   - Total income = \\( \\text{regular pay} + \\text{overtime pay} \\)\n\nLet's perform these calculations:\n\n- Regular pay:\n  \\[\n  40 \\text{ hours} \\times \\$500/\\text{hour} = \\$20,000\n  \\]\n\n- Overtime hours:\n  \\[\n  50 \\text{ hours} - 40 \\text{ hours} = 10 \\text{ hours}\n  \\]\n\n- Overtime pay:\n  \\[\n  20 \\text{ dollars/hour} \\times 10 \\text{ hours} = \\$200\n  \\]\n\n- Total income:\n  \\[\n  \\$20,000 + \\$200 = \\$20,200\n  \\]\n\nTherefore, Irene's total income last week was \\$20,200.",
+      "raw_output": "To solve this problem, we need to calculate Irene's total income based on her hourly wage and the number of hours she worked.\n\n1. **Regular Hours**: Irene works 40 hours per week.\n   - Regular pay = \\( 40 \\text{ hours} \\times \\$500/\\text{hour} \\)\n\n2. **Overtime Hours**: The total hours worked last week (50) minus the regular hours (40).\n   - Overtime hours = \\( 50 \\text{ hours} - 40 \\text{ hours} \\)\n   \n3. **Overtime Pay**: Each overtime hour pays an additional $20.\n   - Overtime pay = \\( 20 \\text{ dollars/hour} \\times \\text{overtime hours} \\)\n\n4. **Total Income**: Sum up the regular pay and the overtime pay.\n   - Total income = \\( \\text{regular pay} + \\text{overtime pay} \\)\n\nLet's perform these calculations:\n\n- Regular pay:\n  \\[\n  40 \\text{ hours} \\times \\$500/\\text{hour} = \\$20,000\n  \\]\n\n- Overtime hours:\n  \\[\n  50 \\text{ hours} - 40 \\text{ hours} = 10 \\text{ hours}\n  \\]\n\n- Overtime pay:\n  \\[\n  20 \\text{ dollars/hour} \\times 10 \\text{ hours} = \\$200\n  \\]\n\n- Total income:\n  \\[\n  \\$20,000 + \\$200 = \\$20,200\n  \\]\n\nTherefore, Irene's total income last week was \\$20,200.",
+      "token_usage": {
+        "prompt_tokens": 351,
+        "completion_tokens": 373,
+        "total_tokens": 724
+      },
+      "runtime_seconds": 29.780298400030006,
+      "answer": "20200",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "20200",
+    "candidate_answers": {
+      "solver_a": "20200"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "20200",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 20200, gold 700, not equivalent.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 351,
+      "completion_tokens": 373,
+      "total_tokens": 724
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 351,
+        "completion_tokens": 373,
+        "total_tokens": 724
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 29.780298400030006
+    },
+    "total_runtime_seconds": 29.781514000031166,
+    "failure_type": "information_integration_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Predicted 20200, gold 700, not equivalent.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 20200, gold 700, not equivalent.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 238,
+      "completion_tokens": 259,
+      "total_tokens": 497
+    },
+    "judge_runtime_seconds": 1.6897050833310157,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 16,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 17,
+    "setting": "single_full",
+    "shared_question": "How much money does Winwin take home?",
+    "gold_answer": "35",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Winwin wins $50 in a lottery. She pays 20% of the winnings as tax. She also pays a $5 processing fee. How much money does Winwin take home?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we need to calculate how much money Winwin takes home after paying taxes and processing fees.\n\n1. **Calculate the tax amount**: \n   - Winwin wins $50.\n   - She pays 20% of her winnings as tax.\n   - Tax amount = \\( 50 \\times 0.20 = 10 \\) dollars.\n\n2. **Subtract the tax from the winnings**:\n   - Winnings before tax = $50.\n   - Tax paid = $10.\n   - Winnings after tax = \\( 50 - 10 = 40 \\) dollars.\n\n3. **Add the processing fee**:\n   - Processing fee = $5.\n   - Total amount taken home = Winnings after tax + Processing fee = \\( 40 + 5 = 45 \\) dollars.\n\nTherefore, Winwin takes home $45.",
+      "raw_output": "To solve this problem, we need to calculate how much money Winwin takes home after paying taxes and processing fees.\n\n1. **Calculate the tax amount**: \n   - Winwin wins $50.\n   - She pays 20% of her winnings as tax.\n   - Tax amount = \\( 50 \\times 0.20 = 10 \\) dollars.\n\n2. **Subtract the tax from the winnings**:\n   - Winnings before tax = $50.\n   - Tax paid = $10.\n   - Winnings after tax = \\( 50 - 10 = 40 \\) dollars.\n\n3. **Add the processing fee**:\n   - Processing fee = $5.\n   - Total amount taken home = Winnings after tax + Processing fee = \\( 40 + 5 = 45 \\) dollars.\n\nTherefore, Winwin takes home $45.",
+      "token_usage": {
+        "prompt_tokens": 345,
+        "completion_tokens": 192,
+        "total_tokens": 537
+      },
+      "runtime_seconds": 16.695052700000815,
+      "answer": "45",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "45",
+    "candidate_answers": {
+      "solver_a": "45"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "45",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 45, but gold is 35.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 345,
+      "completion_tokens": 192,
+      "total_tokens": 537
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 345,
+        "completion_tokens": 192,
+        "total_tokens": 537
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 16.695052700000815
+    },
+    "total_runtime_seconds": 16.695991299988236,
+    "failure_type": "information_integration_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 45, but gold is 35.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 45, but gold is 35.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 281,
+      "completion_tokens": 193,
+      "total_tokens": 474
+    },
+    "judge_runtime_seconds": 1.4386211666666593,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 17,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 18,
+    "setting": "single_full",
+    "shared_question": "How much money remains in John's piggy bank?",
+    "gold_answer": "200",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: John puts $25 into his piggy bank every month for 2 years. He then spends $400 from the piggy bank on a car repair. How much money remains in John's piggy bank?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we'll break it down step by step:\n\n1. **Calculate total amount saved over 2 years**:\n   - John saves $25 each month.\n   - There are 12 months in a year, so he saves \\( 25 \\times 12 = \\$300 \\) per year.\n   - Over 2 years, he saves \\( 300 \\times 2 = \\$600 \\).\n\n2. **Subtract the amount spent on car repair**:\n   - John spends $400 on a car repair.\n   - After spending, the remaining amount in his piggy bank is \\( 600 - 400 = \\$200 \\).\n\nTherefore, the amount of money remaining in John's piggy bank after the car repair is $200.",
+      "raw_output": "To solve this problem, we'll break it down step by step:\n\n1. **Calculate total amount saved over 2 years**:\n   - John saves $25 each month.\n   - There are 12 months in a year, so he saves \\( 25 \\times 12 = \\$300 \\) per year.\n   - Over 2 years, he saves \\( 300 \\times 2 = \\$600 \\).\n\n2. **Subtract the amount spent on car repair**:\n   - John spends $400 on a car repair.\n   - After spending, the remaining amount in his piggy bank is \\( 600 - 400 = \\$200 \\).\n\nTherefore, the amount of money remaining in John's piggy bank after the car repair is $200.",
+      "token_usage": {
+        "prompt_tokens": 350,
+        "completion_tokens": 177,
+        "total_tokens": 527
+      },
+      "runtime_seconds": 14.691674300003797,
+      "answer": "200",
+      "answer_extraction": "safe_natural_language_fallback"
+    },
+    "final_prediction": "200",
+    "candidate_answers": {
+      "solver_a": "200"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "200",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 350,
+      "completion_tokens": 177,
+      "total_tokens": 527
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 350,
+        "completion_tokens": 177,
+        "total_tokens": 527
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 14.691674300003797
+    },
+    "total_runtime_seconds": 14.692703799984884,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 198,
+      "completion_tokens": 156,
+      "total_tokens": 354
+    },
+    "judge_runtime_seconds": 1.1916388166622103,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 18,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 19,
+    "setting": "single_full",
+    "shared_question": "How many plates are needed?",
+    "gold_answer": "135",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: Wickham invites 30 people to a party. Half of the invited guests each bring one additional person. The party has a 3-course meal, and each person uses a new plate for every course. How many plates are needed?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, let's break it down step by step:\n\n1. **Initial number of invited guests**: Wickham invites 30 people.\n2. **Additional guests brought by each invited guest**: Half of the invited guests bring one additional person each. So, \\( \\frac{30}{2} = 15 \\) guests bring one additional person.\n3. **Total number of guests including additional ones**: \n   - Initial guests: 30\n   - Additional guests: 15\n   - Total: \\( 30 + 15 = 45 \\)\n\nNow, we know there are 45 people attending the party.\n\nNext, consider the requirement for plates:\n- Each person needs a new plate for each course (3 courses).\n- Therefore, each person will use 3 plates.\n\nFinally, calculate the total number of plates needed:\n\\[ 45 \\text{ people} \\times 3 \\text{ plates per person} = 135 \\text{ plates} \\]\n\n**Final answer:** 135 plates are needed.",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial number of invited guests**: Wickham invites 30 people.\n2. **Additional guests brought by each invited guest**: Half of the invited guests bring one additional person each. So, \\( \\frac{30}{2} = 15 \\) guests bring one additional person.\n3. **Total number of guests including additional ones**: \n   - Initial guests: 30\n   - Additional guests: 15\n   - Total: \\( 30 + 15 = 45 \\)\n\nNow, we know there are 45 people attending the party.\n\nNext, consider the requirement for plates:\n- Each person needs a new plate for each course (3 courses).\n- Therefore, each person will use 3 plates.\n\nFinally, calculate the total number of plates needed:\n\\[ 45 \\text{ people} \\times 3 \\text{ plates per person} = 135 \\text{ plates} \\]\n\n**Final answer:** 135 plates are needed.",
+      "token_usage": {
+        "prompt_tokens": 353,
+        "completion_tokens": 226,
+        "total_tokens": 579
+      },
+      "runtime_seconds": 19.199767699989025,
+      "answer": "135",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "135",
+    "candidate_answers": {
+      "solver_a": "135"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": true,
+    "correct": true,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "135",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": true,
+        "correct": true,
+        "deepseek_judge": {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": true
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 353,
+      "completion_tokens": 226,
+      "total_tokens": 579
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 353,
+        "completion_tokens": 226,
+        "total_tokens": 579
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 19.199767699989025
+    },
+    "total_runtime_seconds": 19.20051200001035,
+    "failure_type": null,
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "skipped: locally correct",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "correct": true,
+          "format_issue": false,
+          "reason": "skipped: locally correct",
+          "deepseek_reviewed": false
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 40,
+      "completion_tokens": 103,
+      "total_tokens": 143
+    },
+    "judge_runtime_seconds": 0.8268863666744437,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 19,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 20,
+    "setting": "single_full",
+    "shared_question": "How many hard hats remain in the truck?",
+    "gold_answer": "43",
+    "single_event": {
+      "agent": "solver_a",
+      "phase": "single_final",
+      "actual_input": "Role: solver_a\nFull question: A truck initially contains 26 pink hard hats, 15 green hard hats, and 24 yellow hard hats. Carl removes 4 pink hard hats. John then removes 6 additional pink hard hats and twice that number of green hard hats. How many hard hats remain in the truck?\nSolve the complete problem carefully. Put `Final answer: ...` on the FIRST line, then give at most three sentences of reasoning. Use natural text; do not output JSON.",
+      "output": "To solve this problem, we'll start by calculating how many hard hats each person removed and then subtract these amounts from the initial counts.\n\nInitially:\n- Pink hard hats: 26\n- Green hard hats: 15\n- Yellow hard hats: 24\n\nCarl removes 4 pink hard hats.\nJohn removes 6 pink hard hats (4 + 6 = 10) and twice that number of green hard hats, which is \\(2 \\times 6 = 12\\) green hard hats.\n\nNow let's calculate the remaining hard hats:\n\nPink hard hats remaining: \n\\[ 26 - 4 - 10 = 12 \\]\n\nGreen hard hats remaining:\n\\[ 15 - 12 = 3 \\]\n\nYellow hard hats remain unchanged:\n\\[ 24 \\]\n\nTotal remaining hard hats:\n\\[ 12 + 3 + 24 = 39 \\]\n\nFinal answer: There are 39 hard hats remaining in the truck.",
+      "raw_output": "To solve this problem, we'll start by calculating how many hard hats each person removed and then subtract these amounts from the initial counts.\n\nInitially:\n- Pink hard hats: 26\n- Green hard hats: 15\n- Yellow hard hats: 24\n\nCarl removes 4 pink hard hats.\nJohn removes 6 pink hard hats (4 + 6 = 10) and twice that number of green hard hats, which is \\(2 \\times 6 = 12\\) green hard hats.\n\nNow let's calculate the remaining hard hats:\n\nPink hard hats remaining: \n\\[ 26 - 4 - 10 = 12 \\]\n\nGreen hard hats remaining:\n\\[ 15 - 12 = 3 \\]\n\nYellow hard hats remain unchanged:\n\\[ 24 \\]\n\nTotal remaining hard hats:\n\\[ 12 + 3 + 24 = 39 \\]\n\nFinal answer: There are 39 hard hats remaining in the truck.",
+      "token_usage": {
+        "prompt_tokens": 366,
+        "completion_tokens": 207,
+        "total_tokens": 573
+      },
+      "runtime_seconds": 17.678668999986257,
+      "answer": "39",
+      "answer_extraction": "explicit_label"
+    },
+    "final_prediction": "39",
+    "candidate_answers": {
+      "solver_a": "39"
+    },
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "correct_before_judge": false,
+    "correct": false,
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "39",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 39, but gold is 43.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 366,
+      "completion_tokens": 207,
+      "total_tokens": 573
+    },
+    "per_agent_token_usage": {
+      "solver_a": {
+        "prompt_tokens": 366,
+        "completion_tokens": 207,
+        "total_tokens": 573
+      }
+    },
+    "phase_runtime_seconds": {
+      "single_final": 17.678668999986257
+    },
+    "total_runtime_seconds": 17.67983609996736,
+    "failure_type": "information_integration_failure",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.2,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "0:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction is 39, but gold is 43.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction is 39, but gold is 43.",
+          "deepseek_reviewed": true
+        }
+      ]
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 301,
+      "completion_tokens": 212,
+      "total_tokens": 513
+    },
+    "judge_runtime_seconds": 1.4512546833332938,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 20,
+    "oracle_gap": false
+  }
+]
