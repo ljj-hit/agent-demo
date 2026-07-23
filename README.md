@@ -1,42 +1,34 @@
 # 本地 Qwen 多智能体 GSM8K 实验
 
-`run_qwen_local.py` 使用本地 Hugging Face Qwen 模型完成 Solver、Verifier 和 Finalizer 推理，并通过 OpenAI-compatible API 调用 DeepSeek 模型判断各阶段答案是否正确。
+本项目提供两个使用本地 Hugging Face Qwen 模型的评测脚本：
 
-## 运行流程
+| 脚本 | 用途 | 默认数据 | 默认输出 |
+| --- | --- | --- | --- |
+| `run_qwen_local.py` | 标准 GSM8K 多智能体基线，对比不同的求解、验证和答案选择策略 | `data/50.jsonl` | `outputs/` |
+| `run_hidden_gsm8k.py` | Hidden-GSM8K 部分信息实验，评估信息披露、整合和最终答案选择 | `data/20.json` | `outputs_hidden_gsm8k/` |
 
-脚本提供六种实验模式：
+两个脚本都由本地 Qwen 完成 agent 推理，默认从项目目录下的
+`qwen2.5-1.5B/` 加载模型。DeepSeek 使用 OpenAI-compatible API：
 
-- `single`：Solver A 作答，Finalizer 生成最终答案。
-- `multi`：Solver A、Solver B 独立作答，Finalizer 汇总。
-- `multi_verifier`：在两个 Solver 后增加 Verifier，再由 Finalizer 作答。
-- `multi_verifier_forced`：直接采用基于 Verifier 评分得到的答案，不再调用 Finalizer 生成答案。
-- `multi_candidate_memory`：将 Solver 和 Verifier 的答案整理为候选表，要求 Finalizer 只能从候选答案中选择；若两次选择均无效，则按脚本规则回退到候选答案。
-- `multi_ask_before_finalize`：生成候选表后，再询问两个 Solver 是否有最终异议，并把异议交给 Finalizer 参考。
+- `run_qwen_local.py` 始终使用 DeepSeek 对各阶段答案进行离线判分。
+- `run_hidden_gsm8k.py` 默认使用 DeepSeek 复核本地判分和信息完整性，可用
+  `--skip-deepseek` 完全离线运行。
 
-不传 `--setting` 时，脚本会在终端中交互式提示选择一种模式。使用 `--setting all` 会依次运行全部模式。同一道题的 Solver A、Solver B 本地推理结果会在不同模式间缓存复用。
+## 安装
 
-## 依赖
+建议使用独立 Python 环境：
 
-运行需要以下 Python 包：
-
-```text
-torch
-transformers
-python-dotenv
-openai
+```powershell
+pip install -r requirements.txt
 ```
 
-默认使用 CUDA；如需使用 CPU，请传入 `--device cpu`。CUDA 模式下，计算能力 8.0 及以上使用 `bfloat16`，其他可用 CUDA 设备使用 `float16`；CPU 使用 `float32`。
+主要依赖包括 `torch`、`transformers`、`safetensors`、`openai` 和
+`python-dotenv`。使用 GPU 时，需要安装与本机 CUDA 匹配的 PyTorch。
 
-## 本地模型
+默认设备为 `cuda`。也可以传入 `--device cuda:0` 或 `--device cpu`。
+CUDA 设备根据计算能力使用 `bfloat16` 或 `float16`，CPU 使用 `float32`。
 
-默认模型目录为：
-
-```text
-D:\agentdemo\multi_agent_gsm8k\qwen2.5-1.5B
-```
-
-可通过 `--model-path` 指定其他目录。脚本运行推理前会检查模型目录中是否存在：
+模型目录应至少包含：
 
 ```text
 config.json
@@ -45,99 +37,217 @@ tokenizer.json
 model.safetensors
 ```
 
-默认仅加载本地文件。传入 `--allow-download` 后，Transformers 可以下载缺失的模型文件。
+默认只读取本地模型文件；传入 `--allow-download` 后，Transformers 可以下载
+缺失文件。
 
-## Judge API 配置
+## DeepSeek 配置
 
-脚本会读取项目根目录的 `.env`，并覆盖当前进程中的同名环境变量。至少需要配置一个 API Key：
+在项目根目录创建 `.env`：
 
 ```env
 DEEPSEEK_API_KEY=your_api_key
-JUDGE_BASE_URL=https://api.deepseek.com
-JUDGE_MODEL=deepseek-v4-flash
-JUDGE_MAX_ATTEMPTS=4
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+DEEPSEEK_MODEL=deepseek-v4-flash
 ```
 
-API Key 依次读取 `DEEPSEEK_API_KEY`、`API_KEY`、`OPENAI_API_KEY`。地址依次读取 `JUDGE_BASE_URL`、`DEEPSEEK_BASE_URL`、`BASE_URL`、`OPENAI_BASE_URL`；模型名依次读取 `JUDGE_MODEL`、`DEEPSEEK_MODEL`、`MODEL_NAME`、`OPENAI_MODEL`。
+API Key 依次兼容 `DEEPSEEK_API_KEY`、`API_KEY`、`OPENAI_API_KEY`。
+服务地址也兼容 `BASE_URL`；模型名也兼容 `MODEL_NAME`。
+`run_qwen_local.py` 还支持 `JUDGE_BASE_URL`、`OPENAI_BASE_URL`、
+`JUDGE_MODEL` 和 `OPENAI_MODEL`。
 
-Judge 请求失败时会进行指数退避重试，默认最多 4 次，等待时间最大为 10 秒。
+Hidden-GSM8K 的 DeepSeek 请求失败时最多重试 4 次；如果最终仍失败，脚本会
+保留本地判分并继续保存输出。
 
-## 数据和 Prompt
+## 标准 GSM8K 实验
 
-默认数据文件为 `data/50.jsonl`。`--data-path` 支持 JSON 数组和 JSONL；每条记录必须包含：
+### 数据和 Prompt
+
+`run_qwen_local.py` 接受 JSON 数组或 JSONL，每条记录必须包含：
 
 ```json
-{"question": "题目", "answer": "解答过程 #### 最终答案"}
+{"question": "题目", "answer": "解题过程 #### 最终答案"}
 ```
 
-如果 `answer` 中包含 `####`，脚本取最后一个 `####` 后的内容作为标准答案。
+如果 `answer` 中含有 `####`，最后一个 `####` 后的内容作为标准答案。
+Prompt 位于 `prompts/`：
 
-Prompt 从 `prompts/` 读取。按所选模式使用以下文件：
+```text
+solver_a.txt
+solver_b.txt
+verifier.txt
+finalizer.txt
+```
 
-- `solver_a.txt`
-- `solver_b.txt`（多智能体模式）
-- `verifier.txt`（含 Verifier 的模式）
-- `finalizer.txt`
+### 实验设置
 
-## 运行命令
+- `single`：仅运行 Solver A，其输出直接作为最终结果。
+- `multi`：Solver A/B 独立作答，由 Finalizer 汇总。
+- `multi_verifier`：增加 Verifier，再由 Finalizer 作答。
+- `multi_verifier_forced`：直接采用基于 Verifier 评分选出的答案。
+- `multi_candidate_memory`：Finalizer 只能从结构化候选表中选择答案。
+- `multi_ask_before_finalize`：Finalizer 作答前，再向两个 Solver 征询一次异议。
 
-检查配置：
+兼容别名 `single_agent`、`multi_agent` 和 `multi_agent_verifier`。
+不指定 setting 时进入交互选择。
+
+### 运行示例
 
 ```powershell
+# 检查依赖、模型、数据、Prompt 和 Judge 配置
 python run_qwen_local.py --check-config
-```
 
-运行单个模式或全部模式：
-
-```powershell
+# 运行单个或全部设置
 python run_qwen_local.py --setting single
-python run_qwen_local.py --setting multi
 python run_qwen_local.py --setting multi_verifier
-python run_qwen_local.py --setting multi_verifier_forced
-python run_qwen_local.py --setting multi_candidate_memory
-python run_qwen_local.py --setting multi_ask_before_finalize
 python run_qwen_local.py --setting all
-```
 
-也支持 `single_agent`、`multi_agent`、`multi_agent_verifier` 三个别名。
+# 配对运行指定设置；同一道题的 Solver A/B 初始输出会缓存复用
+python run_qwen_local.py --settings single multi multi_verifier --seed 42
+
+# 自定义模型和生成参数
+python run_qwen_local.py --setting all --model-path D:\models\qwen `
+  --data-path data\50.jsonl --device cuda:0 --temperature 0
+```
 
 常用参数：
 
 ```text
---data-path PATH          数据集路径，默认 data/50.jsonl
+--data-path PATH          默认 data/50.jsonl
 --model-path PATH         本地 Hugging Face 模型目录
---device DEVICE           默认 cuda，也可使用 cuda:0 或 cpu
+--device DEVICE           默认 cuda
 --max-new-tokens N        默认 512
---temperature FLOAT       默认 0.2；设为 0 时关闭采样
---allow-download          允许 Transformers 下载缺失文件
+--temperature FLOAT       默认 0.2；0 表示确定性解码
+--seed N                  默认 42
+--allow-download          允许下载缺失的模型文件
 ```
 
-例如：
+每次运行在 `outputs/YYYYMMDD_HHMMSS/` 创建独立目录；若同名则追加
+`_02`、`_03` 等后缀。每完成一个样例就增量更新：
 
-```powershell
-python run_qwen_local.py --setting all --model-path D:\models\qwen2.5-1.5B --device cuda:0 --temperature 0
-```
-
-## 输出
-
-每次推理运行会创建独立目录：
-
-```text
-outputs/YYYYMMDD_HHMMSS/
-```
-
-若同一秒内目录重名，会追加 `_02`、`_03` 等后缀。每完成一道题，脚本都会增量更新：
-
-- `traces_all.json`：每道题的各阶段原始输出、抽取答案、Judge 结果、Verifier 决策、候选表、最终答案、正确性变化、oracle gap 和 token 用量。
-- `metrics.csv`：各模式的题数、正确数、准确率、oracle gap 统计和 token 统计。
+- `traces_all.json`：完整 agent 轨迹、Judge 结果、token 和耗时。
+- `metrics.csv`：各 setting 的准确率、oracle gap、推理/Judge token 和耗时。
 - `failures.json`：最终答案错误的样例及失败分类。
 
-`metrics.csv` 包含以下字段：
+## Hidden-GSM8K 实验
 
-```text
-setting, setting_name, num_examples, correct, accuracy,
-oracle_gap_count, oracle_gap_rate, oracle_gap_question_ids,
-prompt_tokens, completion_tokens, total_tokens, avg_total_tokens
+### 数据和 Prompt
+
+`run_hidden_gsm8k.py` 接受 JSON 数组或 JSONL。每条记录必须包含：
+
+```json
+{
+  "condition_A": "只提供给 Solver A 的条件",
+  "condition_B": "只提供给 Solver B 的条件",
+  "shared_question": "双方可见的问题",
+  "full": "包含完整条件的问题",
+  "fact": {
+    "A": ["A 方必须披露的事实"],
+    "B": ["B 方必须披露的事实"]
+  },
+  "answer": "解题过程 #### 最终答案"
+}
 ```
 
-这里的 `oracle_gap` 表示最终答案错误，但 Solver A、Solver B 或 Verifier 中至少有一个阶段已得到正确答案。Token 统计同时包含本地模型调用和 Judge API 调用。
+为兼容旧数据，`full_question` 可代替 `full`，
+`required_private_facts.agent_A/agent_B` 可代替 `fact.A/B`。
+`fact` 只用于生成完成后的信息交换评估，不会进入模型 Prompt。
+
+Prompt 位于 `hidden_gsm8k_prompts/`：
+
+```text
+solver.txt
+verifier.txt
+finalizer.txt
+```
+
+### 实验设置
+
+- `single_full`：单个 Solver 获得完整信息。
+- `single_partial`：分别运行 A、B 两个单智能体部分信息变体。
+- `multi_partial`：A/B 持有不同私有条件，进行对称公开讨论后作答。
+- `multi_partial_verifier`：在部分信息讨论后增加 Verifier。
+- `oracle_broadcast`：将完整私有信息公开广播，作为信息充分的对照组。
+
+多智能体讨论按轮进行；同一轮的 A/B 使用完全相同的公开快照，并通过同一个
+GPU batch 生成。一起运行 `multi_partial` 和
+`multi_partial_verifier` 时，两者复用同一道题的同一份讨论轨迹。
+
+### 运行示例
+
+```powershell
+# 只验证配置，不加载模型推理
+python run_hidden_gsm8k.py --check-config
+
+# 完全离线运行单个设置
+python run_hidden_gsm8k.py --setting multi_partial --skip-deepseek
+
+# 运行全部设置
+python run_hidden_gsm8k.py --setting all
+
+# 配对运行指定设置
+python run_hidden_gsm8k.py --settings multi_partial multi_partial_verifier `
+  --discussion-rounds 3 --limit 20 --seed 42
+
+# 自定义路径和设备
+python run_hidden_gsm8k.py --setting oracle_broadcast `
+  --data-path data\20.json --model-path D:\models\qwen `
+  --output-dir outputs_hidden_gsm8k --device cuda:0
+```
+
+常用参数：
+
+```text
+--data-path PATH          默认 data/20.json
+--model-path PATH         默认 qwen2.5-1.5B/
+--output-dir PATH         默认 outputs_hidden_gsm8k/
+--setting NAME            运行一个 setting 或 all
+--settings NAME [...]     配对运行多个 setting
+--device DEVICE           默认 cuda
+--max-new-tokens N        默认 384
+--temperature FLOAT       默认 0.2
+--discussion-rounds N     默认 2，最小为 1
+--seed N                  默认 42
+--limit N                 仅运行前 N 条；0 表示全部
+--allow-download          允许下载缺失的模型文件
+--skip-deepseek           禁用 DeepSeek，使用本地等价性判分
+--check-config            打印配置后退出
+```
+
+单个 setting 的输出目录为：
+
+```text
+outputs_hidden_gsm8k/YYYYMMDD_HHMMSS/
+```
+
+一次选择多个 setting 时，每个 setting 使用独立目录：
+
+```text
+outputs_hidden_gsm8k/YYYYMMDD_HHMMSS_<setting>/
+```
+
+每个目录包含：
+
+- `run_config.json`：本次运行的路径、setting、生成参数和复用策略。
+- `traces_all.json`：讨论轮次、公开 transcript、候选答案、格式校验、
+  信息覆盖、DeepSeek 复核、token 和耗时。
+- `metrics.csv`：准确率、各 agent 正确数、信息完整数、失败类型、
+  oracle gap、无效输出、token 和耗时。
+- `failures.json`：失败样例及其信息获取、信息整合或答案选择分类。
+
+Hidden-GSM8K 对输出格式执行严格校验。Solver 最终输出的第一行必须是
+`Final answer: ...`，并且其后最多三句解释；格式不合法会记为无效输出，
+不会因答案数值碰巧正确而计为正确。
+
+## 结果解读
+
+- `accuracy`：最终正确率。
+- `oracle_gap`：最终答案错误，但 Solver、Verifier 等上游阶段至少出现过
+  正确候选答案。
+- `inference_*_tokens`：本地 Qwen 推理消耗。
+- `judge_*_tokens`：DeepSeek 离线复核消耗。
+- `information_acquisition_failure`：公开讨论没有包含全部必要事实。
+- `information_integration_failure`：信息已完整，但没有形成正确候选答案。
+- `answer_selection_failure`：上游已出现正确候选，但最终选择错误。
+
+分析单题时优先查看 `traces_all.json`；汇总比较不同 setting 时查看
+`metrics.csv`。
