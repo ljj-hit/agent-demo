@@ -1,0 +1,239 @@
+[
+  {
+    "question_id": 1,
+    "setting": "after_round1",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "final_prediction": "36",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim scheduled injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Prediction 36 does not equal gold 42.",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "after_round1",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "final_prediction": "35",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim scheduled injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "Predicted 35, gold is 5",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "after_round1",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "final_prediction": "6",
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim scheduled injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "2:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "prediction is 6, not 16",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  }
+]

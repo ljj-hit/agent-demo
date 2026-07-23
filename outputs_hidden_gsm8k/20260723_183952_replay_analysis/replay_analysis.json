@@ -1,0 +1,123 @@
+{
+  "per_setting": {
+    "all_at_start_AB": {
+      "n": 3,
+      "correct": 3,
+      "accuracy": 1.0,
+      "format_compliant": 3,
+      "format_compliance_rate": 1.0
+    },
+    "all_at_start_BA": {
+      "n": 3,
+      "correct": 0,
+      "accuracy": 0.0,
+      "format_compliant": 3,
+      "format_compliance_rate": 1.0
+    },
+    "after_round1": {
+      "n": 3,
+      "correct": 0,
+      "accuracy": 0.0,
+      "format_compliant": 3,
+      "format_compliance_rate": 1.0
+    },
+    "before_final_transcript": {
+      "n": 3,
+      "correct": 0,
+      "accuracy": 0.0,
+      "format_compliant": 3,
+      "format_compliance_rate": 1.0
+    },
+    "before_final_transcript_ledger": {
+      "n": 3,
+      "correct": 0,
+      "accuracy": 0.0,
+      "format_compliant": 3,
+      "format_compliance_rate": 1.0
+    },
+    "before_final_reset": {
+      "n": 3,
+      "correct": 0,
+      "accuracy": 0.0,
+      "format_compliant": 0,
+      "format_compliance_rate": 0.0
+    }
+  },
+  "paired_question_count": 3,
+  "schedule_flip_rate": {
+    "count": 3,
+    "denominator": 3,
+    "rate": 1.0,
+    "definition": "prediction changes across AB-ordered all-at-start, after-round1, or before-final-transcript",
+    "question_ids": [
+      1,
+      2,
+      3
+    ],
+    "details": [
+      {
+        "question_id": 1,
+        "predictions": {
+          "all_at_start_AB": "decimal:42",
+          "after_round1": "decimal:36",
+          "before_final_transcript": "decimal:36"
+        }
+      },
+      {
+        "question_id": 2,
+        "predictions": {
+          "all_at_start_AB": "decimal:5",
+          "after_round1": "decimal:35",
+          "before_final_transcript": "decimal:3E+1"
+        }
+      },
+      {
+        "question_id": 3,
+        "predictions": {
+          "all_at_start_AB": "decimal:16",
+          "after_round1": "decimal:6",
+          "before_final_transcript": "decimal:8"
+        }
+      }
+    ],
+    "pairwise": {
+      "all_at_start_AB_vs_after_round1": {
+        "count": 3,
+        "denominator": 3,
+        "rate": 1.0,
+        "question_ids": [
+          1,
+          2,
+          3
+        ]
+      },
+      "all_at_start_AB_vs_before_final_transcript": {
+        "count": 3,
+        "denominator": 3,
+        "rate": 1.0,
+        "question_ids": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "late_evidence_penalty": {
+    "count": 3,
+    "question_ids": [
+      1,
+      2,
+      3
+    ]
+  },
+  "reset_recovery": {
+    "count": 0,
+    "question_ids": []
+  },
+  "ledger_recovery": {
+    "count": 0,
+    "question_ids": []
+  },
+  "fact_hash_consistent_across_six_settings": true
+}
