@@ -238,6 +238,87 @@ Hidden-GSM8K 对输出格式执行严格校验。Solver 最终输出的第一行
 `Final answer: ...`，并且其后最多三句解释；格式不合法会记为无效输出，
 不会因答案数值碰巧正确而计为正确。
 
+## 信息时序重放实验
+
+`run_hidden_gsm8k.py` 在原有 Hidden-GSM8K 设置之外，支持在相同 20 道题上运行六种信息时序重放设置：
+
+- `all_at_start_AB`：第一轮前公开全部事实，A 事实在前、B 事实在后。
+- `all_at_start_BA`：事实文本与上一设置完全相同，只交换 A/B 的显示顺序。
+- `after_round1`：第一轮讨论结束后公开全部事实。
+- `before_final_transcript`：最终回答前公开事实，finalizer 同时看到此前的讨论 transcript。
+- `before_final_transcript_ledger`：最终回答前公开事实，finalizer 同时看到规范化事实表和此前的讨论 transcript。
+- `before_final_reset`：最终回答前公开事实并清除旧讨论，新的 finalizer 只看到共享问题和固定 A、B 顺序的事实表。
+
+### 受控实验保证
+
+- 六个设置使用同一个本地模型、相同的 solver/finalizer prompt、讨论轮数和 `max_new_tokens`。
+- 重放实验的所有模型调用强制使用 `temperature=0`，有效值记录在 replay trace 的 `run_config.temperature` 中。
+- A/B 事实逐字复制自数据集的 `condition_A` 和 `condition_B`，不会由模型重新生成、摘要或改写。
+- 三个 `before_final_*` 设置逐题共用同一个前期 discussion，并记录相同的 `discussion_trace_hash`。
+- 每次本地 agent 调用都在事件的 `actual_messages` 中保存实际可见的完整 system/user 输入。
+- 每题记录 `injected_fact_hash` 和 `final_received_fact_hash`。离线汇总会校验六设置的事实 hash，不一致时立即报错。
+- `answer`/gold 不会进入任何 agent 的 `actual_messages`，只在生成完成后用于离线判分。
+- 数学正确性使用 `semantic_correct`，格式合规使用 `format_compliant`，两者独立统计。
+
+### 运行六个设置
+
+```powershell
+python run_hidden_gsm8k.py --settings `
+  all_at_start_AB `
+  all_at_start_BA `
+  after_round1 `
+  before_final_transcript `
+  before_final_transcript_ledger `
+  before_final_reset
+```
+
+禁用 DeepSeek 复核、仅使用本地等价性判分：
+
+```powershell
+python run_hidden_gsm8k.py --settings `
+  all_at_start_AB all_at_start_BA after_round1 `
+  before_final_transcript before_final_transcript_ledger before_final_reset `
+  --skip-deepseek
+```
+
+只检查数据、模型和参数而不执行推理：
+
+```powershell
+python run_hidden_gsm8k.py --check-config --settings `
+  all_at_start_AB all_at_start_BA after_round1 `
+  before_final_transcript before_final_transcript_ledger before_final_reset
+```
+
+默认使用 `data/20.json` 的全部 20 题。`--limit N` 可用于调试；正式配对分析应让六个设置运行相同的完整题目集合。
+
+### 输出与离线指标
+
+每个设置写入独立目录：
+
+```text
+outputs_hidden_gsm8k/YYYYMMDD_HHMMSS_<setting>/
+├── run_config.json
+├── traces_all.json
+├── metrics.csv
+└── failures.json
+```
+
+六设置的配对分析写入公共目录：
+
+```text
+outputs_hidden_gsm8k/YYYYMMDD_HHMMSS_replay_analysis/
+├── replay_analysis.json
+└── replay_metrics.csv
+```
+
+`replay_metrics.csv` 分别报告每个设置的数学正确率和格式合规率。`replay_analysis.json` 另外包含：
+
+- `schedule_flip_rate`：在 AB 固定顺序下，从开头公开改为第一轮后或最终回答前公开时，最终答案发生变化的题数、比例、题号和 pairwise 结果。
+- `late_evidence_penalty`：`all_at_start_AB` 正确但 `before_final_transcript` 错误的题数和题号。
+- `reset_recovery`：`before_final_transcript` 错误、清除旧讨论后恢复正确的题数和题号。
+- `ledger_recovery`：`before_final_transcript` 错误、加入规范化事实表后恢复正确的题数和题号。
+- `fact_hash_consistent_across_six_settings`：六设置逐题事实集合的 hash 一致性。
+
 ## 结果解读
 
 - `accuracy`：最终正确率。

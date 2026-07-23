@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parent
 # Relative paths are resolved from the directory containing this script.
 # Command-line arguments can override these values.
 # =============================================================================
-DATA_PATH = ROOT / "data" / "20.json"
+DATA_PATH = ROOT / "data" / "3q.json"
 MODEL_PATH = ROOT / "qwen2.5-1.5B"
 OUTPUT_BASE_DIR = ROOT / "outputs_hidden_gsm8k"
 PROMPT_DIR = ROOT / "hidden_gsm8k_prompts"
@@ -60,12 +60,21 @@ DEEPSEEK_MODEL = "deepseek-v4-flash"
 DEEPSEEK_API_KEY_ENV_NAMES = ("DEEPSEEK_API_KEY", "API_KEY", "OPENAI_API_KEY")
 
 SETTINGS = ("single_full", "single_partial", "multi_partial", "multi_partial_verifier", "oracle_broadcast")
+REPLAY_SETTINGS = ("all_at_start_AB", "all_at_start_BA", "after_round1",
+                   "before_final_transcript", "before_final_transcript_ledger", "before_final_reset")
+SETTINGS = SETTINGS + REPLAY_SETTINGS
 SETTING_NAMES = {
     "single_full": "Single Agent - Full Information",
     "single_partial": "Single Agent - Partial Information (A and B)",
     "multi_partial": "Multi-Agent - Partial Information",
     "multi_partial_verifier": "Multi-Agent - Partial Information + Verifier",
     "oracle_broadcast": "Oracle Broadcast",
+    "all_at_start_AB": "Information Replay - All at Start (A then B)",
+    "all_at_start_BA": "Information Replay - All at Start (B then A)",
+    "after_round1": "Information Replay - Reveal after Round 1",
+    "before_final_transcript": "Information Replay - Before Final with Transcript",
+    "before_final_transcript_ledger": "Information Replay - Before Final with Transcript + Ledger",
+    "before_final_reset": "Information Replay - Before Final after Context Reset",
 }
 USAGE_KEYS = ("prompt_tokens", "completion_tokens", "total_tokens")
 
@@ -435,26 +444,33 @@ def model_event(model: LocalQwen, agent: str, system: str, user: str, phase: str
         # Compatibility with simple test doubles and older imported model wrappers.
         raw, usage, elapsed = model.call(system, user)
     if parser_defaults is None:
-        return {"agent": agent, "phase": phase, "actual_input": user, "output": raw,
+        return {"agent": agent, "phase": phase, "actual_input": user,
+                "actual_messages": [{"role": "system", "content": system}, {"role": "user", "content": user}], "output": raw,
                 "raw_output": raw, "token_usage": usage, "runtime_seconds": elapsed}
     try:
         parsed, parse_error = parse_object(raw, parser_defaults), ""
     except (ValueError, json.JSONDecodeError) as exc:
         parsed, parse_error = dict(parser_defaults), str(exc)
-    return {"agent": agent, "phase": phase, "actual_input": user, "raw_output": raw,
+    return {"agent": agent, "phase": phase, "actual_input": user,
+            "actual_messages": [{"role": "system", "content": system}, {"role": "user", "content": user}], "raw_output": raw,
             "parsed_output": parsed, "parse_error": parse_error, "token_usage": usage, "runtime_seconds": elapsed}
 
 
-def paired_model_events(model: LocalQwen, system: str, specs: dict[str, tuple[str, str, dict | None]]) -> dict[str, dict]:
+def paired_model_events(model: LocalQwen, system: str, specs: dict[str, tuple[str, str, dict | None]],
+                        temperature: float | None = None) -> dict[str, dict]:
     """Run A/B in one model batch when supported; fall back only for test doubles."""
     sides = ("A", "B")
     if hasattr(model, "call_batch"):
-        results = model.call_batch([(system, specs[side][1]) for side in sides])
+        try:
+            results = model.call_batch([(system, specs[side][1]) for side in sides], temperature=temperature)
+        except TypeError:
+            results = model.call_batch([(system, specs[side][1]) for side in sides])
         events = {}
         for side, (raw, usage, elapsed) in zip(sides, results):
             agent, user, defaults = specs[side]
             if defaults is None:
-                events[side] = {"agent": agent, "phase": "", "actual_input": user, "output": raw,
+                events[side] = {"agent": agent, "phase": "", "actual_input": user,
+                                "actual_messages": [{"role": "system", "content": system}, {"role": "user", "content": user}], "output": raw,
                                 "raw_output": raw, "token_usage": usage, "runtime_seconds": elapsed,
                                 "generated_in_parallel_batch": True}
                 continue
@@ -463,11 +479,13 @@ def paired_model_events(model: LocalQwen, system: str, specs: dict[str, tuple[st
                     parsed, parse_error = parse_object(raw, defaults), ""
                 except (ValueError, json.JSONDecodeError) as exc:
                     parsed, parse_error = dict(defaults), str(exc)
-            events[side] = {"agent": agent, "phase": "", "actual_input": user, "raw_output": raw,
+            events[side] = {"agent": agent, "phase": "", "actual_input": user,
+                            "actual_messages": [{"role": "system", "content": system}, {"role": "user", "content": user}], "raw_output": raw,
                             "parsed_output": parsed, "parse_error": parse_error, "token_usage": usage,
                             "runtime_seconds": elapsed, "generated_in_parallel_batch": True}
         return events
-    return {side: model_event(model, specs[side][0], system, specs[side][1], "", specs[side][2]) for side in sides}
+    return {side: model_event(model, specs[side][0], system, specs[side][1], "", specs[side][2],
+                              temperature=temperature) for side in sides}
 
 
 def public_transcript(rounds: list[dict]) -> str:
@@ -546,6 +564,85 @@ def run_discussion(model: LocalQwen, solver_prompt: str, item: dict, oracle: boo
     if oracle:
         result["oracle_public_information"] = oracle_text
     return result
+
+
+def replay_facts(item: dict, order: str = "AB") -> str:
+    """Render frozen dataset facts verbatim; this function never asks a model to rewrite them."""
+    return "\n".join(f"FACT {side} (verbatim): {item[f'condition_{side}']}" for side in order)
+
+
+def replay_fact_hash(item: dict) -> str:
+    """Order-independent identity of the exact A/B fact collection."""
+    canonical = json.dumps({"A": item["condition_A"], "B": item["condition_B"]},
+                           ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def replay_ledger(item: dict) -> str:
+    """A deterministic table: labels are normalized, fact values remain byte-for-byte unchanged."""
+    return f"| side | fact (verbatim) |\n|---|---|\n| A | {item['condition_A']} |\n| B | {item['condition_B']} |"
+
+
+def run_replay_discussion(model: LocalQwen, solver_prompt: str, item: dict, reveal_after_round: int | None,
+                          order: str = "AB", rounds_count: int = DEFAULT_DISCUSSION_ROUNDS) -> dict:
+    """Discussion protocol for timing replay. No solver has an undisclosed private fact."""
+    events, round_records = [], []
+    facts = replay_facts(item, order)
+    for round_no in range(1, rounds_count + 1):
+        visible_facts = facts if reveal_after_round is not None and round_no > reveal_after_round else ""
+        pre_round_transcript = "\n".join(x for x in (visible_facts, public_transcript(events)) if x)
+        specs = {}
+        for side in ("A", "B"):
+            purpose = ("Share your reasoning and state exactly what information is still missing."
+                       if round_no == 1 else "Correct mistakes, fill gaps, and advance the solution using earlier messages.")
+            user = (f'Role: solver_{side.lower()}\nDiscussion round: {round_no} of {rounds_count}\nPurpose: {purpose}\n'
+                    f'Shared question: {item["shared_question"]}\n'
+                    f'Public transcript through the previous completed round:\n{pre_round_transcript or "(nothing disclosed yet)"}\n'
+                    "Use only information actually visible above. Begin with exactly one separate line "
+                    "`Current answer: <answer>` or `Current answer: undetermined`, then give your reasoning. "
+                    "Write directly to the other solver in natural text; do not output JSON. You cannot see the peer's same-round message.")
+            specs[side] = (f"solver_{side.lower()}", user, None)
+        outbound = paired_model_events(model, solver_prompt, specs, temperature=0.0)
+        for side in ("A", "B"):
+            event = outbound[side]
+            event.update(phase=f"discussion_round_{round_no}_send", round=round_no, stage="send")
+            event["current_answer"], event["current_answer_extraction"] = extract_free_text_answer(
+                event["raw_output"], "Current answer")
+            event["current_answer_explicit"] = event["current_answer_extraction"].startswith("explicit_")
+        events.extend((outbound["A"], outbound["B"]))
+        round_records.append({"round": round_no, "purpose": purpose,
+                              "facts_visible": bool(visible_facts),
+                              "pre_round_public_transcript": pre_round_transcript or "(nothing disclosed yet)",
+                              "simultaneous_turn": {side.lower(): outbound[side] for side in ("A", "B")}})
+
+    visible_at_solver_final = reveal_after_round is not None and rounds_count >= reveal_after_round
+    transcript = "\n".join(x for x in (facts if visible_at_solver_final else "", public_transcript(events)) if x)
+    specs = {}
+    for side in ("A", "B"):
+        user = (f'Role: solver_{side.lower()}\nShared question: {item["shared_question"]}\n'
+                f'Public transcript after {rounds_count} symmetric rounds:\n{transcript or "(nothing disclosed yet)"}\n'
+                "Use only the visible information. Put `Final answer: ...` on the FIRST line, then give at most three "
+                "sentences of reasoning. Use natural text; do not output JSON.")
+        specs[side] = (f"solver_{side.lower()}", user, None)
+    final_batch = paired_model_events(model, solver_prompt, specs, temperature=0.0)
+    finals = {}
+    for side in ("A", "B"):
+        event = final_batch[side]
+        answer, error = parse_solver_final(event.get("raw_output", ""))
+        event.update(phase="solver_final", answer=answer,
+                     answer_extraction="strict_solver_final" if not error else "invalid_format",
+                     validation_error=error, invalid_output=bool(error))
+        finals[side.lower()] = event
+    information_timeline = [
+        {"checkpoint": "after_simultaneous_turn", "round": row["round"],
+         "information_complete": row["facts_visible"],
+         "side_revealed": {"A": row["facts_visible"], "B": row["facts_visible"]}}
+        for row in round_records]
+    return {"protocol": "information_timing_replay", "round_records": round_records,
+            "discussion_events": events, "public_transcript": transcript or "(nothing disclosed yet)",
+            "solver_finals": finals, "facts_visible_at_solver_final": visible_at_solver_final,
+            "information_timeline": information_timeline,
+            "reveal_after_round": reveal_after_round, "fact_order": order}
 
 
 def coverage_score(fact: str, public: str) -> float:
@@ -666,7 +763,9 @@ def candidate_appearances(trace: dict) -> list[dict]:
             state = timeline.get(event.get("round"), {})
             appearances.append({"source": event["agent"], "phase": event["phase"], "round": event.get("round"),
                                 "answer": answer, "information_complete_at_appearance": bool(state.get("information_complete"))})
-    complete_after_discussion = bool(trace.get("information", {}).get("information_complete"))
+    complete_after_discussion = bool(discussion.get(
+        "facts_visible_at_solver_final",
+        trace.get("information", {}).get("information_complete")))
     for side in ("a", "b"):
         event = discussion.get("solver_finals", {}).get(side)
         if event:
@@ -916,6 +1015,79 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
     return trace
 
 
+def build_replay_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: str,
+                       discussion: dict) -> dict:
+    """Finalize one replay condition from an already-created discussion object."""
+    started = time.perf_counter()
+    facts_ab, facts_ba = replay_facts(item, "AB"), replay_facts(item, "BA")
+    ledger = replay_ledger(item)
+    old_transcript = public_transcript(discussion.get("discussion_events", []))
+    if setting == "before_final_reset":
+        evidence_view = f'Canonical fact table:\n{ledger}'
+        context_policy = "reset; no prior discussion or candidates"
+    elif setting == "before_final_transcript_ledger":
+        evidence_view = (f'Newly disclosed facts (verbatim):\n{facts_ab}\nCanonical fact table:\n{ledger}\n'
+                         f'Prior discussion transcript:\n{old_transcript}')
+        context_policy = "prior discussion plus verbatim facts and canonical ledger"
+    elif setting == "before_final_transcript":
+        evidence_view = f'Newly disclosed facts (verbatim):\n{facts_ab}\nPrior discussion transcript:\n{old_transcript}'
+        context_policy = "prior discussion plus verbatim facts"
+    else:
+        evidence_view = discussion["public_transcript"]
+        context_policy = "facts already present in discussion transcript"
+
+    user = (f'Shared question: {item["shared_question"]}\nEvidence visible now:\n{evidence_view}\n'
+            'Valid non-empty candidates: {}\nAvailable selected_source values for this question: ["recomputed", "none"]\n'
+            'Verifier report: "(no verifier in this setting)"\n'
+            "Recompute from the visible evidence. Return exactly the required three-line finalizer format.")
+    finalizer = call_finalizer_once(model, prompts["finalizer"], user, {})
+    # Semantic scoring is deliberately independent of the strict three-line
+    # format validator. A labeled numeric answer can therefore be correct
+    # while the same event is separately counted as format-noncompliant.
+    prediction, semantic_extraction = extract_free_text_answer(
+        finalizer.get("raw_output", ""), "Final answer")
+    gold = extract_answer(item["answer"])
+    semantic_correct = equivalent(prediction, gold)
+    format_compliant = not bool(finalizer.get("invalid_output"))
+    fact_hash = replay_fact_hash(item)
+    discussion_hash = hashlib.sha256(json.dumps(
+        [{"actual_messages": event.get("actual_messages"), "raw_output": event.get("raw_output")}
+         for event in discussion.get("discussion_events", []) +
+         list(discussion.get("solver_finals", {}).values())],
+        ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+    trace = {
+        "question_id": qid, "setting": setting, "shared_question": item["shared_question"],
+        "gold_answer": gold, "discussion": discussion, "discussion_object_id": id(discussion),
+        "discussion_trace_hash": discussion_hash,
+        "finalizer_event": finalizer, "final_prediction": prediction,
+        "semantic_answer_extraction": semantic_extraction,
+        "candidate_answers": {}, "information": {"information_complete": True,
+        "side_revealed": {"A": True, "B": True}, "assessment_method": "verbatim scheduled injection"},
+        "injected_facts": {"A": item["condition_A"], "B": item["condition_B"]},
+        "injected_fact_hash": fact_hash, "final_received_fact_hash": fact_hash,
+        "fact_hash_algorithm": "sha256(canonical-json-sort-keys)",
+        "fact_text_order_at_initial_reveal": "BA" if setting == "all_at_start_BA" else "AB",
+        "final_context_policy": context_policy, "semantic_correct": semantic_correct,
+        "format_compliant": format_compliant, "correct_before_judge": semantic_correct,
+        "correct": semantic_correct, "invalid_output": not format_compliant,
+        "finalizer_retry_count": 0, "finalizer_recovered": False, "finalizer_exhausted": False,
+    }
+    trace["candidate_appearances"] = candidate_appearances(trace)
+    for appearance in trace["candidate_appearances"]:
+        appearance["correct_before_judge"] = equivalent(appearance["answer"], gold)
+        appearance["correct"] = appearance["correct_before_judge"]
+    trace["per_agent_correctness"] = {"finalizer": semantic_correct}
+    usage, agent_usage, timing = blank_usage(), defaultdict(blank_usage), defaultdict(float)
+    for event in collect_events(trace):
+        add_usage(usage, event["token_usage"])
+        add_usage(agent_usage[event["agent"]], event["token_usage"])
+        timing[event["phase"]] += event["runtime_seconds"]
+    trace.update(inference_token_usage=usage, per_agent_token_usage=dict(agent_usage),
+                 phase_runtime_seconds=dict(timing), total_runtime_seconds=time.perf_counter() - started)
+    trace["failure_type"], trace["lucky_guess"] = classify(trace, gold)
+    return trace
+
+
 def deepseek_review(traces: list[dict]) -> tuple[dict, dict, float]:
     entries = []
     for trace_index, trace in enumerate(traces):
@@ -1026,6 +1198,82 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
     (output_dir / "metrics.csv").write_text(buf.getvalue(), encoding="utf-8-sig")
 
 
+def write_replay_analysis(traces: list[dict], output_dir: Path) -> None:
+    """Write paired, offline timing metrics. Correctness never depends on format compliance."""
+    rows = [t for t in traces if t["setting"] in REPLAY_SETTINGS]
+    if not rows:
+        return
+    output_dir.mkdir(parents=True, exist_ok=True)
+    by_setting = {setting: {int(t["question_id"]): t for t in rows if t["setting"] == setting}
+                  for setting in REPLAY_SETTINGS}
+    common_ids = sorted(set.intersection(*(set(values) for values in by_setting.values()))) if all(by_setting.values()) else []
+    accuracy = {}
+    for setting in REPLAY_SETTINGS:
+        values = list(by_setting[setting].values())
+        accuracy[setting] = {
+            "n": len(values),
+            "correct": sum(bool(t.get("semantic_correct", t.get("correct_before_judge"))) for t in values),
+            "accuracy": round(sum(bool(t.get("semantic_correct", t.get("correct_before_judge"))) for t in values) / len(values), 4) if values else 0,
+            "format_compliant": sum(bool(t.get("format_compliant", not t.get("invalid_output"))) for t in values),
+            "format_compliance_rate": round(sum(bool(t.get("format_compliant", not t.get("invalid_output"))) for t in values) / len(values), 4) if values else 0,
+        }
+    def ok(setting: str, qid: int) -> bool:
+        trace = by_setting[setting][qid]
+        return bool(trace.get("semantic_correct", trace.get("correct_before_judge")))
+    def answer_key(setting: str, qid: int) -> str:
+        prediction = by_setting[setting][qid]["final_prediction"]
+        numeric = decimal(prediction)
+        return f"decimal:{numeric.normalize()}" if numeric is not None else (
+            "text:" + re.sub(r"\s+", " ", extract_answer(prediction).lower()).strip())
+    timing_settings = ("all_at_start_AB", "after_round1", "before_final_transcript")
+    flips = []
+    pairwise_flips = {}
+    baseline = "all_at_start_AB"
+    for comparison in timing_settings[1:]:
+        ids = [qid for qid in common_ids if
+               answer_key(baseline, qid) != answer_key(comparison, qid)]
+        pairwise_flips[f"{baseline}_vs_{comparison}"] = {
+            "count": len(ids), "denominator": len(common_ids),
+            "rate": round(len(ids) / len(common_ids), 4) if common_ids else 0, "question_ids": ids}
+    for qid in common_ids:
+        predictions = {setting: answer_key(setting, qid)
+                       for setting in timing_settings}
+        if len(set(predictions.values())) > 1:
+            flips.append({"question_id": qid, "predictions": predictions})
+    late_penalty_ids = [qid for qid in common_ids
+                        if ok("all_at_start_AB", qid) and not ok("before_final_transcript", qid)]
+    reset_ids = [qid for qid in common_ids if not ok("before_final_transcript", qid)
+                 and ok("before_final_reset", qid)]
+    ledger_ids = [qid for qid in common_ids if not ok("before_final_transcript", qid)
+                  and ok("before_final_transcript_ledger", qid)]
+    hashes_consistent = all(len({by_setting[s][qid]["injected_fact_hash"] for s in REPLAY_SETTINGS}) == 1
+                            for qid in common_ids)
+    if common_ids and not hashes_consistent:
+        raise RuntimeError("Replay invariant violated: a question has different injected fact hashes.")
+    result = {
+        "per_setting": accuracy,
+        "paired_question_count": len(common_ids),
+        "schedule_flip_rate": {"count": len(flips), "denominator": len(common_ids),
+                               "rate": round(len(flips) / len(common_ids), 4) if common_ids else 0,
+                               "definition": "prediction changes across AB-ordered all-at-start, after-round1, or before-final-transcript",
+                               "question_ids": [x["question_id"] for x in flips], "details": flips,
+                               "pairwise": pairwise_flips},
+        "late_evidence_penalty": {"count": len(late_penalty_ids), "question_ids": late_penalty_ids},
+        "reset_recovery": {"count": len(reset_ids), "question_ids": reset_ids},
+        "ledger_recovery": {"count": len(ledger_ids), "question_ids": ledger_ids},
+        "fact_hash_consistent_across_six_settings": hashes_consistent,
+    }
+    (output_dir / "replay_analysis.json").write_text(
+        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    buf = io.StringIO()
+    writer = csv.DictWriter(buf, fieldnames=("setting", "n", "correct", "accuracy",
+                                              "format_compliant", "format_compliance_rate"))
+    writer.writeheader()
+    for setting in REPLAY_SETTINGS:
+        writer.writerow({"setting": setting, **accuracy[setting]})
+    (output_dir / "replay_metrics.csv").write_text(buf.getvalue(), encoding="utf-8-sig")
+
+
 def choose_settings_interactively() -> list[str]:
     options = [(str(index), setting) for index, setting in enumerate(SETTINGS, 1)]
     print("\nSelect one or more Hidden-GSM8K settings:")
@@ -1112,6 +1360,10 @@ def main() -> None:
                   "discussion_reuse_scope": "same partial-information condition only; oracle and single-agent settings are distinct",
                   "discussion_reused_across_selected_settings": len({"multi_partial", "multi_partial_verifier"} & set(selected_settings)) > 1,
                   "seed_scope": "stable SHA-256 derivation by question and generation scope",
+                  "replay_settings": list(REPLAY_SETTINGS),
+                  "replay_temperature": 0.0,
+                  "replay_fact_source": "condition_A/condition_B copied verbatim from the dataset",
+                  "replay_gold_visibility": "offline scoring only; never included in actual_messages",
                   "started_at": datetime.now().isoformat(timespec="seconds")}
     traces = []
     for qid, item in enumerate(items, 1):
@@ -1123,13 +1375,41 @@ def main() -> None:
             reseed_model(model, derived_seed(args.seed, qid, "shared_partial_discussion"))
             cache["partial"] = run_discussion(model, prompts["solver"], item, False, args.discussion_rounds)
             add_information_timeline(item, cache["partial"])
+        selected_replay = set(REPLAY_SETTINGS) & set(selected_settings)
+        if selected_replay:
+            if "all_at_start_AB" in selected_replay:
+                cache["replay_all_AB"] = run_replay_discussion(
+                    model, prompts["solver"], item, 0, "AB", args.discussion_rounds)
+            if "all_at_start_BA" in selected_replay:
+                cache["replay_all_BA"] = run_replay_discussion(
+                    model, prompts["solver"], item, 0, "BA", args.discussion_rounds)
+            if "after_round1" in selected_replay:
+                cache["replay_after_round1"] = run_replay_discussion(
+                    model, prompts["solver"], item, 1, "AB", args.discussion_rounds)
+            if selected_replay & {"before_final_transcript", "before_final_transcript_ledger", "before_final_reset"}:
+                cache["replay_before_final_shared"] = run_replay_discussion(
+                    model, prompts["solver"], item, None, "AB", args.discussion_rounds)
         for setting in selected_settings:
             variants = ("A", "B") if setting == "single_partial" else ("",)
             for variant in variants:
                 print(f"[{qid}/{len(items)}] {setting}{'_' + variant if variant else ''}")
                 reseed_model(model, derived_seed(args.seed, qid, setting, variant or "default"))
-                trace = build_trace(model, prompts, item, qid, setting, cache, variant, args.discussion_rounds)
+                if setting in REPLAY_SETTINGS:
+                    replay_cache_key = {
+                        "all_at_start_AB": "replay_all_AB",
+                        "all_at_start_BA": "replay_all_BA",
+                        "after_round1": "replay_after_round1",
+                        "before_final_transcript": "replay_before_final_shared",
+                        "before_final_transcript_ledger": "replay_before_final_shared",
+                        "before_final_reset": "replay_before_final_shared",
+                    }[setting]
+                    trace = build_replay_trace(model, prompts, item, qid, setting, cache[replay_cache_key])
+                    trace["discussion_cache_key"] = replay_cache_key
+                else:
+                    trace = build_trace(model, prompts, item, qid, setting, cache, variant, args.discussion_rounds)
                 trace["run_config"] = {key: run_config[key] for key in ("model_path", "device", "temperature", "max_new_tokens", "discussion_rounds", "seed")}
+                if setting in REPLAY_SETTINGS:
+                    trace["run_config"]["temperature"] = 0.0
                 question_traces.append(trace)
         if not args.skip_deepseek:
             reviews, judge_usage, judge_time = deepseek_review(question_traces)
@@ -1157,7 +1437,13 @@ def main() -> None:
                 trace["deepseek_judge"] = {"final": final_review, "candidate_appearances": candidate_reviews}
                 if judge_error:
                     trace["deepseek_judge_error"] = judge_error
-                trace["correct"] = False if trace.get("invalid_output") else as_bool(final_review.get("correct"), trace["correct_before_judge"])
+                judged_correct = as_bool(final_review.get("correct"), trace["correct_before_judge"])
+                if trace["setting"] in REPLAY_SETTINGS:
+                    trace["semantic_correct"] = judged_correct
+                    trace["format_compliant"] = not bool(trace.get("invalid_output"))
+                    trace["correct"] = judged_correct
+                else:
+                    trace["correct"] = False if trace.get("invalid_output") else judged_correct
                 info_review = reviews.get(f"{i}:information")
                 if info_review is not None:
                     trace["information"]["deepseek_semantic_review"] = info_review
@@ -1193,10 +1479,12 @@ def main() -> None:
         for setting, directory in output_dirs.items():
             setting_config = dict(run_config, setting=setting, output_dir=str(directory))
             write_outputs([x for x in traces if x["setting"] == setting], directory, setting_config)
+        write_replay_analysis(traces, output_base / f"{run_stamp}_replay_analysis")
     for setting, directory in output_dirs.items():
         setting_config = dict(run_config, setting=setting, output_dir=str(directory))
         write_outputs([x for x in traces if x["setting"] == setting], directory, setting_config)
         print(f"Wrote {sum(x['setting'] == setting for x in traces)} {setting} traces to {directory}")
+    write_replay_analysis(traces, output_base / f"{run_stamp}_replay_analysis")
 
 
 if __name__ == "__main__":
