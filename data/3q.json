@@ -1,0 +1,53 @@
+[
+{
+"condition_A": "Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.",
+"condition_B": "The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.",
+"shared_question": "How many pages should Julie read tomorrow?",
+"full_question": "Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday. The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today. How many pages should Julie read tomorrow?",
+"required_private_facts": {
+"agent_A": [
+"Julie read 12 pages yesterday.",
+"Today she read twice as many pages as yesterday."
+],
+"agent_B": [
+"The book has 120 pages.",
+"Tomorrow she reads half of the remaining pages."
+]
+},
+"answer": "Julie read 12 * 2 = <<12*2=24>>24 pages today.\nShe read 12 + 24 = <<12+24=36>>36 pages altogether.\nThere are 120 - 36 = <<120-36=84>>84 pages remaining.\nHalf of the remaining pages is 84 / 2 = <<84/2=42>>42.\n#### 42"
+},
+{
+"condition_A": "Betty wants to buy a wallet that costs $100. She already has half of the money needed.",
+"condition_B": "Her parents give her $15, and her grandparents give her twice as much as her parents.",
+"shared_question": "How much more money does Betty still need?",
+"full_question": "Betty wants to buy a wallet that costs $100. She already has half of the money needed. Her parents give her $15, and her grandparents give her twice as much as her parents. How much more money does Betty still need?",
+"required_private_facts": {
+"agent_A": [
+"The wallet costs $100.",
+"Betty already has half of the required amount."
+],
+"agent_B": [
+"Her parents give her $15.",
+"Her grandparents give her twice the amount her parents give."
+]
+},
+"answer": "Betty already has 100 / 2 = $<<100/2=50>>50.\nHer grandparents give her 15 * 2 = $<<15*2=30>>30.\nShe then has 50 + 15 + 30 = $<<50+15+30=95>>95.\nShe still needs 100 - 95 = $<<100-95=5>>5.\n#### 5"
+},
+{
+"condition_A": "Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.",
+"condition_B": "After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.",
+"shared_question": "What is the final weight of the box?",
+"full_question": "Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples. After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles. What is the final weight of the box?",
+"required_private_facts": {
+"agent_A": [
+"The box initially weighs 2 pounds.",
+"The brownies triple that weight."
+],
+"agent_B": [
+"Two more pounds are added afterward.",
+"The resulting weight is then doubled."
+]
+},
+"answer": "After the brownies, the box weighs 2 * 3 = <<2*3=6>>6 pounds.\nAfter adding 2 more pounds, it weighs 6 + 2 = <<6+2=8>>8 pounds.\nAfter doubling, the final weight is 8 * 2 = <<8*2=16>>16 pounds.\n#### 16"
+}
+]
