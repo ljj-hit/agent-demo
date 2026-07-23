@@ -1,0 +1,42 @@
+{
+  "script": "run_hidden_gsm8k.py",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\3q.json",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "settings": [
+    "all_at_start_AB",
+    "all_at_start_BA",
+    "after_round1",
+    "before_final_transcript",
+    "before_final_transcript_ledger",
+    "before_final_reset",
+    "finalizer_only_order_ab_ba"
+  ],
+  "device": "cuda",
+  "temperature": 0.2,
+  "max_new_tokens": 384,
+  "discussion_rounds": 2,
+  "seed": 42,
+  "finalizer_max_attempts": 1,
+  "deepseek_enabled": true,
+  "shared_discussion_settings": [],
+  "discussion_reuse_scope": "same partial-information condition only; oracle and single-agent settings are distinct",
+  "discussion_reused_across_selected_settings": false,
+  "seed_scope": "stable SHA-256 derivation by question and generation scope",
+  "replay_settings": [
+    "all_at_start_AB",
+    "all_at_start_BA",
+    "after_round1",
+    "before_final_transcript",
+    "before_final_transcript_ledger",
+    "before_final_reset"
+  ],
+  "replay_temperature": 0.0,
+  "finalizer_order_setting": "finalizer_only_order_ab_ba",
+  "finalizer_order_temperature": 0.0,
+  "finalizer_order_seed_policy": "AB and BA use the same per-question derived seed",
+  "replay_fact_source": "condition_A/condition_B copied verbatim from the dataset",
+  "replay_gold_visibility": "offline scoring only; never included in actual_messages",
+  "started_at": "2026-07-23T21:42:59",
+  "setting": "all_at_start_BA",
+  "output_dir": "D:\\agentdemo\\multi_agent_gsm8k\\outputs_hidden_gsm8k\\20260723_214259_all_at_start_BA"
+}

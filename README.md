@@ -248,6 +248,7 @@ Hidden-GSM8K 对输出格式执行严格校验。Solver 最终输出的第一行
 - `before_final_transcript`：最终回答前公开事实，finalizer 同时看到此前的讨论 transcript。
 - `before_final_transcript_ledger`：最终回答前公开事实，finalizer 同时看到规范化事实表和此前的讨论 transcript。
 - `before_final_reset`：最终回答前公开事实并清除旧讨论，新的 finalizer 只看到共享问题和固定 A、B 顺序的事实表。
+- `finalizer_only_order_ab_ba`：不运行前期讨论，在同一个 setting 中为每题运行 AB、BA 两个 finalizer-only 变体；除事实行顺序外，完整上下文和参数完全相同。
 
 ### 受控实验保证
 
@@ -258,7 +259,9 @@ Hidden-GSM8K 对输出格式执行严格校验。Solver 最终输出的第一行
 - 每次本地 agent 调用都在事件的 `actual_messages` 中保存实际可见的完整 system/user 输入。
 - 每题记录 `injected_fact_hash` 和 `final_received_fact_hash`。离线汇总会校验六设置的事实 hash，不一致时立即报错。
 - `answer`/gold 不会进入任何 agent 的 `actual_messages`，只在生成完成后用于离线判分。
-- 数学正确性使用 `semantic_correct`，格式合规使用 `format_compliant`，两者独立统计。
+- 数学正确性使用 `semantic_correct`，格式合规使用 `format_compliant`，答案与理由的一致性使用 `answer_reason_consistent`。
+- `strict_correct = semantic_correct AND format_compliant AND answer_reason_consistent`，主 `accuracy` 使用 `strict_correct`。
+- 单次 finalizer 输出无效时同时记录 `finalizer_exhausted=true` 和 `single_shot_format_failure=true`。
 
 ### 运行六个设置
 
@@ -311,13 +314,23 @@ outputs_hidden_gsm8k/YYYYMMDD_HHMMSS_replay_analysis/
 └── replay_metrics.csv
 ```
 
-`replay_metrics.csv` 分别报告每个设置的数学正确率和格式合规率。`replay_analysis.json` 另外包含：
+`replay_metrics.csv` 分别报告每个设置的语义正确率、格式合规率、答案—理由一致率和严格正确率；
+其中 `accuracy` 与 `strict_accuracy` 相同。`replay_analysis.json` 另外包含：
 
 - `schedule_flip_rate`：在 AB 固定顺序下，从开头公开改为第一轮后或最终回答前公开时，最终答案发生变化的题数、比例、题号和 pairwise 结果。
 - `late_evidence_penalty`：`all_at_start_AB` 正确但 `before_final_transcript` 错误的题数和题号。
 - `reset_recovery`：`before_final_transcript` 错误、清除旧讨论后恢复正确的题数和题号。
 - `ledger_recovery`：`before_final_transcript` 错误、加入规范化事实表后恢复正确的题数和题号。
 - `fact_hash_consistent_across_six_settings`：六设置逐题事实集合的 hash 一致性。
+
+运行 finalizer-only AB/BA 顺序对照：
+
+```powershell
+python run_hidden_gsm8k.py --setting finalizer_only_order_ab_ba
+```
+
+该 setting 的 `metrics.csv` 按 `agent_variant=AB` 和 `agent_variant=BA` 分组，并额外输出
+`finalizer_order_analysis.json`，其中包含配对题数、答案翻转率、两种顺序的三层正确性统计和事实 hash 一致性。
 
 ## 结果解读
 

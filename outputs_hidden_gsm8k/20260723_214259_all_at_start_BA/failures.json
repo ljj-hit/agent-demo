@@ -1,0 +1,310 @@
+[
+  {
+    "question_id": 1,
+    "setting": "all_at_start_BA",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "final_prediction": "60",
+    "semantic_correct": false,
+    "format_compliant": true,
+    "answer_reason_consistent": true,
+    "strict_correct": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": false,
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim scheduled injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "all_at_start_BA",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "final_prediction": "50",
+    "semantic_correct": false,
+    "format_compliant": true,
+    "answer_reason_consistent": true,
+    "strict_correct": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": false,
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim scheduled injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "discussion_round_2_send",
+        "round": 2,
+        "answer": "50",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "discussion_round_2_send",
+        "round": 2,
+        "answer": "50",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "50",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:2",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "50",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "1:candidate:3",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "id": "1:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "1:candidate:1",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "1:candidate:2",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        },
+        {
+          "id": "1:candidate:3",
+          "correct": false,
+          "format_issue": false,
+          "reason": "",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "all_at_start_BA",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "final_prediction": "4",
+    "semantic_correct": false,
+    "format_compliant": true,
+    "answer_reason_consistent": true,
+    "strict_correct": false,
+    "answer_reason_checkable": true,
+    "reason_conclusion_answer": "4",
+    "single_shot_format_failure": false,
+    "failure_type": "information_integration_failure",
+    "invalid_output": false,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": false,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim scheduled injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      },
+      {
+        "source": "solver_b",
+        "phase": "solver_final",
+        "answer": "",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "id": "1:final",
+        "correct": false,
+        "format_issue": false,
+        "reason": "",
+        "deepseek_reviewed": true
+      },
+      "candidate_appearances": [
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        },
+        {
+          "correct": false,
+          "format_issue": false,
+          "reason": "missing judge row",
+          "deepseek_reviewed": false
+        }
+      ]
+    }
+  }
+]

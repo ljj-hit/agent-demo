@@ -1,0 +1,266 @@
+[
+  {
+    "question_id": 1,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "AB",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "final_prediction": "36",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "answer_reason_consistent": false,
+    "strict_correct": false,
+    "answer_reason_checkable": true,
+    "reason_conclusion_answer": "42",
+    "single_shot_format_failure": true,
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "BA",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "final_prediction": "42",
+    "semantic_correct": true,
+    "format_compliant": false,
+    "answer_reason_consistent": true,
+    "strict_correct": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": true,
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "AB",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "final_prediction": "20",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "answer_reason_consistent": false,
+    "strict_correct": false,
+    "answer_reason_checkable": true,
+    "reason_conclusion_answer": "5",
+    "single_shot_format_failure": true,
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "BA",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "final_prediction": "30",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "answer_reason_consistent": false,
+    "strict_correct": false,
+    "answer_reason_checkable": true,
+    "reason_conclusion_answer": "50",
+    "single_shot_format_failure": true,
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "AB",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "final_prediction": "",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "answer_reason_consistent": false,
+    "strict_correct": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": true,
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "BA",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "final_prediction": "",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "answer_reason_consistent": false,
+    "strict_correct": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": true,
+    "failure_type": "invalid_output",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "candidate_answers": {},
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    }
+  }
+]

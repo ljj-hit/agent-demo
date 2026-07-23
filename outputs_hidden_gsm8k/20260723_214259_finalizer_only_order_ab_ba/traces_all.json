@@ -1,0 +1,857 @@
+[
+  {
+    "question_id": 1,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "AB",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "finalizer_event": {
+      "agent": "finalizer",
+      "phase": "finalization",
+      "actual_input": "Shared question: How many pages should Julie read tomorrow?\nEvidence visible now:\nFACT A (verbatim): Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.\nFACT B (verbatim): The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format.",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "You produce the final answer without seeing the original complete problem. Use only the shared question, public discussion, solver candidates, and (when supplied) verifier report. Do not invent missing facts. You may select a supported candidate or recompute from public facts.\n\nReturn exactly three non-empty lines, with no Markdown and no extra lines. The labels, in order, must be Selected source, Final answer, and Reason, each followed by a colon and the value for the current question. Do not copy placeholder text or invent a sample number.\n\nUse only a selected_source listed as available in the current input. Reason must be non-empty. If solver_a, solver_b, or verifier is selected, copy Final answer exactly from that source's valid non-empty candidate; do not recompute it. If solver_a and solver_b agree, preserve that answer. To select recomputed with a different answer, Reason must start with `Reject identical candidates because` (or `拒绝相同候选，因为`) and then identify the concrete error or contradiction in the public evidence. Never silently replace identical candidates. Use none and an undetermined Final answer only when the public information truly cannot support an answer."
+        },
+        {
+          "role": "user",
+          "content": "Shared question: How many pages should Julie read tomorrow?\nEvidence visible now:\nFACT A (verbatim): Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.\nFACT B (verbatim): The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format."
+        }
+      ],
+      "output": "Selected source: recomputed\n\nFinal answer: 36 pages\n\nReason: Recomputing based on FACT A and FACT B, Julie read 12 pages yesterday and 24 pages today, totaling 36 pages. Subtracting these from the total of 120 pages leaves 84 pages remaining. Half of 84 pages is 42 pages, which matches the plan to read half of what remains tomorrow.",
+      "raw_output": "Selected source: recomputed\n\nFinal answer: 36 pages\n\nReason: Recomputing based on FACT A and FACT B, Julie read 12 pages yesterday and 24 pages today, totaling 36 pages. Subtracting these from the total of 120 pages leaves 84 pages remaining. Half of 84 pages is 42 pages, which matches the plan to read half of what remains tomorrow.",
+      "token_usage": {
+        "prompt_tokens": 369,
+        "completion_tokens": 91,
+        "total_tokens": 460
+      },
+      "runtime_seconds": 9.170531400013715,
+      "parsed_output": {
+        "final_answer": "",
+        "selected_source": "none",
+        "reason": ""
+      },
+      "parse_error": "",
+      "validation_error": "expected exactly three lines",
+      "attempts": [
+        {
+          "attempt": 1,
+          "raw_output": "Selected source: recomputed\n\nFinal answer: 36 pages\n\nReason: Recomputing based on FACT A and FACT B, Julie read 12 pages yesterday and 24 pages today, totaling 36 pages. Subtracting these from the total of 120 pages leaves 84 pages remaining. Half of 84 pages is 42 pages, which matches the plan to read half of what remains tomorrow.",
+          "parsed_output": {
+            "final_answer": "",
+            "selected_source": "none",
+            "reason": ""
+          },
+          "validation_error": "expected exactly three lines",
+          "token_usage": {
+            "prompt_tokens": 369,
+            "completion_tokens": 91,
+            "total_tokens": 460
+          },
+          "runtime_seconds": 9.170531400013715
+        }
+      ],
+      "retry_count": 0,
+      "recovered_after_retry": false,
+      "retry_exhausted": true,
+      "single_shot_format_failure": true,
+      "invalid_output": true
+    },
+    "final_prediction": "36",
+    "semantic_answer_extraction": "explicit_label",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "injected_facts": {
+      "A": "Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.",
+      "B": "The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today."
+    },
+    "injected_fact_hash": "021a668ab3caf12a4fbfda7d46a0cde3966cfd38e2d2beca04b4f1d6550ed600",
+    "final_received_fact_hash": "021a668ab3caf12a4fbfda7d46a0cde3966cfd38e2d2beca04b4f1d6550ed600",
+    "fact_hash_algorithm": "sha256(canonical-json-sort-keys)",
+    "fact_order": "AB",
+    "final_context_policy": "finalizer-only; identical context except fact order",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "single_shot_format_failure": true,
+    "correct_before_judge": false,
+    "answer_reason_consistent": false,
+    "answer_reason_checkable": true,
+    "reason_conclusion_answer": "42",
+    "answer_reason_consistency_method": "last_marked_numeric_conclusion",
+    "reason_conclusion_clause": "Half of 84 pages is 42 pages, which matches the plan to read half of what remains tomorrow.",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_correct": false,
+    "correct": false,
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 369,
+      "completion_tokens": 91,
+      "total_tokens": 460
+    },
+    "per_agent_token_usage": {
+      "finalizer": {
+        "prompt_tokens": 369,
+        "completion_tokens": 91,
+        "total_tokens": 460
+      }
+    },
+    "phase_runtime_seconds": {
+      "finalization": 9.170531400013715
+    },
+    "total_runtime_seconds": 9.17143590003252,
+    "failure_type": "invalid_output",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.0,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 45,
+      "completion_tokens": 26,
+      "total_tokens": 71
+    },
+    "judge_runtime_seconds": 0.4164435124985175,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 1,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 1,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "BA",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "finalizer_event": {
+      "agent": "finalizer",
+      "phase": "finalization",
+      "actual_input": "Shared question: How many pages should Julie read tomorrow?\nEvidence visible now:\nFACT B (verbatim): The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.\nFACT A (verbatim): Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format.",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "You produce the final answer without seeing the original complete problem. Use only the shared question, public discussion, solver candidates, and (when supplied) verifier report. Do not invent missing facts. You may select a supported candidate or recompute from public facts.\n\nReturn exactly three non-empty lines, with no Markdown and no extra lines. The labels, in order, must be Selected source, Final answer, and Reason, each followed by a colon and the value for the current question. Do not copy placeholder text or invent a sample number.\n\nUse only a selected_source listed as available in the current input. Reason must be non-empty. If solver_a, solver_b, or verifier is selected, copy Final answer exactly from that source's valid non-empty candidate; do not recompute it. If solver_a and solver_b agree, preserve that answer. To select recomputed with a different answer, Reason must start with `Reject identical candidates because` (or `拒绝相同候选，因为`) and then identify the concrete error or contradiction in the public evidence. Never silently replace identical candidates. Use none and an undetermined Final answer only when the public information truly cannot support an answer."
+        },
+        {
+          "role": "user",
+          "content": "Shared question: How many pages should Julie read tomorrow?\nEvidence visible now:\nFACT B (verbatim): The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.\nFACT A (verbatim): Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format."
+        }
+      ],
+      "output": "Reject identical candidates because the computed solution does not match the given evidence. Let's recompute:\n\nJulie read 12 pages yesterday and twice as many today, which means she read \\(12 \\times 2 = 24\\) pages today. So far, she has read \\(12 + 24 = 36\\) pages. Since there are 120 pages in total, there are \\(120 - 36 = 84\\) pages left. Therefore, Julie plans to read half of these remaining pages, which is \\(84 / 2 = 42\\) pages tomorrow.\n\nFinal answer: 42 pages.",
+      "raw_output": "Reject identical candidates because the computed solution does not match the given evidence. Let's recompute:\n\nJulie read 12 pages yesterday and twice as many today, which means she read \\(12 \\times 2 = 24\\) pages today. So far, she has read \\(12 + 24 = 36\\) pages. Since there are 120 pages in total, there are \\(120 - 36 = 84\\) pages left. Therefore, Julie plans to read half of these remaining pages, which is \\(84 / 2 = 42\\) pages tomorrow.\n\nFinal answer: 42 pages.",
+      "token_usage": {
+        "prompt_tokens": 369,
+        "completion_tokens": 138,
+        "total_tokens": 507
+      },
+      "runtime_seconds": 11.864613699959591,
+      "parsed_output": {
+        "final_answer": "",
+        "selected_source": "none",
+        "reason": ""
+      },
+      "parse_error": "",
+      "validation_error": "expected exactly three lines",
+      "attempts": [
+        {
+          "attempt": 1,
+          "raw_output": "Reject identical candidates because the computed solution does not match the given evidence. Let's recompute:\n\nJulie read 12 pages yesterday and twice as many today, which means she read \\(12 \\times 2 = 24\\) pages today. So far, she has read \\(12 + 24 = 36\\) pages. Since there are 120 pages in total, there are \\(120 - 36 = 84\\) pages left. Therefore, Julie plans to read half of these remaining pages, which is \\(84 / 2 = 42\\) pages tomorrow.\n\nFinal answer: 42 pages.",
+          "parsed_output": {
+            "final_answer": "",
+            "selected_source": "none",
+            "reason": ""
+          },
+          "validation_error": "expected exactly three lines",
+          "token_usage": {
+            "prompt_tokens": 369,
+            "completion_tokens": 138,
+            "total_tokens": 507
+          },
+          "runtime_seconds": 11.864613699959591
+        }
+      ],
+      "retry_count": 0,
+      "recovered_after_retry": false,
+      "retry_exhausted": true,
+      "single_shot_format_failure": true,
+      "invalid_output": true
+    },
+    "final_prediction": "42",
+    "semantic_answer_extraction": "explicit_label",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "injected_facts": {
+      "A": "Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.",
+      "B": "The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today."
+    },
+    "injected_fact_hash": "021a668ab3caf12a4fbfda7d46a0cde3966cfd38e2d2beca04b4f1d6550ed600",
+    "final_received_fact_hash": "021a668ab3caf12a4fbfda7d46a0cde3966cfd38e2d2beca04b4f1d6550ed600",
+    "fact_hash_algorithm": "sha256(canonical-json-sort-keys)",
+    "fact_order": "BA",
+    "final_context_policy": "finalizer-only; identical context except fact order",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "single_shot_format_failure": true,
+    "correct_before_judge": true,
+    "answer_reason_consistent": true,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "answer_reason_consistency_method": "no_explicit_numeric_conclusion",
+    "semantic_correct": true,
+    "format_compliant": false,
+    "strict_correct": false,
+    "correct": false,
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 369,
+      "completion_tokens": 138,
+      "total_tokens": 507
+    },
+    "per_agent_token_usage": {
+      "finalizer": {
+        "prompt_tokens": 369,
+        "completion_tokens": 138,
+        "total_tokens": 507
+      }
+    },
+    "phase_runtime_seconds": {
+      "finalization": 11.864613699959591
+    },
+    "total_runtime_seconds": 11.86531120003201,
+    "failure_type": "invalid_output",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.0,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": true,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 45,
+      "completion_tokens": 26,
+      "total_tokens": 71
+    },
+    "judge_runtime_seconds": 0.4164435124985175,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 1,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 2,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "AB",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "finalizer_event": {
+      "agent": "finalizer",
+      "phase": "finalization",
+      "actual_input": "Shared question: How much more money does Betty still need?\nEvidence visible now:\nFACT A (verbatim): Betty wants to buy a wallet that costs $100. She already has half of the money needed.\nFACT B (verbatim): Her parents give her $15, and her grandparents give her twice as much as her parents.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format.",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "You produce the final answer without seeing the original complete problem. Use only the shared question, public discussion, solver candidates, and (when supplied) verifier report. Do not invent missing facts. You may select a supported candidate or recompute from public facts.\n\nReturn exactly three non-empty lines, with no Markdown and no extra lines. The labels, in order, must be Selected source, Final answer, and Reason, each followed by a colon and the value for the current question. Do not copy placeholder text or invent a sample number.\n\nUse only a selected_source listed as available in the current input. Reason must be non-empty. If solver_a, solver_b, or verifier is selected, copy Final answer exactly from that source's valid non-empty candidate; do not recompute it. If solver_a and solver_b agree, preserve that answer. To select recomputed with a different answer, Reason must start with `Reject identical candidates because` (or `拒绝相同候选，因为`) and then identify the concrete error or contradiction in the public evidence. Never silently replace identical candidates. Use none and an undetermined Final answer only when the public information truly cannot support an answer."
+        },
+        {
+          "role": "user",
+          "content": "Shared question: How much more money does Betty still need?\nEvidence visible now:\nFACT A (verbatim): Betty wants to buy a wallet that costs $100. She already has half of the money needed.\nFACT B (verbatim): Her parents give her $15, and her grandparents give her twice as much as her parents.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format."
+        }
+      ],
+      "output": "Reject identical candidates because there are no previous computations provided to compare against.\n\nSelected source: recomputed\n\nFinal answer: $20\n\nReason: Since Betty needs $100 and she already has half of it ($50), she still needs $50 more. Her parents gave her $15, so her grandparents gave her twice as much, which is $30. Adding these amounts together gives $45, but since we're looking at what she still needs after receiving gifts, the amount she still needs is $50 - $45 = $5. However, the correct calculation should consider the total amount given minus the amount she already had, which is $15 + $30 = $45, and subtracting that from the total cost of the wallet gives $100 - $45 = $55. But since the question asks how much more money she still needs, and considering the context of the gift-giving scenario, the correct interpretation would be the difference between what she received and what she still needs, which is $55 - $45 = $10. However, the most straightforward interpretation based on the given facts is that she still needs $5 more, as the gift-giving amounts were meant to cover part of the remaining amount.",
+      "raw_output": "Reject identical candidates because there are no previous computations provided to compare against.\n\nSelected source: recomputed\n\nFinal answer: $20\n\nReason: Since Betty needs $100 and she already has half of it ($50), she still needs $50 more. Her parents gave her $15, so her grandparents gave her twice as much, which is $30. Adding these amounts together gives $45, but since we're looking at what she still needs after receiving gifts, the amount she still needs is $50 - $45 = $5. However, the correct calculation should consider the total amount given minus the amount she already had, which is $15 + $30 = $45, and subtracting that from the total cost of the wallet gives $100 - $45 = $55. But since the question asks how much more money she still needs, and considering the context of the gift-giving scenario, the correct interpretation would be the difference between what she received and what she still needs, which is $55 - $45 = $10. However, the most straightforward interpretation based on the given facts is that she still needs $5 more, as the gift-giving amounts were meant to cover part of the remaining amount.",
+      "token_usage": {
+        "prompt_tokens": 364,
+        "completion_tokens": 267,
+        "total_tokens": 631
+      },
+      "runtime_seconds": 16.60066530003678,
+      "parsed_output": {
+        "final_answer": "",
+        "selected_source": "none",
+        "reason": ""
+      },
+      "parse_error": "",
+      "validation_error": "expected exactly three lines",
+      "attempts": [
+        {
+          "attempt": 1,
+          "raw_output": "Reject identical candidates because there are no previous computations provided to compare against.\n\nSelected source: recomputed\n\nFinal answer: $20\n\nReason: Since Betty needs $100 and she already has half of it ($50), she still needs $50 more. Her parents gave her $15, so her grandparents gave her twice as much, which is $30. Adding these amounts together gives $45, but since we're looking at what she still needs after receiving gifts, the amount she still needs is $50 - $45 = $5. However, the correct calculation should consider the total amount given minus the amount she already had, which is $15 + $30 = $45, and subtracting that from the total cost of the wallet gives $100 - $45 = $55. But since the question asks how much more money she still needs, and considering the context of the gift-giving scenario, the correct interpretation would be the difference between what she received and what she still needs, which is $55 - $45 = $10. However, the most straightforward interpretation based on the given facts is that she still needs $5 more, as the gift-giving amounts were meant to cover part of the remaining amount.",
+          "parsed_output": {
+            "final_answer": "",
+            "selected_source": "none",
+            "reason": ""
+          },
+          "validation_error": "expected exactly three lines",
+          "token_usage": {
+            "prompt_tokens": 364,
+            "completion_tokens": 267,
+            "total_tokens": 631
+          },
+          "runtime_seconds": 16.60066530003678
+        }
+      ],
+      "retry_count": 0,
+      "recovered_after_retry": false,
+      "retry_exhausted": true,
+      "single_shot_format_failure": true,
+      "invalid_output": true
+    },
+    "final_prediction": "20",
+    "semantic_answer_extraction": "explicit_label",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "injected_facts": {
+      "A": "Betty wants to buy a wallet that costs $100. She already has half of the money needed.",
+      "B": "Her parents give her $15, and her grandparents give her twice as much as her parents."
+    },
+    "injected_fact_hash": "7b804e9c9fd0ec901d8fe94c9f08f2b2bd4fbf67d3055061e8a543647d8fb285",
+    "final_received_fact_hash": "7b804e9c9fd0ec901d8fe94c9f08f2b2bd4fbf67d3055061e8a543647d8fb285",
+    "fact_hash_algorithm": "sha256(canonical-json-sort-keys)",
+    "fact_order": "AB",
+    "final_context_policy": "finalizer-only; identical context except fact order",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "single_shot_format_failure": true,
+    "correct_before_judge": false,
+    "answer_reason_consistent": false,
+    "answer_reason_checkable": true,
+    "reason_conclusion_answer": "5",
+    "answer_reason_consistency_method": "last_marked_numeric_conclusion",
+    "reason_conclusion_clause": "However, the most straightforward interpretation based on the given facts is that she still needs $5 more, as the gift-giving amounts were meant to cover part of the remaining amount.",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_correct": false,
+    "correct": false,
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 364,
+      "completion_tokens": 267,
+      "total_tokens": 631
+    },
+    "per_agent_token_usage": {
+      "finalizer": {
+        "prompt_tokens": 364,
+        "completion_tokens": 267,
+        "total_tokens": 631
+      }
+    },
+    "phase_runtime_seconds": {
+      "finalization": 16.60066530003678
+    },
+    "total_runtime_seconds": 16.601736399927177,
+    "failure_type": "invalid_output",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.0,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 80,
+      "completion_tokens": 70,
+      "total_tokens": 150
+    },
+    "judge_runtime_seconds": 0.5814992249943316,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 2,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 2,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "BA",
+    "shared_question": "How much more money does Betty still need?",
+    "gold_answer": "5",
+    "finalizer_event": {
+      "agent": "finalizer",
+      "phase": "finalization",
+      "actual_input": "Shared question: How much more money does Betty still need?\nEvidence visible now:\nFACT B (verbatim): Her parents give her $15, and her grandparents give her twice as much as her parents.\nFACT A (verbatim): Betty wants to buy a wallet that costs $100. She already has half of the money needed.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format.",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "You produce the final answer without seeing the original complete problem. Use only the shared question, public discussion, solver candidates, and (when supplied) verifier report. Do not invent missing facts. You may select a supported candidate or recompute from public facts.\n\nReturn exactly three non-empty lines, with no Markdown and no extra lines. The labels, in order, must be Selected source, Final answer, and Reason, each followed by a colon and the value for the current question. Do not copy placeholder text or invent a sample number.\n\nUse only a selected_source listed as available in the current input. Reason must be non-empty. If solver_a, solver_b, or verifier is selected, copy Final answer exactly from that source's valid non-empty candidate; do not recompute it. If solver_a and solver_b agree, preserve that answer. To select recomputed with a different answer, Reason must start with `Reject identical candidates because` (or `拒绝相同候选，因为`) and then identify the concrete error or contradiction in the public evidence. Never silently replace identical candidates. Use none and an undetermined Final answer only when the public information truly cannot support an answer."
+        },
+        {
+          "role": "user",
+          "content": "Shared question: How much more money does Betty still need?\nEvidence visible now:\nFACT B (verbatim): Her parents give her $15, and her grandparents give her twice as much as her parents.\nFACT A (verbatim): Betty wants to buy a wallet that costs $100. She already has half of the money needed.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format."
+        }
+      ],
+      "output": "Reject identical candidates because there are no previous computations provided to compare against.\n\nSelected source: recomputed\n\nFinal answer: 30\n\nReason: Based on FACT B, Betty's parents give her $15, and her grandparents give her twice as much as her parents, which totals $30. Since she needs $100 and already has half ($50), she still needs $50 more.",
+      "raw_output": "Reject identical candidates because there are no previous computations provided to compare against.\n\nSelected source: recomputed\n\nFinal answer: 30\n\nReason: Based on FACT B, Betty's parents give her $15, and her grandparents give her twice as much as her parents, which totals $30. Since she needs $100 and already has half ($50), she still needs $50 more.",
+      "token_usage": {
+        "prompt_tokens": 364,
+        "completion_tokens": 85,
+        "total_tokens": 449
+      },
+      "runtime_seconds": 5.495560899958946,
+      "parsed_output": {
+        "final_answer": "",
+        "selected_source": "none",
+        "reason": ""
+      },
+      "parse_error": "",
+      "validation_error": "expected exactly three lines",
+      "attempts": [
+        {
+          "attempt": 1,
+          "raw_output": "Reject identical candidates because there are no previous computations provided to compare against.\n\nSelected source: recomputed\n\nFinal answer: 30\n\nReason: Based on FACT B, Betty's parents give her $15, and her grandparents give her twice as much as her parents, which totals $30. Since she needs $100 and already has half ($50), she still needs $50 more.",
+          "parsed_output": {
+            "final_answer": "",
+            "selected_source": "none",
+            "reason": ""
+          },
+          "validation_error": "expected exactly three lines",
+          "token_usage": {
+            "prompt_tokens": 364,
+            "completion_tokens": 85,
+            "total_tokens": 449
+          },
+          "runtime_seconds": 5.495560899958946
+        }
+      ],
+      "retry_count": 0,
+      "recovered_after_retry": false,
+      "retry_exhausted": true,
+      "single_shot_format_failure": true,
+      "invalid_output": true
+    },
+    "final_prediction": "30",
+    "semantic_answer_extraction": "explicit_label",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "injected_facts": {
+      "A": "Betty wants to buy a wallet that costs $100. She already has half of the money needed.",
+      "B": "Her parents give her $15, and her grandparents give her twice as much as her parents."
+    },
+    "injected_fact_hash": "7b804e9c9fd0ec901d8fe94c9f08f2b2bd4fbf67d3055061e8a543647d8fb285",
+    "final_received_fact_hash": "7b804e9c9fd0ec901d8fe94c9f08f2b2bd4fbf67d3055061e8a543647d8fb285",
+    "fact_hash_algorithm": "sha256(canonical-json-sort-keys)",
+    "fact_order": "BA",
+    "final_context_policy": "finalizer-only; identical context except fact order",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "single_shot_format_failure": true,
+    "correct_before_judge": false,
+    "answer_reason_consistent": false,
+    "answer_reason_checkable": true,
+    "reason_conclusion_answer": "50",
+    "answer_reason_consistency_method": "last_marked_numeric_conclusion",
+    "reason_conclusion_clause": "Since she needs $100 and already has half ($50), she still needs $50 more.",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_correct": false,
+    "correct": false,
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 364,
+      "completion_tokens": 85,
+      "total_tokens": 449
+    },
+    "per_agent_token_usage": {
+      "finalizer": {
+        "prompt_tokens": 364,
+        "completion_tokens": 85,
+        "total_tokens": 449
+      }
+    },
+    "phase_runtime_seconds": {
+      "finalization": 5.495560899958946
+    },
+    "total_runtime_seconds": 5.496240600012243,
+    "failure_type": "invalid_output",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.0,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 79,
+      "completion_tokens": 70,
+      "total_tokens": 150
+    },
+    "judge_runtime_seconds": 0.5814992249943316,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 2,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 3,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "AB",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "finalizer_event": {
+      "agent": "finalizer",
+      "phase": "finalization",
+      "actual_input": "Shared question: What is the final weight of the box?\nEvidence visible now:\nFACT A (verbatim): Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.\nFACT B (verbatim): After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format.",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "You produce the final answer without seeing the original complete problem. Use only the shared question, public discussion, solver candidates, and (when supplied) verifier report. Do not invent missing facts. You may select a supported candidate or recompute from public facts.\n\nReturn exactly three non-empty lines, with no Markdown and no extra lines. The labels, in order, must be Selected source, Final answer, and Reason, each followed by a colon and the value for the current question. Do not copy placeholder text or invent a sample number.\n\nUse only a selected_source listed as available in the current input. Reason must be non-empty. If solver_a, solver_b, or verifier is selected, copy Final answer exactly from that source's valid non-empty candidate; do not recompute it. If solver_a and solver_b agree, preserve that answer. To select recomputed with a different answer, Reason must start with `Reject identical candidates because` (or `拒绝相同候选，因为`) and then identify the concrete error or contradiction in the public evidence. Never silently replace identical candidates. Use none and an undetermined Final answer only when the public information truly cannot support an answer."
+        },
+        {
+          "role": "user",
+          "content": "Shared question: What is the final weight of the box?\nEvidence visible now:\nFACT A (verbatim): Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.\nFACT B (verbatim): After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format."
+        }
+      ],
+      "output": "Reject identical candidates because there are multiple possible scenarios based on the given facts, making it impossible to determine the exact final weight of the box without additional information.",
+      "raw_output": "Reject identical candidates because there are multiple possible scenarios based on the given facts, making it impossible to determine the exact final weight of the box without additional information.",
+      "token_usage": {
+        "prompt_tokens": 373,
+        "completion_tokens": 32,
+        "total_tokens": 405
+      },
+      "runtime_seconds": 2.87135060003493,
+      "parsed_output": {
+        "final_answer": "",
+        "selected_source": "none",
+        "reason": ""
+      },
+      "parse_error": "",
+      "validation_error": "expected exactly three lines",
+      "attempts": [
+        {
+          "attempt": 1,
+          "raw_output": "Reject identical candidates because there are multiple possible scenarios based on the given facts, making it impossible to determine the exact final weight of the box without additional information.",
+          "parsed_output": {
+            "final_answer": "",
+            "selected_source": "none",
+            "reason": ""
+          },
+          "validation_error": "expected exactly three lines",
+          "token_usage": {
+            "prompt_tokens": 373,
+            "completion_tokens": 32,
+            "total_tokens": 405
+          },
+          "runtime_seconds": 2.87135060003493
+        }
+      ],
+      "retry_count": 0,
+      "recovered_after_retry": false,
+      "retry_exhausted": true,
+      "single_shot_format_failure": true,
+      "invalid_output": true
+    },
+    "final_prediction": "",
+    "semantic_answer_extraction": "concluding_undetermined",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "injected_facts": {
+      "A": "Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.",
+      "B": "After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles."
+    },
+    "injected_fact_hash": "e4b7d25f0d5963dc4810f631cbe34af35a22571222e2d055e47ba556157f95a6",
+    "final_received_fact_hash": "e4b7d25f0d5963dc4810f631cbe34af35a22571222e2d055e47ba556157f95a6",
+    "fact_hash_algorithm": "sha256(canonical-json-sort-keys)",
+    "fact_order": "AB",
+    "final_context_policy": "finalizer-only; identical context except fact order",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "single_shot_format_failure": true,
+    "correct_before_judge": false,
+    "answer_reason_consistent": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "answer_reason_consistency_method": "unsupported_final_answer",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_correct": false,
+    "correct": false,
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 373,
+      "completion_tokens": 32,
+      "total_tokens": 405
+    },
+    "per_agent_token_usage": {
+      "finalizer": {
+        "prompt_tokens": 373,
+        "completion_tokens": 32,
+        "total_tokens": 405
+      }
+    },
+    "phase_runtime_seconds": {
+      "finalization": 2.87135060003493
+    },
+    "total_runtime_seconds": 2.8724793000146747,
+    "failure_type": "invalid_output",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.0,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 46,
+      "completion_tokens": 23,
+      "total_tokens": 69
+    },
+    "judge_runtime_seconds": 0.24603490000299644,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 3,
+    "oracle_gap": false
+  },
+  {
+    "question_id": 3,
+    "setting": "finalizer_only_order_ab_ba",
+    "agent_variant": "BA",
+    "shared_question": "What is the final weight of the box?",
+    "gold_answer": "16",
+    "finalizer_event": {
+      "agent": "finalizer",
+      "phase": "finalization",
+      "actual_input": "Shared question: What is the final weight of the box?\nEvidence visible now:\nFACT B (verbatim): After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.\nFACT A (verbatim): Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format.",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "You produce the final answer without seeing the original complete problem. Use only the shared question, public discussion, solver candidates, and (when supplied) verifier report. Do not invent missing facts. You may select a supported candidate or recompute from public facts.\n\nReturn exactly three non-empty lines, with no Markdown and no extra lines. The labels, in order, must be Selected source, Final answer, and Reason, each followed by a colon and the value for the current question. Do not copy placeholder text or invent a sample number.\n\nUse only a selected_source listed as available in the current input. Reason must be non-empty. If solver_a, solver_b, or verifier is selected, copy Final answer exactly from that source's valid non-empty candidate; do not recompute it. If solver_a and solver_b agree, preserve that answer. To select recomputed with a different answer, Reason must start with `Reject identical candidates because` (or `拒绝相同候选，因为`) and then identify the concrete error or contradiction in the public evidence. Never silently replace identical candidates. Use none and an undetermined Final answer only when the public information truly cannot support an answer."
+        },
+        {
+          "role": "user",
+          "content": "Shared question: What is the final weight of the box?\nEvidence visible now:\nFACT B (verbatim): After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.\nFACT A (verbatim): Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.\nValid non-empty candidates: {}\nAvailable selected_source values for this question: [\"recomputed\", \"none\"]\nVerifier report: \"(no verifier in this setting)\"\nRecompute from the visible evidence. Return exactly the required three-line finalizer format."
+        }
+      ],
+      "output": "Reject identical candidates because there are no valid non-empty candidates provided based on the given evidence. Therefore, the final answer is: none",
+      "raw_output": "Reject identical candidates because there are no valid non-empty candidates provided based on the given evidence. Therefore, the final answer is: none",
+      "token_usage": {
+        "prompt_tokens": 373,
+        "completion_tokens": 27,
+        "total_tokens": 400
+      },
+      "runtime_seconds": 2.3487515999004245,
+      "parsed_output": {
+        "final_answer": "",
+        "selected_source": "none",
+        "reason": ""
+      },
+      "parse_error": "",
+      "validation_error": "expected exactly three lines",
+      "attempts": [
+        {
+          "attempt": 1,
+          "raw_output": "Reject identical candidates because there are no valid non-empty candidates provided based on the given evidence. Therefore, the final answer is: none",
+          "parsed_output": {
+            "final_answer": "",
+            "selected_source": "none",
+            "reason": ""
+          },
+          "validation_error": "expected exactly three lines",
+          "token_usage": {
+            "prompt_tokens": 373,
+            "completion_tokens": 27,
+            "total_tokens": 400
+          },
+          "runtime_seconds": 2.3487515999004245
+        }
+      ],
+      "retry_count": 0,
+      "recovered_after_retry": false,
+      "retry_exhausted": true,
+      "single_shot_format_failure": true,
+      "invalid_output": true
+    },
+    "final_prediction": "",
+    "semantic_answer_extraction": "no_supported_answer",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      },
+      "assessment_method": "verbatim finalizer-only injection"
+    },
+    "injected_facts": {
+      "A": "Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.",
+      "B": "After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles."
+    },
+    "injected_fact_hash": "e4b7d25f0d5963dc4810f631cbe34af35a22571222e2d055e47ba556157f95a6",
+    "final_received_fact_hash": "e4b7d25f0d5963dc4810f631cbe34af35a22571222e2d055e47ba556157f95a6",
+    "fact_hash_algorithm": "sha256(canonical-json-sort-keys)",
+    "fact_order": "BA",
+    "final_context_policy": "finalizer-only; identical context except fact order",
+    "invalid_output": true,
+    "finalizer_retry_count": 0,
+    "finalizer_recovered": false,
+    "finalizer_exhausted": true,
+    "single_shot_format_failure": true,
+    "correct_before_judge": false,
+    "answer_reason_consistent": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "answer_reason_consistency_method": "unsupported_final_answer",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_correct": false,
+    "correct": false,
+    "candidate_appearances": [],
+    "per_agent_correctness": {
+      "finalizer": false
+    },
+    "inference_token_usage": {
+      "prompt_tokens": 373,
+      "completion_tokens": 27,
+      "total_tokens": 400
+    },
+    "per_agent_token_usage": {
+      "finalizer": {
+        "prompt_tokens": 373,
+        "completion_tokens": 27,
+        "total_tokens": 400
+      }
+    },
+    "phase_runtime_seconds": {
+      "finalization": 2.3487515999004245
+    },
+    "total_runtime_seconds": 2.349371000076644,
+    "failure_type": "invalid_output",
+    "lucky_guess": false,
+    "run_config": {
+      "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+      "device": "cuda",
+      "temperature": 0.0,
+      "max_new_tokens": 384,
+      "discussion_rounds": 2,
+      "seed": 42
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": []
+    },
+    "judge_token_usage": {
+      "prompt_tokens": 46,
+      "completion_tokens": 23,
+      "total_tokens": 69
+    },
+    "judge_runtime_seconds": 0.24603490000299644,
+    "judge_batch_shared": true,
+    "judge_batch_question_id": 3,
+    "oracle_gap": false
+  }
+]

@@ -1,0 +1,7 @@
+﻿setting,n,correct,accuracy,semantic_correct,semantic_accuracy,format_compliant,format_compliance_rate,answer_reason_consistent,answer_reason_consistency_rate,strict_correct,strict_accuracy
+all_at_start_AB,3,3,1.0,3,1.0,3,1.0,3,1.0,3,1.0
+all_at_start_BA,3,0,0.0,0,0.0,3,1.0,3,1.0,0,0.0
+after_round1,3,0,0.0,0,0.0,3,1.0,2,0.6667,0,0.0
+before_final_transcript,3,0,0.0,0,0.0,3,1.0,2,0.6667,0,0.0
+before_final_transcript_ledger,3,0,0.0,0,0.0,3,1.0,2,0.6667,0,0.0
+before_final_reset,3,0,0.0,0,0.0,0,0.0,2,0.6667,0,0.0

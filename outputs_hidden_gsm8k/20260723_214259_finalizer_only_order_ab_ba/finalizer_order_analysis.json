@@ -1,0 +1,32 @@
+{
+  "setting": "finalizer_only_order_ab_ba",
+  "paired_question_count": 3,
+  "context_invariant": "shared question, system prompt, parameters, and wording identical; only verbatim fact order changes",
+  "per_order": {
+    "AB": {
+      "n": 3,
+      "semantic_correct": 0,
+      "format_compliant": 0,
+      "answer_reason_consistent": 0,
+      "strict_correct": 0
+    },
+    "BA": {
+      "n": 3,
+      "semantic_correct": 1,
+      "format_compliant": 0,
+      "answer_reason_consistent": 1,
+      "strict_correct": 0
+    }
+  },
+  "answer_flip": {
+    "count": 3,
+    "denominator": 3,
+    "rate": 1.0,
+    "question_ids": [
+      1,
+      2,
+      3
+    ]
+  },
+  "fact_hash_consistent": true
+}

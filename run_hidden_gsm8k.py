@@ -62,7 +62,9 @@ DEEPSEEK_API_KEY_ENV_NAMES = ("DEEPSEEK_API_KEY", "API_KEY", "OPENAI_API_KEY")
 SETTINGS = ("single_full", "single_partial", "multi_partial", "multi_partial_verifier", "oracle_broadcast")
 REPLAY_SETTINGS = ("all_at_start_AB", "all_at_start_BA", "after_round1",
                    "before_final_transcript", "before_final_transcript_ledger", "before_final_reset")
-SETTINGS = SETTINGS + REPLAY_SETTINGS
+FINALIZER_ORDER_SETTING = "finalizer_only_order_ab_ba"
+CONTROLLED_SETTINGS = REPLAY_SETTINGS + (FINALIZER_ORDER_SETTING,)
+SETTINGS = SETTINGS + REPLAY_SETTINGS + (FINALIZER_ORDER_SETTING,)
 SETTING_NAMES = {
     "single_full": "Single Agent - Full Information",
     "single_partial": "Single Agent - Partial Information (A and B)",
@@ -75,6 +77,7 @@ SETTING_NAMES = {
     "before_final_transcript": "Information Replay - Before Final with Transcript",
     "before_final_transcript_ledger": "Information Replay - Before Final with Transcript + Ledger",
     "before_final_reset": "Information Replay - Before Final after Context Reset",
+    "finalizer_only_order_ab_ba": "Finalizer-only Fact Order Control (AB and BA)",
 }
 USAGE_KEYS = ("prompt_tokens", "completion_tokens", "total_tokens")
 
@@ -802,6 +805,42 @@ def parse_fixed_finalizer(text: str) -> tuple[dict, str]:
     return {"selected_source": source, "final_answer": answer, "reason": values["Reason"]}, ""
 
 
+def check_answer_reason_consistency(answer: Any, reason: Any) -> dict:
+    """Detect an explicit concluding number in Reason that contradicts Final answer."""
+    answer_value = decimal(answer)
+    text = re.sub(r"\s+", " ", str(reason or "")).strip()
+    if answer_value is None:
+        return {"answer_reason_consistent": False, "answer_reason_checkable": False,
+                "reason_conclusion_answer": "", "answer_reason_consistency_method": "unsupported_final_answer"}
+    # Work backwards through sentence-like clauses. Only treat a number as a
+    # conclusion when the clause contains a calculation/conclusion marker;
+    # incidental inputs and numbered steps are deliberately ignored.
+    clauses = [part.strip() for part in re.split(r"(?<=[.!?])\s+|(?<=[;])\s+", text) if part.strip()]
+    marker = re.compile(
+        r"\b(?:thus|therefore|hence|so|gives?|giving|yields?|result(?:s|ing)?|"
+        r"equals?|leaves?|needs?|will\s+(?:read|be|need|have|weigh)|"
+        r"reads?|weighs?|has|"
+        r"correct\s+(?:answer|final\s+weight)|final\s+(?:answer|weight)|"
+        r"dividing|subtracting|adding|total(?:ing|s)?)\b",
+        re.I)
+    for clause in reversed(clauses):
+        if not marker.search(clause):
+            continue
+        numbers = re.findall(r"(?<![A-Za-z])[-+]?\$?\d+(?:,\d{3})*(?:\.\d+)?", clause)
+        for token in reversed(numbers):
+            candidate = decimal(token.replace("$", ""))
+            if candidate is not None:
+                return {
+                    "answer_reason_consistent": candidate == answer_value,
+                    "answer_reason_checkable": True,
+                    "reason_conclusion_answer": extract_answer(token.replace("$", "")),
+                    "answer_reason_consistency_method": "last_marked_numeric_conclusion",
+                    "reason_conclusion_clause": clause,
+                }
+    return {"answer_reason_consistent": True, "answer_reason_checkable": False,
+            "reason_conclusion_answer": "", "answer_reason_consistency_method": "no_explicit_numeric_conclusion"}
+
+
 def source_consistency_error(parsed: dict, candidates: dict, *, allow_none: bool) -> str:
     source, answer = parsed.get("selected_source", "none"), parsed.get("final_answer", "")
     allowed = {"solver_a", "solver_b", "verifier", "recomputed"} | ({"none"} if allow_none else set())
@@ -890,7 +929,8 @@ def call_finalizer_once(model: LocalQwen, system: str, user: str, candidates: di
                             "parsed_output": parsed, "validation_error": error,
                             "token_usage": event.get("token_usage", blank_usage()),
                             "runtime_seconds": event.get("runtime_seconds", 0.0)}],
-                 retry_count=0, recovered_after_retry=False, retry_exhausted=False,
+                 retry_count=0, recovered_after_retry=False, retry_exhausted=bool(error),
+                 single_shot_format_failure=bool(error),
                  invalid_output=bool(error))
     return event
 
@@ -956,11 +996,35 @@ def classify(trace: dict, gold: str) -> tuple[str | None, bool]:
         return None, lucky
     if trace.get("invalid_output"):
         return "invalid_output", lucky
+    if not trace.get("answer_reason_consistent", True):
+        return "answer_reason_inconsistency", lucky
     if not complete:
         return "information_acquisition_failure", lucky
     if not supported_correct_appeared:
         return "information_integration_failure", lucky
     return "answer_selection_failure", lucky
+
+
+def set_outcome_fields(trace: dict, gold: str, semantic_correct: bool | None = None) -> None:
+    """Keep semantic, format, reason consistency, and strict outcome orthogonal."""
+    semantic = equivalent(trace.get("final_prediction", ""), gold) if semantic_correct is None else bool(semantic_correct)
+    format_compliant = not bool(trace.get("invalid_output"))
+    finalizer = trace.get("finalizer_event")
+    if finalizer:
+        parsed_reason = str(finalizer.get("parsed_output", {}).get("reason", "")).strip()
+        if not parsed_reason:
+            match = re.search(r"(?im)^Reason\s*[:\uFF1A]\s*(.+?)\s*$", finalizer.get("raw_output", ""))
+            parsed_reason = match.group(1).strip() if match else ""
+        consistency = check_answer_reason_consistency(trace.get("final_prediction", ""), parsed_reason)
+    else:
+        consistency = {"answer_reason_consistent": True, "answer_reason_checkable": False,
+                       "reason_conclusion_answer": "",
+                       "answer_reason_consistency_method": "not_applicable_no_finalizer"}
+    trace.update(consistency)
+    trace["semantic_correct"] = semantic
+    trace["format_compliant"] = format_compliant
+    trace["strict_correct"] = bool(semantic and format_compliant and consistency["answer_reason_consistent"])
+    trace["correct"] = trace["strict_correct"]
 
 
 def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: str, discussion_cache: dict,
@@ -996,9 +1060,7 @@ def build_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, setting: 
         if verifier is not None:
             trace["verifier_event"] = verifier
     trace["correct_before_judge"] = equivalent(trace["final_prediction"], gold)
-    # Keep semantic correctness for auditing, but malformed output is never a
-    # correct experiment result, regardless of whether DeepSeek is enabled.
-    trace["correct"] = not trace.get("invalid_output", False) and trace["correct_before_judge"]
+    set_outcome_fields(trace, gold, trace["correct_before_judge"])
     trace["candidate_appearances"] = candidate_appearances(trace)
     for appearance in trace["candidate_appearances"]:
         appearance["correct_before_judge"] = equivalent(appearance["answer"], gold)
@@ -1069,14 +1131,59 @@ def build_replay_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, se
         "fact_text_order_at_initial_reveal": "BA" if setting == "all_at_start_BA" else "AB",
         "final_context_policy": context_policy, "semantic_correct": semantic_correct,
         "format_compliant": format_compliant, "correct_before_judge": semantic_correct,
-        "correct": semantic_correct, "invalid_output": not format_compliant,
+        "invalid_output": not format_compliant,
         "finalizer_retry_count": 0, "finalizer_recovered": False, "finalizer_exhausted": False,
     }
+    trace["finalizer_exhausted"] = bool(finalizer.get("retry_exhausted"))
+    trace["single_shot_format_failure"] = bool(finalizer.get("single_shot_format_failure"))
+    set_outcome_fields(trace, gold, semantic_correct)
     trace["candidate_appearances"] = candidate_appearances(trace)
     for appearance in trace["candidate_appearances"]:
         appearance["correct_before_judge"] = equivalent(appearance["answer"], gold)
         appearance["correct"] = appearance["correct_before_judge"]
-    trace["per_agent_correctness"] = {"finalizer": semantic_correct}
+    trace["per_agent_correctness"] = {"finalizer": trace["strict_correct"]}
+    usage, agent_usage, timing = blank_usage(), defaultdict(blank_usage), defaultdict(float)
+    for event in collect_events(trace):
+        add_usage(usage, event["token_usage"])
+        add_usage(agent_usage[event["agent"]], event["token_usage"])
+        timing[event["phase"]] += event["runtime_seconds"]
+    trace.update(inference_token_usage=usage, per_agent_token_usage=dict(agent_usage),
+                 phase_runtime_seconds=dict(timing), total_runtime_seconds=time.perf_counter() - started)
+    trace["failure_type"], trace["lucky_guess"] = classify(trace, gold)
+    return trace
+
+
+def build_finalizer_order_trace(model: LocalQwen, prompts: dict, item: dict, qid: int, order: str) -> dict:
+    """Finalizer-only paired control; AB/BA differ exclusively in fact row order."""
+    started = time.perf_counter()
+    evidence = replay_facts(item, order)
+    user = (f'Shared question: {item["shared_question"]}\nEvidence visible now:\n{evidence}\n'
+            'Valid non-empty candidates: {}\nAvailable selected_source values for this question: ["recomputed", "none"]\n'
+            'Verifier report: "(no verifier in this setting)"\n'
+            "Recompute from the visible evidence. Return exactly the required three-line finalizer format.")
+    finalizer = call_finalizer_once(model, prompts["finalizer"], user, {})
+    prediction, extraction = extract_free_text_answer(finalizer.get("raw_output", ""), "Final answer")
+    gold, fact_hash = extract_answer(item["answer"]), replay_fact_hash(item)
+    trace = {
+        "question_id": qid, "setting": FINALIZER_ORDER_SETTING, "agent_variant": order,
+        "shared_question": item["shared_question"], "gold_answer": gold,
+        "finalizer_event": finalizer, "final_prediction": prediction,
+        "semantic_answer_extraction": extraction, "candidate_answers": {},
+        "information": {"information_complete": True, "side_revealed": {"A": True, "B": True},
+                        "assessment_method": "verbatim finalizer-only injection"},
+        "injected_facts": {"A": item["condition_A"], "B": item["condition_B"]},
+        "injected_fact_hash": fact_hash, "final_received_fact_hash": fact_hash,
+        "fact_hash_algorithm": "sha256(canonical-json-sort-keys)", "fact_order": order,
+        "final_context_policy": "finalizer-only; identical context except fact order",
+        "invalid_output": bool(finalizer.get("invalid_output")),
+        "finalizer_retry_count": 0, "finalizer_recovered": False,
+        "finalizer_exhausted": bool(finalizer.get("retry_exhausted")),
+        "single_shot_format_failure": bool(finalizer.get("single_shot_format_failure")),
+        "correct_before_judge": equivalent(prediction, gold),
+    }
+    set_outcome_fields(trace, gold, trace["correct_before_judge"])
+    trace["candidate_appearances"] = []
+    trace["per_agent_correctness"] = {"finalizer": trace["strict_correct"]}
     usage, agent_usage, timing = blank_usage(), defaultdict(blank_usage), defaultdict(float)
     for event in collect_events(trace):
         add_usage(usage, event["token_usage"])
@@ -1155,6 +1262,8 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
         (output_dir / "run_config.json").write_text(json.dumps(run_config, ensure_ascii=False, indent=2), encoding="utf-8")
     (output_dir / "traces_all.json").write_text(json.dumps(traces, ensure_ascii=False, indent=2), encoding="utf-8")
     failure_fields = ("question_id", "setting", "agent_variant", "shared_question", "gold_answer", "final_prediction",
+                      "semantic_correct", "format_compliant", "answer_reason_consistent", "strict_correct",
+                      "answer_reason_checkable", "reason_conclusion_answer", "single_shot_format_failure",
                       "failure_type", "invalid_output", "finalizer_retry_count", "finalizer_recovered", "finalizer_exhausted",
                       "lucky_guess", "oracle_gap", "information", "candidate_answers",
                       "candidate_appearances", "per_agent_correctness", "deepseek_judge")
@@ -1164,8 +1273,13 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
     grouped = defaultdict(list)
     for t in traces:
         grouped[(t["setting"], t.get("agent_variant") or "")].append(t)
-    fields = ["setting", "agent_variant", "n", "correct", "accuracy", "solver_a_correct", "solver_b_correct", "verifier_correct", "finalizer_correct", "information_complete",
+    fields = ["setting", "agent_variant", "n", "correct", "accuracy",
+              "semantic_correct", "semantic_accuracy", "format_compliant", "format_compliance_rate",
+              "answer_reason_consistent", "answer_reason_consistency_rate", "strict_correct", "strict_accuracy",
+              "single_shot_format_failure",
+              "solver_a_correct", "solver_b_correct", "verifier_correct", "finalizer_correct", "information_complete",
               "fail_information_acquisition", "fail_information_integration", "fail_answer_selection", "invalid_output",
+              "fail_answer_reason_inconsistency",
               "finalizer_retry_count", "finalizer_recovered", "finalizer_exhausted",
               "oracle_gap", "oracle_gap_ids", "lucky_guess", "format_issue_corrected",
               "prompt_tokens", "completion_tokens", "total_tokens", "judge_total_tokens",
@@ -1174,6 +1288,15 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
     for (setting, variant), rows in grouped.items():
         correct = sum(bool(x["correct"]) for x in rows)
         writer.writerow({"setting": setting, "agent_variant": variant, "n": len(rows), "correct": correct, "accuracy": round(correct / len(rows), 4),
+            "semantic_correct": sum(bool(x.get("semantic_correct")) for x in rows),
+            "semantic_accuracy": round(sum(bool(x.get("semantic_correct")) for x in rows) / len(rows), 4),
+            "format_compliant": sum(bool(x.get("format_compliant")) for x in rows),
+            "format_compliance_rate": round(sum(bool(x.get("format_compliant")) for x in rows) / len(rows), 4),
+            "answer_reason_consistent": sum(bool(x.get("answer_reason_consistent")) for x in rows),
+            "answer_reason_consistency_rate": round(sum(bool(x.get("answer_reason_consistent")) for x in rows) / len(rows), 4),
+            "strict_correct": sum(bool(x.get("strict_correct")) for x in rows),
+            "strict_accuracy": round(sum(bool(x.get("strict_correct")) for x in rows) / len(rows), 4),
+            "single_shot_format_failure": sum(bool(x.get("single_shot_format_failure")) for x in rows),
             "solver_a_correct": sum(bool(x.get("per_agent_correctness", {}).get("solver_a")) for x in rows),
             "solver_b_correct": sum(bool(x.get("per_agent_correctness", {}).get("solver_b")) for x in rows),
             "verifier_correct": sum(bool(x.get("per_agent_correctness", {}).get("verifier")) for x in rows),
@@ -1182,6 +1305,7 @@ def write_outputs(traces: list[dict], output_dir: Path, run_config: dict | None 
             "fail_information_acquisition": sum(x["failure_type"] == "information_acquisition_failure" for x in rows),
             "fail_information_integration": sum(x["failure_type"] == "information_integration_failure" for x in rows),
             "fail_answer_selection": sum(x["failure_type"] == "answer_selection_failure" for x in rows),
+            "fail_answer_reason_inconsistency": sum(x["failure_type"] == "answer_reason_inconsistency" for x in rows),
             "invalid_output": sum(bool(x.get("invalid_output")) for x in rows),
             "finalizer_retry_count": sum(int(x.get("finalizer_retry_count", 0)) for x in rows),
             "finalizer_recovered": sum(bool(x.get("finalizer_recovered")) for x in rows),
@@ -1210,16 +1334,24 @@ def write_replay_analysis(traces: list[dict], output_dir: Path) -> None:
     accuracy = {}
     for setting in REPLAY_SETTINGS:
         values = list(by_setting[setting].values())
+        strict_count = sum(bool(t.get("strict_correct")) for t in values)
+        strict_rate = round(strict_count / len(values), 4) if values else 0
         accuracy[setting] = {
             "n": len(values),
-            "correct": sum(bool(t.get("semantic_correct", t.get("correct_before_judge"))) for t in values),
-            "accuracy": round(sum(bool(t.get("semantic_correct", t.get("correct_before_judge"))) for t in values) / len(values), 4) if values else 0,
+            "correct": strict_count,
+            "accuracy": strict_rate,
+            "semantic_correct": sum(bool(t.get("semantic_correct")) for t in values),
+            "semantic_accuracy": round(sum(bool(t.get("semantic_correct")) for t in values) / len(values), 4) if values else 0,
             "format_compliant": sum(bool(t.get("format_compliant", not t.get("invalid_output"))) for t in values),
             "format_compliance_rate": round(sum(bool(t.get("format_compliant", not t.get("invalid_output"))) for t in values) / len(values), 4) if values else 0,
+            "answer_reason_consistent": sum(bool(t.get("answer_reason_consistent")) for t in values),
+            "answer_reason_consistency_rate": round(sum(bool(t.get("answer_reason_consistent")) for t in values) / len(values), 4) if values else 0,
+            "strict_correct": strict_count,
+            "strict_accuracy": strict_rate,
         }
     def ok(setting: str, qid: int) -> bool:
         trace = by_setting[setting][qid]
-        return bool(trace.get("semantic_correct", trace.get("correct_before_judge")))
+        return bool(trace.get("strict_correct", trace.get("correct")))
     def answer_key(setting: str, qid: int) -> str:
         prediction = by_setting[setting][qid]["final_prediction"]
         numeric = decimal(prediction)
@@ -1267,11 +1399,48 @@ def write_replay_analysis(traces: list[dict], output_dir: Path) -> None:
         json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     buf = io.StringIO()
     writer = csv.DictWriter(buf, fieldnames=("setting", "n", "correct", "accuracy",
-                                              "format_compliant", "format_compliance_rate"))
+                                              "semantic_correct", "semantic_accuracy",
+                                              "format_compliant", "format_compliance_rate",
+                                              "answer_reason_consistent", "answer_reason_consistency_rate",
+                                              "strict_correct", "strict_accuracy"))
     writer.writeheader()
     for setting in REPLAY_SETTINGS:
         writer.writerow({"setting": setting, **accuracy[setting]})
     (output_dir / "replay_metrics.csv").write_text(buf.getvalue(), encoding="utf-8-sig")
+
+
+def write_finalizer_order_analysis(traces: list[dict], output_dir: Path) -> None:
+    rows = [t for t in traces if t["setting"] == FINALIZER_ORDER_SETTING]
+    if not rows:
+        return
+    output_dir.mkdir(parents=True, exist_ok=True)
+    by_order = {order: {int(t["question_id"]): t for t in rows if t.get("agent_variant") == order}
+                for order in ("AB", "BA")}
+    paired = sorted(set(by_order["AB"]) & set(by_order["BA"]))
+    flips = [qid for qid in paired if not equivalent(
+        by_order["AB"][qid]["final_prediction"], by_order["BA"][qid]["final_prediction"])]
+    result = {
+        "setting": FINALIZER_ORDER_SETTING,
+        "paired_question_count": len(paired),
+        "context_invariant": "shared question, system prompt, parameters, and wording identical; only verbatim fact order changes",
+        "per_order": {
+            order: {
+                "n": len(by_order[order]),
+                "semantic_correct": sum(bool(t.get("semantic_correct")) for t in by_order[order].values()),
+                "format_compliant": sum(bool(t.get("format_compliant")) for t in by_order[order].values()),
+                "answer_reason_consistent": sum(bool(t.get("answer_reason_consistent")) for t in by_order[order].values()),
+                "strict_correct": sum(bool(t.get("strict_correct")) for t in by_order[order].values()),
+            } for order in ("AB", "BA")
+        },
+        "answer_flip": {"count": len(flips), "denominator": len(paired),
+                        "rate": round(len(flips) / len(paired), 4) if paired else 0,
+                        "question_ids": flips},
+        "fact_hash_consistent": all(
+            by_order["AB"][qid]["injected_fact_hash"] == by_order["BA"][qid]["injected_fact_hash"]
+            for qid in paired),
+    }
+    (output_dir / "finalizer_order_analysis.json").write_text(
+        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def choose_settings_interactively() -> list[str]:
@@ -1362,6 +1531,9 @@ def main() -> None:
                   "seed_scope": "stable SHA-256 derivation by question and generation scope",
                   "replay_settings": list(REPLAY_SETTINGS),
                   "replay_temperature": 0.0,
+                  "finalizer_order_setting": FINALIZER_ORDER_SETTING,
+                  "finalizer_order_temperature": 0.0,
+                  "finalizer_order_seed_policy": "AB and BA use the same per-question derived seed",
                   "replay_fact_source": "condition_A/condition_B copied verbatim from the dataset",
                   "replay_gold_visibility": "offline scoring only; never included in actual_messages",
                   "started_at": datetime.now().isoformat(timespec="seconds")}
@@ -1390,11 +1562,15 @@ def main() -> None:
                 cache["replay_before_final_shared"] = run_replay_discussion(
                     model, prompts["solver"], item, None, "AB", args.discussion_rounds)
         for setting in selected_settings:
-            variants = ("A", "B") if setting == "single_partial" else ("",)
+            variants = (("A", "B") if setting == "single_partial" else
+                        ("AB", "BA") if setting == FINALIZER_ORDER_SETTING else ("",))
             for variant in variants:
                 print(f"[{qid}/{len(items)}] {setting}{'_' + variant if variant else ''}")
-                reseed_model(model, derived_seed(args.seed, qid, setting, variant or "default"))
-                if setting in REPLAY_SETTINGS:
+                seed_variant = "paired_order_control" if setting == FINALIZER_ORDER_SETTING else (variant or "default")
+                reseed_model(model, derived_seed(args.seed, qid, setting, seed_variant))
+                if setting == FINALIZER_ORDER_SETTING:
+                    trace = build_finalizer_order_trace(model, prompts, item, qid, variant)
+                elif setting in REPLAY_SETTINGS:
                     replay_cache_key = {
                         "all_at_start_AB": "replay_all_AB",
                         "all_at_start_BA": "replay_all_BA",
@@ -1408,7 +1584,7 @@ def main() -> None:
                 else:
                     trace = build_trace(model, prompts, item, qid, setting, cache, variant, args.discussion_rounds)
                 trace["run_config"] = {key: run_config[key] for key in ("model_path", "device", "temperature", "max_new_tokens", "discussion_rounds", "seed")}
-                if setting in REPLAY_SETTINGS:
+                if setting in CONTROLLED_SETTINGS:
                     trace["run_config"]["temperature"] = 0.0
                 question_traces.append(trace)
         if not args.skip_deepseek:
@@ -1438,12 +1614,10 @@ def main() -> None:
                 if judge_error:
                     trace["deepseek_judge_error"] = judge_error
                 judged_correct = as_bool(final_review.get("correct"), trace["correct_before_judge"])
-                if trace["setting"] in REPLAY_SETTINGS:
-                    trace["semantic_correct"] = judged_correct
-                    trace["format_compliant"] = not bool(trace.get("invalid_output"))
-                    trace["correct"] = judged_correct
+                if trace["setting"] in CONTROLLED_SETTINGS:
+                    set_outcome_fields(trace, trace["gold_answer"], judged_correct)
                 else:
-                    trace["correct"] = False if trace.get("invalid_output") else judged_correct
+                    set_outcome_fields(trace, trace["gold_answer"], judged_correct)
                 info_review = reviews.get(f"{i}:information")
                 if info_review is not None:
                     trace["information"]["deepseek_semantic_review"] = info_review
@@ -1479,10 +1653,14 @@ def main() -> None:
         for setting, directory in output_dirs.items():
             setting_config = dict(run_config, setting=setting, output_dir=str(directory))
             write_outputs([x for x in traces if x["setting"] == setting], directory, setting_config)
+            if setting == FINALIZER_ORDER_SETTING:
+                write_finalizer_order_analysis(traces, directory)
         write_replay_analysis(traces, output_base / f"{run_stamp}_replay_analysis")
     for setting, directory in output_dirs.items():
         setting_config = dict(run_config, setting=setting, output_dir=str(directory))
         write_outputs([x for x in traces if x["setting"] == setting], directory, setting_config)
+        if setting == FINALIZER_ORDER_SETTING:
+            write_finalizer_order_analysis(traces, directory)
         print(f"Wrote {sum(x['setting'] == setting for x in traces)} {setting} traces to {directory}")
     write_replay_analysis(traces, output_base / f"{run_stamp}_replay_analysis")
 
