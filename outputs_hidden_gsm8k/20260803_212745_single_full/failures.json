@@ -1,0 +1,365 @@
+[
+  {
+    "question_id": 4,
+    "setting": "single_full",
+    "shared_question": "How much did Alexis pay for the shoes?",
+    "gold_answer": "41",
+    "final_prediction": "31",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_answer_correct": false,
+    "fully_valid_correct": null,
+    "answer_reason_consistent": true,
+    "reason_mathematically_valid": null,
+    "reason_uses_all_required_facts": null,
+    "format_failure_categories": [
+      "field_order_error"
+    ],
+    "answer_error_categories": [
+      "unable_to_judge"
+    ],
+    "strict_correct": false,
+    "order_pair_answer_flip": false,
+    "manual_audit_random_sample": false,
+    "answer_flow": {
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "31",
+          "correct": false,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial Budget**: Alexis starts with a $200 budget.\n2. **Expenses**:\n   - Shirt: $30\n   - Pants: $46\n   - Coat: $38\n   - Socks: $11\n   - Belt: $18\n\nFirst, we calculate the total amount spent on these items:\n\\[ 30 + 46 + 38 + 11 + 18 = 153 \\]\n\nNext, we subtract this total from her initial budget to find out how much money she had before buying the shoes:\n\\[ 200 - 153 = 47 \\]\n\nWe know that after buying the shoes, she has $16 left. Therefore, the cost of the shoes can be calculated as follows:\n\\[ 47 - 16 = 31 \\]\n\nSo, Alexis paid $31 for the shoes.\n\nFinal answer: Alexis paid $31 for the shoes."
+        }
+      ]
+    },
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": true,
+    "failure_type": "information_integration_failure",
+    "invalid_output": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "31"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "31",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 31 is not mathematically equivalent to gold answer 41.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 31 is not mathematically equivalent to gold answer 41.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 17,
+    "setting": "single_full",
+    "shared_question": "How much money does Winwin take home?",
+    "gold_answer": "35",
+    "final_prediction": "5",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_answer_correct": false,
+    "fully_valid_correct": null,
+    "answer_reason_consistent": true,
+    "reason_mathematically_valid": null,
+    "reason_uses_all_required_facts": null,
+    "format_failure_categories": [
+      "missing_field"
+    ],
+    "answer_error_categories": [
+      "unable_to_judge"
+    ],
+    "strict_correct": false,
+    "order_pair_answer_flip": false,
+    "manual_audit_random_sample": false,
+    "answer_flow": {
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "5",
+          "correct": false,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Calculate the tax amount**: Winwin wins $50 and pays 20% of her winnings as tax.\n   \\[\n   \\text{Tax} = 0.20 \\times \\$50 = \\$10\n   \\]\n\n2. **Subtract the tax from the total winnings**: After paying taxes, we subtract the tax amount from the original winnings.\n   \\[\n   \\text{Winnings after tax} = \\$50 - \\$10 = \\$40\n   \\]\n\n3. **Add the processing fee**: Winwin also has to pay a $5 processing fee.\n   \\[\n   \\text{Total expenses} = \\$40 + \\$5 = \\$45\n   \\]\n\n4. **Determine the amount taken home**: Subtract the total expenses (including tax) from the initial winnings.\n   \\[\n   \\text{Amount taken home} = \\$50 - \\$45 = \\$5\n   \\]\n\nTherefore, Winwin takes home $\\boxed{5}$ dollars."
+        }
+      ]
+    },
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": true,
+    "failure_type": "information_integration_failure",
+    "invalid_output": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "5"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "5",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 5 is not mathematically equivalent to gold 35.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Predicted 5 is not mathematically equivalent to gold 35.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  },
+  {
+    "question_id": 19,
+    "setting": "single_full",
+    "shared_question": "How many plates are needed?",
+    "gold_answer": "135",
+    "final_prediction": "180",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "strict_answer_correct": false,
+    "fully_valid_correct": null,
+    "answer_reason_consistent": true,
+    "reason_mathematically_valid": null,
+    "reason_uses_all_required_facts": null,
+    "format_failure_categories": [
+      "missing_field"
+    ],
+    "answer_error_categories": [
+      "unable_to_judge"
+    ],
+    "strict_correct": false,
+    "order_pair_answer_flip": false,
+    "manual_audit_random_sample": false,
+    "answer_flow": {
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "180",
+          "correct": false,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial number of guests**: Wickham invites 30 people.\n2. **Additional guests per invitee**: Each of these 30 guests brings one additional person.\n   - Total additional guests = 30 (original guests) * 1 (additional guest per original guest) = 30 additional guests.\n3. **Total number of guests**: \n   - Original guests + Additional guests = 30 + 30 = 60 total guests.\n4. **Plates required per person**: Each person needs a new plate for each course.\n   - There are 3 courses, so each person will use 3 plates.\n5. **Total number of plates**:\n   - Total plates needed = Number of guests * Plates per person = 60 guests * 3 plates/guest = 180 plates.\n\nTherefore, the total number of plates needed is 180."
+        }
+      ]
+    },
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "single_shot_format_failure": true,
+    "failure_type": "information_integration_failure",
+    "invalid_output": true,
+    "lucky_guess": false,
+    "oracle_gap": false,
+    "information": {
+      "information_complete": true,
+      "side_revealed": {
+        "A": true,
+        "B": true
+      }
+    },
+    "candidate_answers": {
+      "solver_a": "180"
+    },
+    "candidate_appearances": [
+      {
+        "source": "solver_a",
+        "phase": "single_final",
+        "answer": "180",
+        "information_complete_at_appearance": true,
+        "correct_before_judge": false,
+        "correct": false,
+        "deepseek_judge": {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 180 does not equal gold 135.",
+          "deepseek_reviewed": true
+        }
+      }
+    ],
+    "per_agent_correctness": {
+      "solver_a": false
+    },
+    "deepseek_judge": {
+      "final": {
+        "correct": false,
+        "format_issue": false,
+        "reason": "invalid finalizer output",
+        "deepseek_reviewed": false
+      },
+      "candidate_appearances": [
+        {
+          "id": "0:candidate:0",
+          "correct": false,
+          "format_issue": false,
+          "reason": "Prediction 180 does not equal gold 135.",
+          "deepseek_reviewed": true
+        }
+      ]
+    }
+  }
+]

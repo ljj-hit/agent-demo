@@ -1,0 +1,61 @@
+﻿setting,agent_variant,question_id,audit_required,audit_reasons,gold_answer,final_answer,format_compliant,semantic_correct,strict_answer_correct,fully_valid_correct,answer_reason_consistent,reason_mathematically_valid,reason_uses_all_required_facts,judge_disagreement,auto_error_types,format_failure_categories,finalizer_selected_source,deterministic_normalizations,finalizer_reason,finalizer_raw_output,manual_format_valid,manual_semantic_correct,manual_answer_reason_consistent,manual_reason_mathematically_valid,manual_reason_uses_all_required_facts,manual_error_type,auto_manual_agreement,manual_notes
+before_finalizer_AB,,1,True,answer_reason_inconsistent;judge_disagreement,42,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the number of pages Julie should read tomorrow.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine the number of pages Julie should read tomorrow.",,,,,,,,
+before_finalizer_AB,,2,True,answer_reason_inconsistent;judge_disagreement,5,45,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By adding the amounts given by Betty's parents ($15) and grandparents ($30), we get the total amount of money Betty currently has, which is $45. Subtracting this from the total cost of the wallet ($100) gives the remaining amount she needs, which is $55. However, since the grandparents gave her twice as much as her parents, the correct calculation should be $30 + $60 = $90, making the total amount $100 - $90 = $10. Therefore, the correct answer is $10.","Selected source: recomputed
+Final answer: 45
+Reason: By adding the amounts given by Betty's parents ($15) and grandparents ($30), we get the total amount of money Betty currently has, which is $45. Subtracting this from the total cost of the wallet ($100) gives the remaining amount she needs, which is $55. However, since the grandparents gave her twice as much as her parents, the correct calculation should be $30 + $60 = $90, making the total amount $100 - $90 = $10. Therefore, the correct answer is $10.",,,,,,,,
+before_finalizer_AB,,3,True,answer_reason_inconsistent;judge_disagreement,16,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No initial weight or sequence of operations provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No initial weight or sequence of operations provided.",,,,,,,,
+before_finalizer_AB,,4,True,answer_reason_inconsistent;judge_disagreement,41,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific information about the cost of the shoes is provided in the given evidence.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information about the cost of the shoes is provided in the given evidence.",,,,,,,,
+before_finalizer_AB,,5,True,answer_reason_inconsistent;judge_disagreement,38,23,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By adding up the number of each type of stamp Bella buys, we get 11 + 9 + 13 = 23.","Selected source: recomputed  
+Final answer: 23  
+Reason: By adding up the number of each type of stamp Bella buys, we get 11 + 9 + 13 = 23.",,,,,,,,
+before_finalizer_AB,,6,True,answer_reason_inconsistent;judge_disagreement,5,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific pricing data provided for tops.,"Selected source: recomputed
+Final answer: undetermined
+Reason: No specific pricing data provided for tops.",,,,,,,,
+before_finalizer_AB,,7,True,answer_reason_inconsistent;judge_disagreement,1200,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific sales figures or breakdowns for this month were provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific sales figures or breakdowns for this month were provided.",,,,,,,,
+before_finalizer_AB,,8,True,answer_reason_inconsistent;judge_disagreement,1920,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific practice time or frequency was provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific practice time or frequency was provided.",,,,,,,,
+before_finalizer_AB,,9,True,answer_reason_inconsistent;judge_disagreement,45,40,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By adding up the known times and subtracting the given parts, we can find the unknown part.","Selected source: recomputed  
+Final answer: 40  
+Reason: By adding up the known times and subtracting the given parts, we can find the unknown part.",,,,,,,,
+before_finalizer_AB,,10,True,answer_reason_inconsistent;judge_disagreement,840,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific hourly rates or hours worked per week were provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific hourly rates or hours worked per week were provided.",,,,,,,,
+before_finalizer_AB,,11,True,answer_reason_inconsistent;judge_disagreement,520,890,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"Calculated based on FACT A and FACT B, assuming a standard monthly interest rate of 1%.","Selected source: recomputed  
+Final answer: 890  
+Reason: Calculated based on FACT A and FACT B, assuming a standard monthly interest rate of 1%.",,,,,,,,
+before_finalizer_AB,,12,True,answer_reason_inconsistent;judge_disagreement,3,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the number of packs needed.,"Selected source: recomputed
+Final answer: undetermined
+Reason: No sufficient information provided to determine the number of packs needed.",,,,,,,,
+before_finalizer_AB,,13,True,random_normal_sample,28,46,True,False,False,False,True,True,True,False,ignored_late_facts,,recomputed,,"By subtracting the weight loss of the first person from the total weight loss, we find that the combined weight loss of the last two people is 86 kg. Since they lose equal amounts, each loses 43 kg. Subtracting the first person's weight loss gives us 46 kg for the last two people individually.","Selected source: recomputed  
+Final answer: 46  
+Reason: By subtracting the weight loss of the first person from the total weight loss, we find that the combined weight loss of the last two people is 86 kg. Since they lose equal amounts, each loses 43 kg. Subtracting the first person's weight loss gives us 46 kg for the last two people individually.",,,,,,,,
+before_finalizer_AB,,14,True,answer_reason_inconsistent;judge_disagreement,768,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific information provided about the types of vegetables or their yields.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information provided about the types of vegetables or their yields.",,,,,,,,
+before_finalizer_AB,,15,True,answer_reason_inconsistent;judge_disagreement,100,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to calculate the exact number of cans Jennifer takes home.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to calculate the exact number of cans Jennifer takes home.",,,,,,,,
+before_finalizer_AB,,16,True,answer_reason_inconsistent;judge_disagreement,700,700,True,True,True,False,False,False,False,True,,,recomputed,,Calculating based on FACT A ($500 per regular 40-hour workweek) and adding the extra $20 for each of the 10 overtime hours worked (50 hours - 40 hours = 10 hours).,"Selected source: recomputed
+Final answer: 700
+Reason: Calculating based on FACT A ($500 per regular 40-hour workweek) and adding the extra $20 for each of the 10 overtime hours worked (50 hours - 40 hours = 10 hours).",,,,,,,,
+before_finalizer_AB,,17,True,answer_reason_inconsistent;judge_disagreement,35,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information provided to determine Winwin's take-home pay.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information provided to determine Winwin's take-home pay.",,,,,,,,
+before_finalizer_AB,,18,True,answer_reason_inconsistent;judge_disagreement,200,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific amounts or details regarding John's piggy bank balance were provided in the given evidence.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific amounts or details regarding John's piggy bank balance were provided in the given evidence.",,,,,,,,
+before_finalizer_AB,,19,True,answer_reason_inconsistent;judge_disagreement,135,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific numbers were provided to calculate the exact number of plates needed.,"Selected source: recomputed
+Final answer: undetermined
+Reason: No specific numbers were provided to calculate the exact number of plates needed.",,,,,,,,
+before_finalizer_AB,,20,True,answer_reason_inconsistent;judge_disagreement,43,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the number of hard hats remaining in the truck.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine the number of hard hats remaining in the truck.",,,,,,,,

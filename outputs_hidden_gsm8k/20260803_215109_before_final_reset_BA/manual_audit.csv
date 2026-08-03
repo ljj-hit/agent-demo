@@ -1,0 +1,61 @@
+﻿setting,agent_variant,question_id,audit_required,audit_reasons,gold_answer,final_answer,format_compliant,semantic_correct,strict_answer_correct,fully_valid_correct,answer_reason_consistent,reason_mathematically_valid,reason_uses_all_required_facts,judge_disagreement,auto_error_types,format_failure_categories,finalizer_selected_source,deterministic_normalizations,finalizer_reason,finalizer_raw_output,manual_format_valid,manual_semantic_correct,manual_answer_reason_consistent,manual_reason_mathematically_valid,manual_reason_uses_all_required_facts,manual_error_type,auto_manual_agreement,manual_notes
+before_final_reset_BA,,1,True,answer_reason_inconsistent;judge_disagreement,42,60,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By adding the pages read yesterday (12) and doubling that amount (24), we find out how many pages were left to read today. Then dividing that by 2 gives us the number of pages Julie will read tomorrow.","Selected source: recomputed
+Final answer: 60
+Reason: By adding the pages read yesterday (12) and doubling that amount (24), we find out how many pages were left to read today. Then dividing that by 2 gives us the number of pages Julie will read tomorrow.",,,,,,,,
+before_final_reset_BA,,2,True,answer_reason_inconsistent;judge_disagreement,5,30,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"Calculating the total amount given by parents and grandparents, subtracting what she already has, and finding the difference.","Selected source: recomputed
+Final answer: 30
+Reason: Calculating the total amount given by parents and grandparents, subtracting what she already has, and finding the difference.",,,,,,,,
+before_final_reset_BA,,3,True,answer_reason_inconsistent;judge_disagreement,16,10,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By adding jelly beans to double the initial weight and then adding gummy worms to triple the new weight, we can deduce the total weight added was 10 pounds.","Selected source: recomputed  
+Final answer: 10  
+Reason: By adding jelly beans to double the initial weight and then adding gummy worms to triple the new weight, we can deduce the total weight added was 10 pounds.",,,,,,,,
+before_final_reset_BA,,4,True,answer_reason_inconsistent;judge_disagreement,41,57,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By subtracting her expenses from her initial budget, we can find out how much she spent on the shoes.","Selected source: recomputed  
+Final answer: 57  
+Reason: By subtracting her expenses from her initial budget, we can find out how much she spent on the shoes.",,,,,,,,
+before_final_reset_BA,,5,True,answer_reason_inconsistent;judge_disagreement,38,20,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By adding FACT A and subtracting FACT B, we get the total number of stamps Bella buys.","Selected source: recomputed
+Final answer: 20
+Reason: By adding FACT A and subtracting FACT B, we get the total number of stamps Bella buys.",,,,,,,,
+before_final_reset_BA,,6,True,random_normal_sample,5,15,True,False,False,False,True,True,True,False,correct_answer_in_reasoning_but_wrong_final_answer,,recomputed,,"By adding up the costs of all items bought, we can find out how much each top costs. Ann spent $75 total, buying 5 pairs of shorts for $7 each, which totals to $35. Subtracting this from her total spending gives us $75 - $35 = $40, which is the amount she spent on 2 pairs of shoes and 4 tops. Since she bought 2 pairs of shoes for $10 each, the remaining amount for the tops is $40 - $20 = $20. Dividing this by 4 gives us $20 / 4 = $5 per top.","Selected source: recomputed
+Final answer: 15
+Reason: By adding up the costs of all items bought, we can find out how much each top costs. Ann spent $75 total, buying 5 pairs of shorts for $7 each, which totals to $35. Subtracting this from her total spending gives us $75 - $35 = $40, which is the amount she spent on 2 pairs of shoes and 4 tops. Since she bought 2 pairs of shoes for $10 each, the remaining amount for the tops is $40 - $20 = $20. Dividing this by 4 gives us $20 / 4 = $5 per top.",,,,,,,,
+before_final_reset_BA,,7,True,answer_reason_inconsistent;judge_disagreement,1200,1200,True,True,True,False,False,False,False,True,,,recomputed,,"Using FACT B and multiplying by 2 to find last month's revenue, then using last month's revenue to calculate this month's revenue based on the given ratio.","Selected source: recomputed
+Final answer: 1200
+Reason: Using FACT B and multiplying by 2 to find last month's revenue, then using last month's revenue to calculate this month's revenue based on the given ratio.",,,,,,,,
+before_final_reset_BA,,8,True,answer_reason_inconsistent;judge_disagreement,1920,192,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating total practice time based on daily practice duration and weekly practice frequency.,"Selected source: recomputed  
+Final answer: 192  
+Reason: Calculating total practice time based on daily practice duration and weekly practice frequency.",,,,,,,,
+before_final_reset_BA,,9,True,random_normal_sample,45,10,True,False,False,False,True,True,True,False,ignored_late_facts,,recomputed,,"Calculating the time taken for the first part (25 minutes), the second part takes twice as long (50 minutes). Adding these gives 75 minutes for both parts combined. Subtracting the first part's duration leaves 65 minutes for the third part. Dividing by 60 converts to minutes, resulting in 1.083333333 hours, which rounds down to 1 hour and 4 minutes, but since we need the exact minute count, it's 10 minutes.","Selected source: recomputed
+Final answer: 10
+Reason: Calculating the time taken for the first part (25 minutes), the second part takes twice as long (50 minutes). Adding these gives 75 minutes for both parts combined. Subtracting the first part's duration leaves 65 minutes for the third part. Dividing by 60 converts to minutes, resulting in 1.083333333 hours, which rounds down to 1 hour and 4 minutes, but since we need the exact minute count, it's 10 minutes.",,,,,,,,
+before_final_reset_BA,,10,True,answer_reason_inconsistent;judge_disagreement,840,140,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating total weekly earnings based on hourly rates and hours worked at each job.,"Selected source: recomputed
+Final answer: 140
+Reason: Calculating total weekly earnings based on hourly rates and hours worked at each job.",,,,,,,,
+before_final_reset_BA,,11,True,answer_reason_inconsistent;judge_disagreement,520,870,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating the total amount paid over 4 months and subtracting the down payment and additional fee.,"Selected source: recomputed
+Final answer: 870
+Reason: Calculating the total amount paid over 4 months and subtracting the down payment and additional fee.",,,,,,,,
+before_final_reset_BA,,12,True,answer_reason_inconsistent;judge_disagreement,3,48,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating the total number of pouches needed for the players and coaches/helpers using FACT A and adding the additional pouches for the coaches and helpers based on FACT B.,"Selected source: recomputed
+Final answer: 48
+Reason: Calculating the total number of pouches needed for the players and coaches/helpers using FACT A and adding the additional pouches for the coaches and helpers based on FACT B.",,,,,,,,
+before_final_reset_BA,,13,True,answer_reason_inconsistent;judge_disagreement,28,46,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By subtracting the total loss of the first two people from the overall loss, we find that each of the last two people lost 46 kilograms.","Selected source: recomputed
+Final answer: 46
+Reason: By subtracting the total loss of the first two people from the overall loss, we find that each of the last two people lost 46 kilograms.",,,,,,,,
+before_final_reset_BA,,14,True,answer_reason_inconsistent;judge_disagreement,768,154,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"Using FACT A to find the number of cucumbers (237 - 60 = 177), then using FACT B to find the number of peppers (177 * 2 = 354). Adding all together gives 237 + 177 + 354 = 768 / 4 = 154.","Selected source: recomputed
+Final answer: 154
+Reason: Using FACT A to find the number of cucumbers (237 - 60 = 177), then using FACT B to find the number of peppers (177 * 2 = 354). Adding all together gives 237 + 177 + 354 = 768 / 4 = 154.",,,,,,,,
+before_final_reset_BA,,15,True,answer_reason_inconsistent;judge_disagreement,100,32,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating based on FACT B and the initial amount of cans Jennifer buys.,"Selected source: recomputed
+Final answer: 32
+Reason: Calculating based on FACT B and the initial amount of cans Jennifer buys.",,,,,,,,
+before_final_reset_BA,,16,True,answer_reason_inconsistent;judge_disagreement,700,1000,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating her total income based on her regular earnings and overtime pay.,"Selected source: recomputed  
+Final answer: 1000  
+Reason: Calculating her total income based on her regular earnings and overtime pay.",,,,,,,,
+before_final_reset_BA,,17,True,answer_reason_inconsistent;judge_disagreement,35,40,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"After paying the processing fee, Winwin takes home $50 - $5 = $40.","Selected source: recomputed  
+Final answer: $40  
+Reason: After paying the processing fee, Winwin takes home $50 - $5 = $40.",,,,,,,,
+before_final_reset_BA,,18,True,answer_reason_inconsistent;judge_disagreement,200,1000,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"Calculating the remaining amount after spending $400 from a piggy bank that was initially empty ($25/month * 24 months = $600), leaving $1000 remaining.","Selected source: recomputed  
+Final answer: 1000  
+Reason: Calculating the remaining amount after spending $400 from a piggy bank that was initially empty ($25/month * 24 months = $600), leaving $1000 remaining.",,,,,,,,
+before_final_reset_BA,,19,True,answer_reason_inconsistent;judge_disagreement,135,15,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"Each guest brings one additional person, so half of the invited guests plus half of the additional guests equals the total number of people attending the party.","Selected source: recomputed  
+Final answer: 15  
+Reason: Each guest brings one additional person, so half of the invited guests plus half of the additional guests equals the total number of people attending the party.",,,,,,,,
+before_final_reset_BA,,20,True,answer_reason_inconsistent;judge_disagreement,43,30,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By subtracting the removed hard hats from the initial count, we get the remaining hard hats. Pink: 26 - 4 = 22, Green: 15 + 6*2 = 27, Yellow: 24 remains unchanged. Total: 22 + 27 + 24 = 73 - 48 (removed) = 25 - 12 (initial removals) = 30.","Selected source: recomputed
+Final answer: 30
+Reason: By subtracting the removed hard hats from the initial count, we get the remaining hard hats. Pink: 26 - 4 = 22, Green: 15 + 6*2 = 27, Yellow: 24 remains unchanged. Total: 22 + 27 + 24 = 73 - 48 (removed) = 25 - 12 (initial removals) = 30.",,,,,,,,

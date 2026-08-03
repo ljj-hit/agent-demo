@@ -1,0 +1,23 @@
+{
+  "format_failures": {
+    "missing_field": 8,
+    "field_order_error": 12,
+    "extra_text_outside_three_lines": 0,
+    "unparseable_final_answer": 0,
+    "illegal_selected_source": 0,
+    "empty_reason": 0,
+    "retry_exhausted": 0,
+    "truncated": 0,
+    "model_refusal": 0
+  },
+  "wrong_answers": {
+    "correct_answer_in_reasoning_but_wrong_final_answer": 0,
+    "arithmetic_error": 0,
+    "used_incomplete_facts": 0,
+    "ignored_late_facts": 0,
+    "carried_forward_early_wrong_conclusion": 0,
+    "selected_wrong_solver_candidate": 0,
+    "unable_to_judge": 3,
+    "random_or_unsourced_number": 0
+  }
+}

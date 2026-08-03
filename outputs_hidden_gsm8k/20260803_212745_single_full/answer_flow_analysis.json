@@ -1,0 +1,961 @@
+{
+  "summary": {
+    "trace_count": 20,
+    "answer_emergence_count": 17,
+    "answer_retention_count": 17,
+    "answer_overwrite_count": 0,
+    "answer_recovery_count": 0,
+    "final_commit_failure_count": 0,
+    "loss_location_counts": {
+      "solver_internal": 0,
+      "between_solvers": 0,
+      "verifier": 0,
+      "ledger": 0,
+      "finalizer_reasoning": 0,
+      "final_answer_serialization": 0,
+      "unknown": 0
+    }
+  },
+  "per_trace": [
+    {
+      "question_id": 1,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "42",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Pages Read Yesterday**: Julie read 12 pages.\n2. **Pages Read Today**: She read twice as many pages as yesterday, which means:\n   \\[\n   2 \\times 12 = 24 \\text{ pages}\n   \\]\n3. **Total Pages Read So Far**: Adding the pages read yesterday and today gives us:\n   \\[\n   12 + 24 = 36 \\text{ pages}\n   \\]\n\nNow, we know the total number of pages in the book is 120. To find out how many pages remain after reading so far, subtract the total pages read from the total number of pages:\n\\[\n120 - 36 = 84 \\text{ pages remaining}\n\\]\n\n**Tomorrow's Reading Plan**: Julie plans to read half of the pages that remain after yesterday and today. Therefore, the number of pages she will read tomorrow is:\n\\[\n\\frac{84}{2} = 42 \\text{ pages}\n\\]\n\nThus, Julie should read **42 pages tomorrow**.\n\nFinal answer: Julie should read 42 pages tomorrow."
+        }
+      ]
+    },
+    {
+      "question_id": 2,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "5",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Determine how much money Betty currently has**:\n   - Betty needs $100.\n   - She already has half of the money needed, which is \\( \\frac{1}{2} \\times 100 = 50 \\) dollars.\n\n2. **Calculate the total amount of money Betty receives from her parents**:\n   - Her parents give her $15.\n\n3. **Calculate the total amount of money Betty receives from her grandparents**:\n   - Her grandparents give her twice as much as her parents, so they give \\( 2 \\times 15 = 30 \\) dollars.\n\n4. **Sum up all the money Betty now has**:\n   - Money from parents: $15\n   - Money from grandparents: $30\n   - Total money Betty has: \\( 50 + 15 + 30 = 95 \\) dollars\n\n5. **Determine how much more money Betty still needs**:\n   - The wallet costs $100.\n   - Betty currently has $95.\n   - Therefore, she still needs \\( 100 - 95 = 5 \\) dollars.\n\nFinal answer: Betty still needs 5 more dollars to buy the wallet."
+        }
+      ]
+    },
+    {
+      "question_id": 3,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "16",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial Weight**: Ken starts with enough jelly beans to fill the box to 2 pounds.\n   - Let \\( W_0 \\) be the initial weight of the box filled with jelly beans.\n\n2. **Adding Brownies**: He adds brownies so that the total weight becomes triple the initial weight.\n   - New weight after adding brownies = \\( 3W_0 \\).\n\n3. **Adding Jelly Beans Again**: He adds 2 more pounds of jelly beans.\n   - New weight after adding additional jelly beans = \\( 3W_0 + 2 \\).\n\n4. **Adding Gummy Worms**: Finally, he adds gummy worms so that the new weight doubles.\n   - Final weight after adding gummy worms = \\( 2(3W_0 + 2) \\).\n\nNow, we calculate the final weight:\n\\[ \\text{Final weight} = 2(3W_0 + 2) \\]\n\nSince \\( W_0 \\) represents the initial weight of the box filled with jelly beans (which is 2 pounds), substitute \\( W_0 = 2 \\):\n\\[ \\text{Final weight} = 2(3 \\times 2 + 2) \\]\n\\[ \\text{Final weight} = 2(6 + 2) \\]\n\\[ \\text{Final weight} = 2 \\times 8 \\]\n\\[ \\text{Final weight} = 16 \\]\n\nTherefore, the final weight of the box is 16 pounds."
+        }
+      ]
+    },
+    {
+      "question_id": 4,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "31",
+          "correct": false,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial Budget**: Alexis starts with a $200 budget.\n2. **Expenses**:\n   - Shirt: $30\n   - Pants: $46\n   - Coat: $38\n   - Socks: $11\n   - Belt: $18\n\nFirst, we calculate the total amount spent on these items:\n\\[ 30 + 46 + 38 + 11 + 18 = 153 \\]\n\nNext, we subtract this total from her initial budget to find out how much money she had before buying the shoes:\n\\[ 200 - 153 = 47 \\]\n\nWe know that after buying the shoes, she has $16 left. Therefore, the cost of the shoes can be calculated as follows:\n\\[ 47 - 16 = 31 \\]\n\nSo, Alexis paid $31 for the shoes.\n\nFinal answer: Alexis paid $31 for the shoes."
+        }
+      ]
+    },
+    {
+      "question_id": 5,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "38",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Snowflake Stamps**: Bella buys 11 snowflake stamps.\n2. **Truck Stamps**: She buys 9 more truck stamps than snowflake stamps. Therefore:\n   \\[\n   \\text{Number of truck stamps} = 11 + 9 = 20\n   \\]\n3. **Rose Stamps**: She buys 13 fewer rose stamps than truck stamps. Therefore:\n   \\[\n   \\text{Number of rose stamps} = 20 - 13 = 7\n   \\]\n\nNow, we sum up all the stamps she bought:\n\\[\n\\text{Total number of stamps} = \\text{snowflake stamps} + \\text{truck stamps} + \\text{rose stamps}\n\\]\n\\[\n\\text{Total number of stamps} = 11 + 20 + 7 = 38\n\\]\n\n**Final answer:** Bella buys a total of 38 stamps."
+        }
+      ]
+    },
+    {
+      "question_id": 6,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "5",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Total spent**: Ann spends $75.\n2. **Cost of shorts**: She buys 5 pairs of shorts for $7 each.\n   - Cost of shorts = \\( 5 \\times 7 = \\$35 \\)\n3. **Cost of shoes**: She buys 2 pairs of shoes for $10 each.\n   - Cost of shoes = \\( 2 \\times 10 = \\$20 \\)\n\nNow we know:\n- Total spent = $75\n- Cost of shorts = $35\n- Cost of shoes = $20\n\nSubtracting these costs from the total amount spent gives us the remaining amount spent on tops:\n\\[ \\text{Remaining amount} = 75 - (35 + 20) = 75 - 55 = \\$20 \\]\n\nSince she bought 4 tops, we can find the cost per top by dividing the remaining amount by the number of tops:\n\\[ \\text{Cost per top} = \\frac{20}{4} = \\$5 \\]\n\n**Final answer:** Each top costs $5."
+        }
+      ]
+    },
+    {
+      "question_id": 7,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "1200",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Calculate last month's revenue**:\n   - Noah sold 8 large paintings at $60 each.\n     \\[\n     \\text{Revenue from large paintings} = 8 \\times 60 = \\$480\n     \\]\n   - He also sold 4 small paintings at $30 each.\n     \\[\n     \\text{Revenue from small paintings} = 4 \\times 30 = \\$120\n     \\]\n   - Total revenue last month:\n     \\[\n     \\text{Total revenue last month} = 480 + 120 = \\$600\n     \\]\n\n2. **Determine this month's revenue**:\n   - According to the problem, this month's total sales revenue is twice last month's revenue.\n     \\[\n     \\text{This month's revenue} = 2 \\times 600 = \\$1200\n     \\]\n\nTherefore, Noah makes \\$1200 in sales revenue this month.\n\nFinal answer: Noah makes \\$1200 in sales revenue this month."
+        }
+      ]
+    },
+    {
+      "question_id": 8,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "1920",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Piano Practice**: Carolyn practices piano for 20 minutes each day.\n   - Number of days she practices piano per week = 6\n   - Total piano practice time per week = \\( 20 \\text{ minutes/day} \\times 6 \\text{ days/week} = 120 \\text{ minutes/week} \\)\n\n2. **Violin Practice**: She practices violin for 3 times as long as piano.\n   - Violin practice time per day = \\( 3 \\times 20 \\text{ minutes} = 60 \\text{ minutes/day} \\)\n   - Total violin practice time per week = \\( 60 \\text{ minutes/day} \\times 6 \\text{ days/week} = 360 \\text{ minutes/week} \\)\n\n3. **Total Weekly Practice Time**:\n   - Total weekly practice time (piano + violin) = \\( 120 \\text{ minutes/week} + 360 \\text{ minutes/week} = 480 \\text{ minutes/week} \\)\n\n4. **Weekly Practice Over 4 Weeks**:\n   - Total weekly practice over 4 weeks = \\( 480 \\text{ minutes/week} \\times 4 \\text{ weeks} = 1920 \\text{ minutes} \\)\n\nTherefore, Carolyn practices a total of 1920 minutes in 4 weeks.\n\nFinal answer: 1920 minutes"
+        }
+      ]
+    },
+    {
+      "question_id": 9,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "45",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **First Part**: Leo finishes the first part in 25 minutes.\n   - This is given directly.\n\n2. **Second Part**: The second part takes twice as long as the first part.\n   - Since the first part took 25 minutes, the second part would take \\(2 \\times 25 = 50\\) minutes.\n\n3. **Total Time**: The entire assignment takes 2 hours.\n   - Convert 2 hours into minutes: \\(2 \\text{ hours} \\times 60 \\text{ minutes/hour} = 120 \\text{ minutes}\\).\n\n4. **Time for Third Part**: We know the time taken for the first two parts (25 + 50 = 75 minutes).\n   - Subtract this total from the overall assignment time to find the time for the third part:\n     \\[\n     120 \\text{ minutes} - 75 \\text{ minutes} = 45 \\text{ minutes}\n     \\]\n\n**Final Answer:** The third part takes 45 minutes."
+        }
+      ]
+    },
+    {
+      "question_id": 10,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "840",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down into steps:\n\n1. Calculate James' earnings from his main job:\n   - Hourly wage at main job: $20/hour\n   - Hours worked at main job: 30 hours/week\n\n   Earnings from main job = Hourly wage × Hours worked\n   = $20/hour × 30 hours/week\n   = $600/week\n\n2. Determine James' hourly wage at his second job:\n   - Second job hourly wage = Main job hourly wage - (20% of main job hourly wage)\n   = $20/hour - (0.20 × $20/hour)\n   = $20/hour - $4/hour\n   = $16/hour\n\n3. Calculate the number of hours James works at his second job:\n   - Hours worked at second job = Half of main job hours\n   = 30 hours/week / 2\n   = 15 hours/week\n\n4. Calculate James' earnings from his second job:\n   - Earnings from second job = Hourly wage × Hours worked\n   = $16/hour × 15 hours/week\n   = $240/week\n\n5. Add up all earnings from both jobs:\n   Total weekly earnings = Earnings from main job + Earnings from second job\n   = $600/week + $240/week\n   = $840/week\n\nFinal answer: James earns $840 each week from both jobs."
+        }
+      ]
+    },
+    {
+      "question_id": 11,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "520",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Down Payment Calculation**:\n   - Tara makes a 20% down payment on a $1000 laptop.\n   - Down payment amount = \\( 1000 \\times 0.20 = \\$200 \\).\n\n2. **Total Down Payment Including Extra Amount**:\n   - Tara also pays an extra $20 with her down payment.\n   - Total down payment = \\( 200 + 20 = \\$220 \\).\n\n3. **Remaining Balance After Down Payment**:\n   - Initial cost of the laptop = $1000.\n   - Remaining balance = \\( 1000 - 220 = \\$780 \\).\n\n4. **Monthly Payments**:\n   - Tara pays $65 per month for 4 months.\n   - Total monthly payments = \\( 65 \\times 4 = \\$260 \\).\n\n5. **Balance After Monthly Payments**:\n   - Final balance remaining = \\( 780 - 260 = \\$520 \\).\n\nTherefore, the balance remaining after the 4 monthly payments is $520."
+        }
+      ]
+    },
+    {
+      "question_id": 12,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "3",
+          "correct": true,
+          "raw_output": "To solve this problem:\n\n1. Calculate the total number of pouches needed:\n   - Players: 13\n   - Coaches: 3\n   - Helpers: 2\n\n   Total pouches = Players + Coaches + Helpers\n                  = 13 + 3 + 2\n                  = 18\n\n2. Determine how many packs are required:\n   Each pack contains 6 pouches.\n   \n   Packs needed = Total pouches / Pouches per pack\n                = 18 / 6\n                = 3\n\nRoger must buy 3 packs of trail-mix pouches."
+        }
+      ]
+    },
+    {
+      "question_id": 13,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "28",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Total loss**: The total weight lost by all four people is 103 kg.\n2. **First person's loss**: The first person loses 27 kg.\n3. **Second person's loss**: The second person loses 7 kg less than the first person. Therefore, the second person loses \\(27 - 7 = 20\\) kg.\n4. **Remaining loss**: Subtract the losses of the first and second persons from the total:\n   \\[\n   103 - (27 + 20) = 103 - 47 = 56 \\text{ kg}\n   \\]\n5. **Equal loss of the last two persons**: Let \\(x\\) be the amount each of the last two people loses. Since they lose equal amounts, their combined loss is \\(2x\\). This must equal the remaining loss:\n   \\[\n   2x = 56\n   \\]\n\nNow we can find \\(x\\):\n\\[\nx = \\frac{56}{2} = 28 \\text{ kg}\n\\]\n\nSo, each of the last two people loses 28 kg.\n\n**Final answer:** Each of the last two people loses 28 kg."
+        }
+      ]
+    },
+    {
+      "question_id": 14,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "768",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. The garden produces 237 potatoes.\n2. It produces 60 fewer cucumbers than potatoes:\n   \\[\n   \\text{Cucumbers} = \\text{Potatoes} - 60 = 237 - 60 = 177\n   \\]\n3. It produces twice as many peppers as cucumbers:\n   \\[\n   \\text{Peppers} = 2 \\times \\text{Cucumbers} = 2 \\times 177 = 354\n   \\]\n\nNow we can calculate the total number of vegetables produced by adding all these together:\n\\[\n\\text{Total Vegetables} = \\text{Potatoes} + \\text{Cucumbers} + \\text{Peppers}\n\\]\nSubstituting the values we found:\n\\[\n\\text{Total Vegetables} = 237 + 177 + 354 = 768\n\\]\n\nTherefore, the garden produces a total of 768 vegetables."
+        }
+      ]
+    },
+    {
+      "question_id": 15,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "100",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial Purchase**: Jennifer starts with 40 cans.\n2. **Mark's Purchase**: Mark buys 50 cans.\n3. **Jennifer's Response**: For every 5 cans Mark buys, Jennifer buys 6 additional cans.\n\nFirstly, we calculate how many times Mark has bought 5 cans:\n\\[ \\frac{50}{5} = 10 \\]\nThis means Mark has bought 5 cans ten times.\n\nNext, we determine how many additional cans Jennifer buys based on these purchases:\n\\[ 10 \\times 6 = 60 \\]\n\nNow, we add these additional cans to Jennifer's initial purchase:\n\\[ 40 + 60 = 100 \\]\n\nTherefore, Jennifer takes home a total of 100 cans.\n\nFinal Answer: Jennifer takes home 100 cans."
+        }
+      ]
+    },
+    {
+      "question_id": 16,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "700",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Regular pay**: Irene earns $500 for her regular 40-hour workweek.\n   - Regular pay = $500\n\n2. **Overtime pay**: She works 50 hours last week, which includes both regular and overtime hours.\n   - Total hours worked = 50 hours\n\n3. **Determine overtime hours**:\n   - Overtime hours = Total hours worked - Regular hours\n   - Overtime hours = 50 hours - 40 hours = 10 hours\n\n4. **Calculate overtime pay**:\n   - Overtime pay per hour = $20\n   - Total overtime pay = Overtime hours × Overtime pay per hour\n   - Total overtime pay = 10 hours × $20/hour = $200\n\n5. **Total income**:\n   - Total income = Regular pay + Overtime pay\n   - Total income = $500 + $200 = $700\n\nFinal answer: Irene's total income last week was $700."
+        }
+      ]
+    },
+    {
+      "question_id": 17,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "5",
+          "correct": false,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Calculate the tax amount**: Winwin wins $50 and pays 20% of her winnings as tax.\n   \\[\n   \\text{Tax} = 0.20 \\times \\$50 = \\$10\n   \\]\n\n2. **Subtract the tax from the total winnings**: After paying taxes, we subtract the tax amount from the original winnings.\n   \\[\n   \\text{Winnings after tax} = \\$50 - \\$10 = \\$40\n   \\]\n\n3. **Add the processing fee**: Winwin also has to pay a $5 processing fee.\n   \\[\n   \\text{Total expenses} = \\$40 + \\$5 = \\$45\n   \\]\n\n4. **Determine the amount taken home**: Subtract the total expenses (including tax) from the initial winnings.\n   \\[\n   \\text{Amount taken home} = \\$50 - \\$45 = \\$5\n   \\]\n\nTherefore, Winwin takes home $\\boxed{5}$ dollars."
+        }
+      ]
+    },
+    {
+      "question_id": 18,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "200",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Calculate total amount saved over 2 years**:\n   - John saves $25 each month.\n   - There are 12 months in a year, so he saves \\( 25 \\times 12 = \\$300 \\) per year.\n   - Over 2 years, he saves \\( 300 \\times 2 = \\$600 \\).\n\n2. **Subtract the amount spent on car repair**:\n   - John spends $400 on a car repair.\n   - After spending, the remaining amount in the piggy bank is \\( 600 - 400 = \\$200 \\).\n\nTherefore, the amount of money remaining in John's piggy bank is $200."
+        }
+      ]
+    },
+    {
+      "question_id": 19,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "180",
+          "correct": false,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial number of guests**: Wickham invites 30 people.\n2. **Additional guests per invitee**: Each of these 30 guests brings one additional person.\n   - Total additional guests = 30 (original guests) * 1 (additional guest per original guest) = 30 additional guests.\n3. **Total number of guests**: \n   - Original guests + Additional guests = 30 + 30 = 60 total guests.\n4. **Plates required per person**: Each person needs a new plate for each course.\n   - There are 3 courses, so each person will use 3 plates.\n5. **Total number of plates**:\n   - Total plates needed = Number of guests * Plates per person = 60 guests * 3 plates/guest = 180 plates.\n\nTherefore, the total number of plates needed is 180."
+        }
+      ]
+    },
+    {
+      "question_id": 20,
+      "setting": "single_full",
+      "agent_variant": "",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Single final",
+        "first_agent": "solver_a",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": null,
+        "last_correct_step": "Single final",
+        "last_correct_agent": "solver_a"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": null,
+      "finalizer_rejection_assessment": "not_applicable_single_agent",
+      "finalizer_selected_away_from_correct_candidate": null,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Single final",
+          "agent": "solver_a",
+          "phase": "solver_final",
+          "answer": "43",
+          "correct": true,
+          "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Initial Count**:\n   - Pink hard hats: 26\n   - Green hard hats: 15\n   - Yellow hard hats: 24\n\n2. **Carl Removes Hard Hats**:\n   - Carl removes 4 pink hard hats.\n     New count of pink hard hats: \\( 26 - 4 = 22 \\)\n\n3. **John Removes Additional Hard Hats**:\n   - John removes 6 pink hard hats.\n     New count of pink hard hats after Carl: \\( 22 - 6 = 16 \\)\n   - John also removes twice as many green hard hats as he removed pink ones.\n     Number of green hard hats removed: \\( 2 \\times 6 = 12 \\)\n     New count of green hard hats: \\( 15 - 12 = 3 \\)\n\n4. **Total Remaining Hard Hats**:\n   - Total pink hard hats remaining: 16\n   - Total green hard hats remaining: 3\n   - Total yellow hard hats remain unchanged: 24\n\nNow, summing up all the remaining hard hats:\n\\[ 16 (\\text{pink}) + 3 (\\text{green}) + 24 (\\text{yellow}) = 43 \\]\n\nTherefore, the total number of hard hats remaining in the truck is 43."
+        }
+      ]
+    }
+  ]
+}

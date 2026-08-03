@@ -1,0 +1,61 @@
+﻿setting,agent_variant,question_id,audit_required,audit_reasons,gold_answer,final_answer,format_compliant,semantic_correct,strict_answer_correct,fully_valid_correct,answer_reason_consistent,reason_mathematically_valid,reason_uses_all_required_facts,judge_disagreement,auto_error_types,format_failure_categories,finalizer_selected_source,deterministic_normalizations,finalizer_reason,finalizer_raw_output,manual_format_valid,manual_semantic_correct,manual_answer_reason_consistent,manual_reason_mathematically_valid,manual_reason_uses_all_required_facts,manual_error_type,auto_manual_agreement,manual_notes
+all_at_start_BA,,1,True,answer_reason_inconsistent;judge_disagreement,42,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information provided to determine the number of pages Julie should read tomorrow.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information provided to determine the number of pages Julie should read tomorrow.",,,,,,,,
+all_at_start_BA,,2,True,answer_reason_inconsistent;judge_disagreement,5,55,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion,,recomputed,,Rejected identical candidates because the initial calculation was incorrect due to misunderstanding the contribution amounts. Correcting the approach shows Betty needs $55 more after accounting for both parents' contributions.,"Selected source: recomputed
+Final answer: 55
+Reason: Rejected identical candidates because the initial calculation was incorrect due to misunderstanding the contribution amounts. Correcting the approach shows Betty needs $55 more after accounting for both parents' contributions.",,,,,,,,
+all_at_start_BA,,3,True,answer_reason_inconsistent;judge_disagreement,16,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,More information is needed to determine the initial weight of the box and the number of gummy worms added.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: More information is needed to determine the initial weight of the box and the number of gummy worms added.",,,,,,,,
+all_at_start_BA,,4,True,answer_reason_inconsistent;judge_disagreement,41,41,True,True,True,False,False,False,False,True,,,recomputed,,Re-evaluating the given information and correcting the mistake in the initial calculation.,"Selected source: recomputed
+Final answer: $41
+Reason: Re-evaluating the given information and correcting the mistake in the initial calculation.",,,,,,,,
+all_at_start_BA,,5,True,answer_reason_inconsistent;judge_disagreement,38,38,True,True,True,False,False,False,False,True,,,recomputed,,Computation based on given facts and logical deductions.,"Selected source: recomputed
+Final answer: 38
+Reason: Computation based on given facts and logical deductions.",,,,,,,,
+all_at_start_BA,,6,True,answer_reason_inconsistent;judge_disagreement,5,5,True,True,True,False,False,False,False,True,,,recomputed,,Rejected identical candidates because the price of each top could not be determined from the given information alone.,"Selected source: recomputed
+Final answer: \$5
+Reason: Rejected identical candidates because the price of each top could not be determined from the given information alone.",,,,,,,,
+all_at_start_BA,,7,True,answer_reason_inconsistent;judge_disagreement,1200,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,There is insufficient information to determine Noah's sales revenue for this month.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: There is insufficient information to determine Noah's sales revenue for this month.",,,,,,,,
+all_at_start_BA,,8,True,answer_reason_inconsistent;judge_disagreement,1920,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,More specific details about Carolyn's weekly practice schedule are needed to calculate the total minutes practiced over 4 weeks.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: More specific details about Carolyn's weekly practice schedule are needed to calculate the total minutes practiced over 4 weeks.",,,,,,,,
+all_at_start_BA,,9,True,answer_reason_inconsistent;judge_disagreement,45,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,There is missing information needed to calculate the duration of the third part.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: There is missing information needed to calculate the duration of the third part.",,,,,,,,
+all_at_start_BA,,10,True,answer_reason_inconsistent;judge_disagreement,840,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to calculate weekly earnings from both jobs.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to calculate weekly earnings from both jobs.",,,,,,,,
+all_at_start_BA,,11,True,answer_reason_inconsistent;judge_disagreement,520,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to calculate the balance remaining after the 4 monthly payments.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to calculate the balance remaining after the 4 monthly payments.",,,,,,,,
+all_at_start_BA,,12,True,answer_reason_inconsistent;judge_disagreement,3,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,"No specific numbers for players, coaches, and helpers were provided.","Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific numbers for players, coaches, and helpers were provided.",,,,,,,,
+all_at_start_BA,,13,True,answer_reason_inconsistent;judge_disagreement,28,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,There is insufficient information to determine the individual weight losses for the last two people.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: There is insufficient information to determine the individual weight losses for the last two people.",,,,,,,,
+all_at_start_BA,,14,True,answer_reason_inconsistent;judge_disagreement,768,45,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion,,recomputed,,"By adding up the given numbers of potatoes and cucumbers, and using the relationship between peppers and cucumbers, we can find the total number of vegetables produced.","Selected source: recomputed  
+Final answer: 45  
+Reason: By adding up the given numbers of potatoes and cucumbers, and using the relationship between peppers and cucumbers, we can find the total number of vegetables produced.",,,,,,,,
+all_at_start_BA,,15,True,answer_reason_inconsistent;judge_disagreement,100,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to determine the exact number of cans Jennifer takes home.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to determine the exact number of cans Jennifer takes home.",,,,,,,,
+all_at_start_BA,,16,True,answer_reason_inconsistent;judge_disagreement,700,700,True,True,True,False,False,False,False,True,,,recomputed,,"With the given facts, we can calculate Irene's total income based on her regular pay and overtime earnings.","Selected source: recomputed  
+Final answer: $700  
+Reason: With the given facts, we can calculate Irene's total income based on her regular pay and overtime earnings.",,,,,,,,
+all_at_start_BA,,17,True,answer_reason_inconsistent;judge_disagreement,35,35,True,True,True,False,False,False,False,True,,,recomputed,,Recomputed using the provided facts and calculations.,"Selected source: recomputed  
+Final answer: $35  
+Reason: Recomputed using the provided facts and calculations.",,,,,,,,
+all_at_start_BA,,18,True,answer_reason_inconsistent;judge_disagreement,200,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No initial amount or net change information provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No initial amount or net change information provided.",,,,,,,,
+all_at_start_BA,,19,True,answer_reason_inconsistent;judge_disagreement,135,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information provided to determine the number of plates needed.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information provided to determine the number of plates needed.",,,,,,,,
+all_at_start_BA,,20,True,answer_reason_inconsistent;judge_disagreement,43,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,The shared facts do not provide enough information to determine the number of hard hats remaining in the truck.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: The shared facts do not provide enough information to determine the number of hard hats remaining in the truck.",,,,,,,,

@@ -1,0 +1,61 @@
+﻿setting,agent_variant,question_id,audit_required,audit_reasons,gold_answer,final_answer,format_compliant,semantic_correct,strict_answer_correct,fully_valid_correct,answer_reason_consistent,reason_mathematically_valid,reason_uses_all_required_facts,judge_disagreement,auto_error_types,format_failure_categories,finalizer_selected_source,deterministic_normalizations,finalizer_reason,finalizer_raw_output,manual_format_valid,manual_semantic_correct,manual_answer_reason_consistent,manual_reason_mathematically_valid,manual_reason_uses_all_required_facts,manual_error_type,auto_manual_agreement,manual_notes
+before_final_reset_AB,,1,True,answer_reason_inconsistent;judge_disagreement,42,36,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By adding the pages read yesterday and today, we get 12 + 24 = 36 pages. Since Julie plans to read half of the remaining pages tomorrow, we divide 36 by 2 to find out how many pages she will read tomorrow.","Selected source: recomputed
+Final answer: 36
+Reason: By adding the pages read yesterday and today, we get 12 + 24 = 36 pages. Since Julie plans to read half of the remaining pages tomorrow, we divide 36 by 2 to find out how many pages she will read tomorrow.",,,,,,,,
+before_final_reset_AB,,2,True,answer_reason_inconsistent;judge_disagreement,5,35,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating the total amount given by parents and grandparents and subtracting what Betty already has.,"Selected source: recomputed
+Final answer: 35
+Reason: Calculating the total amount given by parents and grandparents and subtracting what Betty already has.",,,,,,,,
+before_final_reset_AB,,3,True,answer_reason_inconsistent;judge_disagreement,16,10,True,False,False,False,False,False,False,True,correct_answer_in_reasoning_but_wrong_final_answer,,recomputed,,"By adding 2 pounds of jelly beans after tripling the initial weight, we get 6 pounds. Adding 2 more pounds of jelly beans makes it 8 pounds. Then doubling the weight gives us 16 pounds, which matches the total weight after adding gummy worms.","Selected source: recomputed  
+Final answer: 10  
+Reason: By adding 2 pounds of jelly beans after tripling the initial weight, we get 6 pounds. Adding 2 more pounds of jelly beans makes it 8 pounds. Then doubling the weight gives us 16 pounds, which matches the total weight after adding gummy worms.",,,,,,,,
+before_final_reset_AB,,4,True,answer_reason_inconsistent;judge_disagreement,41,52,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By subtracting the total spent on items excluding shoes ($30 + $46 + $38 + $11 + $18 = $153) from the initial budget ($200), we find the amount spent on shoes is $27 - $153 = $52.","Selected source: recomputed  
+Final answer: 52  
+Reason: By subtracting the total spent on items excluding shoes ($30 + $46 + $38 + $11 + $18 = $153) from the initial budget ($200), we find the amount spent on shoes is $27 - $153 = $52.",,,,,,,,
+before_final_reset_AB,,5,True,answer_reason_inconsistent;judge_disagreement,38,23,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating the total number of stamps based on the given facts.,"Selected source: recomputed
+Final answer: 23
+Reason: Calculating the total number of stamps based on the given facts.",,,,,,,,
+before_final_reset_AB,,6,True,answer_reason_inconsistent;judge_disagreement,5,15,True,False,False,False,False,False,False,True,correct_answer_in_reasoning_but_wrong_final_answer;ignored_late_facts,,recomputed,,"Each pair of shorts costs $7, so 5 pairs cost $35. Two pairs of shoes cost $20. Subtracting these from the total spent gives $75 - $35 - $20 = $20, which is the cost per top.","Selected source: recomputed
+Final answer: 15
+Reason: Each pair of shorts costs $7, so 5 pairs cost $35. Two pairs of shoes cost $20. Subtracting these from the total spent gives $75 - $35 - $20 = $20, which is the cost per top.",,,,,,,,
+before_final_reset_AB,,7,True,answer_reason_inconsistent;judge_disagreement,1200,1200,True,True,True,False,False,False,False,True,,,recomputed,,Calculating total sales revenue based on FACT B which states this month's total sales revenue is twice last month's revenue. Last month's total sales revenue was calculated using FACT A to find out how many paintings were sold and their respective prices.,"Selected source: recomputed
+Final answer: 1200
+Reason: Calculating total sales revenue based on FACT B which states this month's total sales revenue is twice last month's revenue. Last month's total sales revenue was calculated using FACT A to find out how many paintings were sold and their respective prices.",,,,,,,,
+before_final_reset_AB,,8,True,answer_reason_inconsistent;judge_disagreement,1920,168,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating total practice time based on daily practice duration and weekly schedule.,"Selected source: recomputed  
+Final answer: 168  
+Reason: Calculating total practice time based on daily practice duration and weekly schedule.",,,,,,,,
+before_final_reset_AB,,9,True,answer_reason_inconsistent;judge_disagreement,45,30,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating the time for the third part based on the total time and the ratio given in FACT A.,"Selected source: recomputed
+Final answer: 30
+Reason: Calculating the time for the third part based on the total time and the ratio given in FACT A.",,,,,,,,
+before_final_reset_AB,,10,True,answer_reason_inconsistent;judge_disagreement,840,160,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating total earnings based on hourly rates and hours worked at each job.,"Selected source: recomputed
+Final answer: $160
+Reason: Calculating total earnings based on hourly rates and hours worked at each job.",,,,,,,,
+before_final_reset_AB,,11,True,answer_reason_inconsistent;judge_disagreement,520,39,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating the total amount paid over 4 months and subtracting the initial down payment.,"Selected source: recomputed
+Final answer: 39
+Reason: Calculating the total amount paid over 4 months and subtracting the initial down payment.",,,,,,,,
+before_final_reset_AB,,12,True,answer_reason_inconsistent;judge_disagreement,3,30,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"Calculating the total number of pouches needed (players + coaches + helpers), dividing by the number of pouches per pack, rounding up to ensure enough pouches.","Selected source: recomputed
+Final answer: 30
+Reason: Calculating the total number of pouches needed (players + coaches + helpers), dividing by the number of pouches per pack, rounding up to ensure enough pouches.",,,,,,,,
+before_final_reset_AB,,13,True,answer_reason_inconsistent;judge_disagreement,28,46,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"By subtracting the weight loss of the first person from the total weight loss, we find the combined weight loss of the last two people. Then, dividing this amount equally gives us the weight loss per person for those two individuals.","Selected source: recomputed  
+Final answer: 46  
+Reason: By subtracting the weight loss of the first person from the total weight loss, we find the combined weight loss of the last two people. Then, dividing this amount equally gives us the weight loss per person for those two individuals.",,,,,,,,
+before_final_reset_AB,,14,True,answer_reason_inconsistent;judge_disagreement,768,154,True,False,False,False,False,False,False,True,correct_answer_in_reasoning_but_wrong_final_answer;ignored_late_facts,,recomputed,,"Using FACT A to find the number of cucumbers (237 - 60 = 177), then using FACT B to find the number of peppers (177 * 2 = 354). Adding all together gives 237 + 177 + 354 = 768 vegetables.","Selected source: recomputed
+Final answer: 154
+Reason: Using FACT A to find the number of cucumbers (237 - 60 = 177), then using FACT B to find the number of peppers (177 * 2 = 354). Adding all together gives 237 + 177 + 354 = 768 vegetables.",,,,,,,,
+before_final_reset_AB,,15,True,random_normal_sample,100,32,True,False,False,False,True,True,True,False,ignored_late_facts,,recomputed,,"Calculating based on FACT B, where for every 5 cans Mark buys, Jennifer buys 6 additional cans, and given Mark buys 50 cans, we can derive the total number of cans Jennifer takes home.","Selected source: recomputed
+Final answer: 32
+Reason: Calculating based on FACT B, where for every 5 cans Mark buys, Jennifer buys 6 additional cans, and given Mark buys 50 cans, we can derive the total number of cans Jennifer takes home.",,,,,,,,
+before_final_reset_AB,,16,True,answer_reason_inconsistent;judge_disagreement,700,1300,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,Calculating her total income based on the given facts.,"Selected source: recomputed
+Final answer: 1300
+Reason: Calculating her total income based on the given facts.",,,,,,,,
+before_final_reset_AB,,17,True,answer_reason_inconsistent;judge_disagreement,35,38.50,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"After paying 20% tax on $50 and a $5 processing fee, Winwin takes home $38.50.","Selected source: recomputed  
+Final answer: $38.50  
+Reason: After paying 20% tax on $50 and a $5 processing fee, Winwin takes home $38.50.",,,,,,,,
+before_final_reset_AB,,18,True,answer_reason_inconsistent;judge_disagreement,200,130,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"Calculating the remaining amount after spending $400 from the piggy bank over 2 years, given he adds $25 monthly.","Selected source: recomputed  
+Final answer: 130  
+Reason: Calculating the remaining amount after spending $400 from the piggy bank over 2 years, given he adds $25 monthly.",,,,,,,,
+before_final_reset_AB,,19,True,answer_reason_inconsistent;judge_disagreement,135,15,True,False,False,False,False,False,False,True,ignored_late_facts,,recomputed,,"Each guest brings one additional person, so half of the invited guests plus themselves make up the total number of attendees. Since there are 30 invited guests, half of them would be 15, making the total number of plates needed 15.","Selected source: recomputed  
+Final answer: 15  
+Reason: Each guest brings one additional person, so half of the invited guests plus themselves make up the total number of attendees. Since there are 30 invited guests, half of them would be 15, making the total number of plates needed 15.",,,,,,,,
+before_final_reset_AB,,20,True,answer_reason_inconsistent;judge_disagreement,43,30,True,False,False,False,False,False,False,True,correct_answer_in_reasoning_but_wrong_final_answer,,recomputed,,"Re-calculated based on the given facts. Initially, there were 26 + 15 + 24 = 65 hard hats. After Carl removed 4 pink ones, there were 65 - 4 = 61 hard hats left. Then John removed 6 pink ones and 12 green ones, so there are 61 - 6 - 12 = 43 hard hats remaining.","Selected source: recomputed  
+Final answer: 30  
+Reason: Re-calculated based on the given facts. Initially, there were 26 + 15 + 24 = 65 hard hats. After Carl removed 4 pink ones, there were 65 - 4 = 61 hard hats left. Then John removed 6 pink ones and 12 green ones, so there are 61 - 6 - 12 = 43 hard hats remaining.",,,,,,,,

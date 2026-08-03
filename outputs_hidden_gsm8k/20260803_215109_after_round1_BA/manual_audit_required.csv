@@ -1,0 +1,62 @@
+﻿setting,agent_variant,question_id,audit_required,audit_reasons,gold_answer,final_answer,format_compliant,semantic_correct,strict_answer_correct,fully_valid_correct,answer_reason_consistent,reason_mathematically_valid,reason_uses_all_required_facts,judge_disagreement,auto_error_types,format_failure_categories,finalizer_selected_source,deterministic_normalizations,finalizer_reason,finalizer_raw_output,manual_format_valid,manual_semantic_correct,manual_answer_reason_consistent,manual_reason_mathematically_valid,manual_reason_uses_all_required_facts,manual_error_type,auto_manual_agreement,manual_notes
+after_round1_BA,,1,True,answer_reason_inconsistent;judge_disagreement,42,60,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion,,recomputed,,"By subtracting the pages read yesterday from the total and dividing by 2, we get the remaining pages for tomorrow.","Selected source: recomputed
+Final answer: 60
+Reason: By subtracting the pages read yesterday from the total and dividing by 2, we get the remaining pages for tomorrow.",,,,,,,,
+after_round1_BA,,2,True,random_normal_sample,5,45,True,False,False,False,True,True,True,False,ignored_late_facts;carried_forward_early_wrong_conclusion,,recomputed,,"By adding the amounts given in FACT B ($15 + 2 * $15 = $45), we can determine how much more money Betty still needs to buy the wallet.","Selected source: recomputed
+Final answer: 45
+Reason: By adding the amounts given in FACT B ($15 + 2 * $15 = $45), we can determine how much more money Betty still needs to buy the wallet.",,,,,,,,
+after_round1_BA,,3,True,answer_reason_inconsistent;judge_disagreement,16,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No initial weight or exact steps provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No initial weight or exact steps provided.",,,,,,,,
+after_round1_BA,,4,True,answer_reason_inconsistent;judge_disagreement,41,57,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion,,recomputed,,"By adding up the known expenditures and subtracting the remaining money, we can estimate the total spent before taxes, which includes the cost of the shoes.","Selected source: recomputed  
+Final answer: 57  
+Reason: By adding up the known expenditures and subtracting the remaining money, we can estimate the total spent before taxes, which includes the cost of the shoes.",,,,,,,,
+after_round1_BA,,5,True,answer_reason_inconsistent;judge_disagreement,38,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to determine the total number of stamps Bella buys.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to determine the total number of stamps Bella buys.",,,,,,,,
+after_round1_BA,,6,True,answer_reason_inconsistent;judge_disagreement,5,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific prices for tops or other items are given. More information is needed to determine the cost per top.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific prices for tops or other items are given. More information is needed to determine the cost per top.",,,,,,,,
+after_round1_BA,,7,True,answer_reason_inconsistent;judge_disagreement,1200,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Lack of specific numerical values linking the number of small paintings sold last month to the total sales revenue this month.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Lack of specific numerical values linking the number of small paintings sold last month to the total sales revenue this month.",,,,,,,,
+after_round1_BA,,8,True,answer_reason_inconsistent;judge_disagreement,1920,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific daily practice time for both instruments is provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific daily practice time for both instruments is provided.",,,,,,,,
+after_round1_BA,,9,True,answer_reason_inconsistent;judge_disagreement,45,40,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion,,recomputed,,"By adding up the known times (25 + 50 = 75 minutes), subtracting from the total time (2 hours = 120 minutes), we get 40 minutes for the third part.","Selected source: recomputed  
+Final answer: 40  
+Reason: By adding up the known times (25 + 50 = 75 minutes), subtracting from the total time (2 hours = 120 minutes), we get 40 minutes for the third part.",,,,,,,,
+after_round1_BA,,10,True,format_failure;answer_reason_inconsistent;judge_disagreement,840,,False,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,extra_text_outside_three_lines,none,removed_blank_lines_between_fields;recomputed_undetermined_to_none,No sufficient information provided to calculate James' weekly earnings from both jobs. More details needed.,"Selected source: recomputed  
+Final answer: undetermined  
+
+Reason: No sufficient information provided to calculate James' weekly earnings from both jobs. More details needed.",,,,,,,,
+after_round1_BA,,11,True,answer_reason_inconsistent;judge_disagreement,520,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to calculate the remaining balance.,"Selected source: recomputed
+Final answer: undetermined
+Reason: No sufficient information provided to calculate the remaining balance.",,,,,,,,
+after_round1_BA,,12,True,answer_reason_inconsistent;judge_disagreement,3,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the number of packs needed.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine the number of packs needed.",,,,,,,,
+after_round1_BA,,13,True,answer_reason_inconsistent;judge_disagreement,28,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information provided to determine the exact weight loss of the last two individuals.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information provided to determine the exact weight loss of the last two individuals.",,,,,,,,
+after_round1_BA,,14,True,answer_reason_inconsistent;judge_disagreement,768,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to determine the total number of vegetables produced by the garden.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to determine the total number of vegetables produced by the garden.",,,,,,,,
+after_round1_BA,,15,True,answer_reason_inconsistent;judge_disagreement,100,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific information provided about Jennifer's buying pattern or capacity.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information provided about Jennifer's buying pattern or capacity.",,,,,,,,
+after_round1_BA,,16,True,answer_reason_inconsistent;judge_disagreement,700,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific details about Irene's hourly wage or overtime hours are provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific details about Irene's hourly wage or overtime hours are provided.",,,,,,,,
+after_round1_BA,,17,True,answer_reason_inconsistent;judge_disagreement,35,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine Winwin's take-home pay.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine Winwin's take-home pay.",,,,,,,,
+after_round1_BA,,18,True,answer_reason_inconsistent;judge_disagreement,200,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the exact amount remaining in John's piggy bank.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine the exact amount remaining in John's piggy bank.",,,,,,,,
+after_round1_BA,,19,True,answer_reason_inconsistent;judge_disagreement,135,,True,False,False,False,False,False,False,True,ignored_late_facts;carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the number of plates needed.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine the number of plates needed.",,,,,,,,
+after_round1_BA,,20,True,answer_reason_inconsistent;judge_disagreement,43,38,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion,,recomputed,,Calculating the remaining hard hats after removing specified numbers of each color.,"Selected source: recomputed  
+Final answer: 38  
+Reason: Calculating the remaining hard hats after removing specified numbers of each color.",,,,,,,,

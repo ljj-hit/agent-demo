@@ -1,0 +1,62 @@
+﻿setting,agent_variant,question_id,audit_required,audit_reasons,gold_answer,final_answer,format_compliant,semantic_correct,strict_answer_correct,fully_valid_correct,answer_reason_consistent,reason_mathematically_valid,reason_uses_all_required_facts,judge_disagreement,auto_error_types,format_failure_categories,finalizer_selected_source,deterministic_normalizations,finalizer_reason,finalizer_raw_output,manual_format_valid,manual_semantic_correct,manual_answer_reason_consistent,manual_reason_mathematically_valid,manual_reason_uses_all_required_facts,manual_error_type,auto_manual_agreement,manual_notes
+all_at_start_AB,,1,True,answer_reason_inconsistent;judge_disagreement,42,42,True,True,True,False,False,False,False,True,,,recomputed,,Rejected identical candidates because the solver_a and solver_b answers differ.,"Selected source: recomputed  
+Final answer: 42  
+Reason: Rejected identical candidates because the solver_a and solver_b answers differ.",,,,,,,,
+all_at_start_AB,,2,True,answer_reason_inconsistent;judge_disagreement,5,5,True,True,True,False,False,False,False,True,,,recomputed,,Calculated based on given facts and logical deduction.,"Selected source: recomputed
+Final answer: $5
+Reason: Calculated based on given facts and logical deduction.",,,,,,,,
+all_at_start_AB,,3,True,answer_reason_inconsistent;judge_disagreement,16,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Missing details about the number of brownies added after the initial 2 pounds of jelly beans and before the 2 more pounds of jelly beans.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Missing details about the number of brownies added after the initial 2 pounds of jelly beans and before the 2 more pounds of jelly beans.",,,,,,,,
+all_at_start_AB,,4,True,answer_reason_inconsistent;judge_disagreement,41,50,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion,,recomputed,,"By subtracting the known expenses from the total budget, we can isolate the cost of the shoes.","Selected source: recomputed  
+Final answer: 50  
+Reason: By subtracting the known expenses from the total budget, we can isolate the cost of the shoes.",,,,,,,,
+all_at_start_AB,,5,True,answer_reason_inconsistent;judge_disagreement,38,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Lack of information about rose stamps prevents calculation of total stamps.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Lack of information about rose stamps prevents calculation of total stamps.",,,,,,,,
+all_at_start_AB,,6,True,answer_reason_inconsistent;judge_disagreement,5,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Missing necessary information to determine the cost of each top.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Missing necessary information to determine the cost of each top.",,,,,,,,
+all_at_start_AB,,7,True,answer_reason_inconsistent;judge_disagreement,1200,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific sales figures for this month were provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific sales figures for this month were provided.",,,,,,,,
+all_at_start_AB,,8,True,answer_reason_inconsistent;judge_disagreement,1920,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific daily or session duration provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific daily or session duration provided.",,,,,,,,
+all_at_start_AB,,9,True,answer_reason_inconsistent;judge_disagreement,45,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to determine the duration of the third part.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to determine the duration of the third part.",,,,,,,,
+all_at_start_AB,,10,True,format_failure;answer_reason_inconsistent;judge_disagreement,840,840,False,True,False,False,False,False,False,True,,extra_text_outside_three_lines,recomputed,removed_blank_lines_between_fields,Rejected identical candidates because the hourly wage at James' second job was incorrectly assumed to be $16/hour instead of 20% less than $20/hour.,"Selected source: recomputed  
+Final answer: $840/week  
+
+Reason: Rejected identical candidates because the hourly wage at James' second job was incorrectly assumed to be $16/hour instead of 20% less than $20/hour.",,,,,,,,
+all_at_start_AB,,11,True,answer_reason_inconsistent;judge_disagreement,520,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,The necessary details regarding the total cost of the laptop and the breakdown of payments have not been provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: The necessary details regarding the total cost of the laptop and the breakdown of payments have not been provided.",,,,,,,,
+all_at_start_AB,,12,True,answer_reason_inconsistent;judge_disagreement,3,3,True,True,True,False,False,False,False,True,,,recomputed,,"Both solver_a and solver_b arrived at the same conclusion after calculating the total number of pouches needed and determining how many packs are required based on the pack size. The division of 18 by 6 indeed yields 3 as the quotient, confirming that Roger must buy 3 packs.","Selected source: recomputed
+Final answer: 3
+Reason: Both solver_a and solver_b arrived at the same conclusion after calculating the total number of pouches needed and determining how many packs are required based on the pack size. The division of 18 by 6 indeed yields 3 as the quotient, confirming that Roger must buy 3 packs.",,,,,,,,
+all_at_start_AB,,13,True,answer_reason_inconsistent;judge_disagreement,28,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to determine the individual losses of the last two people.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to determine the individual losses of the last two people.",,,,,,,,
+all_at_start_AB,,14,True,answer_reason_inconsistent;judge_disagreement,768,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Lack of specific numerical values for cucumbers and peppers prevents determination of total vegetables produced.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Lack of specific numerical values for cucumbers and peppers prevents determination of total vegetables produced.",,,,,,,,
+all_at_start_AB,,15,True,answer_reason_inconsistent;judge_disagreement,100,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to determine the exact number of cans Jennifer takes home.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to determine the exact number of cans Jennifer takes home.",,,,,,,,
+all_at_start_AB,,16,True,answer_reason_inconsistent;judge_disagreement,700,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific information about overtime hours is provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information about overtime hours is provided.",,,,,,,,
+all_at_start_AB,,17,True,answer_reason_inconsistent;judge_disagreement,35,35,True,True,True,False,False,False,False,True,,,recomputed,,"The necessary details regarding the tax rate and processing fee were not provided, making it impossible to calculate the exact amount Winwin takes home.","Selected source: recomputed  
+Final answer: 35  
+Reason: The necessary details regarding the tax rate and processing fee were not provided, making it impossible to calculate the exact amount Winwin takes home.",,,,,,,,
+all_at_start_AB,,18,True,answer_reason_inconsistent;judge_disagreement,200,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific amounts or details provided about initial savings or additional contributions.,"Selected source: recomputed
+Final answer: undetermined
+Reason: No specific amounts or details provided about initial savings or additional contributions.",,,,,,,,
+all_at_start_AB,,19,True,answer_reason_inconsistent;judge_disagreement,135,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,No specific details provided about the number of courses or total attendees.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific details provided about the number of courses or total attendees.",,,,,,,,
+all_at_start_AB,,20,True,answer_reason_inconsistent;judge_disagreement,43,,True,False,False,False,False,False,False,True,carried_forward_early_wrong_conclusion;unable_to_judge,,none,recomputed_undetermined_to_none,Insufficient information to determine the number of hard hats remaining in the truck.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information to determine the number of hard hats remaining in the truck.",,,,,,,,

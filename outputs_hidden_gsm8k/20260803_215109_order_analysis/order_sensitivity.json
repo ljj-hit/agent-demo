@@ -1,0 +1,858 @@
+{
+  "settings": {
+    "solver_only_order_ab_ba": {
+      "question_count": 0,
+      "order_sensitive_question_count": 0,
+      "position_dominant_question_count": 0,
+      "first_position_correct_rate": {},
+      "long_run_dominant_first_position": "",
+      "per_question": {}
+    },
+    "finalizer_only_order_ab_ba": {
+      "question_count": 0,
+      "order_sensitive_question_count": 0,
+      "position_dominant_question_count": 0,
+      "first_position_correct_rate": {},
+      "long_run_dominant_first_position": "",
+      "per_question": {}
+    },
+    "frozen_transcript_order_ab_ba": {
+      "question_count": 20,
+      "order_sensitive_question_count": 7,
+      "position_dominant_question_count": 7,
+      "first_position_correct_rate": {
+        "A": 0.0,
+        "B": 0.05
+      },
+      "long_run_dominant_first_position": "B",
+      "per_question": {
+        "1": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "2": {
+          "n": 2,
+          "order_sensitivity": true,
+          "answer_entropy": 1.0,
+          "most_common_answer": "decimal:35",
+          "most_common_answer_share": 0.5,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:35": 1,
+            "decimal:3E+1": 1
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:35",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "decimal:3E+1",
+              "share": 1.0
+            }
+          },
+          "position_dominance": true
+        },
+        "3": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "4": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "5": {
+          "n": 2,
+          "order_sensitivity": true,
+          "answer_entropy": 1.0,
+          "most_common_answer": "decimal:23",
+          "most_common_answer_share": 0.5,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:23": 1,
+            "text:": 1
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:23",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": true
+        },
+        "6": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "7": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "8": {
+          "n": 2,
+          "order_sensitivity": true,
+          "answer_entropy": 1.0,
+          "most_common_answer": "decimal:8E+1",
+          "most_common_answer_share": 0.5,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:8E+1": 1,
+            "decimal:9.6E+2": 1
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:8E+1",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "decimal:9.6E+2",
+              "share": 1.0
+            }
+          },
+          "position_dominance": true
+        },
+        "9": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "10": {
+          "n": 2,
+          "order_sensitivity": true,
+          "answer_entropy": 1.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 0.5,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 1,
+            "decimal:4.8E+2": 1
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "decimal:4.8E+2",
+              "share": 1.0
+            }
+          },
+          "position_dominance": true
+        },
+        "11": {
+          "n": 2,
+          "order_sensitivity": true,
+          "answer_entropy": 1.0,
+          "most_common_answer": "decimal:8.3E+2",
+          "most_common_answer_share": 0.5,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:8.3E+2": 1,
+            "text:": 1
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:8.3E+2",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": true
+        },
+        "12": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "13": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:46",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:46": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:46",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "decimal:46",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "14": {
+          "n": 2,
+          "order_sensitivity": true,
+          "answer_entropy": 1.0,
+          "most_common_answer": "decimal:459",
+          "most_common_answer_share": 0.5,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:459": 1,
+            "decimal:45": 1
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:459",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "decimal:45",
+              "share": 1.0
+            }
+          },
+          "position_dominance": true
+        },
+        "15": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "16": {
+          "n": 2,
+          "order_sensitivity": true,
+          "answer_entropy": 1.0,
+          "most_common_answer": "decimal:3.7E+3",
+          "most_common_answer_share": 0.5,
+          "correct_answer_share": 0.5,
+          "answer_distribution": {
+            "decimal:3.7E+3": 1,
+            "decimal:7E+2": 1
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:3.7E+3",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "decimal:7E+2",
+              "share": 1.0
+            }
+          },
+          "position_dominance": true
+        },
+        "17": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "18": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "19": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "text:",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "text:": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "text:",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "text:",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "20": {
+          "n": 2,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:3E+1",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:3E+1": 2
+          },
+          "first_position_answer_modes": {
+            "A": {
+              "answer": "decimal:3E+1",
+              "share": 1.0
+            },
+            "B": {
+              "answer": "decimal:3E+1",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        }
+      }
+    },
+    "canonical_order": {
+      "question_count": 20,
+      "order_sensitive_question_count": 0,
+      "position_dominant_question_count": 0,
+      "first_position_correct_rate": {
+        "canonical": 0.05
+      },
+      "long_run_dominant_first_position": "",
+      "per_question": {
+        "1": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:36",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:36": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:36",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "2": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:35",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:35": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:35",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "3": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:1E+1",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:1E+1": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:1E+1",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "4": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:52",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:52": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:52",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "5": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:23",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:23": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:23",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "6": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:15",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:15": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:15",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "7": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:1.2E+3",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 1.0,
+          "answer_distribution": {
+            "decimal:1.2E+3": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:1.2E+3",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "8": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:1.68E+3",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:1.68E+3": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:1.68E+3",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "9": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:3E+1",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:3E+1": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:3E+1",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "10": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:1.6E+2",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:1.6E+2": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:1.6E+2",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "11": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:3.1E+2",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:3.1E+2": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:3.1E+2",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "12": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:4",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:4": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:4",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "13": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:46",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:46": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:46",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "14": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:145",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:145": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:145",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "15": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:32",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:32": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:32",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "16": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:1.3E+3",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:1.3E+3": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:1.3E+3",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "17": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:38.5",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:38.5": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:38.5",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "18": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:175",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:175": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:175",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "19": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:15",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:15": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:15",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        },
+        "20": {
+          "n": 1,
+          "order_sensitivity": false,
+          "answer_entropy": -0.0,
+          "most_common_answer": "decimal:3E+1",
+          "most_common_answer_share": 1.0,
+          "correct_answer_share": 0.0,
+          "answer_distribution": {
+            "decimal:3E+1": 1
+          },
+          "first_position_answer_modes": {
+            "canonical": {
+              "answer": "decimal:3E+1",
+              "share": 1.0
+            }
+          },
+          "position_dominance": false
+        }
+      }
+    },
+    "random_order": {
+      "question_count": 0,
+      "order_sensitive_question_count": 0,
+      "position_dominant_question_count": 0,
+      "first_position_correct_rate": {},
+      "long_run_dominant_first_position": "",
+      "per_question": {}
+    }
+  }
+}

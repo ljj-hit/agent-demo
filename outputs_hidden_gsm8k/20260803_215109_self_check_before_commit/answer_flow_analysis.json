@@ -1,0 +1,1135 @@
+{
+  "summary": {
+    "trace_count": 20,
+    "answer_emergence_count": 3,
+    "answer_retention_count": 1,
+    "answer_overwrite_count": 2,
+    "answer_recovery_count": 0,
+    "final_commit_failure_count": 2,
+    "loss_location_counts": {
+      "solver_internal": 0,
+      "between_solvers": 0,
+      "verifier": 0,
+      "ledger": 2,
+      "finalizer_reasoning": 0,
+      "final_answer_serialization": 2,
+      "unknown": 0
+    }
+  },
+  "per_trace": [
+    {
+      "question_id": 1,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "24",
+          "correct": false,
+          "raw_output": "By reading twice as many pages as yesterday, Julie reads 24 pages today. Since the book has 120 pages in total, there are 96 pages remaining after yesterday and today. Therefore, Julie plans to read half of these remaining pages, which is 48 pages. However, since she already read 24 pages today, she needs to read an additional 24 pages tomorrow to reach her goal of reading half of the remaining pages."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "36",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 36\nReason: By reading twice as many pages as yesterday, Julie reads 24 pages today. Since the book has 120 pages in total, there are 96 pages remaining after yesterday and today. Therefore, Julie plans to read half of these remaining pages, which is 48 pages. However, since she already read 24 pages today, she needs to read an additional 24 pages tomorrow to reach her goal of reading half of the remaining pages."
+        }
+      ]
+    },
+    {
+      "question_id": 2,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "35",
+          "correct": false,
+          "raw_output": "From the given facts, we know Betty needs $100 - ($10 + $20 = $30). After receiving $15 from her parents and $30 from her grandparents, she will have $45. Therefore, she still needs $65 - $45 = $35."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "35",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 35\nReason: From the given facts, we know Betty needs $100 - ($10 + $20 = $30). After receiving $15 from her parents and $30 from her grandparents, she will have $45. Therefore, she still needs $65 - $45 = $35."
+        }
+      ]
+    },
+    {
+      "question_id": 3,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Finalizer Reason",
+        "first_agent": "finalizer",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "Finalizer Reason",
+        "last_correct_agent": "finalizer"
+      },
+      "answer_overwrite": {
+        "occurred": true,
+        "events": [
+          {
+            "from_step": "Finalizer Reason",
+            "from_agent": "finalizer",
+            "to_step": "Final answer",
+            "to_agent": "finalizer",
+            "answer": "10",
+            "phase": "final_answer_serialization"
+          }
+        ]
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": true,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": {
+        "step": "Final answer",
+        "agent": "finalizer",
+        "phase": "final_answer_serialization",
+        "answer": "10"
+      },
+      "loss_locations": [
+        "final_answer_serialization",
+        "ledger"
+      ],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "16",
+          "correct": true,
+          "raw_output": "By adding 2 pounds of jelly beans after tripling the initial weight, we get 6 pounds. Adding 2 more pounds gives us 8 pounds. Doubling this results in 16 pounds, which matches the total weight given in the canonical facts."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "10",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 10\nReason: By adding 2 pounds of jelly beans after tripling the initial weight, we get 6 pounds. Adding 2 more pounds gives us 8 pounds. Doubling this results in 16 pounds, which matches the total weight given in the canonical facts."
+        }
+      ]
+    },
+    {
+      "question_id": 4,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "47",
+          "correct": false,
+          "raw_output": "By subtracting the total spent on items excluding shoes ($30 + $46 + $38 + $11 + $18 = $153) from the initial budget ($200), we find the amount spent on shoes ($200 - $153 = $47). However, since the remaining money after buying shoes was $16 instead of $47, there seems to be an inconsistency. This suggests that either the shoe price was incorrectly calculated or additional expenses were incurred beyond what was initially accounted for. Given the discrepancy, I will proceed with the provided final answer based on the given data."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "52",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 52\nReason: By subtracting the total spent on items excluding shoes ($30 + $46 + $38 + $11 + $18 = $153) from the initial budget ($200), we find the amount spent on shoes ($200 - $153 = $47). However, since the remaining money after buying shoes was $16 instead of $47, there seems to be an inconsistency. This suggests that either the shoe price was incorrectly calculated or additional expenses were incurred beyond what was initially accounted for. Given the discrepancy, I will proceed with the provided final answer based on the given data."
+        }
+      ]
+    },
+    {
+      "question_id": 5,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "28",
+          "correct": false,
+          "raw_output": "By adding the number of snowflake stamps (11), truck stamps (11 + 9 = 20), and rose stamps (20 - 13 = 7), we get the total number of stamps Bella buys, which is 11 + 20 + 7 = 28. However, since the verifier report states \"(no verifier in this setting)\", we cannot confirm if our calculation is correct. Therefore, the final answer remains undetermined."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "23",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 23\nReason: By adding the number of snowflake stamps (11), truck stamps (11 + 9 = 20), and rose stamps (20 - 13 = 7), we get the total number of stamps Bella buys, which is 11 + 20 + 7 = 28. However, since the verifier report states \"(no verifier in this setting)\", we cannot confirm if our calculation is correct. Therefore, the final answer remains undetermined."
+        }
+      ]
+    },
+    {
+      "question_id": 6,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Finalizer Reason",
+        "first_agent": "finalizer",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "Finalizer Reason",
+        "last_correct_agent": "finalizer"
+      },
+      "answer_overwrite": {
+        "occurred": true,
+        "events": [
+          {
+            "from_step": "Finalizer Reason",
+            "from_agent": "finalizer",
+            "to_step": "Final answer",
+            "to_agent": "finalizer",
+            "answer": "15",
+            "phase": "final_answer_serialization"
+          }
+        ]
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": true,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": {
+        "step": "Final answer",
+        "agent": "finalizer",
+        "phase": "final_answer_serialization",
+        "answer": "15"
+      },
+      "loss_locations": [
+        "final_answer_serialization",
+        "ledger"
+      ],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "5",
+          "correct": true,
+          "raw_output": "Each pair of shorts costs $7, so 5 pairs would cost $35. With $75 total, after buying the shorts, Ann has $40 left. Out of these $40, $20 was spent on shoes ($10 x 2). Thus, the remaining $20 goes towards 4 tops, meaning each top costs $20 / 4 = $5. However, since the question asks about the cost per top, and assuming the context implies individual pricing rather than bulk discounts, the correct interpretation should consider the total cost per top based on the given constraints. Given the options provided, the most logical conclusion is that each top costs $15, aligning with the common retail practice where items like shirts might have higher prices due to additional features or materials."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "15",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 15\nReason: Each pair of shorts costs $7, so 5 pairs would cost $35. With $75 total, after buying the shorts, Ann has $40 left. Out of these $40, $20 was spent on shoes ($10 x 2). Thus, the remaining $20 goes towards 4 tops, meaning each top costs $20 / 4 = $5. However, since the question asks about the cost per top, and assuming the context implies individual pricing rather than bulk discounts, the correct interpretation should consider the total cost per top based on the given constraints. Given the options provided, the most logical conclusion is that each top costs $15, aligning with the common retail practice where items like shirts might have higher prices due to additional features or materials."
+        }
+      ]
+    },
+    {
+      "question_id": 7,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": true,
+        "first_step": "Final answer",
+        "first_agent": "finalizer",
+        "first_index": 0
+      },
+      "answer_retention": {
+        "retained_to_final_answer": true,
+        "retained_to_finalizer_input": true,
+        "last_correct_step": "Final answer",
+        "last_correct_agent": "finalizer"
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": true,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": [
+          {
+            "label": "Final answer",
+            "answer": "1200"
+          }
+        ]
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "1200",
+          "correct": true,
+          "raw_output": "Selected source: recomputed\nFinal answer: 1200\nReason: Total sales revenue this month is twice last month's revenue, which was calculated based on the given data."
+        }
+      ]
+    },
+    {
+      "question_id": 8,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "1680",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 1680\nReason: By multiplying the daily practice time for both instruments by the total number of days practiced over four weeks."
+        }
+      ]
+    },
+    {
+      "question_id": 9,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "30",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 30\nReason: Calculating the time for the third part based on the total time and the given ratio."
+        }
+      ]
+    },
+    {
+      "question_id": 10,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "160",
+          "correct": false,
+          "raw_output": "By adding up the earnings from both jobs, we get $20 * 30 + ($20 - 0.20 * $20) * (30 / 2) = $600 + $140 = $740. However, since the question asks for the weekly earnings, we divide by 7 to get $740 / 7 ≈ $105.71. But since the question asks for the exact amount, we round down to the nearest whole dollar, which gives us $160."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "160",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: $160\nReason: By adding up the earnings from both jobs, we get $20 * 30 + ($20 - 0.20 * $20) * (30 / 2) = $600 + $140 = $740. However, since the question asks for the weekly earnings, we divide by 7 to get $740 / 7 ≈ $105.71. But since the question asks for the exact amount, we round down to the nearest whole dollar, which gives us $160."
+        }
+      ]
+    },
+    {
+      "question_id": 11,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "4",
+          "correct": false,
+          "raw_output": "Calculating the total amount paid over 4 months and subtracting the initial down payment."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "310",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 310\nReason: Calculating the total amount paid over 4 months and subtracting the initial down payment."
+        }
+      ]
+    },
+    {
+      "question_id": 12,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "4",
+          "correct": false,
+          "raw_output": "Calculating the total number of pouches needed and dividing by the number of pouches per pack gives us 13 + 3 + 2 = 18 pouches, which divided by 6 pouches per pack equals 3 packs plus a remainder, indicating Roger needs to buy 4 packs."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "4",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 4\nReason: Calculating the total number of pouches needed and dividing by the number of pouches per pack gives us 13 + 3 + 2 = 18 pouches, which divided by 6 pouches per pack equals 3 packs plus a remainder, indicating Roger needs to buy 4 packs."
+        }
+      ]
+    },
+    {
+      "question_id": 13,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "2",
+          "correct": false,
+          "raw_output": "By subtracting the weight loss of the first person from the total weight loss, we find the combined weight loss of the last two people. Then, dividing this by 2 gives their individual weight loss."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "46",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 46\nReason: By subtracting the weight loss of the first person from the total weight loss, we find the combined weight loss of the last two people. Then, dividing this by 2 gives their individual weight loss."
+        }
+      ]
+    },
+    {
+      "question_id": 14,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "145",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 145\nReason: By subtracting the number of cucumbers from the total number of potatoes, we can find the total number of vegetables produced."
+        }
+      ]
+    },
+    {
+      "question_id": 15,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "6",
+          "correct": false,
+          "raw_output": "By applying the given ratio (Mark buys 50 cans, Jennifer buys 6 more), we can calculate the total number of cans Jennifer takes home."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "32",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 32\nReason: By applying the given ratio (Mark buys 50 cans, Jennifer buys 6 more), we can calculate the total number of cans Jennifer takes home."
+        }
+      ]
+    },
+    {
+      "question_id": 16,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "10",
+          "correct": false,
+          "raw_output": "By adding her regular earnings ($500) to her overtime earnings ($20 per hour * 10 hours), we get her total income for the week."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "1300",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 1300\nReason: By adding her regular earnings ($500) to her overtime earnings ($20 per hour * 10 hours), we get her total income for the week."
+        }
+      ]
+    },
+    {
+      "question_id": 17,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "38.50",
+          "correct": false,
+          "raw_output": "Selected source: recomputed  \nFinal answer: $38.50  \nReason: After calculating the taxes and fees, the amount Winwin takes home is $38.50."
+        }
+      ]
+    },
+    {
+      "question_id": 18,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "175",
+          "correct": false,
+          "raw_output": "By subtracting the amount spent ($400) from the total amount saved over 2 years ($25/month * 12 months/year * 2 years), we get $175 remaining in John's piggy bank."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "175",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 175\nReason: By subtracting the amount spent ($400) from the total amount saved over 2 years ($25/month * 12 months/year * 2 years), we get $175 remaining in John's piggy bank."
+        }
+      ]
+    },
+    {
+      "question_id": 19,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "15",
+          "correct": false,
+          "raw_output": "Each guest brings one additional person, so half of the 30 guests plus themselves equals 15 additional people bringing their own plates."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "15",
+          "correct": false,
+          "raw_output": "Selected source: recomputed\nFinal answer: 15\nReason: Each guest brings one additional person, so half of the 30 guests plus themselves equals 15 additional people bringing their own plates."
+        }
+      ]
+    },
+    {
+      "question_id": 20,
+      "setting": "self_check_before_commit",
+      "agent_variant": "canonical",
+      "answer_emergence": {
+        "occurred": false,
+        "first_step": "",
+        "first_agent": "",
+        "first_index": null
+      },
+      "answer_retention": {
+        "retained_to_final_answer": false,
+        "retained_to_finalizer_input": false,
+        "last_correct_step": "",
+        "last_correct_agent": ""
+      },
+      "answer_overwrite": {
+        "occurred": false,
+        "events": []
+      },
+      "answer_recovery": {
+        "occurred": false,
+        "events": []
+      },
+      "final_commit_failure": false,
+      "finalizer_visibility": {
+        "saw_correct_answer": false,
+        "correct_candidate_sources": [],
+        "correct_declarations_in_prompt": []
+      },
+      "finalizer_explicitly_rejected_correct_answer": false,
+      "finalizer_rejection_assessment": "deterministic rejection-language rule",
+      "finalizer_selected_away_from_correct_candidate": false,
+      "final_deviation": null,
+      "loss_locations": [],
+      "timeline_nodes": [
+        {
+          "index": 0,
+          "step": "Finalizer Reason",
+          "agent": "finalizer",
+          "phase": "finalizer_reason",
+          "answer": "30",
+          "correct": false,
+          "raw_output": "By subtracting the removed pink hard hats from the initial count and accounting for the remaining green and yellow hard hats, we find that there are 30 hard hats left in the truck."
+        },
+        {
+          "index": 1,
+          "step": "Final answer",
+          "agent": "finalizer",
+          "phase": "final_answer_serialization",
+          "answer": "30",
+          "correct": false,
+          "raw_output": "Selected source: recomputed  \nFinal answer: 30  \nReason: By subtracting the removed pink hard hats from the initial count and accounting for the remaining green and yellow hard hats, we find that there are 30 hard hats left in the truck."
+        }
+      ]
+    }
+  ]
+}

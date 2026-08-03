@@ -1,0 +1,121 @@
+﻿setting,agent_variant,question_id,audit_required,audit_reasons,gold_answer,final_answer,format_compliant,semantic_correct,strict_answer_correct,fully_valid_correct,answer_reason_consistent,reason_mathematically_valid,reason_uses_all_required_facts,judge_disagreement,auto_error_types,format_failure_categories,finalizer_selected_source,deterministic_normalizations,finalizer_reason,finalizer_raw_output,manual_format_valid,manual_semantic_correct,manual_answer_reason_consistent,manual_reason_mathematically_valid,manual_reason_uses_all_required_facts,manual_error_type,auto_manual_agreement,manual_notes
+frozen_transcript_order_ab_ba,AB,1,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,42,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the number of pages Julie should read tomorrow.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine the number of pages Julie should read tomorrow.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,2,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,5,35,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,Calculated based on given facts and verified calculations,"Selected source: recomputed  
+Final answer: 35  
+Reason: Calculated based on given facts and verified calculations",,,,,,,,
+frozen_transcript_order_ab_ba,AB,3,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,16,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No initial weight or operations provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No initial weight or operations provided.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,4,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,41,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific information about the cost of the shoes is provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information about the cost of the shoes is provided.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,5,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,38,23,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By adding up the given numbers of stamps (11 + 9 + 13), we get the total number of stamps Bella buys.","Selected source: recomputed
+Final answer: 23
+Reason: By adding up the given numbers of stamps (11 + 9 + 13), we get the total number of stamps Bella buys.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,6,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,5,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific pricing information was provided for tops.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific pricing information was provided for tops.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,7,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,1200,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific information about Noah's sales revenue for this month is provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information about Noah's sales revenue for this month is provided.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,8,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,1920,80,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By multiplying the daily practice time for piano (20 minutes) by the number of days practiced per week (6), and then by the number of weeks (4), we get the total practice time in minutes.","Selected source: recomputed  
+Final answer: 80  
+Reason: By multiplying the daily practice time for piano (20 minutes) by the number of days practiced per week (6), and then by the number of weeks (4), we get the total practice time in minutes.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,9,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,45,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific durations provided for the entire assignment or individual parts.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific durations provided for the entire assignment or individual parts.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,10,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,840,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific hourly wage or total weekly hours are provided for either job.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific hourly wage or total weekly hours are provided for either job.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,11,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,520,830,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"Calculating the exact balance requires knowing the original loan amount and the monthly interest rate, which are not provided in the given evidence.","Selected source: recomputed  
+Final answer: 830  
+Reason: Calculating the exact balance requires knowing the original loan amount and the monthly interest rate, which are not provided in the given evidence.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,12,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,3,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to calculate the exact number of packs needed.,"Selected source: recomputed
+Final answer: undetermined
+Reason: No sufficient information provided to calculate the exact number of packs needed.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,13,True,answer_reason_inconsistent;judge_disagreement,28,46,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By subtracting the weight loss of the first person from the total weight loss, we find that the combined weight loss of the last two people is 86 kg. Since they lose equal amounts, each of the last two people loses 46 kg.","Selected source: recomputed  
+Final answer: 46  
+Reason: By subtracting the weight loss of the first person from the total weight loss, we find that the combined weight loss of the last two people is 86 kg. Since they lose equal amounts, each of the last two people loses 46 kg.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,14,True,ab_ba_answer_flip,768,459,True,False,False,False,True,True,True,False,unable_to_judge,,recomputed,,"By subtracting the difference in cucumbers from the potatoes and multiplying by 2 for peppers, we get the total number of vegetables produced.","Selected source: recomputed  
+Final answer: 459  
+Reason: By subtracting the difference in cucumbers from the potatoes and multiplying by 2 for peppers, we get the total number of vegetables produced.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,15,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,100,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific information provided about Jennifer's total cans or carrying capacity.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information provided about Jennifer's total cans or carrying capacity.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,16,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,700,3700,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By multiplying her regular weekly earnings ($500) by the number of regular hours (40), we get her base pay. Adding the overtime pay ($20 per hour * 10 hours) gives us her total income for the week.","Selected source: recomputed  
+Final answer: $3700  
+Reason: By multiplying her regular weekly earnings ($500) by the number of regular hours (40), we get her base pay. Adding the overtime pay ($20 per hour * 10 hours) gives us her total income for the week.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,17,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,35,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine Winwin's take-home money.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to determine Winwin's take-home money.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,18,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,200,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific amounts related to John's piggy bank balance were provided in the visible evidence. More details are needed to determine the remaining amount.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific amounts related to John's piggy bank balance were provided in the visible evidence. More details are needed to determine the remaining amount.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,19,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,135,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific details provided regarding plate dimensions or total capacity.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific details provided regarding plate dimensions or total capacity.",,,,,,,,
+frozen_transcript_order_ab_ba,AB,20,True,answer_reason_inconsistent;judge_disagreement,43,30,True,False,False,False,False,False,False,True,correct_answer_in_reasoning_but_wrong_final_answer,,recomputed,,"By subtracting the total removed hard hats (4 + 6 + 12 = 22) from the initial count (26 + 15 + 24 = 65), we find 65 - 22 = 43 remaining hard hats. However, since the exact removals aren't specified, we assume Carl and John together removed all but 43, leading to 43 remaining.","Selected source: recomputed  
+Final answer: 30  
+Reason: By subtracting the total removed hard hats (4 + 6 + 12 = 22) from the initial count (26 + 15 + 24 = 65), we find 65 - 22 = 43 remaining hard hats. However, since the exact removals aren't specified, we assume Carl and John together removed all but 43, leading to 43 remaining.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,1,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,42,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific information was given about Julie's reading goals or schedule.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information was given about Julie's reading goals or schedule.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,2,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,5,30,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,Calculated based on FACT B and the given conditions.,"Selected source: recomputed  
+Final answer: 30  
+Reason: Calculated based on FACT B and the given conditions.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,3,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,16,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No initial weight or operations provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No initial weight or operations provided.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,4,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,41,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific information about the cost of the shoes is provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information about the cost of the shoes is provided.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,5,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,38,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to determine the total number of stamps Bella buys.,"Selected source: recomputed
+Final answer: undetermined
+Reason: No sufficient information provided to determine the total number of stamps Bella buys.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,6,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,5,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific pricing or quantity information was provided to determine the cost of each top.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific pricing or quantity information was provided to determine the cost of each top.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,7,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,1200,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific information about Noah's sales revenue for this month is provided.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information about Noah's sales revenue for this month is provided.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,8,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,1920,960,True,False,False,False,False,False,False,True,unable_to_judge,,recomputed,,"By multiplying the daily practice time for the piano (20 minutes) by the number of days practiced per week (6), and then by the number of weeks (4), we get the total practice time in minutes.","Selected source: recomputed  
+Final answer: 960  
+Reason: By multiplying the daily practice time for the piano (20 minutes) by the number of days practiced per week (6), and then by the number of weeks (4), we get the total practice time in minutes.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,9,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,45,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific durations provided for the entire assignment or individual parts.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific durations provided for the entire assignment or individual parts.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,10,True,ab_ba_answer_flip,840,480,True,False,False,False,True,True,True,False,correct_answer_in_reasoning_but_wrong_final_answer,,recomputed,,"By combining FACT A and FACT B, we can calculate James' weekly earnings from both jobs. He earns $20/hour at his main job and works 30 hours there, totaling $600. His second job pays 20% less ($16/hour), but he works half as many hours (15 hours). Thus, his earnings from the second job are $16 * 15 = $240. Adding these together gives $600 + $240 = $840. However, since the question asks for the amount earned from both jobs combined, we should subtract the earnings from the main job from the total, resulting in $840 - $600 = $240. But considering the correct calculation method based on the given facts, the correct total is indeed $480.","Selected source: recomputed  
+Final answer: $480  
+Reason: By combining FACT A and FACT B, we can calculate James' weekly earnings from both jobs. He earns $20/hour at his main job and works 30 hours there, totaling $600. His second job pays 20% less ($16/hour), but he works half as many hours (15 hours). Thus, his earnings from the second job are $16 * 15 = $240. Adding these together gives $600 + $240 = $840. However, since the question asks for the amount earned from both jobs combined, we should subtract the earnings from the main job from the total, resulting in $840 - $600 = $240. But considering the correct calculation method based on the given facts, the correct total is indeed $480.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,11,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,520,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to calculate the exact balance remaining after the 4 monthly payments.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to calculate the exact balance remaining after the 4 monthly payments.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,12,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,3,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No sufficient information provided to calculate the exact number of packs needed.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No sufficient information provided to calculate the exact number of packs needed.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,13,True,random_normal_sample,28,46,True,False,False,False,True,True,True,False,unable_to_judge,,recomputed,,"By subtracting the total weight loss from all four people from the first person's weight loss, we find that the last two people together lost 46 kg.","Selected source: recomputed  
+Final answer: 46  
+Reason: By subtracting the total weight loss from all four people from the first person's weight loss, we find that the last two people together lost 46 kg.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,14,True,ab_ba_answer_flip,768,45,True,False,False,False,True,True,True,False,unable_to_judge,,recomputed,,"By combining FACT A and FACT B, we can deduce the number of cucumbers and subsequently the total vegetables produced.","Selected source: recomputed  
+Final answer: 45  
+Reason: By combining FACT A and FACT B, we can deduce the number of cucumbers and subsequently the total vegetables produced.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,15,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,100,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific information provided about Jennifer's total cans or carrying capacity.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific information provided about Jennifer's total cans or carrying capacity.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,16,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,700,700,True,True,True,False,False,False,False,True,,,recomputed,,Calculated based on FACT B (extra $20 per overtime hour) and the given hours worked (50 hours).,"Selected source: recomputed  
+Final answer: 700  
+Reason: Calculated based on FACT B (extra $20 per overtime hour) and the given hours worked (50 hours).",,,,,,,,
+frozen_transcript_order_ab_ba,BA,17,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,35,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,"Insufficient information provided to determine Winwin's net amount after considering her winnings, taxes, and potential fees.","Selected source: recomputed  
+Final answer: undetermined  
+Reason: Insufficient information provided to determine Winwin's net amount after considering her winnings, taxes, and potential fees.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,18,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,200,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific amounts related to John's piggy bank balance were provided in the visible evidence. More details are needed to determine the remaining amount.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific amounts related to John's piggy bank balance were provided in the visible evidence. More details are needed to determine the remaining amount.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,19,True,answer_reason_inconsistent;judge_disagreement;ab_ba_answer_flip,135,,True,False,False,False,False,False,False,True,unable_to_judge,,none,recomputed_undetermined_to_none,No specific details provided about plate sizes or total capacity.,"Selected source: recomputed  
+Final answer: undetermined  
+Reason: No specific details provided about plate sizes or total capacity.",,,,,,,,
+frozen_transcript_order_ab_ba,BA,20,True,answer_reason_inconsistent;judge_disagreement,43,30,True,False,False,False,False,False,False,True,correct_answer_in_reasoning_but_wrong_final_answer,,recomputed,,"By subtracting the total number of hard hats used (4 + 6 + 12 = 22) from the initial count (26 + 15 + 24 = 65), we find that 65 - 22 = 43 hard hats remain. However, since the exact method of removal was not specified, the result remains uncertain unless further details are provided.","Selected source: recomputed  
+Final answer: 30  
+Reason: By subtracting the total number of hard hats used (4 + 6 + 12 = 22) from the initial count (26 + 15 + 24 = 65), we find that 65 - 22 = 43 hard hats remain. However, since the exact method of removal was not specified, the result remains uncertain unless further details are provided.",,,,,,,,
