@@ -1,0 +1,288 @@
+[
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "15",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "27",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "There is insufficient information to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "There is insufficient information to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "60",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "60",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "15",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "27",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  }
+]

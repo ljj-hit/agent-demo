@@ -1,0 +1,236 @@
+[
+  {
+    "question_id": 1,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "finalizer_only_order_ab_ba",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "finalizer_only_order_ab_ba",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "finalizer_only_order_ab_ba",
+    "judge_v1": {
+      "reason_derived_answer": "$20",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$20",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "finalizer_only_order_ab_ba",
+    "judge_v1": {
+      "reason_derived_answer": "$25",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "25",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "finalizer_only_order_ab_ba",
+    "judge_v1": {
+      "reason_derived_answer": "14",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "14",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "finalizer_only_order_ab_ba",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  }
+]

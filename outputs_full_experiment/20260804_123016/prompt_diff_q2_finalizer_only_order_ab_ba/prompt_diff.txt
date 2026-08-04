@@ -1,0 +1,6 @@
+Line 3 differs:
+  AB: FACT A (verbatim): Betty wants to buy a wallet that costs $100. She already has half of the money needed.
+  BA: FACT B (verbatim): Her parents give her $15, and her grandparents give her twice as much as her parents.
+Line 4 differs:
+  AB: FACT B (verbatim): Her parents give her $15, and her grandparents give her twice as much as her parents.
+  BA: FACT A (verbatim): Betty wants to buy a wallet that costs $100. She already has half of the money needed.

@@ -1,0 +1,8 @@
+Shared question: How many pages should Julie read tomorrow?
+Evidence visible now:
+FACT B (verbatim): The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today.
+FACT A (verbatim): Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.
+Valid non-empty candidates: {}
+Available selected_source values for this question: ["recomputed", "none"]
+Verifier report: "(no verifier in this setting)"
+Recompute from the visible evidence. Return exactly the required three-line finalizer format.

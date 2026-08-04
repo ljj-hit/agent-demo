@@ -1,0 +1,13 @@
+﻿setting,agent_variant,n,semantic_correct,semantic_accuracy,strict_answer_correct,strict_accuracy,fully_valid_correct,fully_valid_accuracy,format_compliant,format_compliance_rate,answer_reason_consistent,answer_reason_consistency_rate,format_missing_fields,format_wrong_order,format_extra_text,format_unparseable,format_illegal_source,format_reason_empty,format_retry_exhausted,format_truncated,format_model_refused,error_correct_in_reasoning,error_arithmetic,error_incomplete_facts,error_ignored_late_fact,error_early_propagation,error_wrong_selection,error_unclassifiable,error_random_numbers,best_solver_oracle,discussion_oracle,answer_emergence,final_commit_failure,loss_solver_internal,loss_finalizer,prompt_tokens,completion_tokens,total_tokens,total_runtime_seconds
+single_full_information,,60,48,0.8,0,0.0,0,0.0,0,0.0,60,1.0,60,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,23322,14232,37554,1108.425
+frozen_transcript_AB,,60,0,0.0,0,0.0,0,0.0,42,0.7,21,0.35,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,235137,24036,259173,371.854
+frozen_transcript_BA,,60,0,0.0,0,0.0,0,0.0,36,0.6,21,0.35,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,235137,23778,258915,343.289
+canonical_order,,60,3,0.05,3,0.05,0,0.0,45,0.75,48,0.8,0,,,,,3,0,0,0,,,,0,,,0,,0,18,12,9,,,274680,36312,310992,1654.912
+format_self_check_before_commit,,60,0,0.0,0,0.0,0,0.0,15,0.25,6,0.1,0,,,,,6,0,0,0,,,,0,,,0,,0,0,0,0,,,12762,10419,23181,731.484
+all_at_start_AB,,60,18,0.3,18,0.3,0,0.0,27,0.45,27,0.45,0,,,,,0,0,0,0,,,,0,,,0,,0,18,12,0,,,299760,34308,334068,209.266
+all_at_start_BA,,60,12,0.2,12,0.2,0,0.0,24,0.4,24,0.4,0,,,,,0,0,0,0,,,,0,,,0,,0,12,9,0,,,298707,35100,333807,195.917
+after_round1,,60,0,0.0,0,0.0,0,0.0,18,0.3,6,0.1,0,,,,,0,0,0,0,,,,51,,,0,,0,0,0,0,,,251106,24879,275985,205.582
+before_final_transcript,,60,0,0.0,0,0.0,0,0.0,24,0.4,15,0.25,0,,,,,0,0,0,0,,,,39,,,0,,0,0,0,0,,,234537,22815,257352,312.918
+before_final_reset,,60,3,0.05,3,0.05,0,0.0,60,1.0,36,0.6,0,,,,,0,0,0,0,,,,36,,,0,,0,0,0,0,,,218988,23673,242661,327.299
+after_round1_BA,,60,0,0.0,0,0.0,0,0.0,15,0.25,6,0.1,0,,,,,0,0,0,0,,,,48,,,0,,0,0,0,0,,,249918,24810,274728,258.933
+before_final_transcript_BA,,60,0,0.0,0,0.0,0,0.0,36,0.6,21,0.35,0,,,,,0,0,0,0,,,,45,,,0,,0,0,0,0,,,235137,23778,258915,-0.0

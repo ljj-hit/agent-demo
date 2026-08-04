@@ -1,0 +1,23 @@
+{
+  "paired_count": 1,
+  "raw_answer_flip_rate": 1.0,
+  "both_format_valid_pair_count": 1,
+  "valid_pair_answer_flip_rate": 1.0,
+  "both_semantically_correct": 0,
+  "AB_only_correct": 0,
+  "BA_only_correct": 0,
+  "both_wrong_same_answer": 0,
+  "both_wrong_different_answer": 1,
+  "per_question": {
+    "1": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    }
+  }
+}

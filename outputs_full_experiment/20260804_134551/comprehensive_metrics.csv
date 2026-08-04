@@ -1,0 +1,13 @@
+﻿setting,agent_variant,n,semantic_correct,semantic_accuracy,strict_answer_correct,strict_accuracy,fully_valid_correct,fully_valid_accuracy,format_compliant,format_compliance_rate,answer_reason_consistent,answer_reason_consistency_rate,format_missing_fields,format_wrong_order,format_extra_text,format_unparseable,format_illegal_source,format_reason_empty,format_retry_exhausted,format_truncated,format_model_refused,error_correct_in_reasoning,error_arithmetic,error_incomplete_facts,error_ignored_late_fact,error_early_propagation,error_wrong_selection,error_unclassifiable,error_random_numbers,best_solver_oracle,discussion_oracle,answer_emergence,final_commit_failure,loss_solver_internal,loss_finalizer,prompt_tokens,completion_tokens,total_tokens,total_runtime_seconds
+single_full_information,,1,1,1.0,0,0.0,0,0.0,0,0.0,1,1.0,1,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,394,217,611,17.511
+frozen_transcript_AB,,1,0,0.0,0,0.0,0,0.0,1,1.0,1,1.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,3958,386,4344,13.191
+frozen_transcript_BA,,1,0,0.0,0,0.0,0,0.0,1,1.0,0,0.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,3958,658,4616,27.554
+canonical_order,,1,0,0.0,0,0.0,0,0.0,1,1.0,0,0.0,0,,,,,0,0,0,0,,,,0,,,0,,0,1,1,1,,,4736,564,5300,25.165
+format_self_check_before_commit,,1,0,0.0,0,0.0,0,0.0,0,0.0,0,0.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,218,109,327,8.756
+all_at_start_AB,,1,1,1.0,1,1.0,0,0.0,1,1.0,1,1.0,0,,,,,0,0,0,0,,,,0,,,0,,0,1,1,0,,,5173,565,5738,2.627
+all_at_start_BA,,1,0,0.0,0,0.0,0,0.0,0,0.0,0,0.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,4896,583,5479,2.071
+after_round1,,1,0,0.0,0,0.0,0,0.0,1,1.0,0,0.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,4163,408,4571,7.351
+before_final_transcript,,1,0,0.0,0,0.0,0,0.0,1,1.0,0,0.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,3948,362,4310,8.56
+before_final_reset,,1,0,0.0,0,0.0,0,0.0,1,1.0,1,1.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,3682,431,4113,16.578
+after_round1_BA,,1,0,0.0,0,0.0,0,0.0,1,1.0,1,1.0,0,,,,,0,0,0,0,,,,1,,,0,,0,0,0,0,,,4199,380,4579,5.097
+before_final_transcript_BA,,1,0,0.0,0,0.0,0,0.0,1,1.0,0,0.0,0,,,,,0,0,0,0,,,,0,,,0,,0,0,0,0,,,3958,658,4616,-0.0

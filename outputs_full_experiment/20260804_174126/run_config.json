@@ -1,0 +1,30 @@
+{
+  "script": "run_full_experiment.py",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\20.json",
+  "data_sha256": "d801a4816ed8369e670b49cc20786cb4bb7c28de095f4632c59f341a05abaf09",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "device": "cuda",
+  "temperature": 0.2,
+  "max_new_tokens": 384,
+  "discussion_rounds": 2,
+  "seed": 42,
+  "gate_mode": false,
+  "settings": [
+    "single_full_information",
+    "all_at_start_AB",
+    "all_at_start_BA",
+    "after_round1",
+    "after_round1_BA",
+    "before_final_transcript",
+    "before_final_transcript_BA",
+    "canonical_order",
+    "before_final_reset",
+    "frozen_transcript_AB",
+    "frozen_transcript_BA",
+    "format_self_check_before_commit"
+  ],
+  "num_random_permutations": 5,
+  "num_seeds": 3,
+  "started_at": "2026-08-04T17:41:26",
+  "output_dir": "d:\\agentdemo\\multi_agent_gsm8k\\outputs_full_experiment\\20260804_174126"
+}

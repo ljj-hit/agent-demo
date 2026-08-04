@@ -1,0 +1,41 @@
+[
+  {
+    "question_id": 1,
+    "setting": "single_full_information",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "single_event": {
+      "agent": "solver_single",
+      "raw_output": "To solve this problem, let's break it down step by step:\n\n1. **Pages Read Yesterday**: Julie read 12 pages.\n2. **Pages Read Today**: She read twice as many pages as yesterday, which is \\(2 \\times 12 = 24\\) pages.\n3. **Total Pages Read So Far**: Adding the pages read yesterday and today gives us \\(12 + 24 = 36\\) pages.\n4. **Total Pages in the Book**: The book has 120 pages in total.\n5. **Pages Remaining After Yesterday and Today**: Subtracting the pages already read from the total number of pages gives us \\(120 - 36 = 84\\) pages remaining.\n\n**Tomorrow's Reading Plan**: Julie plans to read half of the pages that remain after yesterday and today. Therefore, we calculate:\n\\[ \\frac{84}{2} = 42 \\]\n\nSo, Julie should read 42 pages tomorrow.\n\nFinal Answer: Julie should read 42 pages tomorrow.",
+      "answer": "",
+      "token_usage": {
+        "prompt_tokens": 394,
+        "completion_tokens": 217,
+        "total_tokens": 611
+      },
+      "runtime_seconds": 17.50887220003642
+    },
+    "final_prediction": "Julie should read 42 pages tomorrow.",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true
+    },
+    "semantic_correct": true,
+    "format_compliant": false,
+    "invalid_output": true,
+    "answer_reason_consistent": true,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "answer_reason_consistency_method": "not_applicable_no_finalizer",
+    "strict_correct": false,
+    "correct": false,
+    "inference_token_usage": {
+      "prompt_tokens": 394,
+      "completion_tokens": 217,
+      "total_tokens": 611
+    },
+    "total_runtime_seconds": 17.51102480001282,
+    "failure_type": "invalid_output",
+    "lucky_guess": false
+  }
+]

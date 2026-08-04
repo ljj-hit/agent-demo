@@ -1,0 +1,20 @@
+{
+  "script": "run_full_experiment.py",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\3q.json",
+  "data_sha256": "225b78b737b30a5955db03ebb68208d09213666fb1eeb18f27f4498d8f84daa9",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "device": "cuda",
+  "temperature": 0.2,
+  "max_new_tokens": 384,
+  "discussion_rounds": 2,
+  "seed": 42,
+  "gate_mode": true,
+  "settings": [
+    "before_final_reset",
+    "finalizer_only_order_ab_ba"
+  ],
+  "num_random_permutations": 5,
+  "num_seeds": 3,
+  "started_at": "2026-08-04T12:30:16",
+  "output_dir": "D:\\agentdemo\\multi_agent_gsm8k\\outputs_full_experiment\\20260804_123016"
+}

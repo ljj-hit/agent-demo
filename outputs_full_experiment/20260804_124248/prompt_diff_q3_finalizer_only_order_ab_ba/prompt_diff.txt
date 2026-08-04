@@ -1,0 +1,6 @@
+Line 3 differs:
+  AB: FACT A (verbatim): Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.
+  BA: FACT B (verbatim): After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.
+Line 4 differs:
+  AB: FACT B (verbatim): After that, he adds 2 more pounds of jelly beans and then adds gummy worms until the new weight doubles.
+  BA: FACT A (verbatim): Ken places enough jelly beans into a box to make the box weigh 2 pounds. He then adds brownies until the weight triples.

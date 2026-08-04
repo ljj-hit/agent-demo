@@ -1,0 +1,13 @@
+﻿question_id,setting,gold_answer,final_prediction,auto_semantic_correct,auto_format_compliant,auto_answer_reason_consistent,auto_judge_consistent,manual_semantic_correct,manual_format_compliant,manual_answer_reason_consistent,manual_judge_consistent,auto_vs_manual_agreement,notes
+1,single_full_information,42,Julie should read 42 pages tomorrow.,True,False,True,True,,,,,,
+1,frozen_transcript_AB,42,36,False,True,True,False,,,,,,
+1,frozen_transcript_BA,42,60,False,True,False,False,,,,,,
+1,canonical_order,42,36,False,True,False,True,,,,,,
+1,format_self_check_before_commit,42,,False,False,False,True,,,,,,
+1,all_at_start_AB,42,42,True,True,True,True,,,,,,
+1,all_at_start_BA,42,,False,False,False,True,,,,,,
+1,after_round1,42,36,False,True,False,False,,,,,,
+1,before_final_transcript,42,36,False,True,False,False,,,,,,
+1,before_final_reset,42,36,False,True,True,False,,,,,,
+1,after_round1_BA,42,60,False,True,True,False,,,,,,
+1,before_final_transcript_BA,42,60,False,True,False,False,,,,,,

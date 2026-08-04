@@ -1,0 +1,98 @@
+[
+  {
+    "question_id": 1,
+    "setting": "format_self_check_before_commit",
+    "shared_question": "How many pages should Julie read tomorrow?",
+    "gold_answer": "42",
+    "finalizer_event": {
+      "raw_output": "Selected source: recomputed\nFinal answer: 60 pages\n\nReason: Yesterday Julie read 12 pages, so today she read 2 * 12 = 24 pages. In total, she has read 12 + 24 = 36 pages out of 120. Therefore, there are 120 - 36 = 84 pages remaining. Julie plans to read half of these remaining pages, which is 84 / 2 = 42 pages.",
+      "parsed_output": {
+        "final_answer": "",
+        "reason": ""
+      },
+      "token_usage": {
+        "prompt_tokens": 218,
+        "completion_tokens": 109,
+        "total_tokens": 327
+      },
+      "runtime_seconds": 8.75516100000823
+    },
+    "final_prediction": "",
+    "semantic_answer_extraction": "format_self_check_before_commit",
+    "candidate_answers": {},
+    "information": {
+      "information_complete": true
+    },
+    "injected_facts": {
+      "A": "Julie read 12 pages of a book yesterday. Today she read twice as many pages as yesterday.",
+      "B": "The book has 120 pages in total. Tomorrow Julie plans to read half of the pages that remain after yesterday and today."
+    },
+    "format_name": "self_check_before_commit",
+    "semantic_correct": false,
+    "format_compliant": false,
+    "invalid_output": true,
+    "answer_reason_consistent": false,
+    "answer_reason_checkable": false,
+    "reason_conclusion_answer": "",
+    "answer_reason_consistency_method": "unsupported_final_answer",
+    "strict_correct": false,
+    "correct": false,
+    "inference_token_usage": {
+      "prompt_tokens": 218,
+      "completion_tokens": 109,
+      "total_tokens": 327
+    },
+    "total_runtime_seconds": 8.756446200015489,
+    "failure_type": "invalid_output",
+    "lucky_guess": false,
+    "independent_judge": {
+      "judge_v1": {
+        "judge_raw_output": "```json\n{\n  \"reason_derived_answer\": \"42\",\n  \"answer_reason_consistent\": false,\n  \"reason_mathematically_valid\": true,\n  \"reason_uses_all_required_facts\": true,\n  \"error_type\": \"none\"\n}\n```",
+        "judge_parsed": {
+          "reason_derived_answer": "42",
+          "answer_reason_consistent": false,
+          "reason_mathematically_valid": true,
+          "reason_uses_all_required_facts": true,
+          "error_type": "none"
+        },
+        "judge_token_usage": {
+          "prompt_tokens": 478,
+          "completion_tokens": 57,
+          "total_tokens": 535
+        },
+        "judge_runtime_seconds": 7.074118600052316
+      },
+      "judge_v2": {
+        "judge_raw_output": "```json\n{\n  \"reason_derived_answer\": \"42\",\n  \"answer_reason_consistent\": false,\n  \"reason_mathematically_valid\": true,\n  \"reason_uses_all_required_facts\": true,\n  \"error_type\": \"none\"\n}\n```\n\n### Evaluation:\n\n**Consistency with the Reason:** \nThe derived answer (42) does not match the Final Answer (36). This inconsistency suggests that either the arithmetic used in the derivation was incorrect or the interpretation of the problem's constraints was flawed.\n\n**Mathematical Validity:**\nThe reasoning appears logically sound based on the given facts. Julie reads 12 pages yesterday and 24 pages today, totaling 36 pages. There are 84 pages remaining (120 - 36), and she plans to read half of these remaining pages, resulting in 42 pages. However, this conclusion contradicts the Final Answer, indicating an error in the calculation or understanding of the problem.\n\n**Use of Required Facts:**\nAll required facts A and B are correctly referenced and incorporated into the reasoning process.\n\n**Error Type:**\n\"none\" since the error lies in the discrepancy between the derived answer and the Final Answer rather than in the logical steps themselves.",
+        "judge_parsed": {
+          "reason_derived_answer": "42",
+          "answer_reason_consistent": false,
+          "reason_mathematically_valid": true,
+          "reason_uses_all_required_facts": true,
+          "error_type": "none"
+        },
+        "judge_token_usage": {
+          "prompt_tokens": 437,
+          "completion_tokens": 259,
+          "total_tokens": 696
+        },
+        "judge_runtime_seconds": 26.971439200046007
+      },
+      "judge_agreement": {
+        "answer_reason_consistent": true,
+        "reason_mathematically_valid": true,
+        "reason_uses_all_required_facts": true,
+        "error_type": true,
+        "all_agree": true
+      },
+      "judge_disagreement": false,
+      "judge_consensus": {
+        "reason_derived_answer": "42",
+        "answer_reason_consistent": false,
+        "reason_mathematically_valid": true,
+        "reason_uses_all_required_facts": true,
+        "error_type": "none"
+      }
+    }
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "before_final_reset_format_valid": {
+    "pass": true,
+    "count": 3,
+    "valid": 3
+  },
+  "finalizer_only_AB_format_valid": {
+    "pass": true,
+    "count": 3,
+    "valid": 3
+  },
+  "finalizer_only_BA_format_valid": {
+    "pass": true,
+    "count": 3,
+    "valid": 3
+  },
+  "ab_ba_prompt_diff": {
+    "pass": false,
+    "detail": "AB/BA prompts differ only in fact row order"
+  },
+  "uses_strict_accuracy": {
+    "pass": true,
+    "detail": "strict_answer_correct = semantic_correct AND format_compliant"
+  },
+  "invalid_pairs_excluded": {
+    "pass": true,
+    "detail": "Only AB/BA pairs where both are format-valid enter flip rate denominator"
+  },
+  "judge_output_parseable": {
+    "pass": false,
+    "detail": "Judge outputs are valid JSON"
+  },
+  "manual_audit_submitted": {
+    "pass": true,
+    "detail": "manual_audit.csv exists with audit entries"
+  },
+  "readme_data_consistent": {
+    "pass": true,
+    "detail": "README references match data files used"
+  },
+  "records_hashes": {
+    "pass": true,
+    "detail": "Output records data SHA256 and git commit hash"
+  },
+  "one_command_reproducible": {
+    "pass": true,
+    "detail": "python run_full_experiment.py --gate --data-path data/3q.json"
+  },
+  "no_extra_text_before_format": {
+    "pass": true,
+    "detail": "No preamble before three-line format"
+  },
+  "GATE_PASSED": false
+}

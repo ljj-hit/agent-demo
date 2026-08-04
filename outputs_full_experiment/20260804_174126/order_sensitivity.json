@@ -1,0 +1,213 @@
+{
+  "paired_count": 20,
+  "raw_answer_flip_rate": 0.8,
+  "both_format_valid_pair_count": 12,
+  "valid_pair_answer_flip_rate": 0.6666666666666666,
+  "both_semantically_correct": 0,
+  "AB_only_correct": 0,
+  "BA_only_correct": 0,
+  "both_wrong_same_answer": 4,
+  "both_wrong_different_answer": 16,
+  "per_question": {
+    "1": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "2": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "3": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "4": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "5": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "6": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "7": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "8": {
+      "raw_answer_flip": false,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": true,
+      "both_wrong_different_answer": false
+    },
+    "9": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "10": {
+      "raw_answer_flip": false,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": true,
+      "both_wrong_different_answer": false
+    },
+    "11": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "12": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "13": {
+      "raw_answer_flip": false,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": true,
+      "both_wrong_different_answer": false
+    },
+    "14": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "15": {
+      "raw_answer_flip": false,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": true,
+      "both_wrong_different_answer": false
+    },
+    "16": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "17": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "18": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "19": {
+      "raw_answer_flip": true,
+      "both_format_valid": false,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "20": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    }
+  }
+}

@@ -1,0 +1,10 @@
+﻿question_id,setting,gold_answer,final_prediction,auto_semantic_correct,auto_format_compliant,auto_answer_reason_consistent,auto_judge_consistent,manual_semantic_correct,manual_format_compliant,manual_answer_reason_consistent,manual_judge_consistent,auto_vs_manual_agreement,notes
+1,before_final_reset,42,36,False,True,True,True,,,,,,
+1,finalizer_only_order_ab_ba,42,36,False,True,False,True,,,,,,
+1,finalizer_only_order_ab_ba,42,36,False,True,False,True,,,,,,
+2,before_final_reset,5,20,False,True,False,True,,,,,,
+2,finalizer_only_order_ab_ba,5,20,False,True,True,True,,,,,,
+2,finalizer_only_order_ab_ba,5,25,False,True,True,True,,,,,,
+3,before_final_reset,16,10,False,True,True,True,,,,,,
+3,finalizer_only_order_ab_ba,16,14,False,True,True,True,,,,,,
+3,finalizer_only_order_ab_ba,16,10,False,True,True,True,,,,,,

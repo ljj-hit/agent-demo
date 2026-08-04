@@ -1,0 +1,13 @@
+{
+  "total_errors": 11,
+  "loss_distribution": {
+    "unclassified": 11
+  },
+  "loss_solver_internal": 0,
+  "loss_between_solvers": 0,
+  "loss_verifier": 0,
+  "loss_ledger": 0,
+  "loss_finalizer_reasoning": 0,
+  "loss_final_answer_serialization": 0,
+  "loss_never_emerged": 0
+}

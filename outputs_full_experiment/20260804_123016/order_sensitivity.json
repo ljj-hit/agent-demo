@@ -1,0 +1,43 @@
+{
+  "paired_count": 3,
+  "raw_answer_flip_rate": 0.6666666666666666,
+  "both_format_valid_pair_count": 3,
+  "valid_pair_answer_flip_rate": 0.6666666666666666,
+  "both_semantically_correct": 0,
+  "AB_only_correct": 0,
+  "BA_only_correct": 0,
+  "both_wrong_same_answer": 1,
+  "both_wrong_different_answer": 2,
+  "per_question": {
+    "1": {
+      "raw_answer_flip": false,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": false,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": true,
+      "both_wrong_different_answer": false
+    },
+    "2": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    },
+    "3": {
+      "raw_answer_flip": true,
+      "both_format_valid": true,
+      "valid_pair_answer_flip": true,
+      "both_semantically_correct": false,
+      "AB_only_correct": false,
+      "BA_only_correct": false,
+      "both_wrong_same_answer": false,
+      "both_wrong_different_answer": true
+    }
+  }
+}

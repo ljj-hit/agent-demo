@@ -1,0 +1,4292 @@
+[
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "random_numbers"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "random_numbers"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "random_numbers"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "42",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "More context is needed to determine the number of pages left to read before tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The number of pages Julie needs to read tomorrow cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "More context is needed to determine the number of pages left to read before tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The number of pages Julie needs to read tomorrow cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "More context is needed to determine the number of pages left to read before tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The number of pages Julie needs to read tomorrow cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "There is insufficient information provided to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "There is insufficient information provided to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "There is insufficient information provided to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "There is insufficient information provided to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "There is insufficient information provided to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "There is insufficient information provided to determine the number of pages Julie should read tomorrow.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "36",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "54",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "54",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "54",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "54",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "54",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "54",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "random_numbers"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "random_numbers"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 1,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "22",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "random_numbers"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$50",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": ""
+    },
+    "judge_v2": {
+      "reason_derived_answer": "50",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$50",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": ""
+    },
+    "judge_v2": {
+      "reason_derived_answer": "50",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$50",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": ""
+    },
+    "judge_v2": {
+      "reason_derived_answer": "50",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "-$10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "-$10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_sign"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "-$10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "-$10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_sign"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "-$10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "-$10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_sign"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$5",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 2,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "30",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight calculation shows that the box's weight increases by factors of 3 (jelly beans), 1/2 (brownies), and 1/2 (gummy worms) before reaching the final weight.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight calculation shows that the box's weight increases by factors of 3 (jelly beans), 1/2 (brownies), and 1/2 (gummy worms) before reaching the final weight.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight calculation shows that the box's weight increases by factors of 3 (jelly beans), 1/2 (brownies), and 1/2 (gummy worms) before reaching the final weight.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "8",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "8",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "8",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "8",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "8",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "8",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "16",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "16",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "16",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight calculation shows that after all the additions, the box weighs 6 pounds.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight calculation shows that after all the additions, the box weighs 6 pounds.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight calculation shows that after all the additions, the box weighs 6 pounds.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "10",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "6",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 3,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final weight of the box cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "53",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$53",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "53",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$53",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "53",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$53",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "$41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_initial_assumption"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_spending"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "$41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_initial_assumption"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_spending"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "$41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_initial_assumption"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_spending"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "rejected_identical_candidates"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "rejected_identical_candidates"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "rejected_identical_candidates"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "41",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": false,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": false,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": false,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": ""
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": ""
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": ""
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$57",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 4,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "$16",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "23",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "23",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "23",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "23",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "frozen_transcript_AB",
+    "judge_v1": {
+      "reason_derived_answer": "23",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "23",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "frozen_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_total_calculation"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_total_calculation"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "canonical_order",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "incorrect_total_calculation"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "45",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "45",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "45",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "45",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "format_self_check_before_commit",
+    "judge_v1": {
+      "reason_derived_answer": "45",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "45",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "21",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "21",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "21",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "21",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "all_at_start_AB",
+    "judge_v1": {
+      "reason_derived_answer": "21",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "21",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "38",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "38",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "38",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "38",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "all_at_start_BA",
+    "judge_v1": {
+      "reason_derived_answer": "38",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "38",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "The final answer is missing.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "missing_information"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final answer cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "The final answer is missing.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "missing_information"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final answer cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "after_round1",
+    "judge_v1": {
+      "reason_derived_answer": "The final answer is missing.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "missing_information"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final answer cannot be determined with the given information.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": false,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final answer cannot be determined.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final answer cannot be determined.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_transcript",
+    "judge_v1": {
+      "reason_derived_answer": "",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "The final answer cannot be determined.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "20",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "20",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "20",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "20",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_reset",
+    "judge_v1": {
+      "reason_derived_answer": "20",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "20",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": true,
+    "judge_agreement": {
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": false
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "No sufficient information provided to calculate the total number of stamps Bella buys.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "No sufficient information provided to calculate the total number of stamps Bella buys.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "No sufficient information provided to calculate the total number of stamps Bella buys.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "No sufficient information provided to calculate the total number of stamps Bella buys.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "after_round1_BA",
+    "judge_v1": {
+      "reason_derived_answer": "No sufficient information provided to calculate the total number of stamps Bella buys.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "No sufficient information provided to calculate the total number of stamps Bella buys.",
+      "answer_reason_consistent": false,
+      "reason_mathematically_valid": false,
+      "reason_uses_all_required_facts": false,
+      "error_type": "incomplete_facts"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  },
+  {
+    "question_id": 5,
+    "setting": "before_final_transcript_BA",
+    "judge_v1": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_v2": {
+      "reason_derived_answer": "43",
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": "none"
+    },
+    "judge_disagreement": false,
+    "judge_agreement": {
+      "answer_reason_consistent": true,
+      "reason_mathematically_valid": true,
+      "reason_uses_all_required_facts": true,
+      "error_type": true,
+      "all_agree": true
+    }
+  }
+]
