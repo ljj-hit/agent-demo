@@ -345,3 +345,127 @@ python run_hidden_gsm8k.py --setting finalizer_only_order_ab_ba
 
 分析单题时优先查看 `traces_all.json`；汇总比较不同 setting 时查看
 `metrics.csv`。
+
+## 完整实验流水线
+
+`run_full_experiment.py` 提供一站式实验流水线，包含：
+
+- **3 题 Gate 检查**：验证 finalizer 格式合规和 AB/BA prompt 正确性
+- **20 题正式实验**：12 个核心设置的系统性比较
+- **独立 Judge 系统**：双份 Judge（不同 prompt/seed），检测 disagreement
+- **格式错误分类**：缺失字段、字段顺序、额外文本、非法 source 等 9 类
+- **答案错误分类**：reasoning 中有正确答案但写错、算术错误、忽略后加入事实等 8 类
+- **轨迹分析**：正确答案出现/保留/丢失的完整时间线
+- **顺序效应分析**：AB/BA 配对的 flip rate、order sensitivity
+- **基线对照**：single-agent full/late information、deterministic calculator、oracle 上界
+- **多 seed 运行**：每个设置支持多个 seed，检验稳定性
+
+### Gate 检查
+
+```powershell
+python run_full_experiment.py --gate --data-path data/3q.json --device cuda
+```
+
+通过条件：
+- `before_final_reset` 3/3 格式有效
+- `finalizer_only_AB` 3/3 格式有效
+- `finalizer_only_BA` 3/3 格式有效
+- AB/BA prompt diff 只显示事实顺序变化
+- 主 accuracy 使用 strict answer correctness
+- Invalid pair 不进入 valid flip rate
+- Judge 输出可解析
+- 人工核验表已生成
+- README 数据一致性
+- 输出记录 data SHA256
+- 一键复现
+
+### 20 题正式实验
+
+```powershell
+python run_full_experiment.py --twenty-q --data-path data/20.json --device cuda --num-seeds 3
+```
+
+12 个核心设置：
+1. single_full_information
+2. all_at_start_AB
+3. all_at_start_BA
+4. after_round1 (AB)
+5. after_round1_BA
+6. before_final_transcript (AB)
+7. before_final_transcript_BA
+8. canonical_order
+9. before_final_reset
+10. frozen_transcript_AB
+11. frozen_transcript_BA
+12. format_self_check_before_commit
+
+### 输出结构
+
+```text
+outputs_full_experiment/YYYYMMDD_HHMMSS/
+├── run_config.json              # 运行配置 + data SHA256
+├── traces_all.json              # 完整轨迹
+├── traces_<setting>.json        # 按 setting 分组的轨迹
+├── comprehensive_metrics.csv    # 三层正确率 + 格式/错误分类 + Oracle
+├── failures_detailed.json       # 详细失败分析
+├── order_sensitivity.json       # AB/BA 配对分析
+├── judge_outputs.json           # 独立 Judge 双份结果
+├── manual_audit.csv             # 人工核验表
+├── loss_statistics.json         # 正确答案丢失位置统计
+├── prompt_diff_q*/              # AB/BA prompt 差异
+├── gate_check.json              # (gate 模式) 12 项 gate 结果
+└── analysis_report.md           # 实验分析报告（7 项诊断）
+```
+
+### 断点续跑
+
+`continue_experiment.py` 用于从中断处恢复实验，保留已有结果、只跑剩余题目。
+
+```powershell
+# 从上次中断处自动续跑
+python continue_experiment.py
+
+# 指定起始题号
+python continue_experiment.py 9
+
+# 指定起始题号 + 数量限制（如只补跑 3 题）
+python continue_experiment.py 9 3
+```
+
+特性：
+- 自动从 `traces_all.json` 识别已完成题目，从 `max(qid)+1` 开始
+- 每道题跑完立即增量写入 traces 和 metrics，中断不怕丢
+- 全部跑完后自动调用 `write_comprehensive_outputs()` 生成完整分析文件
+- 输出目录硬编码在脚本顶部 `OUTPUT_DIR`，修改后指向目标目录即可
+
+### 实验结果 (20260804_174126)
+
+使用 Qwen2.5-1.5B 在 20 题上运行全部 12 个核心设置（3 seeds），完整分析见 [analysis_report.md](outputs_full_experiment/20260804_174126/analysis_report.md)。
+
+**核心结论**：
+
+| 诊断项 | 结果 |
+|---|---|
+| 完整事实到达 finalizer？ | ✅ 是 — 几乎所有设置中完整事实都到达了 |
+| 正确答案在轨迹中出现过？ | ❌ 98.7% 的失败案例中**从未出现** |
+| 正确答案在哪丢失？ | **Solver 端** — 1.5B 分片信息下无法推理 |
+| 顺序效应在哪个环节？ | **Finalizer** — 80% 答案翻转率，但翻转后全错 |
+| Reset 恢复能力 | +5% semantic，格式 100% — 有效但微弱 |
+| Canonical order 恢复能力 | +5% semantic — 轻微改善 |
+| Self-check 恢复能力 | 0% — 无效果 |
+| 格式错误 vs 语义错误 | 88.3% 语义错误，6.7% 纯格式错误 |
+| Seed 稳定性 | ✅ 高 — 同题不同 seed 结果一致（T=0.2） |
+
+整体：Qwen2.5-1.5B 太小，分片信息下 multi-agent 架构无法弥补基础推理能力不足。建议用 7B+ 模型重跑。
+
+### 完整设置列表
+
+共 66 个实验设置，分为：
+
+- **原有设置** (12): single_full, single_partial, multi_partial, multi_partial_verifier, oracle_broadcast, all_at_start_AB/BA, after_round1, before_final_transcript, before_final_transcript_ledger, before_final_reset, finalizer_only_order_ab_ba
+- **顺序隔离** (7): solver_only_AB/BA, finalizer_only_AB/BA, frozen_transcript_AB/BA, canonical_order, random_order
+- **信息时间** (10): info_at_start/after_round1/before_final/before_finalizer/reset_direct × AB/BA
+- **格式变体** (10): three_line, strict_json, xml_tags, answer_only, answer_first, reason_first, reason_then_answer, internal_reasoning_then_structured, deterministic_extract, self_check_before_commit
+- **锚定效应** (14): anchor_early_* × 4 + anchor_source_* × 4 + anchor_repeat_* × 3 + counter_belief + context_reset + belief_reset
+- **Ledger 变体** (6): raw_concat, structured_kv, dependency_table, canonical_sorted, provenance_free, provenance_aware
+- **基线** (6): single_full_information, single_late_information, deterministic_calculator, best_solver_oracle, discussion_oracle, finalizer_upper_bound
