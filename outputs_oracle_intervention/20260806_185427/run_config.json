@@ -1,0 +1,21 @@
+{
+  "experiment": "oracle_intervention",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\20.json",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "device": "cuda",
+  "temperature": 0.2,
+  "max_new_tokens": 384,
+  "discussion_rounds": 2,
+  "num_seeds": 2,
+  "base_seed": 42,
+  "settings": [
+    "free_discussion",
+    "oracle_disclosure",
+    "oracle_canonical_state",
+    "canonical_state_fresh",
+    "oracle_plan",
+    "oracle_candidate"
+  ],
+  "num_questions": 3,
+  "started_at": "2026-08-06T18:54:48.558036"
+}

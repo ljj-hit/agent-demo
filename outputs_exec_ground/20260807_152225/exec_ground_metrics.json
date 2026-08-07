@@ -1,0 +1,95 @@
+{
+  "free_discussion": {
+    "setting": "free_discussion",
+    "label": "0. Free Discussion (baseline: private facts, free discussion)",
+    "total_traces": 60,
+    "semantic_accuracy": 0.0,
+    "correct_count": 0,
+    "format_compliance": 0.1,
+    "answer_reason_consistency": 0.55,
+    "correct_candidate_emergence": 0.0,
+    "correct_candidate_emerged_with_complete_info": 0.0,
+    "avg_fact_distortion_rate": 0.125,
+    "exec_ground_metrics": {}
+  },
+  "reveal_all": {
+    "setting": "reveal_all",
+    "total_traces": 0
+  },
+  "canonical_ledger": {
+    "setting": "canonical_ledger",
+    "label": "2. Canonical Ledger (TypedFact → Ledger → discussion with ledger)",
+    "total_traces": 54,
+    "semantic_accuracy": 0.0,
+    "correct_count": 0,
+    "format_compliance": 0.0,
+    "answer_reason_consistency": 0.1111111111111111,
+    "correct_candidate_emergence": 0.0,
+    "correct_candidate_emerged_with_complete_info": 0.0,
+    "avg_fact_distortion_rate": 0.4398148148148148,
+    "exec_ground_metrics": {
+      "avg_ledger_fact_count": 4.111111111111111,
+      "avg_fact_quality_A": 0.8518518518518519,
+      "avg_fact_quality_B": 0.7685185185185185
+    }
+  },
+  "ledger_fresh_solver": {
+    "setting": "ledger_fresh_solver",
+    "label": "3. Ledger + Fresh Solver (no discussion history)",
+    "total_traces": 54,
+    "semantic_accuracy": 0.05555555555555555,
+    "correct_count": 3,
+    "format_compliance": 1.0,
+    "answer_reason_consistency": 0.9444444444444444,
+    "correct_candidate_emergence": 0.05555555555555555,
+    "correct_candidate_emerged_with_complete_info": 0.05555555555555555,
+    "avg_fact_distortion_rate": 1.0,
+    "exec_ground_metrics": {
+      "avg_ledger_fact_count": 4.111111111111111,
+      "avg_fact_quality_A": 0.8518518518518519,
+      "avg_fact_quality_B": 0.7685185185185185
+    }
+  },
+  "ledger_exec_plan": {
+    "setting": "ledger_exec_plan",
+    "label": "4. Ledger + Executable Plan (structured JSON-IR)",
+    "total_traces": 54,
+    "semantic_accuracy": 0.05555555555555555,
+    "correct_count": 3,
+    "format_compliance": 1.0,
+    "answer_reason_consistency": 0.9444444444444444,
+    "correct_candidate_emergence": 0.0,
+    "correct_candidate_emerged_with_complete_info": 0.0,
+    "avg_fact_distortion_rate": 1.0,
+    "exec_ground_metrics": {
+      "avg_ledger_fact_count": 4.111111111111111,
+      "avg_fact_quality_A": 0.8518518518518519,
+      "avg_fact_quality_B": 0.7685185185185185,
+      "plan_execution_correct": 0,
+      "plan_execution_correct_rate": 0.0,
+      "avg_plan_steps": 3.0
+    }
+  },
+  "ledger_exec_plan_verify": {
+    "setting": "ledger_exec_plan_verify",
+    "label": "5. Ledger + Exec Plan + Coverage Verify (verification loop)",
+    "total_traces": 54,
+    "semantic_accuracy": 0.05555555555555555,
+    "correct_count": 3,
+    "format_compliance": 1.0,
+    "answer_reason_consistency": 0.6111111111111112,
+    "correct_candidate_emergence": 0.0,
+    "correct_candidate_emerged_with_complete_info": 0.0,
+    "avg_fact_distortion_rate": 1.0,
+    "exec_ground_metrics": {
+      "avg_ledger_fact_count": 4.111111111111111,
+      "avg_fact_quality_A": 0.8518518518518519,
+      "avg_fact_quality_B": 0.7685185185185185,
+      "plan_execution_correct": 0,
+      "plan_execution_correct_rate": 0.0,
+      "avg_plan_steps": 0.0,
+      "final_plan_clean_rate": 0.0,
+      "avg_verify_rounds": 2.888888888888889
+    }
+  }
+}
