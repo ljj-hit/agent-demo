@@ -469,3 +469,256 @@ python continue_experiment.py 9 3
 - **锚定效应** (14): anchor_early_* × 4 + anchor_source_* × 4 + anchor_repeat_* × 3 + counter_belief + context_reset + belief_reset
 - **Ledger 变体** (6): raw_concat, structured_kv, dependency_table, canonical_sorted, provenance_free, provenance_aware
 - **基线** (6): single_full_information, single_late_information, deterministic_calculator, best_solver_oracle, discussion_oracle, finalizer_upper_bound
+
+---
+
+# ExecGround 五部分实验（2026-08）
+
+本实验围绕 Qwen2.5-1.5B 多智能体 GSM8K 的瓶颈诊断与架构改进，分为五个部分：
+
+| Part | 内容 | 状态 |
+|------|------|------|
+| Part 1 | 现有 20 题瓶颈证据收集 | ✅ |
+| Part 2 | Oracle 干预实验（6 组，360 traces） | ✅ |
+| Part 3 | ExecGround 模块实现（TypedFact → Ledger → Plan → Verify） | ✅ |
+| Part 4 | 六组消融实验（ExecGround vs. 基线） | ✅ |
+| Part 5 | 统一错误分类标注（13 类别） | ✅ |
+
+核心发现：Qwen2.5-1.5B 在 multi-agent 架构下，**讨论历史污染是主瓶颈**（oracle_disclosure 25% → fresh_solver 5.6%——尽管绝对值低，方向明确），**依赖图缺失和"信息足够但输出undetermined"占错误的 98%**。可执行计划层和覆盖验证层超出此模型能力范围。
+
+---
+
+## Part 1: 瓶颈证据收集
+
+### 产出
+
+| 文件 | 说明 |
+|------|------|
+| `deep_bottleneck_analysis_v2.py` | 分析脚本：11 维分析 + 漏斗 + 分离指标 |
+| `outputs_full_experiment/20260804_174126/bottleneck_analysis/final_bottleneck_report.md` | 主报告 |
+| `outputs_full_experiment/20260804_174126/bottleneck_analysis/per_question_deep_analysis.json` | 每题每 seed 原始数据 |
+| `outputs_full_experiment/20260804_174126/bottleneck_analysis/per_question_summary.csv` | 20 题汇总 CSV |
+| `outputs_full_experiment/20260804_174126/analysis_report.md` | 完整实验分析报告 |
+
+### 核心发现
+
+```
+漏斗: 20题 → 1题事实无失真 → 7题推理中有正确答案 → 4题正确候选 → 1题最终正确
+candidate_emergence_given_complete_disclosure: 4/20 = 20%
+final_retention_given_correct_candidate: 1/4 = 25%
+结论: 双重瓶颈 0.20 × 0.25 = 0.05 = 最终准确率
+```
+
+---
+
+## Part 2: Oracle 干预实验
+
+### 设计
+
+6 组逐层干预，通过程序化注入信息确定因果瓶颈：
+
+| # | Setting | 干预方式 | Accuracy |
+|---|---------|---------|----------|
+| 0 | free_discussion | 基线：私有事实讨论 | 5.0% |
+| 1 | oracle_disclosure | 程序注入 A+B 原始事实 | 25.0% |
+| 2 | oracle_canonical_state | 规范化结构化事实表 | 20.0% |
+| 3 | canonical_state_fresh | 新 solver 只读题目+事实表 | 60.0% |
+| 4 | oracle_plan | 事实表+完整方程依赖结构 | 70.0% |
+| 5 | oracle_candidate | 直接注入正确答案标注为权威 | 53.3% |
+
+### 产出
+
+| 文件 | 说明 |
+|------|------|
+| `oracle_intervention_experiment.py` | 实验脚本：6 组 builder + 完整循环 |
+| `analyze_oracle_results.py` | 分析脚本：因果归因 + 对比报告 |
+| `outputs_oracle_intervention/20260806_191645/oracle_analysis_report.md` | 完整分析报告 |
+| `outputs_oracle_intervention/20260806_191645/oracle_metrics.json` | 原始指标 |
+| `outputs_oracle_intervention/20260806_191645/traces_all.json` | 360 traces |
+
+### 因果归因
+
+```
+瓶颈层级                              损失量      累计损失
+Fact Disclosure (agent 说不清)         +20%  →    5% → 25%
+Discussion Contamination (历史污染)    +40%  →   20% → 60%  ★ 最大瓶颈
+Plan Generation (方程结构)             +10%  →   60% → 70%
+Finalizer Retention (保留正确候选)      —    →   见下文
+Residual (算术能力天花板)              10%   →   70% → 80% (single_full 基线)
+```
+
+### 运行方式
+
+```powershell
+python oracle_intervention_experiment.py --rounds 2 --seeds 3 --limit 20
+python analyze_oracle_results.py outputs_oracle_intervention/20260806_191645
+```
+
+---
+
+## Part 3: ExecGround 模块实现
+
+### 四大模块
+
+| Module | 功能 | 文件位置 |
+|--------|------|---------|
+| **TypedFact** | 将私有信息转为结构化 JSON 事实（fact_id, subject, relation, object, value, unit, source, evidence） | `exec_ground.py` |
+| **CanonicalLedger** | 确定性合并 A+B 事实：去重、实体对齐、单位标准化、关系标准化、冲突检测、固定排序。AB=BA 确定保证。 | `exec_ground.py` |
+| **FreshSolver + ExecutablePlan** | 新 solver 只读题目+ledger（无讨论历史），输出可执行 JSON-IR 计划（add/subtract/multiply/divide + fact_id 引用） | `exec_ground.py` |
+| **CoverageVerifier** | 程序检查：事实覆盖率、缺失事实、未绑定变量、可执行性、结果正确性。提供定向修复提示，无自由讨论。 | `exec_ground.py` |
+
+### 测试覆盖
+
+| 文件 | 说明 |
+|------|------|
+| `test_exec_ground.py` | 22 个测试，141 个断言 |
+| 覆盖范围 | TypedFact创建/序列化/标准化、CanonicalLedger构建/确定性/去重/冲突检测、ExecutablePlan创建/JSON往返/执行/解析、CoverageVerifier全场景、FixPrompt生成、端到端集成测试、全部20题gold事实提取 |
+
+```powershell
+python -m pytest test_exec_ground.py -v
+```
+
+---
+
+## Part 4: 六组消融实验
+
+### 设计
+
+对应 ExecGround 的四层架构，逐层叠加：
+
+| # | Setting | 描述 |
+|---|---------|------|
+| 0 | free_discussion | 基线：私有事实讨论（复用 Part 2） |
+| 1 | oracle_disclosure | Reveal-All：程序注入所有事实（复用 Part 2） |
+| 2 | canonical_ledger | TypedFact → Ledger → 带 Ledger 讨论 → Finalizer |
+| 3 | ledger_fresh_solver | + Fresh Solver（无讨论历史，只读题目+Ledger） |
+| 4 | ledger_exec_plan | + 可执行 JSON-IR Plan |
+| 5 | ledger_exec_plan_verify | + 覆盖验证 + 修复循环 |
+
+关键观测：不看最终准确率，看**正确候选涌现率**在各层的增量变化。
+
+### 实验结果
+
+| Setting | N | Acc | Emerge | 关键发现 |
+|---------|---|------|--------|---------|
+| free_discussion | 60 | 0% | 0% | 基线 |
+| oracle_disclosure | 60 | 25% | 20% | 与 Part 2 一致 |
+| canonical_ledger | 54 | 0% | 0% | 讨论协议瓶颈：solver 全输出 undetermined |
+| ledger_fresh_solver | 54 | 5.6% | 5.6% | Fresh solver 恢复微弱但存在 |
+| ledger_exec_plan | 54 | 5.6% | 0% | 48/54 plan 执行失败 |
+| ledger_exec_plan_verify | 54 | 5.6% | 0% | 覆盖验证可检测但模型无法修复 |
+
+### 产出
+
+| 文件 | 说明 |
+|------|------|
+| `exec_ground_experiment.py` | 实验脚本：6 builder + 增量保存 + 断点续跑 |
+| `outputs_exec_ground/20260807_152225/traces_all.jsonl` | 336 traces（增量写入，fsync 保证） |
+| `outputs_exec_ground/20260807_152225/traces_all.json` | 完整 traces（JSON 格式，方便加载） |
+| `outputs_exec_ground/20260807_152225/exec_ground_metrics.json` | 各 setting 指标 |
+| `outputs_exec_ground/20260807_152225/exec_ground_analysis_report.md` | 分析报告 |
+
+### 运行方式
+
+```powershell
+# 正式运行
+python exec_ground_experiment.py --limit 20 --seeds 3
+
+# 使用 gold facts 快速验证
+python exec_ground_experiment.py --limit 20 --seeds 3 --use-gold-facts
+
+# 断点续跑
+python exec_ground_experiment.py --limit 20 --seeds 3 --output-dir outputs_exec_ground/20260807_152225 --resume
+```
+
+---
+
+## Part 5: 统一错误分类
+
+### 13 错误类别
+
+| # | 类别 | 数量 | 占比 | Oracle 修复 |
+|---|------|------|------|------------|
+| 1 | 依赖图缺失 | 162 | 51.9% | oracle_plan |
+| 2 | 信息足够但仍输出undetermined | 144 | 46.2% | fresh_solver |
+| 3 | 忘记自己的事实 | 120 | 38.5% | canonical_state |
+| 4 | 忽略对方事实 | 96 | 30.8% | canonical_state |
+| 5 | 只完成局部计算 | 81 | 26.0% | oracle_plan |
+| 6 | 事实数值被修改 | 60 | 19.2% | canonical_state |
+| 7 | 事实披露不完整 | 27 | 8.7% | oracle_disclosure |
+| 8 | 私有事实没有披露 | 21 | 6.7% | oracle_disclosure |
+| 9 | 算术执行错误 | 6 | 1.9% | oracle_plan |
+| 10 | half/twice等关系翻转 | 0 | 0% | 模型未达到此复杂度 |
+| 11 | 实体或题意漂移 | 0 | 0% | 模型保持问题理解稳定 |
+| 12 | reasoning正确但候选字段错误 | 0 | 0% | 正确数不出现在reasoning中 |
+| 13 | 正确候选存在但被丢失 | 0 | 0% | Finalizer非独立瓶颈 |
+
+### 产出
+
+| 文件 | 说明 |
+|------|------|
+| `error_classification.py` | 错误分类脚本：13 类别启发式检测 |
+| `outputs_exec_ground/20260807_152225/error_classification_report.md` | 主报告：每类的数量/题目ID/典型轨迹/最早错误轮次/Oracle修复 |
+| `outputs_exec_ground/20260807_152225/error_classification.json` | 结构化 JSON 数据 |
+
+### 运行方式
+
+```powershell
+python error_classification.py
+```
+
+---
+
+## 提交文件清单
+
+### 代码
+
+| 文件 | 用途 | Part |
+|------|------|------|
+| `exec_ground.py` | ExecGround 核心模块（TypedFact/CanonicalLedger/FreshSolver/CoverageVerifier） | 3 |
+| `test_exec_ground.py` | ExecGround 测试套件（22 tests） | 3 |
+| `exec_ground_experiment.py` | 六组消融实验脚本 | 4 |
+| `error_classification.py` | 13 类别错误分类分析脚本 | 5 |
+| `oracle_intervention_experiment.py` | Oracle 干预实验脚本 | 2 |
+| `analyze_oracle_results.py` | Oracle 结果因果归因分析 | 2 |
+| `deep_bottleneck_analysis_v2.py` | 瓶颈证据收集分析脚本 | 1 |
+| `run_hidden_gsm8k.py` | Hidden-GSM8K 核心基础设施（Part 1-2 依赖） | 1-2 |
+| `HANDOVER.md` | 工作交接文档 | — |
+
+### 结果文件
+
+| 文件/文件夹 | 内容 | Part |
+|------|------|------|
+| `outputs_full_experiment/20260804_174126/bottleneck_analysis/` | 瓶颈分析报告 + 每题数据 | 1 |
+| `outputs_full_experiment/20260804_174126/analysis_report.md` | 完整实验分析 | 1 |
+| `outputs_oracle_intervention/20260806_191645/oracle_analysis_report.md` | Oracle 因果归因报告 | 2 |
+| `outputs_oracle_intervention/20260806_191645/oracle_metrics.json` | Oracle 指标 | 2 |
+| `outputs_exec_ground/20260807_152225/traces_all.jsonl` | ExecGround 336 traces | 4 |
+| `outputs_exec_ground/20260807_152225/exec_ground_metrics.json` | 各 setting 指标 | 4 |
+| `outputs_exec_ground/20260807_152225/exec_ground_analysis_report.md` | 消融分析报告 | 4 |
+| `outputs_exec_ground/20260807_152225/error_classification_report.md` | 13 类别分类报告 | 5 |
+| `outputs_exec_ground/20260807_152225/error_classification.json` | 分类结构化数据 | 5 |
+
+### 依赖文件（不修改）
+
+| 文件 | 用途 |
+|------|------|
+| `data/20.json` | 20 题 GSM8K 变体数据 |
+| `hidden_gsm8k_prompts/` | solver/finalizer/verifier prompt 模板 |
+| `qwen2.5-1.5B/` | 模型权重（不提交） |
+
+### 命令速查
+
+```powershell
+# Part 2: Oracle 干预实验
+python oracle_intervention_experiment.py --rounds 2 --seeds 3 --limit 20
+
+# Part 3: 运行 ExecGround 测试
+python -m pytest test_exec_ground.py -v
+
+# Part 4: 六组消融实验
+python exec_ground_experiment.py --limit 20 --seeds 3
+
+# Part 5: 错误分类分析
+python error_classification.py
+```
