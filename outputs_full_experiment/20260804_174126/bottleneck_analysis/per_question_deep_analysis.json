@@ -1,0 +1,2467 @@
+{
+  "1": {
+    "gold": "42",
+    "question": "How many pages should Julie read tomorrow?",
+    "a_facts": [
+      "Julie read 12 pages yesterday.",
+      "Today she read twice as many pages as yesterday."
+    ],
+    "b_facts": [
+      "The book has 120 pages.",
+      "Tomorrow she reads half of the remaining pages."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'12'} from \"Julie read 12 pages yesterday.\"",
+          "Final: missing {'12'} from \"Julie read 12 pages yesterday.\""
+        ],
+        "b_issues": [
+          "Final: missing {'120'} from \"The book has 120 pages.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['12']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "36",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'12'} from \"Julie read 12 pages yesterday.\"",
+          "Final: missing {'12'} from \"Julie read 12 pages yesterday.\""
+        ],
+        "b_issues": [
+          "Final: missing {'120'} from \"The book has 120 pages.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['12']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "36",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'12'} from \"Julie read 12 pages yesterday.\"",
+          "Final: missing {'12'} from \"Julie read 12 pages yesterday.\""
+        ],
+        "b_issues": [
+          "Final: missing {'120'} from \"The book has 120 pages.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['12']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "36",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": true,
+    "correct_in_candidate_majority": true,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "2": {
+    "gold": "5",
+    "question": "How much more money does Betty still need?",
+    "a_facts": [
+      "The wallet costs $100.",
+      "Betty already has half of the required amount."
+    ],
+    "b_facts": [
+      "Her parents give her $15.",
+      "Her grandparents give her twice the amount her parents give."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "Final: missing {'100'} from \"The wallet costs $100.\""
+        ],
+        "b_issues": [
+          "R2: missing {'15'} from \"Her parents give her $15.\"",
+          "Final: missing {'15'} from \"Her parents give her $15.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "Final: missing {'100'} from \"The wallet costs $100.\""
+        ],
+        "b_issues": [
+          "R2: missing {'15'} from \"Her parents give her $15.\"",
+          "Final: missing {'15'} from \"Her parents give her $15.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "Final: missing {'100'} from \"The wallet costs $100.\""
+        ],
+        "b_issues": [
+          "R2: missing {'15'} from \"Her parents give her $15.\"",
+          "Final: missing {'15'} from \"Her parents give her $15.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": true,
+    "correct_in_candidate_majority": true,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "3": {
+    "gold": "16",
+    "question": "What is the final weight of the box?",
+    "a_facts": [
+      "The box initially weighs 2 pounds.",
+      "The brownies triple that weight."
+    ],
+    "b_facts": [
+      "Two more pounds are added afterward.",
+      "The resulting weight is then doubled."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": true,
+        "b_restate_ok": true,
+        "a_issues": [],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "8",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": true,
+        "b_restate_ok": true,
+        "a_issues": [],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "8",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": true,
+        "b_restate_ok": true,
+        "a_issues": [],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "8",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": true,
+    "b_restate_majority": true,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": true,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "4": {
+    "gold": "41",
+    "question": "How much did Alexis pay for the shoes?",
+    "a_facts": [
+      "Alexis has a $200 budget.",
+      "She spends $30, $46, and $38 on three items."
+    ],
+    "b_facts": [
+      "She spends another $11 and $18.",
+      "She has $16 left after buying the shoes."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'46', '38', '30'} from \"She spends $30, $46, and $38 on three items.\""
+        ],
+        "b_issues": [
+          "R2: missing {'16'} from \"She has $16 left after buying the shoes.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['30', '46', '38']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "57",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'46', '38', '30'} from \"She spends $30, $46, and $38 on three items.\""
+        ],
+        "b_issues": [
+          "R2: missing {'16'} from \"She has $16 left after buying the shoes.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['30', '46', '38']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "57",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'46', '38', '30'} from \"She spends $30, $46, and $38 on three items.\""
+        ],
+        "b_issues": [
+          "R2: missing {'16'} from \"She has $16 left after buying the shoes.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['30', '46', '38']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "57",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "5": {
+    "gold": "38",
+    "question": "How many stamps does Bella buy altogether?",
+    "a_facts": [
+      "Bella buys 11 snowflake stamps.",
+      "She buys 9 more truck stamps than snowflake stamps."
+    ],
+    "b_facts": [
+      "She buys 13 fewer rose stamps than truck stamps."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'11'} from \"Bella buys 11 snowflake stamps.\"",
+          "R2: missing {'9'} from \"She buys 9 more truck stamps than snowflake stamps\"",
+          "Final: missing {'11'} from \"Bella buys 11 snowflake stamps.\"",
+          "Final: missing {'9'} from \"She buys 9 more truck stamps than snowflake stamps\""
+        ],
+        "b_issues": [
+          "R1: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\"",
+          "R2: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\"",
+          "Final: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['11']",
+          "solver_a: missing fact nums ['9']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "43",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'11'} from \"Bella buys 11 snowflake stamps.\"",
+          "R2: missing {'9'} from \"She buys 9 more truck stamps than snowflake stamps\"",
+          "Final: missing {'11'} from \"Bella buys 11 snowflake stamps.\"",
+          "Final: missing {'9'} from \"She buys 9 more truck stamps than snowflake stamps\""
+        ],
+        "b_issues": [
+          "R1: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\"",
+          "R2: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\"",
+          "Final: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['11']",
+          "solver_a: missing fact nums ['9']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "43",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'11'} from \"Bella buys 11 snowflake stamps.\"",
+          "R2: missing {'9'} from \"She buys 9 more truck stamps than snowflake stamps\"",
+          "Final: missing {'11'} from \"Bella buys 11 snowflake stamps.\"",
+          "Final: missing {'9'} from \"She buys 9 more truck stamps than snowflake stamps\""
+        ],
+        "b_issues": [
+          "R1: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\"",
+          "R2: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\"",
+          "Final: missing {'13'} from \"She buys 13 fewer rose stamps than truck stamps.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['11']",
+          "solver_a: missing fact nums ['9']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "43",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": false,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "6": {
+    "gold": "5",
+    "question": "How much does each top cost?",
+    "a_facts": [
+      "Ann spends $75 in total.",
+      "She buys 5 pairs of shorts for $7 each."
+    ],
+    "b_facts": [
+      "She buys 2 pairs of shoes for $10 each.",
+      "She buys 4 equally priced tops."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'7', '5'} from \"She buys 5 pairs of shorts for $7 each.\""
+        ],
+        "b_issues": [
+          "R1: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "R1: missing {'4'} from \"She buys 4 equally priced tops.\"",
+          "R2: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "R2: missing {'4'} from \"She buys 4 equally priced tops.\"",
+          "Final: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "Final: missing {'4'} from \"She buys 4 equally priced tops.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['5', '7']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": true,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "8.75",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'7', '5'} from \"She buys 5 pairs of shorts for $7 each.\""
+        ],
+        "b_issues": [
+          "R1: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "R1: missing {'4'} from \"She buys 4 equally priced tops.\"",
+          "R2: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "R2: missing {'4'} from \"She buys 4 equally priced tops.\"",
+          "Final: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "Final: missing {'4'} from \"She buys 4 equally priced tops.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['5', '7']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": true,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "8.75",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'7', '5'} from \"She buys 5 pairs of shorts for $7 each.\""
+        ],
+        "b_issues": [
+          "R1: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "R1: missing {'4'} from \"She buys 4 equally priced tops.\"",
+          "R2: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "R2: missing {'4'} from \"She buys 4 equally priced tops.\"",
+          "Final: missing {'10', '2'} from \"She buys 2 pairs of shoes for $10 each.\"",
+          "Final: missing {'4'} from \"She buys 4 equally priced tops.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['5', '7']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": true,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "8.75",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": false,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": true,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "7": {
+    "gold": "1200",
+    "question": "How much sales revenue does Noah make this month?",
+    "a_facts": [
+      "Large paintings sell for $60 each.",
+      "Small paintings sell for $30 each.",
+      "Noah sold 8 large paintings last month."
+    ],
+    "b_facts": [
+      "Noah sold 4 small paintings last month.",
+      "This month's revenue is twice last month's revenue."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'60'} from \"Large paintings sell for $60 each.\"",
+          "R2: missing {'30'} from \"Small paintings sell for $30 each.\"",
+          "R2: missing {'8'} from \"Noah sold 8 large paintings last month.\"",
+          "Final: missing {'60'} from \"Large paintings sell for $60 each.\"",
+          "Final: missing {'30'} from \"Small paintings sell for $30 each.\"",
+          "Final: missing {'8'} from \"Noah sold 8 large paintings last month.\""
+        ],
+        "b_issues": [
+          "R2: missing {'4'} from \"Noah sold 4 small paintings last month.\"",
+          "Final: missing {'4'} from \"Noah sold 4 small paintings last month.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['60']",
+          "solver_a: missing fact nums ['30']",
+          "solver_a: missing fact nums ['8']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "960",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'60'} from \"Large paintings sell for $60 each.\"",
+          "R2: missing {'30'} from \"Small paintings sell for $30 each.\"",
+          "R2: missing {'8'} from \"Noah sold 8 large paintings last month.\"",
+          "Final: missing {'60'} from \"Large paintings sell for $60 each.\"",
+          "Final: missing {'30'} from \"Small paintings sell for $30 each.\"",
+          "Final: missing {'8'} from \"Noah sold 8 large paintings last month.\""
+        ],
+        "b_issues": [
+          "R2: missing {'4'} from \"Noah sold 4 small paintings last month.\"",
+          "Final: missing {'4'} from \"Noah sold 4 small paintings last month.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['60']",
+          "solver_a: missing fact nums ['30']",
+          "solver_a: missing fact nums ['8']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "960",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'60'} from \"Large paintings sell for $60 each.\"",
+          "R2: missing {'30'} from \"Small paintings sell for $30 each.\"",
+          "R2: missing {'8'} from \"Noah sold 8 large paintings last month.\"",
+          "Final: missing {'60'} from \"Large paintings sell for $60 each.\"",
+          "Final: missing {'30'} from \"Small paintings sell for $30 each.\"",
+          "Final: missing {'8'} from \"Noah sold 8 large paintings last month.\""
+        ],
+        "b_issues": [
+          "R2: missing {'4'} from \"Noah sold 4 small paintings last month.\"",
+          "Final: missing {'4'} from \"Noah sold 4 small paintings last month.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['60']",
+          "solver_a: missing fact nums ['30']",
+          "solver_a: missing fact nums ['8']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "960",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "8": {
+    "gold": "1920",
+    "question": "How many minutes does Carolyn practice in 4 weeks?",
+    "a_facts": [
+      "Piano practice is 20 minutes per day.",
+      "Violin practice is 3 times the piano practice time."
+    ],
+    "b_facts": [
+      "She practices 6 days per week.",
+      "The period lasts 4 weeks."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "R1: missing {'3'} from \"Violin practice is 3 times the piano practice time\"",
+          "R2: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "R2: missing {'3'} from \"Violin practice is 3 times the piano practice time\"",
+          "Final: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "Final: missing {'3'} from \"Violin practice is 3 times the piano practice time\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['20']",
+          "solver_a: missing fact nums ['3']",
+          "solver_a: missing fact nums ['20']",
+          "solver_a: missing fact nums ['3']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "960",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "R1: missing {'3'} from \"Violin practice is 3 times the piano practice time\"",
+          "R2: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "R2: missing {'3'} from \"Violin practice is 3 times the piano practice time\"",
+          "Final: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "Final: missing {'3'} from \"Violin practice is 3 times the piano practice time\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['20']",
+          "solver_a: missing fact nums ['3']",
+          "solver_a: missing fact nums ['20']",
+          "solver_a: missing fact nums ['3']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "960",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "R1: missing {'3'} from \"Violin practice is 3 times the piano practice time\"",
+          "R2: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "R2: missing {'3'} from \"Violin practice is 3 times the piano practice time\"",
+          "Final: missing {'20'} from \"Piano practice is 20 minutes per day.\"",
+          "Final: missing {'3'} from \"Violin practice is 3 times the piano practice time\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['20']",
+          "solver_a: missing fact nums ['3']",
+          "solver_a: missing fact nums ['20']",
+          "solver_a: missing fact nums ['3']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "960",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": true,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "9": {
+    "gold": "45",
+    "question": "How many minutes does the third part take?",
+    "a_facts": [
+      "The first part takes 25 minutes.",
+      "The second part takes twice as long as the first."
+    ],
+    "b_facts": [
+      "The full assignment takes 2 hours."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'25'} from \"The first part takes 25 minutes.\"",
+          "R2: missing {'25'} from \"The first part takes 25 minutes.\"",
+          "Final: missing {'25'} from \"The first part takes 25 minutes.\""
+        ],
+        "b_issues": [
+          "R1: missing {'2'} from \"The full assignment takes 2 hours.\"",
+          "R2: missing {'2'} from \"The full assignment takes 2 hours.\"",
+          "Final: missing {'2'} from \"The full assignment takes 2 hours.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['25']",
+          "solver_a: missing fact nums ['25']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'25'} from \"The first part takes 25 minutes.\"",
+          "R2: missing {'25'} from \"The first part takes 25 minutes.\"",
+          "Final: missing {'25'} from \"The first part takes 25 minutes.\""
+        ],
+        "b_issues": [
+          "R1: missing {'2'} from \"The full assignment takes 2 hours.\"",
+          "R2: missing {'2'} from \"The full assignment takes 2 hours.\"",
+          "Final: missing {'2'} from \"The full assignment takes 2 hours.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['25']",
+          "solver_a: missing fact nums ['25']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'25'} from \"The first part takes 25 minutes.\"",
+          "R2: missing {'25'} from \"The first part takes 25 minutes.\"",
+          "Final: missing {'25'} from \"The first part takes 25 minutes.\""
+        ],
+        "b_issues": [
+          "R1: missing {'2'} from \"The full assignment takes 2 hours.\"",
+          "R2: missing {'2'} from \"The full assignment takes 2 hours.\"",
+          "Final: missing {'2'} from \"The full assignment takes 2 hours.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['25']",
+          "solver_a: missing fact nums ['25']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": false,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "10": {
+    "gold": "840",
+    "question": "How much does James earn each week from both jobs?",
+    "a_facts": [
+      "The main-job rate is $20 per hour.",
+      "James works 30 hours at the main job."
+    ],
+    "b_facts": [
+      "The second-job rate is 20% lower.",
+      "He works half as many hours at the second job."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "Final: missing {'20'} from \"The main-job rate is $20 per hour.\"",
+          "Final: missing {'30'} from \"James works 30 hours at the main job.\""
+        ],
+        "b_issues": [
+          "R1: missing {'20'} from \"The second-job rate is 20% lower.\"",
+          "R2: missing {'20'} from \"The second-job rate is 20% lower.\"",
+          "Final: missing {'20'} from \"The second-job rate is 20% lower.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "480",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "Final: missing {'20'} from \"The main-job rate is $20 per hour.\"",
+          "Final: missing {'30'} from \"James works 30 hours at the main job.\""
+        ],
+        "b_issues": [
+          "R1: missing {'20'} from \"The second-job rate is 20% lower.\"",
+          "R2: missing {'20'} from \"The second-job rate is 20% lower.\"",
+          "Final: missing {'20'} from \"The second-job rate is 20% lower.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "480",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "Final: missing {'20'} from \"The main-job rate is $20 per hour.\"",
+          "Final: missing {'30'} from \"James works 30 hours at the main job.\""
+        ],
+        "b_issues": [
+          "R1: missing {'20'} from \"The second-job rate is 20% lower.\"",
+          "R2: missing {'20'} from \"The second-job rate is 20% lower.\"",
+          "Final: missing {'20'} from \"The second-job rate is 20% lower.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": false,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "480",
+        "error_stage": "correct_in_reasoning_not_captured",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": true,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "11": {
+    "gold": "520",
+    "question": "What balance remains after the 4 monthly payments?",
+    "a_facts": [
+      "The laptop costs $1000.",
+      "The down payment is 20% plus an additional $20."
+    ],
+    "b_facts": [
+      "The monthly payment is $65.",
+      "Tara makes 4 monthly payments."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'1000'} from \"The laptop costs $1000.\"",
+          "R2: missing {'1000'} from \"The laptop costs $1000.\"",
+          "R2: missing {'20'} from \"The down payment is 20% plus an additional $20.\"",
+          "Final: missing {'1000'} from \"The laptop costs $1000.\""
+        ],
+        "b_issues": [
+          "R1: missing {'65'} from \"The monthly payment is $65.\"",
+          "R2: missing {'65'} from \"The monthly payment is $65.\"",
+          "Final: missing {'65'} from \"The monthly payment is $65.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['1000']",
+          "solver_a: missing fact nums ['1000']",
+          "solver_a: missing fact nums ['20', '20']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'1000'} from \"The laptop costs $1000.\"",
+          "R2: missing {'1000'} from \"The laptop costs $1000.\"",
+          "R2: missing {'20'} from \"The down payment is 20% plus an additional $20.\"",
+          "Final: missing {'1000'} from \"The laptop costs $1000.\""
+        ],
+        "b_issues": [
+          "R1: missing {'65'} from \"The monthly payment is $65.\"",
+          "R2: missing {'65'} from \"The monthly payment is $65.\"",
+          "Final: missing {'65'} from \"The monthly payment is $65.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['1000']",
+          "solver_a: missing fact nums ['1000']",
+          "solver_a: missing fact nums ['20', '20']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'1000'} from \"The laptop costs $1000.\"",
+          "R2: missing {'1000'} from \"The laptop costs $1000.\"",
+          "R2: missing {'20'} from \"The down payment is 20% plus an additional $20.\"",
+          "Final: missing {'1000'} from \"The laptop costs $1000.\""
+        ],
+        "b_issues": [
+          "R1: missing {'65'} from \"The monthly payment is $65.\"",
+          "R2: missing {'65'} from \"The monthly payment is $65.\"",
+          "Final: missing {'65'} from \"The monthly payment is $65.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['1000']",
+          "solver_a: missing fact nums ['1000']",
+          "solver_a: missing fact nums ['20', '20']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": false,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "12": {
+    "gold": "3",
+    "question": "How many packs must Roger buy?",
+    "a_facts": [
+      "There are 13 players.",
+      "Each person needs one pouch."
+    ],
+    "b_facts": [
+      "There are 3 coaches and 2 helpers.",
+      "Each pack contains 6 pouches."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'13'} from \"There are 13 players.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['13']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_b",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": true,
+        "finalizer_mentions_correct": true,
+        "final_correct": true,
+        "final_prediction": "3",
+        "error_stage": "none_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'13'} from \"There are 13 players.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['13']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_b",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": true,
+        "finalizer_mentions_correct": true,
+        "final_correct": true,
+        "final_prediction": "3",
+        "error_stage": "none_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'13'} from \"There are 13 players.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['13']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_b",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": true,
+        "finalizer_mentions_correct": true,
+        "final_correct": true,
+        "final_prediction": "3",
+        "error_stage": "none_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 4
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": true,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": true,
+    "correct_in_candidate_majority": true,
+    "final_correct_majority": true,
+    "complete_chain_majority": false
+  },
+  "13": {
+    "gold": "28",
+    "question": "How many kilograms does each of the last two people lose?",
+    "a_facts": [
+      "The four people lose 103 kilograms in total.",
+      "The first person loses 27 kilograms."
+    ],
+    "b_facts": [
+      "The second person loses 7 kilograms less than the first.",
+      "The final two people lose equal amounts."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'103'} from \"The four people lose 103 kilograms in total.\"",
+          "R2: missing {'27'} from \"The first person loses 27 kilograms.\"",
+          "Final: missing {'103'} from \"The four people lose 103 kilograms in total.\"",
+          "Final: missing {'27'} from \"The first person loses 27 kilograms.\""
+        ],
+        "b_issues": [
+          "R2: missing {'7'} from \"The second person loses 7 kilograms less than the \"",
+          "Final: missing {'7'} from \"The second person loses 7 kilograms less than the \""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['103']",
+          "solver_a: missing fact nums ['27']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "46",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'103'} from \"The four people lose 103 kilograms in total.\"",
+          "R2: missing {'27'} from \"The first person loses 27 kilograms.\"",
+          "Final: missing {'103'} from \"The four people lose 103 kilograms in total.\"",
+          "Final: missing {'27'} from \"The first person loses 27 kilograms.\""
+        ],
+        "b_issues": [
+          "R2: missing {'7'} from \"The second person loses 7 kilograms less than the \"",
+          "Final: missing {'7'} from \"The second person loses 7 kilograms less than the \""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['103']",
+          "solver_a: missing fact nums ['27']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "46",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R2: missing {'103'} from \"The four people lose 103 kilograms in total.\"",
+          "R2: missing {'27'} from \"The first person loses 27 kilograms.\"",
+          "Final: missing {'103'} from \"The four people lose 103 kilograms in total.\"",
+          "Final: missing {'27'} from \"The first person loses 27 kilograms.\""
+        ],
+        "b_issues": [
+          "R2: missing {'7'} from \"The second person loses 7 kilograms less than the \"",
+          "Final: missing {'7'} from \"The second person loses 7 kilograms less than the \""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['103']",
+          "solver_a: missing fact nums ['27']"
+        ],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "46",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 4,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "14": {
+    "gold": "768",
+    "question": "How many vegetables does the garden produce altogether?",
+    "a_facts": [
+      "The garden produces 237 potatoes.",
+      "It produces 60 fewer cucumbers than potatoes."
+    ],
+    "b_facts": [
+      "It produces twice as many peppers as cucumbers."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "Final: missing {'237'} from \"The garden produces 237 potatoes.\"",
+          "Final: missing {'60'} from \"It produces 60 fewer cucumbers than potatoes.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "459",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "Final: missing {'237'} from \"The garden produces 237 potatoes.\"",
+          "Final: missing {'60'} from \"It produces 60 fewer cucumbers than potatoes.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "459",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "Final: missing {'237'} from \"The garden produces 237 potatoes.\"",
+          "Final: missing {'60'} from \"It produces 60 fewer cucumbers than potatoes.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 1,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "459",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": true,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "15": {
+    "gold": "100",
+    "question": "How many cans does Jennifer take home?",
+    "a_facts": [
+      "Jennifer initially buys 40 cans."
+    ],
+    "b_facts": [
+      "Jennifer buys 6 additional cans for every 5 cans Mark buys.",
+      "Mark buys 50 cans."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'40'} from \"Jennifer initially buys 40 cans.\"",
+          "R2: missing {'40'} from \"Jennifer initially buys 40 cans.\"",
+          "Final: missing {'40'} from \"Jennifer initially buys 40 cans.\""
+        ],
+        "b_issues": [
+          "R1: missing {'50'} from \"Mark buys 50 cans.\"",
+          "R2: missing {'50'} from \"Mark buys 50 cans.\"",
+          "Final: missing {'5', '6'} from \"Jennifer buys 6 additional cans for every 5 cans M\"",
+          "Final: missing {'50'} from \"Mark buys 50 cans.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['40']",
+          "solver_a: missing fact nums ['40']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "36",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'40'} from \"Jennifer initially buys 40 cans.\"",
+          "R2: missing {'40'} from \"Jennifer initially buys 40 cans.\"",
+          "Final: missing {'40'} from \"Jennifer initially buys 40 cans.\""
+        ],
+        "b_issues": [
+          "R1: missing {'50'} from \"Mark buys 50 cans.\"",
+          "R2: missing {'50'} from \"Mark buys 50 cans.\"",
+          "Final: missing {'5', '6'} from \"Jennifer buys 6 additional cans for every 5 cans M\"",
+          "Final: missing {'50'} from \"Mark buys 50 cans.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['40']",
+          "solver_a: missing fact nums ['40']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "36",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'40'} from \"Jennifer initially buys 40 cans.\"",
+          "R2: missing {'40'} from \"Jennifer initially buys 40 cans.\"",
+          "Final: missing {'40'} from \"Jennifer initially buys 40 cans.\""
+        ],
+        "b_issues": [
+          "R1: missing {'50'} from \"Mark buys 50 cans.\"",
+          "R2: missing {'50'} from \"Mark buys 50 cans.\"",
+          "Final: missing {'5', '6'} from \"Jennifer buys 6 additional cans for every 5 cans M\"",
+          "Final: missing {'50'} from \"Mark buys 50 cans.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['40']",
+          "solver_a: missing fact nums ['40']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "36",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": false,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "16": {
+    "gold": "700",
+    "question": "What was Irene's total income last week?",
+    "a_facts": [
+      "Irene earns $500 for 40 regular hours."
+    ],
+    "b_facts": [
+      "She earns $20 per overtime hour.",
+      "She worked 50 hours."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'500', '40'} from \"Irene earns $500 for 40 regular hours.\"",
+          "Final: missing {'500', '40'} from \"Irene earns $500 for 40 regular hours.\""
+        ],
+        "b_issues": [
+          "R1: missing {'20'} from \"She earns $20 per overtime hour.\"",
+          "R1: missing {'50'} from \"She worked 50 hours.\"",
+          "R2: missing {'50'} from \"She worked 50 hours.\"",
+          "Final: missing {'20'} from \"She earns $20 per overtime hour.\"",
+          "Final: missing {'50'} from \"She worked 50 hours.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['500', '40']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "680",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'500', '40'} from \"Irene earns $500 for 40 regular hours.\"",
+          "Final: missing {'500', '40'} from \"Irene earns $500 for 40 regular hours.\""
+        ],
+        "b_issues": [
+          "R1: missing {'20'} from \"She earns $20 per overtime hour.\"",
+          "R1: missing {'50'} from \"She worked 50 hours.\"",
+          "R2: missing {'50'} from \"She worked 50 hours.\"",
+          "Final: missing {'20'} from \"She earns $20 per overtime hour.\"",
+          "Final: missing {'50'} from \"She worked 50 hours.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['500', '40']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "680",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'500', '40'} from \"Irene earns $500 for 40 regular hours.\"",
+          "Final: missing {'500', '40'} from \"Irene earns $500 for 40 regular hours.\""
+        ],
+        "b_issues": [
+          "R1: missing {'20'} from \"She earns $20 per overtime hour.\"",
+          "R1: missing {'50'} from \"She worked 50 hours.\"",
+          "R2: missing {'50'} from \"She worked 50 hours.\"",
+          "Final: missing {'20'} from \"She earns $20 per overtime hour.\"",
+          "Final: missing {'50'} from \"She worked 50 hours.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": true,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['500', '40']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "680",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": false,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "17": {
+    "gold": "35",
+    "question": "How much money does Winwin take home?",
+    "a_facts": [
+      "Winwin wins $50.",
+      "She pays 20% in tax."
+    ],
+    "b_facts": [
+      "She pays an additional $5 processing fee."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "Final: missing {'50'} from \"Winwin wins $50.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 2,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "38",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 2
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "Final: missing {'50'} from \"Winwin wins $50.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 2,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "38",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 2
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "Final: missing {'50'} from \"Winwin wins $50.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": true,
+        "fact_distortions": [],
+        "first_complete_round": 2,
+        "first_complete_checkpoint": "after_simultaneous_turn",
+        "correct_in_reasoning": true,
+        "correct_in_candidate": true,
+        "correct_first_source": "solver_a",
+        "correct_first_round": 1,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "38",
+        "error_stage": "correct_candidate_not_passed_to_finalizer",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 2
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": true,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": true,
+    "correct_in_reasoning_majority": true,
+    "correct_in_candidate_majority": true,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "18": {
+    "gold": "200",
+    "question": "How much money remains in John's piggy bank?",
+    "a_facts": [
+      "John saves $25 per month.",
+      "He saves for 2 years."
+    ],
+    "b_facts": [
+      "He spends $400 on a car repair."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'25'} from \"John saves $25 per month.\"",
+          "R2: missing {'25'} from \"John saves $25 per month.\"",
+          "Final: missing {'25'} from \"John saves $25 per month.\""
+        ],
+        "b_issues": [
+          "R1: missing {'400'} from \"He spends $400 on a car repair.\"",
+          "R2: missing {'400'} from \"He spends $400 on a car repair.\"",
+          "Final: missing {'400'} from \"He spends $400 on a car repair.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['25']",
+          "solver_a: missing fact nums ['25']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "360",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'25'} from \"John saves $25 per month.\"",
+          "R2: missing {'25'} from \"John saves $25 per month.\"",
+          "Final: missing {'25'} from \"John saves $25 per month.\""
+        ],
+        "b_issues": [
+          "R1: missing {'400'} from \"He spends $400 on a car repair.\"",
+          "R2: missing {'400'} from \"He spends $400 on a car repair.\"",
+          "Final: missing {'400'} from \"He spends $400 on a car repair.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['25']",
+          "solver_a: missing fact nums ['25']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "360",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'25'} from \"John saves $25 per month.\"",
+          "R2: missing {'25'} from \"John saves $25 per month.\"",
+          "Final: missing {'25'} from \"John saves $25 per month.\""
+        ],
+        "b_issues": [
+          "R1: missing {'400'} from \"He spends $400 on a car repair.\"",
+          "R2: missing {'400'} from \"He spends $400 on a car repair.\"",
+          "Final: missing {'400'} from \"He spends $400 on a car repair.\""
+        ],
+        "a_absorbs_b": false,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['25']",
+          "solver_a: missing fact nums ['25']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "360",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": false,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "19": {
+    "gold": "135",
+    "question": "How many plates are needed?",
+    "a_facts": [
+      "Wickham invites 30 people.",
+      "Half of them each bring one additional person."
+    ],
+    "b_facts": [
+      "There are 3 courses.",
+      "Each person uses one new plate per course."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'30'} from \"Wickham invites 30 people.\"",
+          "R2: missing {'30'} from \"Wickham invites 30 people.\"",
+          "Final: missing {'30'} from \"Wickham invites 30 people.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['30']",
+          "solver_a: missing fact nums ['30']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "45",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'30'} from \"Wickham invites 30 people.\"",
+          "R2: missing {'30'} from \"Wickham invites 30 people.\"",
+          "Final: missing {'30'} from \"Wickham invites 30 people.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['30']",
+          "solver_a: missing fact nums ['30']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "45",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": true,
+        "a_issues": [
+          "R1: missing {'30'} from \"Wickham invites 30 people.\"",
+          "R2: missing {'30'} from \"Wickham invites 30 people.\"",
+          "Final: missing {'30'} from \"Wickham invites 30 people.\""
+        ],
+        "b_issues": [],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['30']",
+          "solver_a: missing fact nums ['30']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": true,
+        "final_correct": false,
+        "final_prediction": "45",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": true,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  },
+  "20": {
+    "gold": "43",
+    "question": "How many hard hats remain in the truck?",
+    "a_facts": [
+      "The truck initially contains 26 pink hard hats.",
+      "The truck initially contains 15 green hard hats.",
+      "The truck initially contains 24 yellow hard hats."
+    ],
+    "b_facts": [
+      "Carl removes 4 pink hard hats.",
+      "John removes 6 additional pink hard hats.",
+      "John removes twice 6, or 12, green hard hats."
+    ],
+    "seeds": [
+      {
+        "seed": 0,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "R1: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "R1: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\"",
+          "R2: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "R2: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "R2: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\"",
+          "Final: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "Final: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "Final: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\""
+        ],
+        "b_issues": [
+          "R2: missing {'4'} from \"Carl removes 4 pink hard hats.\"",
+          "R2: missing {'6'} from \"John removes 6 additional pink hard hats.\"",
+          "R2: missing {'6', '12'} from \"John removes twice 6, or 12, green hard hats.\"",
+          "Final: missing {'4'} from \"Carl removes 4 pink hard hats.\"",
+          "Final: missing {'6'} from \"John removes 6 additional pink hard hats.\"",
+          "Final: missing {'6', '12'} from \"John removes twice 6, or 12, green hard hats.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['26']",
+          "solver_a: missing fact nums ['15']",
+          "solver_a: missing fact nums ['24']",
+          "solver_a: missing fact nums ['26']",
+          "solver_a: missing fact nums ['15']",
+          "solver_a: missing fact nums ['24']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 1,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "R1: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "R1: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\"",
+          "R2: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "R2: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "R2: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\"",
+          "Final: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "Final: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "Final: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\""
+        ],
+        "b_issues": [
+          "R2: missing {'4'} from \"Carl removes 4 pink hard hats.\"",
+          "R2: missing {'6'} from \"John removes 6 additional pink hard hats.\"",
+          "R2: missing {'6', '12'} from \"John removes twice 6, or 12, green hard hats.\"",
+          "Final: missing {'4'} from \"Carl removes 4 pink hard hats.\"",
+          "Final: missing {'6'} from \"John removes 6 additional pink hard hats.\"",
+          "Final: missing {'6', '12'} from \"John removes twice 6, or 12, green hard hats.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['26']",
+          "solver_a: missing fact nums ['15']",
+          "solver_a: missing fact nums ['24']",
+          "solver_a: missing fact nums ['26']",
+          "solver_a: missing fact nums ['15']",
+          "solver_a: missing fact nums ['24']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      },
+      {
+        "seed": 2,
+        "a_restate_ok": false,
+        "b_restate_ok": false,
+        "a_issues": [
+          "R1: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "R1: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "R1: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\"",
+          "R2: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "R2: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "R2: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\"",
+          "Final: missing {'26'} from \"The truck initially contains 26 pink hard hats.\"",
+          "Final: missing {'15'} from \"The truck initially contains 15 green hard hats.\"",
+          "Final: missing {'24'} from \"The truck initially contains 24 yellow hard hats.\""
+        ],
+        "b_issues": [
+          "R2: missing {'4'} from \"Carl removes 4 pink hard hats.\"",
+          "R2: missing {'6'} from \"John removes 6 additional pink hard hats.\"",
+          "R2: missing {'6', '12'} from \"John removes twice 6, or 12, green hard hats.\"",
+          "Final: missing {'4'} from \"Carl removes 4 pink hard hats.\"",
+          "Final: missing {'6'} from \"John removes 6 additional pink hard hats.\"",
+          "Final: missing {'6', '12'} from \"John removes twice 6, or 12, green hard hats.\""
+        ],
+        "a_absorbs_b": true,
+        "b_absorbs_a": false,
+        "fact_distortions": [
+          "solver_a: missing fact nums ['26']",
+          "solver_a: missing fact nums ['15']",
+          "solver_a: missing fact nums ['24']",
+          "solver_a: missing fact nums ['26']",
+          "solver_a: missing fact nums ['15']",
+          "solver_a: missing fact nums ['24']"
+        ],
+        "first_complete_round": "?",
+        "first_complete_checkpoint": "None",
+        "correct_in_reasoning": false,
+        "correct_in_candidate": false,
+        "correct_first_source": null,
+        "correct_first_round": null,
+        "finalizer_sees_correct": false,
+        "finalizer_mentions_correct": false,
+        "final_correct": false,
+        "final_prediction": "30",
+        "error_stage": "solver_never_produced_correct",
+        "complete_chain": false,
+        "candidate_count": 2,
+        "correct_candidate_count": 0
+      }
+    ],
+    "facts_disclosed_A": true,
+    "facts_disclosed_B": true,
+    "a_restate_majority": false,
+    "b_restate_majority": false,
+    "a_absorbs_b_majority": true,
+    "b_absorbs_a_majority": false,
+    "correct_in_reasoning_majority": false,
+    "correct_in_candidate_majority": false,
+    "final_correct_majority": false,
+    "complete_chain_majority": false
+  }
+}

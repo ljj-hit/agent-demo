@@ -1,0 +1,21 @@
+qid,gold,question,a_restate_ok,b_restate_ok,correct_in_reasoning,correct_in_candidate,final_correct,error_stage_majority
+1,42,How many pages should Julie read tomorrow?,False,False,True,True,False,correct_candidate_not_passed_to_finalizer
+2,5,How much more money does Betty still need?,False,False,True,True,False,correct_candidate_not_passed_to_finalizer
+3,16,What is the final weight of the box?,True,True,True,False,False,correct_in_reasoning_not_captured
+4,41,How much did Alexis pay for the shoes?,False,False,False,False,False,solver_never_produced_correct
+5,38,How many stamps does Bella buy altogether?,False,False,False,False,False,solver_never_produced_correct
+6,5,How much does each top cost?,False,False,True,False,False,correct_in_reasoning_not_captured
+7,1200,How much sales revenue does Noah make this month?,False,False,False,False,False,solver_never_produced_correct
+8,1920,How many minutes does Carolyn practice in 4 weeks?,False,True,False,False,False,solver_never_produced_correct
+9,45,How many minutes does the third part take?,False,False,False,False,False,solver_never_produced_correct
+10,840,How much does James earn each week from both jobs?,False,False,True,False,False,correct_in_reasoning_not_captured
+11,520,What balance remains after the 4 monthly payments?,False,False,False,False,False,solver_never_produced_correct
+12,3,How many packs must Roger buy?,False,True,True,True,True,none_correct
+13,28,How many kilograms does each of the last two people lose?,False,False,False,False,False,solver_never_produced_correct
+14,768,How many vegetables does the garden produce altogether?,False,True,False,False,False,solver_never_produced_correct
+15,100,How many cans does Jennifer take home?,False,False,False,False,False,solver_never_produced_correct
+16,700,What was Irene's total income last week?,False,False,False,False,False,solver_never_produced_correct
+17,35,How much money does Winwin take home?,False,True,True,True,False,correct_candidate_not_passed_to_finalizer
+18,200,How much money remains in John's piggy bank?,False,False,False,False,False,solver_never_produced_correct
+19,135,How many plates are needed?,False,True,False,False,False,solver_never_produced_correct
+20,43,How many hard hats remain in the truck?,False,False,False,False,False,solver_never_produced_correct
