@@ -1,0 +1,26 @@
+{
+  "script": "dependency_program_experiment.py",
+  "created_at": "2026-08-25T17:38:40",
+  "settings": {
+    "gold_fresh_oracle": "Gold Facts + Fresh + Oracle Plan",
+    "gold_fresh_generated": "Gold Facts + Fresh + Generated Plan",
+    "llm_fresh_oracle": "LLM Facts + Fresh + Oracle Plan",
+    "llm_fresh_generated": "LLM Facts + Fresh + Generated Plan",
+    "gold_history_generated": "Gold Facts + History + Generated Plan",
+    "llm_history_generated": "LLM Facts + History + Generated Plan"
+  },
+  "planners": [
+    "A_one_shot",
+    "B_backward",
+    "C_beam",
+    "D_beam_prune",
+    "E_beam_verify_repair"
+  ],
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\20.json",
+  "proposal_backend": "hybrid",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "device": "cuda",
+  "temperature": 0.0,
+  "max_new_tokens": 128,
+  "seed": 42
+}

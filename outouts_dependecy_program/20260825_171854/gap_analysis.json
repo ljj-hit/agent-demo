@@ -1,0 +1,71 @@
+{
+  "fact_extraction_gap": {
+    "definition": "Gold Facts + Fresh + Oracle Plan minus LLM Facts + Fresh + Oracle Plan",
+    "final_accuracy_gap": 0.050000000000000044,
+    "fact_correctness_gap": 0.013392857142857095
+  },
+  "dependency_recovery_gap": {
+    "A_one_shot": {
+      "definition": "Gold Facts + Fresh + Oracle Plan minus Gold Facts + Fresh + Generated Plan",
+      "final_accuracy_gap": 1.0,
+      "dependency_edge_f1_gap": 0.941974691974692
+    },
+    "B_backward": {
+      "definition": "Gold Facts + Fresh + Oracle Plan minus Gold Facts + Fresh + Generated Plan",
+      "final_accuracy_gap": 0.85,
+      "dependency_edge_f1_gap": 0.8422402597402597
+    },
+    "C_beam": {
+      "definition": "Gold Facts + Fresh + Oracle Plan minus Gold Facts + Fresh + Generated Plan",
+      "final_accuracy_gap": 0.8,
+      "dependency_edge_f1_gap": 0.876525974025974
+    },
+    "D_beam_prune": {
+      "definition": "Gold Facts + Fresh + Oracle Plan minus Gold Facts + Fresh + Generated Plan",
+      "final_accuracy_gap": 0.8,
+      "dependency_edge_f1_gap": 0.876525974025974
+    },
+    "E_beam_verify_repair": {
+      "definition": "Gold Facts + Fresh + Oracle Plan minus Gold Facts + Fresh + Generated Plan",
+      "final_accuracy_gap": 0.8,
+      "dependency_edge_f1_gap": 0.876525974025974
+    }
+  },
+  "history_contamination_gap": {
+    "A_one_shot": {
+      "definition": "Fresh generated setting minus history generated setting",
+      "gold_fact_final_accuracy_gap": 0.0,
+      "llm_fact_final_accuracy_gap": 0.0,
+      "gold_fact_executable_rate_gap": 1.0,
+      "llm_fact_executable_rate_gap": 1.0
+    },
+    "B_backward": {
+      "definition": "Fresh generated setting minus history generated setting",
+      "gold_fact_final_accuracy_gap": 0.0,
+      "llm_fact_final_accuracy_gap": 0.0,
+      "gold_fact_executable_rate_gap": 1.0,
+      "llm_fact_executable_rate_gap": 1.0
+    },
+    "C_beam": {
+      "definition": "Fresh generated setting minus history generated setting",
+      "gold_fact_final_accuracy_gap": 0.0,
+      "llm_fact_final_accuracy_gap": 0.0,
+      "gold_fact_executable_rate_gap": 1.0,
+      "llm_fact_executable_rate_gap": 1.0
+    },
+    "D_beam_prune": {
+      "definition": "Fresh generated setting minus history generated setting",
+      "gold_fact_final_accuracy_gap": 0.05000000000000002,
+      "llm_fact_final_accuracy_gap": 0.05000000000000002,
+      "gold_fact_executable_rate_gap": 1.0,
+      "llm_fact_executable_rate_gap": 1.0
+    },
+    "E_beam_verify_repair": {
+      "definition": "Fresh generated setting minus history generated setting",
+      "gold_fact_final_accuracy_gap": 0.05000000000000002,
+      "llm_fact_final_accuracy_gap": 0.05000000000000002,
+      "gold_fact_executable_rate_gap": 1.0,
+      "llm_fact_executable_rate_gap": 1.0
+    }
+  }
+}
