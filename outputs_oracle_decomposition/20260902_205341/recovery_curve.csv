@@ -1,0 +1,8 @@
+﻿oracle_level,label,visible_oracle_information,n,final_accuracy,dependency_edge_f1,executable_rate,candidate_emergence_rate
+O0,O0 No Oracle,none,20,0.0,0.01818181818181818,1.0,0.0
+O1,O1 Goal,goal,20,0.0,0.01818181818181818,1.0,0.0
+O2,O2 Leaves,relevant_facts,20,0.0,0.022222222222222223,1.0,0.0
+O3,O3 Binding,fact_binding,20,0.0,0.01818181818181818,1.0,0.0
+O4,O4 Operator,local_relations,20,0.0,0.01818181818181818,1.0,0.0
+O5,O5 Topology,topology,20,0.0,0.01818181818181818,1.0,0.0
+O6,O6 Full Program,full_program,20,1.0,0.5157918835550415,1.0,1.0

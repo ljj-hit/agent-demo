@@ -1,0 +1,8 @@
+﻿setting,oracle_level,visible_oracle_information,planner,n,fact_correctness,dependency_edge_f1,executable_rate,candidate_emergence_rate,final_accuracy,llm_call_count,prompt_tokens,completion_tokens,total_tokens,llm_runtime_seconds,case_runtime_seconds
+oracle_decomposition_O0,O0,none,LLM_strict_backward,20,1.0,0.01818181818181818,1.0,0.0,0.0,22,5485,793,6278,108.413764,108.454187
+oracle_decomposition_O1,O1,goal,LLM_strict_backward,20,1.0,0.01818181818181818,1.0,0.0,0.0,23,5956,821,6777,93.701418,93.736356
+oracle_decomposition_O2,O2,relevant_facts,LLM_strict_backward,20,1.0,0.022222222222222223,1.0,0.0,0.0,20,5863,735,6598,94.686612,94.719575
+oracle_decomposition_O3,O3,fact_binding,LLM_strict_backward,20,1.0,0.01818181818181818,1.0,0.0,0.0,21,6424,743,7167,87.499894,87.533831
+oracle_decomposition_O4,O4,local_relations,LLM_strict_backward,20,1.0,0.01818181818181818,1.0,0.0,0.0,30,10172,1064,11236,133.636311,133.680646
+oracle_decomposition_O5,O5,topology,LLM_strict_backward,20,1.0,0.01818181818181818,1.0,0.0,0.0,23,7739,767,8506,86.936622,86.971144
+oracle_decomposition_O6,O6,full_program,oracle,20,1.0,0.5157918835550415,1.0,1.0,1.0,0,0,0,0,0.0,0.022449
