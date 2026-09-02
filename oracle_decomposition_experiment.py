@@ -62,66 +62,131 @@ class OracleContext:
 
 def semantic_goal(item: dict[str, Any], oracle: dep.OraclePlan) -> str:
     question = str(item.get("shared_question") or item.get("full") or "").lower()
-    if "remain" in question or "left" in question or "still need" in question:
-        return "remaining_amount"
-    if "total" in question:
-        return "total_amount"
+    if "tomorrow" in question and "pages" in question:
+        return "tomorrow_pages"
+    if "still need" in question or "more money" in question:
+        return "remaining_money"
+    if "remain" in question or "left" in question:
+        return "remaining_quantity"
     if "income" in question or "earn" in question:
         return "total_income"
-    if "weight" in question:
+    if "final weight" in question or "weight" in question:
         return "final_weight"
+    if "shoes" in question and ("pay" in question or "cost" in question):
+        return "shoes_cost"
+    if "stamps" in question and ("altogether" in question or "total" in question):
+        return "total_stamps"
     if "cans" in question:
         return "total_cans"
-    return oracle.program.answer_node
+    if "total" in question or "altogether" in question:
+        return "total_quantity"
+    if "how many" in question:
+        return "target_quantity"
+    if "how much" in question:
+        return "answer_amount"
+    return "requested_value"
 
 
-def oracle_local_relations(program: dep.Program) -> list[dict[str, Any]]:
-    rows = []
-    facts_by_node = {
-        node_id: node.label or (node.fact_id or node_id)
-        for node_id, node in program.nodes.items()
-        if node.op == "FACT"
-    }
-    for index, node_id in enumerate(sorted(program.reachable_nodes()), 1):
+def build_oracle_node_namespace(program: dep.Program) -> dict[str, str]:
+    reachable = program.reachable_nodes()
+    mapping: dict[str, str] = {}
+    fact_nodes = sorted(
+        node_id for node_id in reachable
+        if program.nodes[node_id].op == "FACT"
+    )
+    const_nodes = sorted(
+        node_id for node_id in reachable
+        if program.nodes[node_id].op == "CONST"
+    )
+    for index, node_id in enumerate([*fact_nodes, *const_nodes], 1):
+        mapping[node_id] = f"F{index:03d}"
+
+    ordered_derived: list[str] = []
+    visited: set[str] = set()
+
+    def visit(node_id: str) -> None:
+        if node_id in visited or node_id not in reachable:
+            return
+        visited.add(node_id)
         node = program.nodes[node_id]
-        if node.op not in dep.OPS:
+        for arg in node.args:
+            child_id = str(arg)
+            if child_id in program.nodes and program.nodes[child_id].op in dep.OPS:
+                visit(child_id)
+        if node.op in dep.OPS:
+            ordered_derived.append(node_id)
+
+    visit(program.answer_node)
+    for index, node_id in enumerate(ordered_derived, 1):
+        mapping[node_id] = f"D{index:03d}"
+    return mapping
+
+
+def canonical_fact_metadata(oracle: dep.OraclePlan, namespace: dict[str, str]) -> dict[str, dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+    facts_by_id = {fact.fact_id: fact for fact in oracle.facts}
+    for node_id, canonical_id in sorted(namespace.items(), key=lambda item: item[1]):
+        node = oracle.program.nodes[node_id]
+        if node.op != "FACT" or not node.fact_id:
             continue
+        fact = facts_by_id.get(node.fact_id)
+        rows[canonical_id] = {
+            "source_fact_id": node.fact_id,
+            "variable": fact.key if fact else node.label,
+        }
+    return rows
+
+
+def oracle_local_relations(program: dep.Program, namespace: dict[str, str]) -> list[dict[str, Any]]:
+    rows = []
+    derived_items = sorted(
+        ((canonical_id, node_id) for node_id, canonical_id in namespace.items() if canonical_id.startswith("D")),
+        key=lambda item: item[0],
+    )
+    for canonical_id, node_id in derived_items:
+        node = program.nodes[node_id]
         rows.append({
-            "relation_id": f"R{index:03d}",
-            "result": node.label or f"derived_{index:03d}",
+            "result": canonical_id,
             "op": node.op,
             "inputs": [
-                facts_by_node.get(str(arg), f"derived_input_{arg}")
+                namespace[str(arg)]
                 for arg in node.args
-                if str(arg) in program.nodes
+                if str(arg) in namespace
             ],
         })
     return rows
 
 
-def oracle_topology(program: dep.Program) -> list[dict[str, Any]]:
-    reachable = program.reachable_nodes()
-    derived = sorted(node_id for node_id in reachable if program.nodes[node_id].op in dep.OPS)
-    leaves = sorted(node_id for node_id in reachable if program.nodes[node_id].op in {"FACT", "CONST"})
-    node_map = {node_id: f"D{idx:03d}" for idx, node_id in enumerate(derived, 1)}
-    node_map.update({node_id: f"L{idx:03d}" for idx, node_id in enumerate(leaves, 1)})
-    return [{"from": node_map[source], "to": node_map[target]} for source, target in sorted(program.edges())]
+def oracle_topology(program: dep.Program, namespace: dict[str, str]) -> list[dict[str, Any]]:
+    return [
+        {"from": namespace[source], "to": namespace[target]}
+        for source, target in sorted(program.edges(), key=lambda edge: (namespace[edge[1]], namespace[edge[0]]))
+        if source in namespace and target in namespace
+    ]
 
 
 def build_oracle_context(level: str, item: dict[str, Any], oracle: dep.OraclePlan) -> OracleContext:
     relevant = sorted(oracle.program.referenced_facts())
-    facts_by_id = {fact.fact_id: fact for fact in oracle.facts}
-    all_fact_ids = sorted(fact.fact_id for fact in oracle.facts)
+    namespace = build_oracle_node_namespace(oracle.program)
+    fact_metadata = canonical_fact_metadata(oracle, namespace)
+    relevant_source_ids = set(relevant)
     goal = semantic_goal(item, oracle)
     if level == "O6":
         return OracleContext(
             level=level,
             visible_oracle_information=["goal", "relevant_facts", "fact_binding", "local_relations", "topology", "full_program"],
             goal=goal,
-            relevant_facts={fid: fid in relevant for fid in all_fact_ids},
-            fact_binding={fid: facts_by_id[fid].key for fid in relevant if fid in facts_by_id},
-            local_relations=oracle_local_relations(oracle.program),
-            topology=oracle_topology(oracle.program),
+            relevant_facts={
+                canonical_id: {**meta, "relevant": meta["source_fact_id"] in relevant_source_ids}
+                for canonical_id, meta in fact_metadata.items()
+            },
+            fact_binding={
+                canonical_id: meta["variable"]
+                for canonical_id, meta in fact_metadata.items()
+                if meta["source_fact_id"] in relevant_source_ids
+            },
+            local_relations=oracle_local_relations(oracle.program, namespace),
+            topology=oracle_topology(oracle.program, namespace),
             full_program=oracle.program.to_dict(),
         )
     level_index = ORACLE_LEVELS.index(level)
@@ -138,10 +203,17 @@ def build_oracle_context(level: str, item: dict[str, Any], oracle: dep.OraclePla
             if level_index >= cutoff
         ],
         goal=semantic_goal(item, oracle) if level_index >= 1 else None,
-        relevant_facts={fid: fid in relevant for fid in all_fact_ids} if level_index >= 2 else {},
-        fact_binding={fid: facts_by_id[fid].key for fid in relevant if fid in facts_by_id} if level_index >= 3 else {},
-        local_relations=oracle_local_relations(oracle.program) if level_index >= 4 else [],
-        topology=oracle_topology(oracle.program) if level_index >= 5 else [],
+        relevant_facts={
+            canonical_id: {**meta, "relevant": meta["source_fact_id"] in relevant_source_ids}
+            for canonical_id, meta in fact_metadata.items()
+        } if level_index >= 2 else {},
+        fact_binding={
+            canonical_id: meta["variable"]
+            for canonical_id, meta in fact_metadata.items()
+            if meta["source_fact_id"] in relevant_source_ids
+        } if level_index >= 3 else {},
+        local_relations=oracle_local_relations(oracle.program, namespace) if level_index >= 4 else [],
+        topology=oracle_topology(oracle.program, namespace) if level_index >= 5 else [],
         full_program=None,
     )
 
@@ -304,6 +376,28 @@ def provided_information_labels(context: dict[str, Any]) -> list[str]:
     return labels
 
 
+def namespace_ids_from_context(context: dict[str, Any]) -> set[str]:
+    ids = set(context.get("fact_binding") or {})
+    ids.update(context.get("relevant_facts") or {})
+    for relation in context.get("local_relations") or []:
+        if relation.get("result"):
+            ids.add(str(relation["result"]))
+        ids.update(str(arg) for arg in relation.get("inputs", []))
+    for edge in context.get("topology") or []:
+        ids.add(str(edge.get("from")))
+        ids.add(str(edge.get("to")))
+    ids.discard("")
+    ids.discard("None")
+    return ids
+
+
+def assert_canonical_namespace(context: dict[str, Any], level: str) -> None:
+    ids = namespace_ids_from_context(context)
+    forbidden_fragments = ("oracle_step_", "derived_input_oracle_step_")
+    assert not any(fragment in node_id for node_id in ids for fragment in forbidden_fragments), f"{level} leaked internal node id"
+    assert all(node_id.startswith(("F", "D")) and node_id[1:].isdigit() for node_id in ids), f"{level} has non-canonical ids: {sorted(ids)}"
+
+
 def smoke_test() -> None:
     output_dir = DEFAULT_OUTPUT_DIR / "smoke"
     rows = run_experiment(
@@ -336,6 +430,9 @@ def smoke_test() -> None:
             assert visible == context["visible_oracle_information"], f"{level} prompt audit mismatch"
             forbidden = ("full_program", "gold_answer", "Gold answer", "oracle program")
             assert not any(text in prompt_context for text in forbidden), f"{level} leaked oracle answer/program field"
+        if level in {"O1", "O2", "O3", "O4", "O5"}:
+            assert context["goal"]
+            assert not any(text in context["goal"] for text in ("oracle_step", "oracle", "step_"))
         if level == "O0":
             assert not any(context[k] for k in ("goal", "relevant_facts", "fact_binding", "local_relations", "topology", "full_program"))
             assert all(not step["llm_meta"].get("oracle_prompt_context") for step in llm_steps)
@@ -348,14 +445,31 @@ def smoke_test() -> None:
         if level == "O3":
             assert context["goal"] and context["relevant_facts"] and context["fact_binding"]
             assert not any(context[k] for k in ("local_relations", "topology", "full_program"))
+            assert_canonical_namespace(context, level)
+            assert set(context["fact_binding"]) <= set(context["relevant_facts"])
             assert "Fact bindings:" in prompt_context and "Local relations:" not in prompt_context
         if level == "O4":
             assert context["goal"] and context["relevant_facts"] and context["fact_binding"] and context["local_relations"]
             assert not any(context[k] for k in ("topology", "full_program"))
+            assert_canonical_namespace(context, level)
+            relation_fact_ids = {
+                arg for relation in context["local_relations"]
+                for arg in relation.get("inputs", [])
+                if str(arg).startswith("F")
+            }
+            assert relation_fact_ids <= set(context["fact_binding"])
             assert "Local relations:" in prompt_context and "Topology:" not in prompt_context
         if level == "O5":
             assert context["goal"] and context["relevant_facts"] and context["fact_binding"]
             assert context["local_relations"] and context["topology"] and not context["full_program"]
+            assert_canonical_namespace(context, level)
+            relation_results = {relation["result"] for relation in context["local_relations"]}
+            topology_derived = {
+                node_id for edge in context["topology"]
+                for node_id in (edge.get("from"), edge.get("to"))
+                if str(node_id).startswith("D")
+            }
+            assert topology_derived == relation_results
             assert "Topology:" in prompt_context and "full_program" not in prompt_context
         if level == "O6":
             assert context["full_program"]

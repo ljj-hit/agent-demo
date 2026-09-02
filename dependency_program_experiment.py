@@ -681,8 +681,13 @@ def format_oracle_context_for_prompt(item: dict[str, Any]) -> str:
         if not lines:
             lines.append("Oracle guidance:")
         lines.append("Relevant facts:")
-        for fact_id, is_relevant in sorted(context["relevant_facts"].items()):
-            lines.append(f"- {fact_id}: {'relevant' if is_relevant else 'irrelevant'}")
+        for fact_id, value in sorted(context["relevant_facts"].items()):
+            if isinstance(value, dict):
+                source = value.get("source_fact_id", fact_id)
+                marker = "relevant" if value.get("relevant") else "irrelevant"
+                lines.append(f"- {fact_id} (FACT[{source}]): {marker}")
+            else:
+                lines.append(f"- {fact_id}: {'relevant' if value else 'irrelevant'}")
     if "fact_binding" in visible and context.get("fact_binding"):
         if not lines:
             lines.append("Oracle guidance:")
