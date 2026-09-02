@@ -8,6 +8,7 @@ program through planner paths.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import time
@@ -34,6 +35,24 @@ ORACLE_LEVEL_DESCRIPTIONS = {
     "O4": "Oracle Operators / Local Relations",
     "O5": "Oracle Topology",
     "O6": "Full Oracle Program",
+}
+ORACLE_VISIBLE_INFORMATION = {
+    "O0": [],
+    "O1": ["goal"],
+    "O2": ["relevant_facts"],
+    "O3": ["fact_binding"],
+    "O4": ["local_relations"],
+    "O5": ["topology"],
+    "O6": ["full_program"],
+}
+RECOVERY_CURVE_LABELS = {
+    "O0": "O0 No Oracle",
+    "O1": "O1 Goal",
+    "O2": "O2 Leaves",
+    "O3": "O3 Binding",
+    "O4": "O4 Operator",
+    "O5": "O5 Topology",
+    "O6": "O6 Full Program",
 }
 
 
@@ -400,6 +419,17 @@ def metadata_fact_binding(metadata: dict[str, Any]) -> dict[str, str]:
     }
 
 
+def metadata_relevant_fact_ids(metadata: dict[str, Any]) -> dict[str, bool]:
+    return {f"FACT[{source_fact_id}]": True for source_fact_id in metadata["relevant_facts"]}
+
+
+def metadata_executable_fact_binding(metadata: dict[str, Any]) -> dict[str, str]:
+    return {
+        f"FACT[{source_fact_id}]": variable
+        for source_fact_id, variable in metadata["fact_bindings"].items()
+    }
+
+
 def metadata_relation_namespace(metadata: dict[str, Any]) -> dict[str, str]:
     keyed = []
     for relation in metadata["relations"]:
@@ -437,15 +467,15 @@ def metadata_local_relations(metadata: dict[str, Any], mask_derived: bool) -> li
     fact_namespace = metadata_fact_namespace(metadata)
     relation_ids = {relation["relation_id"] for relation in metadata["relations"]}
     relation_namespace = metadata_relation_namespace(metadata)
-    constants = set(metadata.get("constants", {}))
+    constants = metadata.get("constants", {})
     rows = []
     for relation in metadata_relation_display_order(metadata):
         inputs = []
         for arg in relation["inputs"]:
             if arg in fact_namespace:
-                inputs.append(fact_namespace[arg])
+                inputs.append(f"FACT[{arg}]")
             elif arg in constants:
-                inputs.append(arg)
+                inputs.append(f"CONST({constants[arg]})")
             elif arg in relation_ids:
                 inputs.append("DERIVED" if mask_derived else relation_namespace[arg])
             else:
@@ -474,6 +504,42 @@ def metadata_topology(metadata: dict[str, Any]) -> list[dict[str, Any]]:
                 source = arg
             elif arg in relation_ids:
                 source = relation_namespace[arg]
+            else:
+                source = arg
+            edges.append({"from": source, "to": target})
+    return edges
+
+
+def metadata_masked_topology(metadata: dict[str, Any]) -> list[dict[str, Any]]:
+    leaf_sources = []
+    for source_fact_id in metadata["relevant_facts"]:
+        leaf_sources.append(source_fact_id)
+    for const_id in metadata.get("constants", {}):
+        leaf_sources.append(const_id)
+    leaf_namespace = {
+        source_id: f"L{index:03d}"
+        for index, source_id in enumerate(leaf_sources, 1)
+    }
+    final_relation = metadata["relations"][-1]["relation_id"]
+    derived_namespace = {}
+    next_derived = 1
+    for relation in metadata["relations"]:
+        original_id = relation["relation_id"]
+        if original_id == final_relation:
+            derived_namespace[original_id] = "ANSWER"
+        else:
+            derived_namespace[original_id] = f"D{next_derived:03d}"
+            next_derived += 1
+
+    relation_ids = set(derived_namespace)
+    edges = []
+    for relation in metadata["relations"]:
+        target = derived_namespace[relation["relation_id"]]
+        for arg in relation["inputs"]:
+            if arg in leaf_namespace:
+                source = leaf_namespace[arg]
+            elif arg in relation_ids:
+                source = derived_namespace[arg]
             else:
                 source = arg
             edges.append({"from": source, "to": target})
@@ -518,41 +584,36 @@ def evaluate_semantic_metadata(item: dict[str, Any], facts: list[dep.Fact]) -> d
 def build_oracle_context(level: str, item: dict[str, Any], oracle: dep.OraclePlan) -> OracleContext:
     explicit_metadata = metadata_for_item(item)
     if explicit_metadata is not None:
-        level_index = ORACLE_LEVELS.index(level)
-        visible = [
-            name for cutoff, name in (
-                (1, "goal"),
-                (2, "relevant_facts"),
-                (3, "fact_binding"),
-                (4, "constants"),
-                (4, "local_relations"),
-                (5, "topology"),
-            )
-            if level_index >= cutoff
-        ]
-        base = {
+        empty = {
             "level": level,
-            "visible_oracle_information": visible,
-            "goal": explicit_metadata["goal"] if level_index >= 1 else None,
-            "relevant_facts": metadata_relevant_facts(explicit_metadata) if level_index >= 2 else {},
-            "fact_binding": metadata_fact_binding(explicit_metadata) if level_index >= 3 else {},
-            "constants": dict(explicit_metadata.get("constants", {})) if level_index >= 4 else {},
-            "local_relations": metadata_local_relations(explicit_metadata, mask_derived=True) if level_index >= 4 else [],
-            "topology": metadata_topology(explicit_metadata) if level_index >= 5 else [],
+            "visible_oracle_information": [],
+            "goal": None,
+            "relevant_facts": {},
+            "fact_binding": {},
+            "constants": {},
+            "local_relations": [],
+            "topology": [],
             "full_program": None,
         }
-        if level == "O6":
-            base.update({
-                "visible_oracle_information": ["goal", "relevant_facts", "fact_binding", "constants", "local_relations", "topology", "full_program"],
-                "goal": explicit_metadata["goal"],
-                "relevant_facts": metadata_relevant_facts(explicit_metadata),
-                "fact_binding": metadata_fact_binding(explicit_metadata),
-                "constants": dict(explicit_metadata.get("constants", {})),
+        if level == "O0":
+            return OracleContext(**empty)
+        if level == "O1":
+            return OracleContext(**{**empty, "visible_oracle_information": ["goal"], "goal": explicit_metadata["goal"]})
+        if level == "O2":
+            return OracleContext(**{**empty, "visible_oracle_information": ["relevant_facts"], "relevant_facts": metadata_relevant_fact_ids(explicit_metadata)})
+        if level == "O3":
+            return OracleContext(**{**empty, "visible_oracle_information": ["fact_binding"], "fact_binding": metadata_executable_fact_binding(explicit_metadata)})
+        if level == "O4":
+            return OracleContext(**{
+                **empty,
+                "visible_oracle_information": ["local_relations"],
                 "local_relations": metadata_local_relations(explicit_metadata, mask_derived=True),
-                "topology": metadata_topology(explicit_metadata),
-                "full_program": oracle.program.to_dict(),
             })
-        return OracleContext(**base)
+        if level == "O5":
+            return OracleContext(**{**empty, "visible_oracle_information": ["topology"], "topology": metadata_masked_topology(explicit_metadata)})
+        if level == "O6":
+            return OracleContext(**{**empty, "visible_oracle_information": ["full_program"], "full_program": oracle.program.to_dict()})
+        raise ValueError(f"unsupported oracle level: {level}")
 
     relevant = sorted(oracle.program.referenced_facts())
     namespace = build_oracle_node_namespace(oracle.program)
@@ -560,54 +621,45 @@ def build_oracle_context(level: str, item: dict[str, Any], oracle: dep.OraclePla
     constants = canonical_constants(oracle.program, namespace)
     relevant_source_ids = set(relevant)
     goal = semantic_goal(item, oracle)
-    if level == "O6":
-        return OracleContext(
-            level=level,
-            visible_oracle_information=["goal", "relevant_facts", "fact_binding", "local_relations", "topology", "full_program"],
-            goal=goal,
-            relevant_facts={
-                canonical_id: {**meta, "relevant": meta["source_fact_id"] in relevant_source_ids}
+    empty = {
+        "level": level,
+        "visible_oracle_information": ORACLE_VISIBLE_INFORMATION[level],
+        "goal": None,
+        "relevant_facts": {},
+        "fact_binding": {},
+        "constants": {},
+        "local_relations": [],
+        "topology": [],
+        "full_program": None,
+    }
+    if level == "O0":
+        return OracleContext(**empty)
+    if level == "O1":
+        return OracleContext(**{**empty, "goal": goal})
+    if level == "O2":
+        return OracleContext(**{
+            **empty,
+            "relevant_facts": {
+                canonical_id: meta["source_fact_id"] in relevant_source_ids
                 for canonical_id, meta in fact_metadata.items()
             },
-            fact_binding={
+        })
+    if level == "O3":
+        return OracleContext(**{
+            **empty,
+            "fact_binding": {
                 canonical_id: meta["variable"]
                 for canonical_id, meta in fact_metadata.items()
                 if meta["source_fact_id"] in relevant_source_ids
             },
-            constants=constants,
-            local_relations=oracle_local_relations(oracle.program, namespace),
-            topology=oracle_topology(oracle.program, namespace),
-            full_program=oracle.program.to_dict(),
-        )
-    level_index = ORACLE_LEVELS.index(level)
-    return OracleContext(
-        level=level,
-        visible_oracle_information=[
-            name for cutoff, name in (
-                (1, "goal"),
-                (2, "relevant_facts"),
-                (3, "fact_binding"),
-                (4, "constants"),
-                (4, "local_relations"),
-                (5, "topology"),
-            )
-            if level_index >= cutoff
-        ],
-        goal=semantic_goal(item, oracle) if level_index >= 1 else None,
-        relevant_facts={
-            canonical_id: {**meta, "relevant": meta["source_fact_id"] in relevant_source_ids}
-            for canonical_id, meta in fact_metadata.items()
-        } if level_index >= 2 else {},
-        fact_binding={
-            canonical_id: meta["variable"]
-            for canonical_id, meta in fact_metadata.items()
-            if meta["source_fact_id"] in relevant_source_ids
-        } if level_index >= 3 else {},
-        constants=constants if level_index >= 4 else {},
-        local_relations=oracle_local_relations(oracle.program, namespace) if level_index >= 4 else [],
-        topology=oracle_topology(oracle.program, namespace) if level_index >= 5 else [],
-        full_program=None,
-    )
+        })
+    if level == "O4":
+        return OracleContext(**{**empty, "local_relations": oracle_local_relations(oracle.program, namespace)})
+    if level == "O5":
+        return OracleContext(**{**empty, "topology": oracle_topology(oracle.program, namespace)})
+    if level == "O6":
+        return OracleContext(**{**empty, "full_program": oracle.program.to_dict()})
+    raise ValueError(f"unsupported oracle level: {level}")
 
 
 def choose_program_for_level(
@@ -707,6 +759,67 @@ def write_outputs(rows: list[dict[str, Any]], output_dir: Path, run_config: dict
         "script": Path(__file__).name,
         "settings": ORACLE_LEVEL_DESCRIPTIONS,
     })
+    write_recovery_curve_outputs(rows, output_dir)
+
+
+def build_recovery_curve_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    metric_rows = dep.summarize(rows)
+    by_level = {row.get("oracle_level"): row for row in metric_rows if row.get("oracle_level") in ORACLE_LEVELS}
+    recovery_rows = []
+    for level in ORACLE_LEVELS:
+        metric = by_level.get(level)
+        if not metric:
+            continue
+        recovery_rows.append({
+            "oracle_level": level,
+            "label": RECOVERY_CURVE_LABELS[level],
+            "visible_oracle_information": metric.get("visible_oracle_information", ""),
+            "n": metric.get("n", 0),
+            "final_accuracy": metric.get("final_accuracy", 0.0),
+            "dependency_edge_f1": metric.get("dependency_edge_f1", 0.0),
+            "executable_rate": metric.get("executable_rate", 0.0),
+            "candidate_emergence_rate": metric.get("candidate_emergence_rate", 0.0),
+        })
+    return recovery_rows
+
+
+def write_recovery_curve_outputs(rows: list[dict[str, Any]], output_dir: Path) -> None:
+    recovery_rows = build_recovery_curve_rows(rows)
+    if not recovery_rows:
+        return
+    csv_path = output_dir / "recovery_curve.csv"
+    with csv_path.open("w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.DictWriter(f, fieldnames=list(recovery_rows[0]))
+        writer.writeheader()
+        writer.writerows(recovery_rows)
+
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except Exception as exc:
+        (output_dir / "recovery_curve.png.error.txt").write_text(
+            f"matplotlib unavailable; recovery_curve.csv was written. Error: {exc}",
+            encoding="utf-8",
+        )
+        return
+
+    labels = [row["label"] for row in recovery_rows]
+    accuracy = [float(row["final_accuracy"]) for row in recovery_rows]
+    x_positions = list(range(len(labels)))
+    fig, ax = plt.subplots(figsize=(10.5, 4.8))
+    ax.plot(x_positions, accuracy, color="#2563eb", marker="o", linewidth=2.0)
+    for x, y in zip(x_positions, accuracy):
+        ax.annotate(f"{y:.2%}", (x, y), textcoords="offset points", xytext=(0, 8), ha="center", fontsize=9)
+    ax.set_xticks(x_positions)
+    ax.set_xticklabels(labels, rotation=20, ha="right")
+    ax.set_ylim(-0.02, 1.05)
+    ax.set_ylabel("Final Accuracy")
+    ax.set_title("Oracle Decomposition Recovery Curve")
+    ax.grid(axis="y", linestyle="--", alpha=0.35)
+    fig.tight_layout()
+    fig.savefig(output_dir / "recovery_curve.png", dpi=160)
+    plt.close(fig)
 
 
 def run_experiment(
@@ -794,69 +907,66 @@ def assert_canonical_namespace(context: dict[str, Any], level: str) -> None:
     forbidden_fragments = ("oracle_step_", "derived_input_oracle_step_")
     assert not any(fragment in node_id for node_id in ids for fragment in forbidden_fragments), f"{level} leaked internal node id"
     assert all(
-        node_id == "DERIVED" or (node_id.startswith(("F", "C", "D", "R")) and node_id[1:].isdigit())
+        node_id == "ANSWER"
+        or node_id == "DERIVED"
+        or node_id.startswith("FACT[")
+        or node_id.startswith("CONST(")
+        or (node_id.startswith(("F", "C", "D", "L", "R")) and node_id[1:].isdigit())
         for node_id in ids
     ), f"{level} has non-canonical ids: {sorted(ids)}"
 
 
 def validate_oracle_context(level: str, context: dict[str, Any], prompt_context: str = "") -> None:
     empty_keys = ("goal", "relevant_facts", "fact_binding", "constants", "local_relations", "topology", "full_program")
+    assert context.get("visible_oracle_information") == ORACLE_VISIBLE_INFORMATION[level], (
+        f"{level} visible oracle information mismatch: {context.get('visible_oracle_information')}"
+    )
     if level == "O0":
         assert not any(context[k] for k in empty_keys)
         assert not prompt_context
-    if level in {"O1", "O2", "O3", "O4", "O5"}:
+    if level == "O1":
         assert context["goal"]
         forbidden_goals = ("oracle", "oracle_step", "step_", "target_quantity", "answer_amount", "requested_value")
         assert not any(text in context["goal"] for text in forbidden_goals), f"{level} has non-gold semantic goal: {context['goal']}"
-    if level == "O1":
         assert not any(context[k] for k in ("relevant_facts", "fact_binding", "constants", "local_relations", "topology", "full_program"))
         assert "Goal:" in prompt_context and "Relevant facts:" not in prompt_context
+        assert all(section not in prompt_context for section in ("Fact bindings:", "Local relations", "Topology:"))
     if level == "O2":
-        assert context["relevant_facts"] and not any(context[k] for k in ("fact_binding", "constants", "local_relations", "topology", "full_program"))
-        assert all(fid.startswith("F") for fid in context["relevant_facts"])
-        assert "Relevant facts:" in prompt_context and "Fact bindings:" not in prompt_context
+        assert context["relevant_facts"]
+        assert not any(context[k] for k in ("goal", "fact_binding", "constants", "local_relations", "topology", "full_program"))
+        assert all(fid.startswith("FACT[") for fid in context["relevant_facts"])
+        assert "Relevant facts:" in prompt_context
+        assert all(section not in prompt_context for section in ("Goal:", "Fact bindings:", "Local relations", "Topology:"))
     if level == "O3":
-        assert context["relevant_facts"] and context["fact_binding"]
-        assert not any(context[k] for k in ("constants", "local_relations", "topology", "full_program"))
-        assert all(fid.startswith("F") for fid in context["fact_binding"])
-        assert set(context["fact_binding"]) <= set(context["relevant_facts"])
+        assert context["fact_binding"]
+        assert not any(context[k] for k in ("goal", "relevant_facts", "constants", "local_relations", "topology", "full_program"))
+        assert all(fid.startswith("FACT[") for fid in context["fact_binding"])
         assert_canonical_namespace(context, level)
-        assert "Fact bindings:" in prompt_context and "Local relations:" not in prompt_context
-        assert "Executable alias map:" in prompt_context
-        assert "Never return Fxxx, Cxxx, or Rxxx directly as executable args." in prompt_context
-        for value in context["relevant_facts"].values():
-            assert f"FACT[{value['source_fact_id']}]" in prompt_context
+        assert "Fact bindings:" in prompt_context
+        assert all(section not in prompt_context for section in ("Goal:", "Relevant facts:", "Local relations", "Topology:", "Executable alias map:"))
     if level == "O4":
-        assert context["relevant_facts"] and context["fact_binding"] and context["local_relations"]
-        assert not any(context[k] for k in ("topology", "full_program"))
+        assert context["local_relations"]
+        assert not any(context[k] for k in ("goal", "relevant_facts", "fact_binding", "constants", "topology", "full_program"))
         assert_canonical_namespace(context, level)
-        assert all(cid.startswith("C") for cid in context["constants"])
-        assert not set(context["constants"]) & set(context["fact_binding"])
-        assert not set(context["constants"]) & set(context["relevant_facts"])
         assert "unordered local relations" in prompt_context.lower()
-        assert "Executable alias map:" in prompt_context
+        assert any(relation["op"] in dep.OPS for relation in context["local_relations"])
         for relation in context["local_relations"]:
             assert str(relation.get("relation_id", "")).startswith("R")
             assert "result" not in relation
             for arg in relation.get("inputs", []):
-                assert str(arg).startswith(("F", "C")) or arg == "DERIVED"
+                assert str(arg).startswith("FACT[") or str(arg).startswith("CONST(") or arg == "DERIVED"
                 assert arg == "DERIVED" or not str(arg).startswith(("D", "R"))
-        assert "Local relations" in prompt_context and "Topology:" not in prompt_context
-        for value in context["constants"].values():
-            assert f"CONST({value})" in prompt_context
+        assert "Local relations" in prompt_context
+        assert all(section not in prompt_context for section in ("Goal:", "Relevant facts:", "Fact bindings:", "Topology:", "Executable alias map:"))
     if level == "O5":
-        assert context["relevant_facts"] and context["fact_binding"] and context["local_relations"] and context["topology"]
-        assert not context["full_program"]
+        assert context["topology"]
+        assert not any(context[k] for k in ("goal", "relevant_facts", "fact_binding", "constants", "local_relations", "full_program"))
         assert_canonical_namespace(context, level)
-        relation_ids = {relation["relation_id"] for relation in context["local_relations"]}
-        topology_relation_ids = {
-            node_id for edge in context["topology"]
-            for node_id in (edge.get("from"), edge.get("to"))
-            if str(node_id).startswith("R")
-        }
-        assert relation_ids <= topology_relation_ids
-        assert "Executable alias map:" in prompt_context
+        ids = namespace_ids_from_context(context)
+        assert all(node_id == "ANSWER" or (node_id.startswith(("L", "D")) and node_id[1:].isdigit()) for node_id in ids)
         assert "Topology:" in prompt_context and "full_program" not in prompt_context
+        assert not any(text in prompt_context for text in ("ADD", "SUB", "MUL", "DIV", "FACT[", "CONST("))
+        assert all(section not in prompt_context for section in ("Goal:", "Relevant facts:", "Fact bindings:", "Local relations", "Executable alias map:"))
     if level == "O6":
         assert context["full_program"]
 
@@ -880,9 +990,19 @@ def smoke_test() -> None:
     assert all(row["planner"] != "oracle" for row in rows if row["oracle_level"] != "O6"), "O0-O5 must use planner"
     assert {row["planner"] for row in rows if row["oracle_level"] != "O6"} == {"LLM_strict_backward"}, "O0-O5 planner path changed"
     assert any(row["oracle_level"] == "O6" and row["executable"] for row in rows), "O6 oracle program did not execute"
+    for qid in {row["question_id"] for row in rows}:
+        generated_rows = [row for row in rows if row["question_id"] == qid and row["oracle_level"] != "O6"]
+        questions = {row["planner_input"]["question"] for row in generated_rows}
+        facts_json = {
+            json.dumps(row["planner_input"]["facts"], sort_keys=True, ensure_ascii=False)
+            for row in generated_rows
+        }
+        assert len(questions) == 1, f"q{qid} question changed across O0-O5"
+        assert len(facts_json) == 1, f"q{qid} facts changed across O0-O5"
     for row in rows:
         context = row["planner_input"]["oracle_context"]
         level = row["oracle_level"]
+        prompt_context = ""
         llm_steps = [step for step in row["planner_trace"] if isinstance(step.get("llm_meta"), dict)]
         if level != "O6":
             assert llm_steps, f"{level} has no LLM trace"
@@ -895,15 +1015,11 @@ def smoke_test() -> None:
             assert not any(text in prompt_context for text in forbidden), f"{level} leaked oracle answer/program field"
         validate_oracle_context(level, context, prompt_context)
     first_by_level = {level: next(row for row in rows if row["oracle_level"] == level) for level in ORACLE_LEVELS}
-    previous: set[str] = set()
     print("Oracle information by level:")
     for level in ORACLE_LEVELS:
         context = first_by_level[level]["planner_input"]["oracle_context"]
         labels = provided_information_labels(context)
-        current = set(labels)
         print(f"  {level}: {labels}")
-        assert previous < current, f"{level} does not strictly add oracle information"
-        previous = current
     print("Oracle decomposition smoke: PASS")
     print(f"Smoke rows: {len(rows)}")
     print(f"Smoke output: {output_dir}")
@@ -920,40 +1036,20 @@ def structural_audit_all_questions(data_path: Path = DEFAULT_DATA_PATH) -> None:
         assert not missing, f"missing explicit gold semantic goals: {missing}"
     for qid, item in enumerate(records, 1):
         oracle = dep.build_oracle_plan(item, dep.gold_facts(item))
-        previous: set[str] = set()
         for level in ORACLE_LEVELS:
             context = build_oracle_context(level, item, oracle).to_dict()
             prompt_context = dep.format_oracle_context_for_prompt({"oracle_context": context})
             validate_oracle_context(level, context, prompt_context)
-            current = set(provided_information_labels(context))
-            assert previous < current, f"q{qid} {level} does not strictly add information"
-            previous = current
 
             namespace = build_oracle_node_namespace(oracle.program)
-            if level in {"O4", "O5", "O6"}:
-                explicit_metadata = metadata_for_item(item)
-                expected_constants = (
-                    dict(explicit_metadata.get("constants", {}))
-                    if explicit_metadata is not None
-                    else canonical_constants(oracle.program, namespace)
-                )
-                assert context["constants"] == expected_constants, f"q{qid} {level} constants mismatch"
-                assert all(value not in ("", "None") for value in context["constants"].values()), f"q{qid} {level} empty constant value"
             if level == "O5":
                 explicit_metadata = metadata_for_item(item)
                 expected_topology = (
-                    metadata_topology(explicit_metadata)
+                    metadata_masked_topology(explicit_metadata)
                     if explicit_metadata is not None
                     else oracle_topology(oracle.program, namespace)
                 )
                 assert context["topology"] == expected_topology, f"q{qid} O5 topology mismatch"
-                relation_ids = {relation["relation_id"] for relation in context["local_relations"]}
-                edge_relation_ids = {
-                    node_id for edge in context["topology"]
-                    for node_id in (edge["from"], edge["to"])
-                    if node_id.startswith("R")
-                }
-                assert relation_ids <= edge_relation_ids, f"q{qid} O5 relation topology incomplete"
     print(f"Structural audit: PASS ({len(records)} questions x {len(ORACLE_LEVELS)} levels)")
 
 
