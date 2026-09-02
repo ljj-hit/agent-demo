@@ -662,11 +662,58 @@ def program_from_llm_json(payload: dict[str, Any], facts: list[Fact]) -> tuple[P
     return (program if ok else None), errors
 
 
+def visible_oracle_information(item: dict[str, Any]) -> list[str]:
+    context = item.get("oracle_context")
+    if not isinstance(context, dict):
+        return []
+    return [str(x) for x in context.get("visible_oracle_information") or []]
+
+
+def format_oracle_context_for_prompt(item: dict[str, Any]) -> str:
+    context = item.get("oracle_context")
+    if not isinstance(context, dict):
+        return ""
+    visible = set(visible_oracle_information(item))
+    lines: list[str] = []
+    if "goal" in visible and context.get("goal"):
+        lines.extend(["Oracle guidance:", f"Goal: {context['goal']}"])
+    if "relevant_facts" in visible and context.get("relevant_facts"):
+        if not lines:
+            lines.append("Oracle guidance:")
+        lines.append("Relevant facts:")
+        for fact_id, is_relevant in sorted(context["relevant_facts"].items()):
+            lines.append(f"- {fact_id}: {'relevant' if is_relevant else 'irrelevant'}")
+    if "fact_binding" in visible and context.get("fact_binding"):
+        if not lines:
+            lines.append("Oracle guidance:")
+        lines.append("Fact bindings:")
+        for fact_id, variable in sorted(context["fact_binding"].items()):
+            lines.append(f"- {fact_id} -> {variable}")
+    if "local_relations" in visible and context.get("local_relations"):
+        if not lines:
+            lines.append("Oracle guidance:")
+        lines.append("Local relations:")
+        for relation in context["local_relations"]:
+            result = relation.get("result", "derived")
+            op = relation.get("op", "")
+            inputs = ", ".join(str(x) for x in relation.get("inputs", []))
+            lines.append(f"- {result} = {op}({inputs})")
+    if "topology" in visible and context.get("topology"):
+        if not lines:
+            lines.append("Oracle guidance:")
+        lines.append("Topology:")
+        for edge in context["topology"]:
+            lines.append(f"- {edge.get('from')} -> {edge.get('to')}")
+    return "\n".join(lines)
+
+
 def llm_proposal_program(model: Any, item: dict[str, Any], facts: list[Fact]) -> tuple[Program | None, dict[str, Any]]:
     fact_lines = "\n".join(
         f"- FACT[{fact.fact_id}] source={fact.source} type={fact.type} value={fact.value} content={fact.content}"
         for fact in facts
     )
+    oracle_prompt_context = format_oracle_context_for_prompt(item)
+    oracle_block = f"{oracle_prompt_context}\n\n" if oracle_prompt_context else ""
     system = (
         "You recover executable dependency programs from structured evidence. "
         "Use only FACT[id], CONST(value), and ops ADD/SUB/MUL/DIV. "
@@ -676,6 +723,7 @@ def llm_proposal_program(model: Any, item: dict[str, Any], facts: list[Fact]) ->
         "Build a dependency program for the shared question using only the facts below.\n\n"
         f"Question: {item.get('shared_question', '')}\n\n"
         f"Facts:\n{fact_lines}\n\n"
+        f"{oracle_block}"
         "Return ONLY JSON with this schema:\n"
         "{\n"
         '  "steps": [\n'
@@ -688,7 +736,14 @@ def llm_proposal_program(model: Any, item: dict[str, Any], facts: list[Fact]) ->
     )
     raw, usage, elapsed = model.call(system, user, temperature=0.0)
     payload = extract_json_object(raw)
-    meta = {"raw": raw, "usage": usage, "elapsed_seconds": elapsed, "parse_errors": []}
+    meta = {
+        "raw": raw,
+        "usage": usage,
+        "elapsed_seconds": elapsed,
+        "visible_oracle_information": visible_oracle_information(item),
+        "oracle_prompt_context": oracle_prompt_context,
+        "parse_errors": [],
+    }
     if payload is None:
         meta["parse_errors"] = ["could not parse JSON object"]
         return None, meta
@@ -703,6 +758,8 @@ def llm_single_expansion(model: Any, item: dict[str, Any], facts: list[Fact], ta
         f"- FACT[{fact.fact_id}] type={fact.type} value={fact.value} content={fact.content}"
         for fact in facts
     )
+    oracle_prompt_context = format_oracle_context_for_prompt(item)
+    oracle_block = f"{oracle_prompt_context}\n\n" if oracle_prompt_context else ""
     system = (
         "You expand exactly ONE unresolved dependency node. "
         "Use only FACT[id], CONST(value), existing node names, and ops ADD/SUB/MUL/DIV. "
@@ -711,6 +768,7 @@ def llm_single_expansion(model: Any, item: dict[str, Any], facts: list[Fact], ta
     user = (
         f"Question: {item.get('shared_question', '')}\n\n"
         f"Facts:\n{fact_lines}\n\n"
+        f"{oracle_block}"
         f"Known derived nodes: {known_nodes}\n"
         f"Unresolved target to expand: {target}\n\n"
         "Return ONLY:\n"
@@ -719,7 +777,15 @@ def llm_single_expansion(model: Any, item: dict[str, Any], facts: list[Fact], ta
     )
     raw, usage, elapsed = model.call(system, user, temperature=0.0)
     payload = extract_json_object(raw)
-    meta = {"raw": raw, "usage": usage, "elapsed_seconds": elapsed, "payload": payload, "parse_errors": []}
+    meta = {
+        "raw": raw,
+        "usage": usage,
+        "elapsed_seconds": elapsed,
+        "visible_oracle_information": visible_oracle_information(item),
+        "oracle_prompt_context": oracle_prompt_context,
+        "payload": payload,
+        "parse_errors": [],
+    }
     if not isinstance(payload, dict):
         meta["parse_errors"] = ["could not parse expansion JSON"]
         return None, meta
@@ -1133,7 +1199,11 @@ def choose_program(
             }, *failed_llm_trace]
         if proposal_backend == "llm":
             fallback = one_shot_program(facts).reachable_program()
-            trace = [{"step": 0, "proposal_backend": "llm", "status": "failed"}]
+            trace = [{
+                "step": -1,
+                "proposal_backend": "llm",
+                "status": "failed_to_generate_verified_program",
+            }, *llm_rejection_trace]
             trace.extend(backward_expansion_trace(fallback, facts))
             return PlannerResult(fallback, [], trace, "llm_failed")
     if proposal_backend in {"semantic", "hybrid"}:
@@ -1262,7 +1332,7 @@ CAUSAL_SETTINGS = {
     "llm_history_generated": "LLM Facts + History + Generated Plan",
 }
 
-PLANNERS = ["A_one_shot", "B_backward", "C_beam", "D_beam_prune", "E_beam_verify_repair"]
+PLANNERS = ["A_one_shot", "B_backward", "C_beam", "D_beam_prune", "E_beam_verify_repair", "LLM_strict_backward"]
 
 
 def summarize(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1274,6 +1344,8 @@ def summarize(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         n = len(group)
         summary.append({
             "setting": setting,
+            **({"oracle_level": group[0].get("oracle_level", "")} if "oracle_level" in group[0] else {}),
+            **({"visible_oracle_information": group[0].get("visible_oracle_information", "")} if "visible_oracle_information" in group[0] else {}),
             "planner": planner,
             "n": n,
             "fact_correctness": sum(r["fact_correctness"] for r in group) / n,
@@ -1489,6 +1561,8 @@ def llm_proposal_smoke(data_path: Path, model: Any, output_dir: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Recover executable dependency programs from dispersed evidence.")
+    parser.add_argument("--mode", choices=["dependency_program", "oracle_decomposition"], default="dependency_program")
+    parser.add_argument("--oracle-level", choices=["O0", "O1", "O2", "O3", "O4", "O5", "O6", "all"], default="all")
     parser.add_argument("--data-path", default=str(DEFAULT_DATA_PATH))
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR / datetime.now().strftime("%Y%m%d_%H%M%S")))
     parser.add_argument("--limit", type=int, default=0)
@@ -1515,6 +1589,46 @@ def main() -> None:
     args = parser.parse_args()
     if args.use_model:
         args.proposal_backend = "hybrid"
+    if args.mode == "oracle_decomposition":
+        import oracle_decomposition_experiment as oracle_decomp
+
+        if args.use_model or args.proposal_backend == "hybrid":
+            args.proposal_backend = "llm"
+        if args.smoke_test:
+            oracle_decomp.smoke_test()
+            return
+        if args.planner == "all":
+            args.planner = "LLM_strict_backward"
+        output_dir = Path(args.output_dir)
+        if output_dir.parent == DEFAULT_OUTPUT_DIR:
+            output_dir = oracle_decomp.DEFAULT_OUTPUT_DIR / output_dir.name
+        model = oracle_decomp.load_model_if_needed(args)
+        rows = oracle_decomp.run_experiment(
+            Path(args.data_path),
+            output_dir,
+            args.limit,
+            args.oracle_level,
+            args.planner,
+            args.proposal_backend,
+            model=model,
+            incremental_write=not args.no_incremental_write,
+            run_config={
+                "mode": args.mode,
+                "oracle_level": args.oracle_level,
+                "data_path": str(Path(args.data_path).resolve()),
+                "planner": args.planner,
+                "proposal_backend": args.proposal_backend,
+                "model_path": str(Path(args.model_path).resolve()) if args.proposal_backend in {"llm", "hybrid"} else "",
+                "device": args.device if args.proposal_backend in {"llm", "hybrid"} else "",
+                "temperature": args.temperature,
+                "max_new_tokens": args.max_new_tokens,
+                "seed": args.seed,
+            },
+        )
+        print(f"Wrote {len(rows)} rows to {output_dir.resolve()}")
+        print(f"Metrics: {output_dir.resolve() / 'metrics.csv'}")
+        print(f"Cases: {output_dir.resolve() / 'cases.jsonl'}")
+        return
     if args.smoke_test:
         smoke_test()
         return
