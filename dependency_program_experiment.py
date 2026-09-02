@@ -694,12 +694,18 @@ def format_oracle_context_for_prompt(item: dict[str, Any]) -> str:
         lines.append("Fact bindings:")
         for fact_id, variable in sorted(context["fact_binding"].items()):
             lines.append(f"- {fact_id} -> {variable}")
+    if "constants" in visible and context.get("constants"):
+        if not lines:
+            lines.append("Oracle guidance:")
+        lines.append("Constants:")
+        for const_id, value in sorted(context["constants"].items()):
+            lines.append(f"- {const_id} = {value}")
     if "local_relations" in visible and context.get("local_relations"):
         if not lines:
             lines.append("Oracle guidance:")
         lines.append("Local relations:")
         for relation in context["local_relations"]:
-            result = relation.get("result", "derived")
+            result = relation.get("relation_id", "R")
             op = relation.get("op", "")
             inputs = ", ".join(str(x) for x in relation.get("inputs", []))
             lines.append(f"- {result} = {op}({inputs})")
