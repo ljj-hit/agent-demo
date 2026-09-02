@@ -368,24 +368,50 @@ def oracle_local_relations(program: dep.Program, namespace: dict[str, str]) -> l
     return rows
 
 
-def oracle_topology(program: dep.Program, namespace: dict[str, str]) -> list[dict[str, Any]]:
-    relation_by_derived = {
-        node_id: f"R{index:03d}"
-        for index, (canonical_id, node_id) in enumerate(sorted(
-            ((canonical_id, node_id) for node_id, canonical_id in namespace.items() if canonical_id.startswith("D")),
-            key=lambda item: item[0],
-        ), 1)
-    }
+def program_masked_topology(program: dep.Program) -> list[dict[str, Any]]:
+    """Masked O5 topology derived from the oracle program alone.
+
+    Mirrors ``metadata_masked_topology`` for items without explicit gold
+    metadata: leaves are anonymous Lxxx positions (facts and constants in the
+    same scrambled pool) and derived nodes are Dxxx, so neither operators nor
+    concrete fact bindings leak through the topology.
+    """
+    reachable = program.reachable_nodes()
+    leaf_nodes = sorted(
+        node_id for node_id in reachable
+        if program.nodes[node_id].op in ("FACT", "CONST")
+    )
+    ordered_derived: list[str] = []
+    visited: set[str] = set()
+
+    def visit(node_id: str) -> None:
+        if node_id in visited or node_id not in reachable:
+            return
+        visited.add(node_id)
+        node = program.nodes[node_id]
+        for arg in node.args:
+            child_id = str(arg)
+            if child_id in program.nodes and program.nodes[child_id].op in dep.OPS:
+                visit(child_id)
+        if node.op in dep.OPS:
+            ordered_derived.append(node_id)
+
+    visit(program.answer_node)
+    leaf_namespace = _scrambled_leaf_namespace(leaf_nodes, ",".join(leaf_nodes))
+    derived_namespace: dict[str, str] = {}
+    for index, node_id in enumerate(ordered_derived, 1):
+        if node_id == program.answer_node:
+            derived_namespace[node_id] = "ANSWER"
+        else:
+            derived_namespace[node_id] = f"D{index:03d}"
+
     def topo_id(node_id: str) -> str:
-        canonical_id = namespace[node_id]
-        if canonical_id.startswith("D"):
-            return relation_by_derived[node_id]
-        return canonical_id
+        return derived_namespace.get(node_id, leaf_namespace.get(node_id, node_id))
 
     return [
         {"from": topo_id(source), "to": topo_id(target)}
         for source, target in sorted(program.edges(), key=lambda edge: (topo_id(edge[1]), topo_id(edge[0])))
-        if source in namespace and target in namespace
+        if source in reachable and target in reachable
     ]
 
 
@@ -511,16 +537,39 @@ def metadata_topology(metadata: dict[str, Any]) -> list[dict[str, Any]]:
     return edges
 
 
+def _scrambled_leaf_namespace(leaf_sources: list[str], seed_text: str) -> dict[str, str]:
+    """Assign Lxxx ids in a deterministic, content-hash order.
+
+    O5 must hide which FACT/CONST each anonymous leaf position corresponds to.
+    A positional numbering would align with the fact list shown to the model,
+    leaking the fact binding the spec requires masking.  The L indices are
+    therefore derived from a hash instead; constants are scrambled into the
+    same pool so they cannot be told apart from facts.
+    """
+    if len(leaf_sources) < 2:
+        return {source_id: f"L{index:03d}" for index, source_id in enumerate(leaf_sources, 1)}
+    keyed = sorted(
+        (
+            hashlib.sha256(
+                json.dumps({"seed": seed_text, "leaf": source_id}, sort_keys=True).encode("utf-8")
+            ).hexdigest(),
+            source_id,
+        )
+        for source_id in leaf_sources
+    )
+    scrambled = [source_id for _, source_id in keyed]
+    if scrambled == leaf_sources:
+        scrambled = list(reversed(scrambled))
+    return {source_id: f"L{index:03d}" for index, source_id in enumerate(scrambled, 1)}
+
+
 def metadata_masked_topology(metadata: dict[str, Any]) -> list[dict[str, Any]]:
     leaf_sources = []
     for source_fact_id in metadata["relevant_facts"]:
         leaf_sources.append(source_fact_id)
     for const_id in metadata.get("constants", {}):
         leaf_sources.append(const_id)
-    leaf_namespace = {
-        source_id: f"L{index:03d}"
-        for index, source_id in enumerate(leaf_sources, 1)
-    }
+    leaf_namespace = _scrambled_leaf_namespace(leaf_sources, str(metadata["question"]))
     final_relation = metadata["relations"][-1]["relation_id"]
     derived_namespace = {}
     next_derived = 1
@@ -657,7 +706,7 @@ def build_oracle_context(level: str, item: dict[str, Any], oracle: dep.OraclePla
     if level == "O4":
         return OracleContext(**{**empty, "local_relations": oracle_local_relations(oracle.program, namespace)})
     if level == "O5":
-        return OracleContext(**{**empty, "topology": oracle_topology(oracle.program, namespace)})
+        return OracleContext(**{**empty, "topology": program_masked_topology(oracle.program)})
     if level == "O6":
         return OracleContext(**{**empty, "full_program": oracle.program.to_dict()})
     raise ValueError(f"unsupported oracle level: {level}")
@@ -1160,15 +1209,23 @@ def structural_audit_all_questions(data_path: Path = DEFAULT_DATA_PATH) -> None:
             prompt_context = dep.format_oracle_context_for_prompt({"oracle_context": context})
             validate_oracle_context(level, context, prompt_context)
 
-            namespace = build_oracle_node_namespace(oracle.program)
             if level == "O5":
                 explicit_metadata = metadata_for_item(item)
                 expected_topology = (
                     metadata_masked_topology(explicit_metadata)
                     if explicit_metadata is not None
-                    else oracle_topology(oracle.program, namespace)
+                    else program_masked_topology(oracle.program)
                 )
                 assert context["topology"] == expected_topology, f"q{qid} O5 topology mismatch"
+                # The O5 leaf numbering must not align with the evidence order the
+                # model sees: positionally aligned Lxxx ids would leak the
+                # fact-to-leaf binding that this level is required to mask.
+                if explicit_metadata is not None:
+                    leaf_sources = list(explicit_metadata["relevant_facts"]) + list(explicit_metadata.get("constants", {}))
+                    if len(leaf_sources) >= 2:
+                        leaf_namespace = _scrambled_leaf_namespace(leaf_sources, str(explicit_metadata["question"]))
+                        l_ordered = sorted(leaf_sources, key=lambda source_id: leaf_namespace[source_id])
+                        assert l_ordered != leaf_sources, f"q{qid} O5 leaf numbering aligns with evidence order"
     print(f"Structural audit: PASS ({len(records)} questions x {len(ORACLE_LEVELS)} levels)")
 
 
