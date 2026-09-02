@@ -1,0 +1,8 @@
+﻿setting,oracle_level,visible_oracle_information,planner,n,fact_correctness,dependency_edge_f1,executable_rate,candidate_emergence_rate,final_accuracy,llm_call_count,prompt_tokens,completion_tokens,total_tokens,llm_runtime_seconds,case_runtime_seconds
+oracle_decomposition_O0,O0,none,E_beam_verify_repair,20,1.0,0.03538461538461538,1.0,0.0,0.0,12,3588,396,3984,31.214658,54.365724
+oracle_decomposition_O1,O1,goal,E_beam_verify_repair,20,1.0,0.03538461538461538,1.0,0.0,0.0,11,3239,363,3602,23.563044,47.839019
+oracle_decomposition_O2,O2,"goal,relevant_facts",E_beam_verify_repair,20,1.0,0.03538461538461538,1.0,0.0,0.0,14,4952,462,5414,35.787944,52.91308
+oracle_decomposition_O3,O3,"goal,relevant_facts,fact_binding",E_beam_verify_repair,20,1.0,0.03538461538461538,1.0,0.0,0.0,13,5593,429,6022,29.866081,53.160138
+oracle_decomposition_O4,O4,"goal,relevant_facts,fact_binding,local_relations",E_beam_verify_repair,20,1.0,0.02,1.0,0.0,0.0,12,8333,396,8729,27.521476,77.815053
+oracle_decomposition_O5,O5,"goal,relevant_facts,fact_binding,local_relations,topology",E_beam_verify_repair,20,1.0,0.02,1.0,0.0,0.0,13,11372,429,11801,31.573931,68.800191
+oracle_decomposition_O6,O6,"goal,relevant_facts,fact_binding,local_relations,topology,full_program",oracle,20,1.0,0.974025974025974,1.0,1.0,1.0,0,0,0,0,0.0,0.021544
