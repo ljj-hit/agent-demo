@@ -86,10 +86,156 @@ GOLD_SEMANTIC_GOALS = {
 }
 
 
+def meta(
+    question: str,
+    goal: str,
+    facts: dict[str, str],
+    relations: list[tuple[str, str, list[str]]],
+    constants: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    return {
+        "question": question,
+        "goal": goal,
+        "relevant_facts": list(facts),
+        "fact_bindings": facts,
+        "constants": constants or {},
+        "relations": [
+            {"relation_id": relation_id, "op": op, "inputs": inputs}
+            for relation_id, op, inputs in relations
+        ],
+    }
+
+
+GOLD_ORACLE_METADATA = {
+    "How many pages should Julie read tomorrow?": meta(
+        "How many pages should Julie read tomorrow?",
+        "tomorrow_pages",
+        {"A_001": "yesterday_pages", "A_002": "today_multiplier", "B_001": "total_pages", "B_002": "remaining_fraction"},
+        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "ADD", ["A_001", "R001"]), ("R003", "SUB", ["B_001", "R002"]), ("R004", "MUL", ["R003", "B_002"])],
+    ),
+    "How much more money does Betty still need?": meta(
+        "How much more money does Betty still need?",
+        "remaining_money",
+        {"A_001": "wallet_cost", "A_002": "already_saved_fraction", "B_001": "parent_gift", "B_002": "grandparent_gift_multiplier"},
+        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "MUL", ["B_001", "B_002"]), ("R003", "ADD", ["R001", "B_001", "R002"]), ("R004", "SUB", ["A_001", "R003"])],
+    ),
+    "What is the final weight of the box?": meta(
+        "What is the final weight of the box?",
+        "final_weight",
+        {"A_001": "initial_weight", "A_002": "brownie_weight_multiplier", "B_001": "added_weight", "B_002": "final_weight_multiplier"},
+        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "ADD", ["R001", "B_001"]), ("R003", "MUL", ["R002", "B_002"])],
+    ),
+    "How much did Alexis pay for the shoes?": meta(
+        "How much did Alexis pay for the shoes?",
+        "shoes_cost",
+        {"A_001": "budget", "A_002": "item_cost_1", "A_003": "item_cost_2", "A_004": "item_cost_3", "B_001": "item_cost_4", "B_002": "item_cost_5", "B_003": "remaining_money"},
+        [("R001", "ADD", ["A_002", "A_003", "A_004", "B_001", "B_002"]), ("R002", "SUB", ["A_001", "B_003"]), ("R003", "SUB", ["R002", "R001"])],
+    ),
+    "How many stamps does Bella buy altogether?": meta(
+        "How many stamps does Bella buy altogether?",
+        "total_stamps",
+        {"A_001": "snowflake_stamps", "A_002": "truck_more_than_snowflake", "B_001": "rose_fewer_than_truck"},
+        [("R001", "ADD", ["A_001", "A_002"]), ("R002", "SUB", ["R001", "B_001"]), ("R003", "ADD", ["A_001", "R001", "R002"])],
+    ),
+    "How much does each top cost?": meta(
+        "How much does each top cost?",
+        "each_top_cost",
+        {"A_001": "total_spent", "A_002": "shorts_count", "A_003": "short_price", "B_001": "shoe_pair_count", "B_002": "shoe_pair_price", "B_003": "top_count"},
+        [("R001", "MUL", ["A_002", "A_003"]), ("R002", "MUL", ["B_001", "B_002"]), ("R003", "SUB", ["A_001", "R001", "R002"]), ("R004", "DIV", ["R003", "B_003"])],
+    ),
+    "How much sales revenue does Noah make this month?": meta(
+        "How much sales revenue does Noah make this month?",
+        "this_month_sales_revenue",
+        {"A_001": "large_painting_price", "A_002": "small_painting_price", "A_003": "large_paintings_sold_last_month", "B_001": "small_paintings_sold_last_month", "B_002": "this_month_revenue_multiplier"},
+        [("R001", "MUL", ["A_003", "A_001"]), ("R002", "MUL", ["B_001", "A_002"]), ("R003", "ADD", ["R001", "R002"]), ("R004", "MUL", ["R003", "B_002"])],
+    ),
+    "How many minutes does Carolyn practice in 4 weeks?": meta(
+        "How many minutes does Carolyn practice in 4 weeks?",
+        "four_week_practice_minutes",
+        {"A_001": "piano_minutes_per_day", "A_002": "violin_to_piano_multiplier", "B_001": "practice_days_per_week", "B_002": "week_count"},
+        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "ADD", ["A_001", "R001"]), ("R003", "MUL", ["R002", "B_001"]), ("R004", "MUL", ["R003", "B_002"])],
+    ),
+    "How many minutes does the third part take?": meta(
+        "How many minutes does the third part take?",
+        "third_part_duration_minutes",
+        {"A_001": "first_part_minutes", "A_002": "second_part_multiplier", "B_001": "full_assignment_hours"},
+        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "ADD", ["A_001", "R001"]), ("R003", "MUL", ["B_001", "C001"]), ("R004", "SUB", ["R003", "R002"])],
+        {"C001": "60"},
+    ),
+    "How much does James earn each week from both jobs?": meta(
+        "How much does James earn each week from both jobs?",
+        "weekly_total_earnings",
+        {"A_001": "main_job_rate", "A_002": "main_job_hours", "B_001": "second_job_rate_reduction_percent", "B_002": "second_job_hours_ratio"},
+        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "PERCENT_LESS", ["A_001", "B_001"]), ("R003", "MUL", ["A_002", "B_002"]), ("R004", "MUL", ["R002", "R003"]), ("R005", "ADD", ["R001", "R004"])],
+    ),
+    "What balance remains after the 4 monthly payments?": meta(
+        "What balance remains after the 4 monthly payments?",
+        "remaining_laptop_balance",
+        {"A_001": "laptop_cost", "A_002": "down_payment_percent", "A_003": "additional_down_payment", "B_001": "monthly_payment", "B_002": "payment_count"},
+        [("R001", "PERCENT_OF", ["A_001", "A_002"]), ("R002", "ADD", ["R001", "A_003"]), ("R003", "SUB", ["A_001", "R002"]), ("R004", "MUL", ["B_001", "B_002"]), ("R005", "SUB", ["R003", "R004"])],
+    ),
+    "How many packs must Roger buy?": meta(
+        "How many packs must Roger buy?",
+        "required_pack_count",
+        {"A_001": "player_count", "A_002": "pouches_per_person", "B_001": "coach_count", "B_002": "helper_count", "B_003": "pouches_per_pack"},
+        [("R001", "ADD", ["A_001", "B_001", "B_002"]), ("R002", "MUL", ["R001", "A_002"]), ("R003", "DIV", ["R002", "B_003"])],
+    ),
+    "How many kilograms does each of the last two people lose?": meta(
+        "How many kilograms does each of the last two people lose?",
+        "last_two_loss_each",
+        {"A_001": "total_loss", "A_002": "first_person_loss", "B_001": "second_person_less_than_first", "B_002": "last_two_equal_count"},
+        [("R001", "SUB", ["A_002", "B_001"]), ("R002", "SUB", ["A_001", "A_002", "R001"]), ("R003", "DIV", ["R002", "B_002"])],
+    ),
+    "How many vegetables does the garden produce altogether?": meta(
+        "How many vegetables does the garden produce altogether?",
+        "total_vegetables",
+        {"A_001": "potato_count", "A_002": "cucumber_fewer_than_potatoes", "B_001": "pepper_to_cucumber_multiplier"},
+        [("R001", "SUB", ["A_001", "A_002"]), ("R002", "MUL", ["R001", "B_001"]), ("R003", "ADD", ["A_001", "R001", "R002"])],
+    ),
+    "How many cans does Jennifer take home?": meta(
+        "How many cans does Jennifer take home?",
+        "take_home_cans",
+        {"A_001": "initial_cans", "B_001": "jennifer_extra_cans_per_group", "B_002": "mark_group_size", "B_003": "mark_cans"},
+        [("R001", "DIV", ["B_003", "B_002"]), ("R002", "MUL", ["R001", "B_001"]), ("R003", "ADD", ["A_001", "R002"])],
+    ),
+    "What was Irene's total income last week?": meta(
+        "What was Irene's total income last week?",
+        "last_week_total_income",
+        {"A_001": "regular_pay", "A_002": "regular_hours", "B_001": "overtime_hourly_rate", "B_002": "hours_worked"},
+        [("R001", "SUB", ["B_002", "A_002"]), ("R002", "MUL", ["R001", "B_001"]), ("R003", "ADD", ["A_001", "R002"])],
+    ),
+    "How much money does Winwin take home?": meta(
+        "How much money does Winwin take home?",
+        "take_home_money",
+        {"A_001": "winnings", "A_002": "tax_percent", "B_001": "processing_fee"},
+        [("R001", "PERCENT_OF", ["A_001", "A_002"]), ("R002", "SUB", ["A_001", "R001"]), ("R003", "SUB", ["R002", "B_001"])],
+    ),
+    "How much money remains in John's piggy bank?": meta(
+        "How much money remains in John's piggy bank?",
+        "remaining_piggy_bank_money",
+        {"A_001": "monthly_savings", "A_002": "saving_years", "B_001": "car_repair_cost"},
+        [("R001", "MUL", ["A_002", "C001"]), ("R002", "MUL", ["A_001", "R001"]), ("R003", "SUB", ["R002", "B_001"])],
+        {"C001": "12"},
+    ),
+    "How many plates are needed?": meta(
+        "How many plates are needed?",
+        "required_plate_count",
+        {"A_001": "invited_people", "A_002": "additional_guest_fraction", "A_003": "additional_guest_per_person", "B_001": "course_count", "B_002": "plates_per_person_per_course"},
+        [("R001", "MUL", ["A_001", "A_002", "A_003"]), ("R002", "ADD", ["A_001", "R001"]), ("R003", "MUL", ["R002", "B_001", "B_002"])],
+    ),
+    "How many hard hats remain in the truck?": meta(
+        "How many hard hats remain in the truck?",
+        "remaining_hard_hats",
+        {"A_001": "initial_pink_hats", "A_002": "initial_green_hats", "A_003": "initial_yellow_hats", "B_001": "carl_removed_pink_hats", "B_002": "john_removed_pink_hats", "B_003": "john_green_hat_base_count", "B_004": "john_removed_green_hats", "B_005": "green_hat_removal_multiplier"},
+        [("R001", "ADD", ["A_001", "A_002", "A_003"]), ("R002", "ADD", ["B_001", "B_002"]), ("R003", "MUL", ["B_003", "B_005"]), ("R004", "ADD", ["R002", "R003"]), ("R005", "SUB", ["R001", "R004"])],
+    ),
+}
+
+
 def semantic_goal(item: dict[str, Any], oracle: dep.OraclePlan | None = None) -> str:
     shared_question = str(item.get("shared_question") or "").strip()
-    if shared_question in GOLD_SEMANTIC_GOALS:
-        return GOLD_SEMANTIC_GOALS[shared_question]
+    if shared_question in GOLD_ORACLE_METADATA:
+        return str(GOLD_ORACLE_METADATA[shared_question]["goal"])
     question = str(item.get("shared_question") or item.get("full") or "").lower()
     if "tomorrow" in question and "pages" in question:
         return "tomorrow_pages"
@@ -219,7 +365,119 @@ def oracle_topology(program: dep.Program, namespace: dict[str, str]) -> list[dic
     ]
 
 
+def metadata_for_item(item: dict[str, Any]) -> dict[str, Any] | None:
+    return GOLD_ORACLE_METADATA.get(str(item.get("shared_question") or "").strip())
+
+
+def metadata_fact_namespace(metadata: dict[str, Any]) -> dict[str, str]:
+    return {
+        source_fact_id: f"F{index:03d}"
+        for index, source_fact_id in enumerate(metadata["relevant_facts"], 1)
+    }
+
+
+def metadata_relevant_facts(metadata: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    fact_namespace = metadata_fact_namespace(metadata)
+    return {
+        canonical_id: {
+            "source_fact_id": source_fact_id,
+            "variable": metadata["fact_bindings"][source_fact_id],
+            "relevant": True,
+        }
+        for source_fact_id, canonical_id in fact_namespace.items()
+    }
+
+
+def metadata_fact_binding(metadata: dict[str, Any]) -> dict[str, str]:
+    fact_namespace = metadata_fact_namespace(metadata)
+    return {
+        fact_namespace[source_fact_id]: variable
+        for source_fact_id, variable in metadata["fact_bindings"].items()
+    }
+
+
+def metadata_local_relations(metadata: dict[str, Any], mask_derived: bool) -> list[dict[str, Any]]:
+    fact_namespace = metadata_fact_namespace(metadata)
+    relation_ids = {relation["relation_id"] for relation in metadata["relations"]}
+    constants = set(metadata.get("constants", {}))
+    rows = []
+    for relation in metadata["relations"]:
+        inputs = []
+        for arg in relation["inputs"]:
+            if arg in fact_namespace:
+                inputs.append(fact_namespace[arg])
+            elif arg in constants:
+                inputs.append(arg)
+            elif arg in relation_ids:
+                inputs.append("DERIVED" if mask_derived else arg)
+            else:
+                inputs.append(arg)
+        rows.append({
+            "relation_id": relation["relation_id"],
+            "result_type": "DERIVED",
+            "op": relation["op"],
+            "inputs": inputs,
+        })
+    return rows
+
+
+def metadata_topology(metadata: dict[str, Any]) -> list[dict[str, Any]]:
+    fact_namespace = metadata_fact_namespace(metadata)
+    relation_ids = {relation["relation_id"] for relation in metadata["relations"]}
+    constants = set(metadata.get("constants", {}))
+    edges = []
+    for relation in metadata["relations"]:
+        target = relation["relation_id"]
+        for arg in relation["inputs"]:
+            if arg in fact_namespace:
+                source = fact_namespace[arg]
+            elif arg in constants or arg in relation_ids:
+                source = arg
+            else:
+                source = arg
+            edges.append({"from": source, "to": target})
+    return edges
+
+
 def build_oracle_context(level: str, item: dict[str, Any], oracle: dep.OraclePlan) -> OracleContext:
+    explicit_metadata = metadata_for_item(item)
+    if explicit_metadata is not None:
+        level_index = ORACLE_LEVELS.index(level)
+        visible = [
+            name for cutoff, name in (
+                (1, "goal"),
+                (2, "relevant_facts"),
+                (3, "fact_binding"),
+                (4, "constants"),
+                (4, "local_relations"),
+                (5, "topology"),
+            )
+            if level_index >= cutoff
+        ]
+        base = {
+            "level": level,
+            "visible_oracle_information": visible,
+            "goal": explicit_metadata["goal"] if level_index >= 1 else None,
+            "relevant_facts": metadata_relevant_facts(explicit_metadata) if level_index >= 2 else {},
+            "fact_binding": metadata_fact_binding(explicit_metadata) if level_index >= 3 else {},
+            "constants": dict(explicit_metadata.get("constants", {})) if level_index >= 4 else {},
+            "local_relations": metadata_local_relations(explicit_metadata, mask_derived=True) if level_index >= 4 else [],
+            "topology": metadata_topology(explicit_metadata) if level_index >= 5 else [],
+            "full_program": None,
+        }
+        if level == "O6":
+            base.update({
+                "visible_oracle_information": ["goal", "relevant_facts", "fact_binding", "constants", "local_relations", "topology", "full_program"],
+                "goal": explicit_metadata["goal"],
+                "relevant_facts": metadata_relevant_facts(explicit_metadata),
+                "fact_binding": metadata_fact_binding(explicit_metadata),
+                "constants": dict(explicit_metadata.get("constants", {})),
+                "local_relations": metadata_local_relations(explicit_metadata, mask_derived=True),
+                "topology": metadata_topology(explicit_metadata),
+                "full_program": oracle.program.to_dict(),
+            })
+        return OracleContext(**base)
+
     relevant = sorted(oracle.program.referenced_facts())
     namespace = build_oracle_node_namespace(oracle.program)
     fact_metadata = canonical_fact_metadata(oracle, namespace)
@@ -584,11 +842,21 @@ def structural_audit_all_questions(data_path: Path = DEFAULT_DATA_PATH) -> None:
 
             namespace = build_oracle_node_namespace(oracle.program)
             if level in {"O4", "O5", "O6"}:
-                expected_constants = canonical_constants(oracle.program, namespace)
+                explicit_metadata = metadata_for_item(item)
+                expected_constants = (
+                    dict(explicit_metadata.get("constants", {}))
+                    if explicit_metadata is not None
+                    else canonical_constants(oracle.program, namespace)
+                )
                 assert context["constants"] == expected_constants, f"q{qid} {level} constants mismatch"
                 assert all(value not in ("", "None") for value in context["constants"].values()), f"q{qid} {level} empty constant value"
             if level == "O5":
-                expected_topology = oracle_topology(oracle.program, namespace)
+                explicit_metadata = metadata_for_item(item)
+                expected_topology = (
+                    metadata_topology(explicit_metadata)
+                    if explicit_metadata is not None
+                    else oracle_topology(oracle.program, namespace)
+                )
                 assert context["topology"] == expected_topology, f"q{qid} O5 topology mismatch"
                 relation_ids = {relation["relation_id"] for relation in context["local_relations"]}
                 edge_relation_ids = {
@@ -598,6 +866,93 @@ def structural_audit_all_questions(data_path: Path = DEFAULT_DATA_PATH) -> None:
                 }
                 assert relation_ids <= edge_relation_ids, f"q{qid} O5 relation topology incomplete"
     print(f"Structural audit: PASS ({len(records)} questions x {len(ORACLE_LEVELS)} levels)")
+
+
+def semantic_oracle_audit(data_path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]:
+    records = dep.read_records(data_path)
+    missing_metadata = []
+    numeric_collisions = []
+    for qid, item in enumerate(records, 1):
+        question = str(item.get("shared_question") or "").strip()
+        metadata = metadata_for_item(item)
+        if metadata is None:
+            missing_metadata.append((qid, question))
+            continue
+
+        facts = dep.gold_facts(item)
+        facts_by_id = {fact.fact_id: fact for fact in facts}
+        source_ids = set(facts_by_id)
+        relevant_ids = set(metadata["relevant_facts"])
+        binding_ids = set(metadata["fact_bindings"])
+        assert relevant_ids <= source_ids, f"q{qid} metadata references missing source facts: {sorted(relevant_ids - source_ids)}"
+        assert relevant_ids == binding_ids, f"q{qid} relevant facts and bindings diverge"
+        for source_fact_id, variable in metadata["fact_bindings"].items():
+            fact = facts_by_id[source_fact_id]
+            assert variable and isinstance(variable, str), f"q{qid} empty binding for {source_fact_id}"
+            assert fact.content, f"q{qid} empty source content for {source_fact_id}"
+
+        relation_ids = {relation["relation_id"] for relation in metadata["relations"]}
+        constants = set(metadata.get("constants", {}))
+        for relation in metadata["relations"]:
+            assert relation["relation_id"].startswith("R"), f"q{qid} non-canonical relation id"
+            for arg in relation["inputs"]:
+                assert arg in relevant_ids or arg in constants or arg in relation_ids, f"q{qid} relation arg has no semantic provenance: {arg}"
+                if arg in relevant_ids:
+                    assert arg in facts_by_id, f"q{qid} relation source fact missing: {arg}"
+
+        by_value: dict[str, list[dep.Fact]] = {}
+        for fact in facts:
+            if fact.value is not None:
+                by_value.setdefault(str(fact.value), []).append(fact)
+        for value, group in sorted(by_value.items()):
+            variables = {metadata["fact_bindings"].get(fact.fact_id) for fact in group if fact.fact_id in metadata["fact_bindings"]}
+            if len(group) > 1 and len({fact.content for fact in group}) > 1:
+                numeric_collisions.append({
+                    "question_id": qid,
+                    "value": value,
+                    "facts": [
+                        {
+                            "fact_id": fact.fact_id,
+                            "variable": metadata["fact_bindings"].get(fact.fact_id, ""),
+                            "content": fact.content,
+                        }
+                        for fact in group
+                    ],
+                    "bound_variables": sorted(v for v in variables if v),
+                })
+
+    assert not missing_metadata, f"missing explicit gold oracle metadata: {missing_metadata}"
+
+    julie = GOLD_ORACLE_METADATA["How many pages should Julie read tomorrow?"]
+    assert julie["fact_bindings"]["A_002"] == "today_multiplier"
+    assert julie["fact_bindings"]["B_002"] == "remaining_fraction"
+    julie_r4 = next(relation for relation in julie["relations"] if relation["relation_id"] == "R004")
+    assert "B_002" in julie_r4["inputs"] and "A_002" not in julie_r4["inputs"]
+
+    james = GOLD_ORACLE_METADATA["How much does James earn each week from both jobs?"]
+    assert james["fact_bindings"]["B_001"] == "second_job_rate_reduction_percent"
+    assert james["fact_bindings"]["B_002"] == "second_job_hours_ratio"
+    james_rate = next(relation for relation in james["relations"] if relation["relation_id"] == "R002")
+    james_hours = next(relation for relation in james["relations"] if relation["relation_id"] == "R003")
+    assert "B_001" in james_rate["inputs"]
+    assert "B_002" in james_hours["inputs"]
+
+    result = {
+        "metadata_coverage": f"{len(records)}/{len(records)}",
+        "numeric_collision_count": len(numeric_collisions),
+        "numeric_collisions": numeric_collisions,
+        "julie_twice_half": {
+            "today_multiplier": julie["fact_bindings"]["A_002"],
+            "remaining_fraction": julie["fact_bindings"]["B_002"],
+            "final_relation_inputs": julie_r4["inputs"],
+        },
+        "james_relation_provenance": {
+            "rate_reduction_relation": james_rate,
+            "hours_ratio_relation": james_hours,
+        },
+    }
+    print(f"Semantic oracle audit: PASS ({len(records)} questions, {len(numeric_collisions)} numeric collision cases)")
+    return result
 
 
 def load_model_if_needed(args: argparse.Namespace) -> Any | None:
@@ -635,6 +990,7 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--smoke-test", action="store_true")
     parser.add_argument("--structural-audit", action="store_true")
+    parser.add_argument("--semantic-audit", action="store_true")
     parser.add_argument(
         "--no-incremental-write",
         action="store_true",
@@ -648,6 +1004,9 @@ def main() -> None:
         return
     if args.structural_audit:
         structural_audit_all_questions(Path(args.data_path))
+        return
+    if args.semantic_audit:
+        semantic_oracle_audit(Path(args.data_path))
         return
 
     model = load_model_if_needed(args)
