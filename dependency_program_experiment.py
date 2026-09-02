@@ -678,11 +678,13 @@ def format_oracle_context_for_prompt(item: dict[str, Any]) -> str:
     if "goal" in visible and context.get("goal"):
         lines.extend(["Oracle guidance:", f"Goal: {context['goal']}"])
     alias_lines: list[str] = []
-    for alias, value in sorted((context.get("relevant_facts") or {}).items()):
-        if isinstance(value, dict) and value.get("source_fact_id"):
-            alias_lines.append(f"- {alias} := FACT[{value['source_fact_id']}]")
-    for alias, value in sorted((context.get("constants") or {}).items()):
-        alias_lines.append(f"- {alias} := CONST({value})")
+    if "relevant_facts" in visible:
+        for alias, value in sorted((context.get("relevant_facts") or {}).items()):
+            if isinstance(value, dict) and value.get("source_fact_id"):
+                alias_lines.append(f"- {alias} := FACT[{value['source_fact_id']}]")
+    if "constants" in visible:
+        for alias, value in sorted((context.get("constants") or {}).items()):
+            alias_lines.append(f"- {alias} := CONST({value})")
     if alias_lines:
         if not lines:
             lines.append("Oracle guidance:")
