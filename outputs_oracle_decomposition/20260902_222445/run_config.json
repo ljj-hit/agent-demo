@@ -1,0 +1,31 @@
+{
+  "script": "oracle_decomposition_experiment.py",
+  "created_at": "2026-09-02T23:01:18",
+  "settings": {
+    "O0": "Gold Facts Only",
+    "O1": "Oracle Goal",
+    "O2": "Oracle Relevant Facts",
+    "O3": "Oracle Fact Binding",
+    "O4": "Oracle Operators / Local Relations",
+    "O5": "Oracle Topology",
+    "O6": "Full Oracle Program"
+  },
+  "planners": [
+    "A_one_shot",
+    "B_backward",
+    "C_beam",
+    "D_beam_prune",
+    "E_beam_verify_repair",
+    "LLM_strict_backward"
+  ],
+  "mode": "oracle_decomposition",
+  "oracle_level": "all",
+  "data_path": "D:\\agentdemo\\multi_agent_gsm8k\\data\\20.json",
+  "planner": "LLM_strict_backward",
+  "proposal_backend": "llm",
+  "model_path": "D:\\agentdemo\\multi_agent_gsm8k\\qwen2.5-1.5B",
+  "device": "cuda",
+  "temperature": 0.0,
+  "max_new_tokens": 128,
+  "seed": 42
+}

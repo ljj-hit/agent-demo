@@ -1,0 +1,9 @@
+{
+  "fact_extraction_gap": {
+    "definition": "Gold Facts + Fresh + Oracle Plan minus LLM Facts + Fresh + Oracle Plan",
+    "final_accuracy_gap": 0.0,
+    "fact_correctness_gap": 0.0
+  },
+  "dependency_recovery_gap": {},
+  "history_contamination_gap": {}
+}
