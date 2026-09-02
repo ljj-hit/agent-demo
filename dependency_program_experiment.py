@@ -677,6 +677,22 @@ def format_oracle_context_for_prompt(item: dict[str, Any]) -> str:
     lines: list[str] = []
     if "goal" in visible and context.get("goal"):
         lines.extend(["Oracle guidance:", f"Goal: {context['goal']}"])
+    alias_lines: list[str] = []
+    for alias, value in sorted((context.get("relevant_facts") or {}).items()):
+        if isinstance(value, dict) and value.get("source_fact_id"):
+            alias_lines.append(f"- {alias} := FACT[{value['source_fact_id']}]")
+    for alias, value in sorted((context.get("constants") or {}).items()):
+        alias_lines.append(f"- {alias} := CONST({value})")
+    if alias_lines:
+        if not lines:
+            lines.append("Oracle guidance:")
+        lines.extend([
+            "Executable alias map:",
+            *alias_lines,
+            "Fxxx/Cxxx/Rxxx are oracle guidance aliases only.",
+            "When returning JSON, use FACT[source_id], CONST(value), or actual generated node names.",
+            "Never return Fxxx, Cxxx, or Rxxx directly as executable args.",
+        ])
     if "relevant_facts" in visible and context.get("relevant_facts"):
         if not lines:
             lines.append("Oracle guidance:")
@@ -703,7 +719,7 @@ def format_oracle_context_for_prompt(item: dict[str, Any]) -> str:
     if "local_relations" in visible and context.get("local_relations"):
         if not lines:
             lines.append("Oracle guidance:")
-        lines.append("Local relations:")
+        lines.append("Local relations (unordered local relations; DERIVED means some derived result without revealing wiring):")
         for relation in context["local_relations"]:
             result = relation.get("relation_id", "R")
             op = relation.get("op", "")

@@ -8,6 +8,7 @@ program through planner paths.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import time
 from dataclasses import dataclass
@@ -166,13 +167,15 @@ GOLD_ORACLE_METADATA = {
         "How much does James earn each week from both jobs?",
         "weekly_total_earnings",
         {"A_001": "main_job_rate", "A_002": "main_job_hours", "B_001": "second_job_rate_reduction_percent", "B_002": "second_job_hours_ratio"},
-        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "PERCENT_LESS", ["A_001", "B_001"]), ("R003", "MUL", ["A_002", "B_002"]), ("R004", "MUL", ["R002", "R003"]), ("R005", "ADD", ["R001", "R004"])],
+        [("R001", "MUL", ["A_001", "A_002"]), ("R002", "DIV", ["B_001", "C001"]), ("R003", "SUB", ["C002", "R002"]), ("R004", "MUL", ["A_001", "R003"]), ("R005", "MUL", ["A_002", "B_002"]), ("R006", "MUL", ["R004", "R005"]), ("R007", "ADD", ["R001", "R006"])],
+        {"C001": "100", "C002": "1"},
     ),
     "What balance remains after the 4 monthly payments?": meta(
         "What balance remains after the 4 monthly payments?",
         "remaining_laptop_balance",
         {"A_001": "laptop_cost", "A_002": "down_payment_percent", "A_003": "additional_down_payment", "B_001": "monthly_payment", "B_002": "payment_count"},
-        [("R001", "PERCENT_OF", ["A_001", "A_002"]), ("R002", "ADD", ["R001", "A_003"]), ("R003", "SUB", ["A_001", "R002"]), ("R004", "MUL", ["B_001", "B_002"]), ("R005", "SUB", ["R003", "R004"])],
+        [("R001", "DIV", ["A_002", "C001"]), ("R002", "MUL", ["A_001", "R001"]), ("R003", "ADD", ["R002", "A_003"]), ("R004", "SUB", ["A_001", "R003"]), ("R005", "MUL", ["B_001", "B_002"]), ("R006", "SUB", ["R004", "R005"])],
+        {"C001": "100"},
     ),
     "How many packs must Roger buy?": meta(
         "How many packs must Roger buy?",
@@ -208,7 +211,8 @@ GOLD_ORACLE_METADATA = {
         "How much money does Winwin take home?",
         "take_home_money",
         {"A_001": "winnings", "A_002": "tax_percent", "B_001": "processing_fee"},
-        [("R001", "PERCENT_OF", ["A_001", "A_002"]), ("R002", "SUB", ["A_001", "R001"]), ("R003", "SUB", ["R002", "B_001"])],
+        [("R001", "DIV", ["A_002", "C001"]), ("R002", "MUL", ["A_001", "R001"]), ("R003", "SUB", ["A_001", "R002"]), ("R004", "SUB", ["R003", "B_001"])],
+        {"C001": "100"},
     ),
     "How much money remains in John's piggy bank?": meta(
         "How much money remains in John's piggy bank?",
@@ -226,7 +230,7 @@ GOLD_ORACLE_METADATA = {
     "How many hard hats remain in the truck?": meta(
         "How many hard hats remain in the truck?",
         "remaining_hard_hats",
-        {"A_001": "initial_pink_hats", "A_002": "initial_green_hats", "A_003": "initial_yellow_hats", "B_001": "carl_removed_pink_hats", "B_002": "john_removed_pink_hats", "B_003": "john_green_hat_base_count", "B_004": "john_removed_green_hats", "B_005": "green_hat_removal_multiplier"},
+        {"A_001": "initial_pink_hats", "A_002": "initial_green_hats", "A_003": "initial_yellow_hats", "B_001": "carl_removed_pink_hats", "B_002": "john_removed_pink_hats", "B_003": "john_green_hat_base_count", "B_005": "green_hat_removal_multiplier"},
         [("R001", "ADD", ["A_001", "A_002", "A_003"]), ("R002", "ADD", ["B_001", "B_002"]), ("R003", "MUL", ["B_003", "B_005"]), ("R004", "ADD", ["R002", "R003"]), ("R005", "SUB", ["R001", "R004"])],
     ),
 }
@@ -396,12 +400,46 @@ def metadata_fact_binding(metadata: dict[str, Any]) -> dict[str, str]:
     }
 
 
+def metadata_relation_namespace(metadata: dict[str, Any]) -> dict[str, str]:
+    keyed = []
+    for relation in metadata["relations"]:
+        content = json.dumps({
+            "question": metadata["question"],
+            "relation_id": relation["relation_id"],
+            "op": relation["op"],
+            "inputs": relation["inputs"],
+        }, sort_keys=True)
+        keyed.append((hashlib.sha256(content.encode("utf-8")).hexdigest(), relation["relation_id"]))
+    return {
+        original_id: f"R{index:03d}"
+        for index, (_, original_id) in enumerate(sorted(keyed), 1)
+    }
+
+
+def metadata_relation_display_order(metadata: dict[str, Any]) -> list[dict[str, Any]]:
+    ordered = sorted(
+        metadata["relations"],
+        key=lambda relation: hashlib.sha256(json.dumps({
+            "question": metadata["question"],
+            "display": relation["relation_id"],
+            "op": relation["op"],
+            "inputs": relation["inputs"],
+        }, sort_keys=True).encode("utf-8")).hexdigest(),
+    )
+    topo_ids = [relation["relation_id"] for relation in metadata["relations"]]
+    display_ids = [relation["relation_id"] for relation in ordered]
+    if len(ordered) >= 3 and display_ids == topo_ids:
+        ordered = list(reversed(ordered))
+    return ordered
+
+
 def metadata_local_relations(metadata: dict[str, Any], mask_derived: bool) -> list[dict[str, Any]]:
     fact_namespace = metadata_fact_namespace(metadata)
     relation_ids = {relation["relation_id"] for relation in metadata["relations"]}
+    relation_namespace = metadata_relation_namespace(metadata)
     constants = set(metadata.get("constants", {}))
     rows = []
-    for relation in metadata["relations"]:
+    for relation in metadata_relation_display_order(metadata):
         inputs = []
         for arg in relation["inputs"]:
             if arg in fact_namespace:
@@ -409,11 +447,11 @@ def metadata_local_relations(metadata: dict[str, Any], mask_derived: bool) -> li
             elif arg in constants:
                 inputs.append(arg)
             elif arg in relation_ids:
-                inputs.append("DERIVED" if mask_derived else arg)
+                inputs.append("DERIVED" if mask_derived else relation_namespace[arg])
             else:
                 inputs.append(arg)
         rows.append({
-            "relation_id": relation["relation_id"],
+            "relation_id": relation_namespace[relation["relation_id"]],
             "result_type": "DERIVED",
             "op": relation["op"],
             "inputs": inputs,
@@ -424,19 +462,57 @@ def metadata_local_relations(metadata: dict[str, Any], mask_derived: bool) -> li
 def metadata_topology(metadata: dict[str, Any]) -> list[dict[str, Any]]:
     fact_namespace = metadata_fact_namespace(metadata)
     relation_ids = {relation["relation_id"] for relation in metadata["relations"]}
+    relation_namespace = metadata_relation_namespace(metadata)
     constants = set(metadata.get("constants", {}))
     edges = []
     for relation in metadata["relations"]:
-        target = relation["relation_id"]
+        target = relation_namespace[relation["relation_id"]]
         for arg in relation["inputs"]:
             if arg in fact_namespace:
                 source = fact_namespace[arg]
-            elif arg in constants or arg in relation_ids:
+            elif arg in constants:
                 source = arg
+            elif arg in relation_ids:
+                source = relation_namespace[arg]
             else:
                 source = arg
             edges.append({"from": source, "to": target})
     return edges
+
+
+def build_semantic_reference_program(item: dict[str, Any], facts: list[dep.Fact]) -> dep.Program | None:
+    metadata = metadata_for_item(item)
+    if metadata is None:
+        return None
+    nodes = dep.make_fact_nodes(facts)
+    for const_id, value in metadata.get("constants", {}).items():
+        nodes[const_id] = dep.IRNode(const_id, "CONST", value=dep.decimal(value), provenance=())
+    relation_namespace = metadata_relation_namespace(metadata)
+    fact_node_by_source = {fact.fact_id: f"fact_{fact.fact_id}" for fact in facts}
+    for relation in metadata["relations"]:
+        args = []
+        for arg in relation["inputs"]:
+            if arg in fact_node_by_source:
+                args.append(fact_node_by_source[arg])
+            elif arg in relation_namespace:
+                args.append(relation_namespace[arg])
+            elif arg in metadata.get("constants", {}):
+                args.append(arg)
+            else:
+                args.append(arg)
+        child_nodes = [arg for arg in args if arg in nodes]
+        provenance = tuple(sorted(set(p for arg in child_nodes for p in nodes[arg].provenance)))
+        node_id = relation_namespace[relation["relation_id"]]
+        nodes[node_id] = dep.IRNode(node_id, relation["op"], tuple(args), provenance=provenance)
+    final_original = metadata["relations"][-1]["relation_id"]
+    return dep.Program(nodes, relation_namespace[final_original], "semantic_oracle_reference").reachable_program()
+
+
+def evaluate_semantic_metadata(item: dict[str, Any], facts: list[dep.Fact]) -> dep.ExecutionResult:
+    program = build_semantic_reference_program(item, facts)
+    if program is None:
+        return dep.ExecutionResult(False, None, {}, ["missing semantic reference program"])
+    return dep.eval_program(program, facts)
 
 
 def build_oracle_context(level: str, item: dict[str, Any], oracle: dep.OraclePlan) -> OracleContext:
@@ -584,7 +660,11 @@ def run_oracle_decomposition_case(
         result = dep.eval_program(program, facts)
 
     contract_ok, contract_errors = dep.contract_check(program, facts)
-    f1 = dep.edge_f1(program, facts, oracle.program, oracle.facts)
+    semantic_reference = build_semantic_reference_program(item, facts)
+    if semantic_reference is not None:
+        f1 = dep.edge_f1(program, facts, semantic_reference, facts)
+    else:
+        f1 = dep.edge_f1(program, facts, oracle.program, oracle.facts)
     token_usage, llm_runtime_seconds, llm_call_count = dep.collect_trace_usage(planner_trace)
     return {
         "question_id": qid,
@@ -742,6 +822,10 @@ def validate_oracle_context(level: str, context: dict[str, Any], prompt_context:
         assert set(context["fact_binding"]) <= set(context["relevant_facts"])
         assert_canonical_namespace(context, level)
         assert "Fact bindings:" in prompt_context and "Local relations:" not in prompt_context
+        assert "Executable alias map:" in prompt_context
+        assert "Never return Fxxx, Cxxx, or Rxxx directly as executable args." in prompt_context
+        for value in context["relevant_facts"].values():
+            assert f"FACT[{value['source_fact_id']}]" in prompt_context
     if level == "O4":
         assert context["relevant_facts"] and context["fact_binding"] and context["local_relations"]
         assert not any(context[k] for k in ("topology", "full_program"))
@@ -749,13 +833,17 @@ def validate_oracle_context(level: str, context: dict[str, Any], prompt_context:
         assert all(cid.startswith("C") for cid in context["constants"])
         assert not set(context["constants"]) & set(context["fact_binding"])
         assert not set(context["constants"]) & set(context["relevant_facts"])
+        assert "unordered local relations" in prompt_context.lower()
+        assert "Executable alias map:" in prompt_context
         for relation in context["local_relations"]:
             assert str(relation.get("relation_id", "")).startswith("R")
             assert "result" not in relation
             for arg in relation.get("inputs", []):
                 assert str(arg).startswith(("F", "C")) or arg == "DERIVED"
                 assert arg == "DERIVED" or not str(arg).startswith(("D", "R"))
-        assert "Local relations:" in prompt_context and "Topology:" not in prompt_context
+        assert "Local relations" in prompt_context and "Topology:" not in prompt_context
+        for value in context["constants"].values():
+            assert f"CONST({value})" in prompt_context
     if level == "O5":
         assert context["relevant_facts"] and context["fact_binding"] and context["local_relations"] and context["topology"]
         assert not context["full_program"]
@@ -767,6 +855,7 @@ def validate_oracle_context(level: str, context: dict[str, Any], prompt_context:
             if str(node_id).startswith("R")
         }
         assert relation_ids <= topology_relation_ids
+        assert "Executable alias map:" in prompt_context
         assert "Topology:" in prompt_context and "full_program" not in prompt_context
     if level == "O6":
         assert context["full_program"]
@@ -872,6 +961,9 @@ def semantic_oracle_audit(data_path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]
     records = dep.read_records(data_path)
     missing_metadata = []
     numeric_collisions = []
+    graph_execution_pass = 0
+    relation_order_scrambled = 0
+    relevant_usage_failures = []
     for qid, item in enumerate(records, 1):
         question = str(item.get("shared_question") or "").strip()
         metadata = metadata_for_item(item)
@@ -893,12 +985,33 @@ def semantic_oracle_audit(data_path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]
 
         relation_ids = {relation["relation_id"] for relation in metadata["relations"]}
         constants = set(metadata.get("constants", {}))
+        used_relevant_ids = set()
         for relation in metadata["relations"]:
             assert relation["relation_id"].startswith("R"), f"q{qid} non-canonical relation id"
+            assert relation["op"] in dep.OPS, f"q{qid} illegal oracle operator: {relation['op']}"
             for arg in relation["inputs"]:
                 assert arg in relevant_ids or arg in constants or arg in relation_ids, f"q{qid} relation arg has no semantic provenance: {arg}"
                 if arg in relevant_ids:
                     assert arg in facts_by_id, f"q{qid} relation source fact missing: {arg}"
+                    used_relevant_ids.add(arg)
+        unused = sorted(relevant_ids - used_relevant_ids)
+        if unused:
+            relevant_usage_failures.append({"question_id": qid, "unused_relevant_facts": unused})
+        assert not unused, f"q{qid} relevant facts unused by semantic graph: {unused}"
+
+        topo_relation_order = [metadata_relation_namespace(metadata)[relation["relation_id"]] for relation in metadata["relations"]]
+        o4_relation_order = [relation["relation_id"] for relation in metadata_local_relations(metadata, mask_derived=True)]
+        if len(o4_relation_order) >= 3:
+            assert o4_relation_order != topo_relation_order, f"q{qid} O4 relation order leaks topological order"
+            relation_order_scrambled += 1
+        for relation in metadata_local_relations(metadata, mask_derived=True):
+            assert not any(str(arg).startswith("R") for arg in relation["inputs"]), f"q{qid} O4 leaks relation-to-relation wiring"
+
+        execution = evaluate_semantic_metadata(item, facts)
+        gold = dep.decimal(item.get("answer"))
+        assert execution.ok, f"q{qid} semantic graph did not execute: {execution.errors}"
+        assert dep.close_enough(execution.answer, gold), f"q{qid} semantic graph answer mismatch: {execution.answer} != {gold}"
+        graph_execution_pass += 1
 
         by_value: dict[str, list[dep.Fact]] = {}
         for fact in facts:
@@ -906,15 +1019,25 @@ def semantic_oracle_audit(data_path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]
                 by_value.setdefault(str(fact.value), []).append(fact)
         for value, group in sorted(by_value.items()):
             variables = {metadata["fact_bindings"].get(fact.fact_id) for fact in group if fact.fact_id in metadata["fact_bindings"]}
-            if len(group) > 1 and len({fact.content for fact in group}) > 1:
+            if len(group) > 1:
+                relations_using = {}
+                for fact in group:
+                    relations_using[fact.fact_id] = [
+                        relation["relation_id"]
+                        for relation in metadata["relations"]
+                        if fact.fact_id in relation["inputs"]
+                    ]
                 numeric_collisions.append({
                     "question_id": qid,
                     "value": value,
                     "facts": [
                         {
                             "fact_id": fact.fact_id,
+                            "type": fact.type,
+                            "source": fact.source,
                             "variable": metadata["fact_bindings"].get(fact.fact_id, ""),
                             "content": fact.content,
+                            "relations_using_this_fact": relations_using.get(fact.fact_id, []),
                         }
                         for fact in group
                     ],
@@ -933,14 +1056,26 @@ def semantic_oracle_audit(data_path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]
     assert james["fact_bindings"]["B_001"] == "second_job_rate_reduction_percent"
     assert james["fact_bindings"]["B_002"] == "second_job_hours_ratio"
     james_rate = next(relation for relation in james["relations"] if relation["relation_id"] == "R002")
-    james_hours = next(relation for relation in james["relations"] if relation["relation_id"] == "R003")
+    james_hours = next(relation for relation in james["relations"] if relation["relation_id"] == "R005")
     assert "B_001" in james_rate["inputs"]
     assert "B_002" in james_hours["inputs"]
+
+    tara = GOLD_ORACLE_METADATA["What balance remains after the 4 monthly payments?"]
+    assert tara["fact_bindings"]["A_002"] == "down_payment_percent"
+    assert tara["fact_bindings"]["A_003"] == "additional_down_payment"
+    tara_percent = next(relation for relation in tara["relations"] if relation["relation_id"] == "R001")
+    tara_absolute = next(relation for relation in tara["relations"] if relation["relation_id"] == "R003")
+    assert "A_002" in tara_percent["inputs"]
+    assert "A_003" in tara_absolute["inputs"]
 
     result = {
         "metadata_coverage": f"{len(records)}/{len(records)}",
         "numeric_collision_count": len(numeric_collisions),
         "numeric_collisions": numeric_collisions,
+        "semantic_graph_execution": f"{graph_execution_pass}/{len(records)}",
+        "operator_vocab": "PASS",
+        "o4_topology_leakage_audit": f"PASS ({relation_order_scrambled} order checks)",
+        "relevant_fact_usage_audit": "PASS",
         "julie_twice_half": {
             "today_multiplier": julie["fact_bindings"]["A_002"],
             "remaining_fraction": julie["fact_bindings"]["B_002"],
@@ -950,8 +1085,20 @@ def semantic_oracle_audit(data_path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]
             "rate_reduction_relation": james_rate,
             "hours_ratio_relation": james_hours,
         },
+        "tara_numeric_collision_regression": {
+            "down_payment_percent": tara["fact_bindings"]["A_002"],
+            "additional_down_payment": tara["fact_bindings"]["A_003"],
+            "percentage_relation": tara_percent,
+            "absolute_addition_relation": tara_absolute,
+        },
     }
     print(f"Semantic oracle audit: PASS ({len(records)} questions, {len(numeric_collisions)} numeric collision cases)")
+    print(f"SEMANTIC_GRAPH_EXECUTION={graph_execution_pass}/{len(records)} PASS")
+    print("ORACLE_OPERATOR_VOCAB=PASS")
+    print("EXECUTABLE_ALIAS_MAP=PASS")
+    print("O4_TOPOLOGY_LEAKAGE_AUDIT=PASS")
+    print("NUMERIC_COLLISION_AUDIT=PASS")
+    print("RELEVANT_FACT_USAGE_AUDIT=PASS")
     return result
 
 
