@@ -730,6 +730,15 @@ def format_oracle_context_for_prompt(item: dict[str, Any]) -> str:
     if "topology" in visible and context.get("topology"):
         if not lines:
             lines.append("Oracle guidance:")
+        lines.extend([
+            "Topology interpretation:",
+            '- ANSWER corresponds to the current planner target "answer".',
+            "- Dxxx denotes an anonymous derived dependency node. Each Dxxx must eventually be recovered as an arithmetic operation.",
+            "- Lxxx denotes an anonymous leaf position. Each Lxxx must eventually be grounded to an actual FACT[...] or CONST(...).",
+            "- Edges specify dependency structure only.",
+            "- The topology does NOT reveal arithmetic operators, semantic fact bindings, or which FACT corresponds to which Lxxx.",
+            "- Do not use Lxxx or Dxxx directly as executable FACT IDs.",
+        ])
         lines.append("Topology:")
         for edge in context["topology"]:
             lines.append(f"- {edge.get('from')} -> {edge.get('to')}")
@@ -782,7 +791,14 @@ def llm_proposal_program(model: Any, item: dict[str, Any], facts: list[Fact]) ->
     return program, meta
 
 
-def llm_single_expansion(model: Any, item: dict[str, Any], facts: list[Fact], target: str, known_nodes: list[str]) -> tuple[Expansion | None, dict[str, Any]]:
+def llm_single_expansion(
+    model: Any,
+    item: dict[str, Any],
+    facts: list[Fact],
+    target: str,
+    known_nodes: list[str],
+    revision_context: dict[str, Any] | None = None,
+) -> tuple[Expansion | None, dict[str, Any]]:
     fact_lines = "\n".join(
         f"- FACT[{fact.fact_id}] type={fact.type} value={fact.value} content={fact.content}"
         for fact in facts
@@ -794,14 +810,30 @@ def llm_single_expansion(model: Any, item: dict[str, Any], facts: list[Fact], ta
         "Use only FACT[id], CONST(value), existing node names, and ops ADD/SUB/MUL/DIV. "
         "Return JSON only."
     )
+    revision_block = ""
+    if revision_context:
+        rejection_reasons = "\n".join(f"- {reason}" for reason in revision_context.get("rejection_reasons", []))
+        current_program = json.dumps(revision_context.get("program", {}), ensure_ascii=False)
+        revision_block = (
+            "The current dependency program is executable but incomplete.\n\n"
+            f"Current candidate program:\n{current_program}\n\n"
+            "Verifier rejected it for:\n"
+            f"{rejection_reasons or '- unspecified verifier rejection'}\n\n"
+            "Revise the current target so that the missing dependency is represented explicitly.\n"
+            "Do not return the same incomplete expression.\n"
+            "Use FACT[id], CONST(value), or a new derived node that can be expanded later.\n\n"
+        )
     user = (
         f"Question: {item.get('shared_question', '')}\n\n"
         f"Facts:\n{fact_lines}\n\n"
         f"{oracle_block}"
+        f"{revision_block}"
         f"Known derived nodes: {known_nodes}\n"
         f"Unresolved target to expand: {target}\n\n"
+        "Allowed op values: ADD, SUB, MUL, DIV. Choose exactly one value.\n"
+        'Do not output the literal string "ADD|SUB|MUL|DIV".\n'
         "Return ONLY:\n"
-        '{"target": "<same target>", "op": "ADD|SUB|MUL|DIV", "args": ["FACT[A_001]", "node_x"]}\n'
+        '{"target": "<same target>", "op": "ADD", "args": ["FACT[A_001]", "node_x"]}\n'
         "Do not define any other node."
     )
     raw, usage, elapsed = model.call(system, user, temperature=0.0)
@@ -812,6 +844,7 @@ def llm_single_expansion(model: Any, item: dict[str, Any], facts: list[Fact], ta
         "elapsed_seconds": elapsed,
         "visible_oracle_information": visible_oracle_information(item),
         "oracle_prompt_context": oracle_prompt_context,
+        "revision_context": revision_context or {},
         "payload": payload,
         "parse_errors": [],
     }
@@ -840,29 +873,66 @@ def llm_strict_backward_search(
     unresolved = ["answer"]
     known_nodes: list[str] = []
     meta_trace: list[dict[str, Any]] = []
+    revision_context: dict[str, Any] | None = None
     for _ in range(max_steps):
         if not unresolved:
             break
         target = unresolved.pop(0)
-        expansion, meta = llm_single_expansion(model, item, facts, target, known_nodes)
+        expansion, meta = llm_single_expansion(model, item, facts, target, known_nodes, revision_context)
+        revision_context = None
         meta_trace.append({"step": len(meta_trace), "target": target, "llm_meta": meta})
         if expansion is None:
             if failure_trace is not None:
                 failure_trace.extend(meta_trace)
             return None
+        expansions = [exp for exp in expansions if exp.target != target]
         expansions.append(expansion)
         for arg in expansion.args:
             text = str(arg)
             if not text.startswith(("FACT[", "CONST(")) and text not in known_nodes and text not in unresolved:
                 unresolved.insert(0, text)
-        known_nodes.append(target)
+        if target not in known_nodes:
+            known_nodes.append(target)
+        if unresolved:
+            continue
         trial = strict_backward_search(expansions, facts, "llm_backward")
-        if trial is not None and eval_program(trial.program, facts).ok:
-            trial.trace = meta_trace + trial.trace
+        if trial is None:
+            if failure_trace is not None:
+                failure_trace.extend(meta_trace)
+            return None
+        exec_result = eval_program(trial.program, facts)
+        contract_ok, contract_errors = contract_check(trial.program, facts)
+        verified, rejection_reasons = verify_llm_candidate(trial.program, facts)
+        verification_step = {
+            "step": len(meta_trace),
+            "status": "closed_candidate_verification",
+            "eval_ok": exec_result.ok,
+            "contract_ok": contract_ok,
+            "verified": verified,
+            "rejection_reasons": rejection_reasons,
+            "contract_errors": contract_errors,
+        }
+        if exec_result.ok and contract_ok and verified:
+            trial.trace = meta_trace + [verification_step] + trial.trace
             trial.proposal_backend = "llm"
             return trial
+        meta_trace.append(verification_step | {
+            "status": "closed_candidate_rejected_for_revision",
+        })
+        expansions = [exp for exp in expansions if exp.target != target]
+        known_nodes = [node for node in known_nodes if node != target]
+        unresolved = [target]
+        revision_context = {
+            "program": trial.program.to_dict(),
+            "rejection_reasons": rejection_reasons + contract_errors + exec_result.errors,
+        }
     if failure_trace is not None:
-        failure_trace.extend(meta_trace)
+        failure_trace.extend([{
+            "step": -1,
+            "status": "failed_to_generate_verified_program",
+            "reason": "llm_strict_backward_budget_exhausted_or_unresolved",
+            "remaining_unresolved": unresolved,
+        }, *meta_trace])
     return None
 
 
@@ -894,6 +964,10 @@ def one_shot_program(facts: list[Fact]) -> Program:
         nodes[out] = IRNode(out, "ADD", (current, node_id), provenance=prov)
         current = out
     return Program(nodes, current, "one_shot")
+
+
+def failed_planner_program(facts: list[Fact], name: str = "llm_failed") -> Program:
+    return Program(make_fact_nodes(facts), "missing_answer_node", name)
 
 
 def fact_node_for(facts: list[Fact], *patterns: str, value: Decimal | None = None) -> Fact | None:
@@ -1030,7 +1104,7 @@ def strict_backward_search(expansions: list[Expansion], facts: list[Fact], name:
         nodes[target] = IRNode(target, expansion.op, tuple(str(arg) for arg in parsed_args), provenance=provenance)
         introduced = [
             str(arg) for arg in parsed_args
-            if str(arg) not in nodes or nodes[str(arg)].op not in {"FACT", "CONST"} and str(arg) != target
+            if str(arg) not in nodes and str(arg) != target
         ]
         unresolved = [node_id for node_id in introduced if node_id not in unresolved] + unresolved
         partial = Program(nodes, target, name)
@@ -1047,7 +1121,7 @@ def strict_backward_search(expansions: list[Expansion], facts: list[Fact], name:
                 for arg in expansion.args
             ),
             "unresolved_reduction": target not in unresolved,
-            "executability": exec_result.ok,
+            "executability": bool(introduced) or exec_result.ok,
             "fact_conflict": not detect_conflicts(facts),
         }
         step += 1
@@ -1205,19 +1279,12 @@ def choose_program(
         llm_result = llm_strict_backward_search(model, item, facts, failure_trace=failed_llm_trace)
         if llm_result is not None:
             verified, rejection_reasons = verify_llm_candidate(llm_result.program, facts)
-            if verified or proposal_backend == "llm":
-                if not verified:
-                    llm_result.trace.insert(0, {
-                        "step": -1,
-                        "proposal_backend": "llm",
-                        "verification": "failed_but_llm_only_accepts_no_fallback",
-                        "rejection_reasons": rejection_reasons,
-                    })
+            if verified:
                 return llm_result
             llm_rejection_trace = [{
                 "step": -1,
                 "proposal_backend": "llm",
-                "verification": "rejected_for_hybrid_fallback",
+                "verification": "failed",
                 "rejection_reasons": rejection_reasons,
             }, *llm_result.trace]
         else:
@@ -1227,14 +1294,12 @@ def choose_program(
                 "verification": "failed_to_produce_program",
             }, *failed_llm_trace]
         if proposal_backend == "llm":
-            fallback = one_shot_program(facts).reachable_program()
             trace = [{
                 "step": -1,
                 "proposal_backend": "llm",
                 "status": "failed_to_generate_verified_program",
             }, *llm_rejection_trace]
-            trace.extend(backward_expansion_trace(fallback, facts))
-            return PlannerResult(fallback, [], trace, "llm_failed")
+            return PlannerResult(failed_planner_program(facts), [], trace, "llm_failed")
     if proposal_backend in {"semantic", "hybrid"}:
         semantic_result = strict_backward_search(
             semantic_expansion_plan(item, facts),

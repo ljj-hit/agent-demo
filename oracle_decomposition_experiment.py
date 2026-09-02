@@ -11,6 +11,7 @@ import argparse
 import csv
 import hashlib
 import json
+import re
 import time
 from dataclasses import dataclass
 from datetime import datetime
@@ -832,8 +833,15 @@ def run_experiment(
     model: Any | None = None,
     incremental_write: bool = True,
     run_config: dict[str, Any] | None = None,
+    question_whitelist: set[str] | None = None,
 ) -> list[dict[str, Any]]:
-    records = dep.read_records(data_path)[:limit or None]
+    records = dep.read_records(data_path)
+    if question_whitelist is not None:
+        records = [
+            item for item in records
+            if str(item.get("shared_question") or "").strip() in question_whitelist
+        ]
+    records = records[:limit or None]
     levels = list(ORACLE_LEVELS) if oracle_level == "all" else [oracle_level]
     rows: list[dict[str, Any]] = []
     total = len(records) * len(levels)
@@ -862,12 +870,115 @@ def run_experiment(
 
 class SmokeModel:
     def call(self, system: str, user: str, temperature: float = 0.0) -> tuple[str, dict[str, int], float]:
+        fact_ids = re.findall(r"FACT\[([^\]]+)\]", user)
+        fact_ids = list(dict.fromkeys(fact_ids))
+        target_match = re.search(r"Unresolved target to expand:\s*([^\n]+)", user)
+        target = target_match.group(1).strip() if target_match else "answer"
+        prefix = "node"
+        if "Local relations (unordered local relations" in user:
+            prefix = "relation_node"
+        elif "Topology interpretation:" in user:
+            prefix = "topology_node"
+        if not fact_ids:
+            raw = "{}"
+        else:
+            index_match = re.fullmatch(rf"{re.escape(prefix)}_(\d+)", target)
+            index = int(index_match.group(1)) if index_match else 0
+            if target == "answer":
+                next_node = f"{prefix}_1" if len(fact_ids) > 1 else f"FACT[{fact_ids[0]}]"
+                raw = json.dumps({"target": target, "op": "ADD", "args": [next_node, f"FACT[{fact_ids[0]}]"]})
+            elif index + 1 < len(fact_ids):
+                raw = json.dumps({"target": target, "op": "ADD", "args": [f"{prefix}_{index + 1}", f"FACT[{fact_ids[index]}]"]})
+            else:
+                raw = json.dumps({"target": target, "op": "ADD", "args": [f"FACT[{fact_ids[-1]}]", "CONST(0)"]})
         tokens = max(1, len(user.split()))
-        return "{}", {
+        return raw, {
             "prompt_tokens": tokens,
-            "completion_tokens": 1,
-            "total_tokens": tokens + 1,
+            "completion_tokens": max(1, len(raw.split())),
+            "total_tokens": tokens + max(1, len(raw.split())),
         }, 0.001
+
+
+class ScriptedModel:
+    def __init__(self, responses: list[str]) -> None:
+        self.responses = responses
+        self.calls: list[dict[str, str]] = []
+
+    def call(self, system: str, user: str, temperature: float = 0.0) -> tuple[str, dict[str, int], float]:
+        self.calls.append({"system": system, "user": user})
+        raw = self.responses[min(len(self.calls) - 1, len(self.responses) - 1)]
+        usage = {
+            "prompt_tokens": max(1, len(user.split())),
+            "completion_tokens": max(1, len(raw.split())),
+            "total_tokens": max(2, len(user.split()) + len(raw.split())),
+        }
+        return raw, usage, 0.001
+
+
+def synthetic_protocol_item(include_relation_fact: bool = True) -> dict[str, Any]:
+    b_facts = ["B has 3 tokens."]
+    if include_relation_fact:
+        b_facts.append("The multiplier is two.")
+    return {
+        "condition_A": "A has 2 tokens.",
+        "condition_B": " ".join(b_facts),
+        "shared_question": "How many tokens are counted?",
+        "answer": "#### 7",
+        "fact": {
+            "A": ["A has 2 tokens."],
+            "B": b_facts,
+        },
+    }
+
+
+def protocol_regression_tests() -> None:
+    source = Path("dependency_program_experiment.py").read_text(encoding="utf-8")
+    assert '"op": "ADD|SUB|MUL|DIV"' not in source, "literal operator union remains in prompt"
+    assert 'verified or proposal_backend == "llm"' not in source, "LLM verifier bypass remains"
+    assert "failed_but_llm_only_accepts_no_fallback" not in source, "old verifier bypass trace remains"
+
+    item = synthetic_protocol_item(include_relation_fact=True)
+    facts = dep.gold_facts(item)
+    premature_model = ScriptedModel([
+        '{"target": "answer", "op": "ADD", "args": ["FACT[A_001]", "FACT[B_001]"]}',
+        '{"target": "answer", "op": "ADD", "args": ["FACT[A_001]", "FACT[B_001]"]}',
+    ])
+    premature = dep.choose_program("LLM_strict_backward", facts, item, "llm", premature_model)
+    assert not dep.eval_program(premature.program, facts).ok, "premature executable candidate was accepted"
+    assert any(step.get("status") == "failed_to_generate_verified_program" for step in premature.trace), "premature failure status missing"
+    assert any(
+        isinstance(step.get("llm_meta"), dict) and step["llm_meta"].get("revision_context")
+        for step in premature.trace
+    ), "closed verifier failure did not enter revision"
+
+    invalid_model = ScriptedModel(["not json"] * 4)
+    failed = dep.choose_program("LLM_strict_backward", facts, item, "llm", invalid_model)
+    assert not dep.eval_program(failed.program, facts).ok, "pure LLM failure returned executable fallback"
+    assert failed.candidates == [], "pure LLM failure produced fake candidates"
+
+    multistep_item = synthetic_protocol_item(include_relation_fact=False)
+    multistep_facts = dep.gold_facts(multistep_item)
+    multistep_model = ScriptedModel([
+        '{"target": "answer", "op": "ADD", "args": ["node_1", "FACT[B_001]"]}',
+        '{"target": "node_1", "op": "MUL", "args": ["FACT[A_001]", "CONST(2)"]}',
+    ])
+    multistep = dep.llm_strict_backward_search(multistep_model, multistep_item, multistep_facts, max_steps=4)
+    assert multistep is not None, "multi-step backward expansion failed"
+    assert dep.eval_program(multistep.program, multistep_facts).ok, "multi-step program is not executable"
+    assert dep.contract_check(multistep.program, multistep_facts)[0], "multi-step program failed contract"
+    assert dep.verify_llm_candidate(multistep.program, multistep_facts)[0], "multi-step program failed verifier"
+    expanded = [step.get("target") for step in multistep.trace if "target" in step]
+    assert expanded[:2] == ["answer", "node_1"], f"unexpected backward expansion order: {expanded}"
+
+    records = dep.read_records(DEFAULT_DATA_PATH)
+    item0 = records[0]
+    oracle = dep.build_oracle_plan(item0, dep.gold_facts(item0))
+    o5_context = build_oracle_context("O5", item0, oracle).to_dict()
+    o5_prompt = dep.format_oracle_context_for_prompt({"oracle_context": o5_context})
+    validate_oracle_context("O5", o5_context, o5_prompt)
+    topology_text = "\n".join(f"{edge.get('from')} -> {edge.get('to')}" for edge in o5_context["topology"])
+    assert not any(text in topology_text for text in ("ADD", "SUB", "MUL", "DIV", "FACT[", "CONST(")), "O5 topology data leaked semantics"
+    print("Protocol regression tests: PASS")
 
 
 def provided_information_labels(context: dict[str, Any]) -> list[str]:
@@ -965,7 +1076,8 @@ def validate_oracle_context(level: str, context: dict[str, Any], prompt_context:
         ids = namespace_ids_from_context(context)
         assert all(node_id == "ANSWER" or (node_id.startswith(("L", "D")) and node_id[1:].isdigit()) for node_id in ids)
         assert "Topology:" in prompt_context and "full_program" not in prompt_context
-        assert not any(text in prompt_context for text in ("ADD", "SUB", "MUL", "DIV", "FACT[", "CONST("))
+        topology_text = "\n".join(f"{edge.get('from')} -> {edge.get('to')}" for edge in context["topology"])
+        assert not any(text in topology_text for text in ("ADD", "SUB", "MUL", "DIV", "FACT[", "CONST("))
         assert all(section not in prompt_context for section in ("Goal:", "Relevant facts:", "Fact bindings:", "Local relations", "Executable alias map:"))
     if level == "O6":
         assert context["full_program"]
@@ -973,20 +1085,27 @@ def validate_oracle_context(level: str, context: dict[str, Any], prompt_context:
 
 def smoke_test() -> None:
     output_dir = DEFAULT_OUTPUT_DIR / "smoke"
+    smoke_questions = {
+        "How many pages should Julie read tomorrow?",
+        "How many minutes does Carolyn practice in 4 weeks?",
+        "How much does James earn each week from both jobs?",
+    }
     rows = run_experiment(
         DEFAULT_DATA_PATH,
         output_dir,
-        limit=3,
+        limit=0,
         oracle_level="all",
         planner="LLM_strict_backward",
         proposal_backend="llm",
         model=SmokeModel(),
         incremental_write=True,
         run_config={"mode": "oracle_decomposition", "smoke_test": True},
+        question_whitelist=smoke_questions,
     )
+    assert {row["planner_input"]["question"] for row in rows} == smoke_questions, "smoke question set mismatch"
     seen = {row["oracle_level"] for row in rows}
     assert seen == set(ORACLE_LEVELS), f"not all oracle levels ran: {sorted(seen)}"
-    assert all(row["program"]["answer_node"] in row["program"]["nodes"] for row in rows), "missing answer node"
+    assert all(row["program"]["answer_node"] in row["program"]["nodes"] for row in rows if row["oracle_level"] == "O6"), "O6 missing answer node"
     assert all(row["planner"] != "oracle" for row in rows if row["oracle_level"] != "O6"), "O0-O5 must use planner"
     assert {row["planner"] for row in rows if row["oracle_level"] != "O6"} == {"LLM_strict_backward"}, "O0-O5 planner path changed"
     assert any(row["oracle_level"] == "O6" and row["executable"] for row in rows), "O6 oracle program did not execute"
@@ -1232,6 +1351,7 @@ def main() -> None:
     parser.add_argument("--allow-download", action="store_true")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--smoke-test", action="store_true")
+    parser.add_argument("--protocol-regression-test", action="store_true")
     parser.add_argument("--structural-audit", action="store_true")
     parser.add_argument("--semantic-audit", action="store_true")
     parser.add_argument(
@@ -1244,6 +1364,9 @@ def main() -> None:
         raise SystemExit("oracle_decomposition expects one planner at a time; pass one of: " + ", ".join(dep.PLANNERS))
     if args.smoke_test:
         smoke_test()
+        return
+    if args.protocol_regression_test:
+        protocol_regression_tests()
         return
     if args.structural_audit:
         structural_audit_all_questions(Path(args.data_path))
