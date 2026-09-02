@@ -279,6 +279,16 @@ def run_experiment(
     return rows
 
 
+class SmokeModel:
+    def call(self, system: str, user: str, temperature: float = 0.0) -> tuple[str, dict[str, int], float]:
+        tokens = max(1, len(user.split()))
+        return "{}", {
+            "prompt_tokens": tokens,
+            "completion_tokens": 1,
+            "total_tokens": tokens + 1,
+        }, 0.001
+
+
 def provided_information_labels(context: dict[str, Any]) -> list[str]:
     labels = ["facts"]
     for key, label in (
@@ -301,8 +311,9 @@ def smoke_test() -> None:
         output_dir,
         limit=3,
         oracle_level="all",
-        planner="E_beam_verify_repair",
-        proposal_backend="semantic",
+        planner="LLM_strict_backward",
+        proposal_backend="llm",
+        model=SmokeModel(),
         incremental_write=True,
         run_config={"mode": "oracle_decomposition", "smoke_test": True},
     )
@@ -310,25 +321,42 @@ def smoke_test() -> None:
     assert seen == set(ORACLE_LEVELS), f"not all oracle levels ran: {sorted(seen)}"
     assert all(row["program"]["answer_node"] in row["program"]["nodes"] for row in rows), "missing answer node"
     assert all(row["planner"] != "oracle" for row in rows if row["oracle_level"] != "O6"), "O0-O5 must use planner"
+    assert {row["planner"] for row in rows if row["oracle_level"] != "O6"} == {"LLM_strict_backward"}, "O0-O5 planner path changed"
     assert any(row["oracle_level"] == "O6" and row["executable"] for row in rows), "O6 oracle program did not execute"
     for row in rows:
         context = row["planner_input"]["oracle_context"]
         level = row["oracle_level"]
+        llm_steps = [step for step in row["planner_trace"] if isinstance(step.get("llm_meta"), dict)]
+        if level != "O6":
+            assert llm_steps, f"{level} has no LLM trace"
+            assert row["llm_call_count"] == len(llm_steps), f"{level} lost failed LLM call count"
+            assert row["total_tokens"] > 0 and row["llm_runtime_seconds"] > 0, f"{level} lost token/runtime usage"
+            prompt_context = llm_steps[0]["llm_meta"].get("oracle_prompt_context", "")
+            visible = llm_steps[0]["llm_meta"].get("visible_oracle_information", [])
+            assert visible == context["visible_oracle_information"], f"{level} prompt audit mismatch"
+            forbidden = ("full_program", "gold_answer", "Gold answer", "oracle program")
+            assert not any(text in prompt_context for text in forbidden), f"{level} leaked oracle answer/program field"
         if level == "O0":
             assert not any(context[k] for k in ("goal", "relevant_facts", "fact_binding", "local_relations", "topology", "full_program"))
+            assert all(not step["llm_meta"].get("oracle_prompt_context") for step in llm_steps)
         if level == "O1":
             assert context["goal"] and not any(context[k] for k in ("relevant_facts", "fact_binding", "local_relations", "topology", "full_program"))
+            assert "Goal:" in prompt_context and "Relevant facts:" not in prompt_context
         if level == "O2":
             assert context["goal"] and context["relevant_facts"] and not any(context[k] for k in ("fact_binding", "local_relations", "topology", "full_program"))
+            assert "Relevant facts:" in prompt_context and "Fact bindings:" not in prompt_context
         if level == "O3":
             assert context["goal"] and context["relevant_facts"] and context["fact_binding"]
             assert not any(context[k] for k in ("local_relations", "topology", "full_program"))
+            assert "Fact bindings:" in prompt_context and "Local relations:" not in prompt_context
         if level == "O4":
             assert context["goal"] and context["relevant_facts"] and context["fact_binding"] and context["local_relations"]
             assert not any(context[k] for k in ("topology", "full_program"))
+            assert "Local relations:" in prompt_context and "Topology:" not in prompt_context
         if level == "O5":
             assert context["goal"] and context["relevant_facts"] and context["fact_binding"]
             assert context["local_relations"] and context["topology"] and not context["full_program"]
+            assert "Topology:" in prompt_context and "full_program" not in prompt_context
         if level == "O6":
             assert context["full_program"]
     first_by_level = {level: next(row for row in rows if row["oracle_level"] == level) for level in ORACLE_LEVELS}
@@ -371,7 +399,7 @@ def main() -> None:
     parser.add_argument("--data-path", default=str(DEFAULT_DATA_PATH))
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR / datetime.now().strftime("%Y%m%d_%H%M%S")))
     parser.add_argument("--limit", type=int, default=0)
-    parser.add_argument("--planner", choices=[*dep.PLANNERS, "all"], default="E_beam_verify_repair")
+    parser.add_argument("--planner", choices=[*dep.PLANNERS, "all"], default="LLM_strict_backward")
     parser.add_argument("--proposal-backend", choices=dep.PROPOSAL_BACKENDS, default="llm")
     parser.add_argument("--model-path", default=str(dep.DEFAULT_MODEL_PATH))
     parser.add_argument("--device", default="cuda")
